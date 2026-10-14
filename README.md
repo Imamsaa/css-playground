@@ -103,21 +103,15 @@ Rujukan:
 - Pemeriksaan otomatis atas selector dan computed styles di browser.
 - Pemeriksaan properti Color, Background, Border, dan Margin sesuai tujuan masing-masing tugas.
 - Tautan materi W3Schools pada tugas yang relevan.
-- Progres lokal disimpan di browser siswa.
-- Fitur akun siswa untuk membuat kode akun, memulihkan pengerjaan lintas perangkat, dan menyinkronkan kode CSS serta tugas selesai ke database JSON privat.
+- Progres dan kode CSS setiap tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
 
-## Akun siswa dan database JSON
+## Penyimpanan progres
 
-Fitur akun memakai backend Google Apps Script sebagai API server, tetapi **tidak menggunakan Google Drive untuk menyimpan data**.
-
-- Data akun/progres ada di `data/accounts.json` pada branch `student-data` di repositori yang sama.
-- Karena repositori bersifat publik, isi JSON dienkripsi di server. Nama, kode akun, dan progres tidak disimpan sebagai teks terbaca.
-- Token GitHub serta kunci enkripsi hanya disimpan di Script Properties Apps Script, bukan di frontend.
-- Ikuti panduan [backend/README.md](backend/README.md) untuk mengonfigurasi token, men-deploy API, dan memasukkan URL `/exec` ke `ACCOUNT_API_URL` di `index.html`.
+Playground menggunakan `localStorage` browser untuk menyimpan kode dan progres pada perangkat yang sedang digunakan. Data tidak dikirim ke server. Jika siswa berpindah browser atau perangkat, data lokal tidak ikut berpindah.
 
 ## Menjalankan
 
 Buka `index.html` di browser atau aktifkan GitHub Pages dari Settings → Pages, pilih branch `main` dan folder `/ (root)`.
 
-Catatan: sebelum URL backend dimasukkan, playground tetap berfungsi dengan penyimpanan lokal saja. Sinkronisasi lintas perangkat belum aktif sampai backend dikonfigurasi. Preview memuat gambar contoh dari W3Schools melalui URL HTTPS.
+Catatan: preview memuat gambar contoh dari W3Schools melalui URL HTTPS.
