@@ -262,7 +262,7 @@
 
     <main class="layout">
       <aside class="panel tasks-panel">
-        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">48 TUGAS</span></div>
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">60 TUGAS</span></div>
         <div class="task-search-wrap">
           <input class="task-search" id="taskSearch" type="search" placeholder="Cari tugas atau materi…" aria-label="Cari tugas berdasarkan nama atau materi" autocomplete="off" />
         </div>
@@ -352,7 +352,7 @@
           </div>
         </section>
 
-        <div class="bottom-note"><span>ICT Al Firdaus Purwodadi · Materi: Selector, Color, Background, Border, dan Margin.</span><span>Progres dan kode tersimpan di browser perangkat ini.</span></div>
+        <div class="bottom-note"><span>ICT Al Firdaus Purwodadi · Materi: Selector, Color, Background, Border, Margin, Padding, Width/Height, dan Box Model.</span><span>Progres dan kode tersimpan di browser perangkat ini.</span></div>
       </section>
     </main>
   </div>
@@ -1013,8 +1013,11 @@
         hints: ['box-sizing', 'border-box'], hint: 'Gunakan width: 220px; padding: 20px; border: 4px solid #7c3aed; box-sizing: border-box;. Bandingkan lebar kotak pada preview.',
         html: `<main class="mini-page"><span class="eyebrow">PADDING + BOX-SIZING</span><h1>Ukuran Tetap</h1><p>Walaupun padding dan border ditambahkan, lebar keseluruhan kotak target harus 220px.</p><div class="box-sizing-stage"><div class="padding-box-sizing-target" id="paddingBoxSizingTarget">Lebar total harus 220px</div></div></main>`,
         checks: [
-          { label: 'width, padding, border, dan box-sizing ditulis', detail: 'Semua properti harus ada pada selector .padding-box-sizing-target.', requiredSelectors: ['.padding-box-sizing-target'], declaredPropertyGroups: [['width'],['padding'],['border'],['box-sizing']], expectedDeclarationValues: {'width':'220px','padding':'20px','border':'4px solid #7c3aed','box-sizing':'border-box'} },
+          { label: 'width, padding, border, dan box-sizing ditulis', detail: 'Semua properti harus ada pada selector .padding-box-sizing-target.', requiredSelectors: ['.padding-box-sizing-target'], declaredPropertyGroups: [['width'],['padding'],['border'],['box-sizing']] },
           { label: 'box-sizing bernilai border-box', detail: 'Computed box-sizing harus border-box.', targetIds: ['paddingBoxSizingTarget'], computedProperty: 'boxSizing', expected: 'border-box' },
+          { label: 'Lebar konten yang ditentukan 220px', detail: 'Computed width harus 220px.', targetIds: ['paddingBoxSizingTarget'], computedProperty: 'width', expected: '220px' },
+          { label: 'Padding keempat sisi 20px', detail: 'Semua sisi memiliki padding 20px.', targetIds: ['paddingBoxSizingTarget'], computedPropertiesEqual: ['paddingTop','paddingRight','paddingBottom','paddingLeft'] },
+          { label: 'Border 4px', detail: 'Border sisi atas harus 4px.', targetIds: ['paddingBoxSizingTarget'], computedProperty: 'borderTopWidth', expected: '4px' },
           { label: 'Lebar luar kotak tetap 220px', detail: 'Ukuran luar yang terlihat harus 220px.', targetIds: ['paddingBoxSizingTarget'], computedProperty: 'offsetWidth', expected: 220 }
         ]
       },
@@ -1073,10 +1076,15 @@
         hints: ['box-sizing: content-box', 'Hitung total ukuran'], hint: 'Tulis width: 200px; height: 80px; padding: 20px; border: 5px solid #7c3aed; margin: 15px; box-sizing: content-box;. Lebar luar = 200 + 40 + 10 = 250px. Dengan margin kiri dan kanan, total ruangnya 280px.',
         html: `<main class="mini-page"><span class="eyebrow">CSS BOX MODEL</span><h1>Content-box</h1><p>Ukuran CSS menentukan konten; padding dan border ditambahkan di luarnya.</p><div class="box-model-stage"><div class="box-model-content-target" id="boxModelContentTarget">Konten 200 × 80</div></div></main>`,
         checks: [
-          { label: 'Semua properti box model diatur', detail: 'Gunakan width, height, padding, border, margin, dan box-sizing.', requiredSelectors: ['.box-model-content-target'], declaredPropertyGroups: [['width'],['height'],['padding'],['border'],['margin'],['box-sizing']], expectedDeclarationValues: {'width':'200px','height':'80px','padding':'20px','border':'5px solid #7c3aed','margin':'15px','box-sizing':'content-box'} },
+          { label: 'Semua properti box model diatur', detail: 'Gunakan width, height, padding, border, margin, dan box-sizing.', requiredSelectors: ['.box-model-content-target'], declaredPropertyGroups: [['width'],['height'],['padding'],['border'],['margin'],['box-sizing']] },
+          { label: 'box-sizing adalah content-box', detail: 'Pilih box-sizing: content-box agar padding dan border menambah ukuran luar.', targetIds: ['boxModelContentTarget'], computedProperty: 'boxSizing', expected: 'content-box' },
+          { label: 'Lebar konten 200px', detail: 'Computed width harus 200px.', targetIds: ['boxModelContentTarget'], computedProperty: 'width', expected: '200px' },
+          { label: 'Tinggi konten 80px', detail: 'Computed height harus 80px.', targetIds: ['boxModelContentTarget'], computedProperty: 'height', expected: '80px' },
+          { label: 'Padding tiap sisi 20px', detail: 'Padding atas, kanan, bawah, dan kiri harus 20px.', targetIds: ['boxModelContentTarget'], computedPropertiesEqual: ['paddingTop','paddingRight','paddingBottom','paddingLeft'] },
+          { label: 'Border setebal 5px', detail: 'Border sisi atas harus 5px.', targetIds: ['boxModelContentTarget'], computedProperty: 'borderTopWidth', expected: '5px' },
           { label: 'Ukuran luar border adalah 250 × 130px', detail: 'Padding dan border ditambahkan di luar ukuran konten.', targetIds: ['boxModelContentTarget'], computedProperty: 'offsetWidth', expected: 250 },
           { label: 'Tinggi luar border adalah 130px', detail: 'Tinggi konten 80 + padding 40 + border 10 = 130px.', targetIds: ['boxModelContentTarget'], computedProperty: 'offsetHeight', expected: 130 },
-          { label: 'Margin luar adalah 15px', detail: 'Margin memberi jarak di luar border.', targetIds: ['boxModelContentTarget'], computedPropertiesEqual: ['marginTop','marginRight','marginBottom','marginLeft'] },
+          { label: 'Margin luar adalah 15px', detail: 'Margin memberi jarak di luar border.', targetIds: ['boxModelContentTarget'], computedProperty: 'marginTop', expected: '15px' },
           { label: 'Ruang total termasuk margin adalah 280px', detail: 'Lebar luar 250px ditambah margin kiri dan kanan 30px.', targetIds: ['boxModelContentTarget'], computedProperty: 'widthWithMargins', expected: 280 }
         ]
       },
@@ -1087,10 +1095,15 @@
         hints: ['box-sizing: border-box', 'Border termasuk ukuran'], hint: 'Gunakan width: 250px; height: 130px; padding: 20px; border: 5px solid #0f766e; margin: 15px; box-sizing: border-box;. Berbeda dari content-box, padding dan border tidak memperbesar ukuran luarnya.',
         html: `<main class="mini-page"><span class="eyebrow">CSS BOX MODEL</span><h1>Border-box</h1><p>Ukuran yang ditentukan sudah mencakup konten, padding, dan border.</p><div class="box-model-stage"><div class="box-model-border-target" id="boxModelBorderTarget">Kotak 250 × 130</div></div></main>`,
         checks: [
-          { label: 'Semua properti box model diatur', detail: 'Gunakan width, height, padding, border, margin, dan box-sizing.', requiredSelectors: ['.box-model-border-target'], declaredPropertyGroups: [['width'],['height'],['padding'],['border'],['margin'],['box-sizing']], expectedDeclarationValues: {'width':'250px','height':'130px','padding':'20px','border':'5px solid #0f766e','margin':'15px','box-sizing':'border-box'} },
+          { label: 'Semua properti box model diatur', detail: 'Gunakan width, height, padding, border, margin, dan box-sizing.', requiredSelectors: ['.box-model-border-target'], declaredPropertyGroups: [['width'],['height'],['padding'],['border'],['margin'],['box-sizing']] },
+          { label: 'box-sizing adalah border-box', detail: 'Gunakan box-sizing: border-box.', targetIds: ['boxModelBorderTarget'], computedProperty: 'boxSizing', expected: 'border-box' },
+          { label: 'Lebar yang ditentukan 250px', detail: 'Computed width harus 250px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'width', expected: '250px' },
+          { label: 'Tinggi yang ditentukan 130px', detail: 'Computed height harus 130px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'height', expected: '130px' },
+          { label: 'Padding tiap sisi 20px', detail: 'Padding atas, kanan, bawah, dan kiri harus 20px.', targetIds: ['boxModelBorderTarget'], computedPropertiesEqual: ['paddingTop','paddingRight','paddingBottom','paddingLeft'] },
+          { label: 'Border setebal 5px', detail: 'Border sisi atas harus 5px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'borderTopWidth', expected: '5px' },
           { label: 'Ukuran luar border tetap 250 × 130px', detail: 'Border-box memasukkan padding dan border ke ukuran yang ditentukan.', targetIds: ['boxModelBorderTarget'], computedProperty: 'offsetWidth', expected: 250 },
           { label: 'Tinggi luar border tetap 130px', detail: 'Tinggi total kotak termasuk padding dan border harus 130px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'offsetHeight', expected: 130 },
-          { label: 'Margin tetap 15px di luar border', detail: 'Margin bukan bagian dari width/height border-box.', targetIds: ['boxModelBorderTarget'], computedPropertiesEqual: ['marginTop','marginRight','marginBottom','marginLeft'] },
+          { label: 'Margin tetap 15px di luar border', detail: 'Margin bukan bagian dari width/height border-box.', targetIds: ['boxModelBorderTarget'], computedProperty: 'marginTop', expected: '15px' },
           { label: 'Ruang total termasuk margin adalah 280px', detail: 'Lebar border-box 250px ditambah margin kiri dan kanan 30px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'widthWithMargins', expected: 280 }
         ]
       }
