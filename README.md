@@ -285,7 +285,7 @@ Materi rujukan:
 - Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik.
 - Panel struktur HTML bertingkat menampilkan tag, class, ID, dan hubungan induk-anak. Klik tag, class, atau ID untuk menambahkan selector ke editor.
 - Pemeriksaan otomatis atas selector dan computed styles di browser.
-- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, Lists, dan Tables.
+- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, Lists, Tables, Display, Max-width, dan Positioning.
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
