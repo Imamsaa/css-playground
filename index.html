@@ -474,7 +474,7 @@
         hints: [':hover', 'background-color'], hint: 'Gunakan .hover-demo:hover { background-color: #f97316; color: white; }. Arahkan mouse ke tombol pada preview untuk melihat efeknya.',
         html: `<main class="mini-page"><span class="eyebrow">PSEUDO-CLASS</span><h1>Hover Me</h1><p>Arahkan mouse ke tombol di bawah ini.</p><button class="hover-demo" id="hoverTarget">Arahkan mouse ke sini</button></main>`,
         checks: [
-          { label: 'Selector .hover-demo:hover digunakan', detail: 'Gunakan pseudo-class :hover pada selector tombol.', requiredSelectors: ['.hover-demo:hover'], declaredProperties: ['background-color','color'] }
+          { label: 'Selector .hover-demo:hover digunakan', detail: 'Gunakan pseudo-class :hover pada selector tombol.', requiredSelectors: ['.hover-demo:hover'], declaredPropertyGroups: [['background-color'],['color']] }
         ]
       },
 {
