@@ -452,6 +452,82 @@
           { label: 'Gambar latar pohon digunakan', detail: 'Gunakan url() yang mengarah ke img_tree.png.', targetBody: true, computedProperty: 'backgroundImage', expectedIncludes: 'img_tree.png' },
           { label: 'Gambar latar tetap saat halaman digulir', detail: 'Nilai background-attachment harus fixed.', targetBody: true, computedProperty: 'backgroundAttachment', expected: 'fixed' }
         ]
+      },
+      {
+        id: 'border-style', number: 11, title: 'Border Style', category: 'Border', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_border.asp',
+        description: 'Properti border-style menentukan jenis garis tepi, misalnya solid, dotted, dashed, atau double.',
+        goal: 'Ubah garis tepi kotak menjadi garis putus-putus menggunakan border-style: dashed.',
+        hints: ['border-style', 'dashed'], hint: 'Gunakan selector .border-demo-box dan deklarasi border-style: dashed;. Coba nilai dotted atau solid setelah tugas selesai.',
+        html: `<main class="mini-page"><span class="eyebrow">BORDER STYLE</span><h1>Jenis Garis</h1><p>Ubah jenis garis tepi pada kotak contoh di bawah.</p><div class="border-demo-box" id="borderStyleTarget">Border Style Demo</div></main>`,
+        checks: [
+          { label: 'Selector .border-demo-box digunakan', detail: 'Pilih kotak dengan class .border-demo-box.', requiredSelectors: ['.border-demo-box'], declaredProperties: ['border-style'] },
+          { label: 'Garis tepi menjadi dashed', detail: 'Nilai border-style harus dashed.', targetIds: ['borderStyleTarget'], computedProperty: 'borderTopStyle', expected: 'dashed' }
+        ]
+      },
+      {
+        id: 'border-width', number: 12, title: 'Border Width', category: 'Border', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_border_width.asp',
+        description: 'Properti border-width mengatur ketebalan garis tepi. Border harus memiliki border-style selain none agar terlihat.',
+        goal: 'Buat garis tepi solid dengan ketebalan 6px.',
+        hints: ['border-width', 'border-style'], hint: 'Gunakan .border-width-box { border-style: solid; border-width: 6px; }. Nilai lebar bisa ditulis dalam px.',
+        html: `<main class="mini-page"><span class="eyebrow">BORDER WIDTH</span><h1>Ketebalan Garis</h1><p>Buat garis tepi kotak ini lebih tebal.</p><div class="border-width-box" id="borderWidthTarget">Border width 6px</div></main>`,
+        checks: [
+          { label: 'Selector .border-width-box mengatur style dan width', detail: 'Gunakan border-style dan border-width di selector .border-width-box.', requiredSelectors: ['.border-width-box'], declaredPropertyGroups: [['border-style'],['border-width']] },
+          { label: 'Garis tepi memiliki ketebalan 6px', detail: 'Ketebalan sisi atas harus 6px.', targetIds: ['borderWidthTarget'], computedProperty: 'borderTopWidth', expected: '6px' },
+          { label: 'Garis tepi menggunakan solid', detail: 'Jenis garis tepi harus solid.', targetIds: ['borderWidthTarget'], computedProperty: 'borderTopStyle', expected: 'solid' }
+        ]
+      },
+      {
+        id: 'border-color', number: 13, title: 'Border Color', category: 'Border', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_border_color.asp',
+        description: 'Properti border-color menentukan warna garis tepi. Tetapkan border-style supaya warna garis dapat terlihat.',
+        goal: 'Warnai garis tepi kotak menjadi merah muda tua (#e11d48), dengan gaya solid.',
+        hints: ['border-color', 'border-style'], hint: 'Contoh: .border-color-box { border-style: solid; border-color: #e11d48; }. Warna dapat memakai nama warna, HEX, RGB, atau HSL.',
+        html: `<main class="mini-page"><span class="eyebrow">BORDER COLOR</span><h1>Warna Garis</h1><p>Ganti warna garis tepi kotak menjadi merah.</p><div class="border-color-box" id="borderColorTarget">Border color demo</div></main>`,
+        checks: [
+          { label: 'Selector .border-color-box mengatur style dan color', detail: 'Gunakan border-style serta border-color.', requiredSelectors: ['.border-color-box'], declaredPropertyGroups: [['border-style'],['border-color']] },
+          { label: 'Warna border menjadi #e11d48', detail: 'Warna sisi atas harus rgb(225, 29, 72).', targetIds: ['borderColorTarget'], computedProperty: 'borderTopColor', expected: 'rgb(225, 29, 72)' },
+          { label: 'Border memiliki gaya solid', detail: 'Jenis garis tepi harus solid.', targetIds: ['borderColorTarget'], computedProperty: 'borderTopStyle', expected: 'solid' }
+        ]
+      },
+      {
+        id: 'border-sides', number: 14, title: 'Border Sides', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_sides.asp',
+        description: 'CSS bisa memberi gaya berbeda pada tiap sisi: atas, kanan, bawah, atau kiri.',
+        goal: 'Buat hanya garis sisi kiri dengan ketebalan 6px, gaya solid, dan warna teal (#0f766e). Sisi lain tetap tanpa border.',
+        hints: ['border-left', 'sisi tertentu'], hint: 'Kamu dapat memakai shorthand border-left: 6px solid #0f766e; atau properti border-left-width, border-left-style, dan border-left-color.',
+        html: `<main class="mini-page"><span class="eyebrow">BORDER SIDES</span><h1>Garis di Sisi Kiri</h1><p>Tambahkan garis hanya pada sisi kiri kotak di bawah ini.</p><div class="border-sides-box" id="borderSidesTarget">Perhatikan sisi kiri kotak ini.</div></main>`,
+        checks: [
+          { label: 'Selector .border-sides-box mengatur sisi kiri', detail: 'Gunakan properti border-left atau properti border-left-*.', requiredSelectors: ['.border-sides-box'], declaredPropertyGroups: [['border-left','border-left-width','border-left-style','border-left-color']] },
+          { label: 'Sisi kiri solid dan tebal 6px', detail: 'Sisi kiri harus solid dengan lebar 6px.', targetIds: ['borderSidesTarget'], computedProperty: 'borderLeftStyle', expected: 'solid' },
+          { label: 'Warna sisi kiri teal', detail: 'Warna sisi kiri harus #0f766e.', targetIds: ['borderSidesTarget'], computedProperty: 'borderLeftColor', expected: 'rgb(15, 118, 110)' },
+          { label: 'Sisi atas tetap tanpa border', detail: 'Sisi atas seharusnya tidak memiliki border.', targetIds: ['borderSidesTarget'], computedProperty: 'borderTopStyle', expected: 'none' },
+          { label: 'Sisi kanan tetap tanpa border', detail: 'Sisi kanan seharusnya tidak memiliki border.', targetIds: ['borderSidesTarget'], computedProperty: 'borderRightStyle', expected: 'none' },
+          { label: 'Sisi bawah tetap tanpa border', detail: 'Sisi bawah seharusnya tidak memiliki border.', targetIds: ['borderSidesTarget'], computedProperty: 'borderBottomStyle', expected: 'none' }
+        ]
+      },
+      {
+        id: 'border-shorthand', number: 15, title: 'Border Shorthand', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_shorthand.asp',
+        description: 'Shorthand border menggabungkan ketebalan, jenis garis, dan warna dalam satu deklarasi.',
+        goal: 'Gunakan satu deklarasi border untuk membuat garis tepi ungu setebal 4px dan bergaya solid.',
+        hints: ['border shorthand', 'width + style + color'], hint: 'Gunakan pola border: 4px solid #7c3aed;. Urutan width, style, dan color dapat ditulis dalam satu deklarasi.',
+        html: `<main class="mini-page"><span class="eyebrow">BORDER SHORTHAND</span><h1>Singkat dan Praktis</h1><p>Satukan ketebalan, gaya, dan warna border dalam satu baris.</p><div class="border-shorthand-box" id="borderShorthandTarget">4px solid ungu</div></main>`,
+        checks: [
+          { label: 'Selector memakai shorthand border', detail: 'Gunakan satu properti border pada selector .border-shorthand-box.', requiredSelectors: ['.border-shorthand-box'], declaredProperties: ['border'] },
+          { label: 'Ketebalan border 4px', detail: 'Ketebalan sisi atas harus 4px.', targetIds: ['borderShorthandTarget'], computedProperty: 'borderTopWidth', expected: '4px' },
+          { label: 'Gaya border solid', detail: 'Jenis garis harus solid.', targetIds: ['borderShorthandTarget'], computedProperty: 'borderTopStyle', expected: 'solid' },
+          { label: 'Warna border ungu', detail: 'Warna garis harus #7c3aed.', targetIds: ['borderShorthandTarget'], computedProperty: 'borderTopColor', expected: 'rgb(124, 58, 237)' }
+        ]
+      },
+      {
+        id: 'border-rounded', number: 16, title: 'Rounded Border', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_rounded.asp',
+        description: 'Properti border-radius membuat sudut elemen membulat. Nilainya dapat diatur dalam px atau satuan lain.',
+        goal: 'Buat border solid warna amber setebal 2px dan bulatkan sudut kotak dengan border-radius: 18px.',
+        hints: ['border-radius', 'border shorthand'], hint: 'Gunakan .border-rounded-box { border: 2px solid #f59e0b; border-radius: 18px; }. Coba ubah radius menjadi 4px atau 28px.',
+        html: `<main class="mini-page"><span class="eyebrow">ROUNDED BORDERS</span><h1>Sudut Membulat</h1><p>Atur sudut kotak agar terlihat membulat.</p><div class="border-rounded-box" id="borderRoundedTarget">Rounded border 18px</div></main>`,
+        checks: [
+          { label: 'Selector mengatur border dan border-radius', detail: 'Gunakan properti border dan border-radius.', requiredSelectors: ['.border-rounded-box'], declaredPropertyGroups: [['border'],['border-radius']] },
+          { label: 'Sudut membulat 18px', detail: 'Radius sudut kiri atas harus 18px.', targetIds: ['borderRoundedTarget'], computedProperty: 'borderTopLeftRadius', expected: '18px' },
+          { label: 'Border setebal 2px', detail: 'Ketebalan sisi atas harus 2px.', targetIds: ['borderRoundedTarget'], computedProperty: 'borderTopWidth', expected: '2px' },
+          { label: 'Border berwarna amber', detail: 'Warna garis harus #f59e0b.', targetIds: ['borderRoundedTarget'], computedProperty: 'borderTopColor', expected: 'rgb(245, 158, 11)' }
+        ]
       }
     ];
 
@@ -488,6 +564,10 @@
       .scroll-section{padding:12px;margin:14px 0;border:1px solid #e3e8f0;border-radius:10px;}
       .scroll-section strong{font-size:12px;}
       .scroll-section p{margin-bottom:0;}
+      /* Layout styles for border lessons; target border properties are left to students. */
+      .border-demo-box,.border-width-box,.border-color-box,.border-sides-box,.border-shorthand-box,.border-rounded-box{min-height:82px;display:flex;align-items:center;justify-content:center;padding:18px;margin:14px 0;background:#f8fafc;text-align:center;}
+      .border-demo-box,.border-width-box,.border-color-box,.border-sides-box,.border-shorthand-box,.border-rounded-box{border-color:transparent;border-style:none;border-width:0;}
+
     `;
 
     const $ = (selector) => document.querySelector(selector);
@@ -681,10 +761,14 @@
               var rule=rules[i];
               if(rule.selectorText && rule.style){
                 var declarations={};
-                ['color','background','background-color','background-image','background-repeat','background-attachment'].forEach(function(prop){
-                  var value=rule.style.getPropertyValue(prop);
-                  if(value) declarations[prop]=value.trim();
-                });
+                for(var j=0;j<rule.style.length;j++){
+                  var prop=rule.style[j];
+                  if(prop==='color' || prop==='background' || prop==='background-color' || prop==='background-image' ||
+                     prop==='background-repeat' || prop==='background-attachment' || prop.indexOf('border')===0){
+                    var value=rule.style.getPropertyValue(prop);
+                    if(value) declarations[prop]=value.trim();
+                  }
+                }
                 output.push({selectors:rule.selectorText.split(',').map(function(s){return s.trim();}),declarations:declarations});
               } else if(rule.cssRules) { try{collectRules(rule.cssRules,output);}catch(e){} }
             }
@@ -699,12 +783,27 @@
             var elements={};
             document.querySelectorAll('[id]').forEach(function(el){
               var s=getComputedStyle(el);
-              elements[el.id]={color:s.color,backgroundColor:s.backgroundColor,backgroundImage:s.backgroundImage,backgroundRepeat:s.backgroundRepeat,backgroundAttachment:s.backgroundAttachment};
+              elements[el.id]={
+                color:s.color,backgroundColor:s.backgroundColor,backgroundImage:s.backgroundImage,backgroundRepeat:s.backgroundRepeat,backgroundAttachment:s.backgroundAttachment,
+                borderStyle:s.borderStyle,borderWidth:s.borderWidth,borderColor:s.borderColor,borderRadius:s.borderRadius,
+                borderTopStyle:s.borderTopStyle,borderTopWidth:s.borderTopWidth,borderTopColor:s.borderTopColor,
+                borderRightStyle:s.borderRightStyle,borderRightWidth:s.borderRightWidth,borderRightColor:s.borderRightColor,
+                borderBottomStyle:s.borderBottomStyle,borderBottomWidth:s.borderBottomWidth,borderBottomColor:s.borderBottomColor,
+                borderLeftStyle:s.borderLeftStyle,borderLeftWidth:s.borderLeftWidth,borderLeftColor:s.borderLeftColor,
+                borderTopLeftRadius:s.borderTopLeftRadius
+              };
             });
             var bodyStyle=getComputedStyle(document.body);
             var rules=[];
             try{collectRules(document.getElementById('student-css').sheet.cssRules,rules);}catch(e){}
-            parent.postMessage({type:'css-quest-report',elements:elements,body:{color:bodyStyle.color,backgroundColor:bodyStyle.backgroundColor,backgroundImage:bodyStyle.backgroundImage,backgroundRepeat:bodyStyle.backgroundRepeat,backgroundAttachment:bodyStyle.backgroundAttachment},rules:rules},'*');
+            parent.postMessage({type:'css-quest-report',elements:elements,body:{
+              color:bodyStyle.color,backgroundColor:bodyStyle.backgroundColor,backgroundImage:bodyStyle.backgroundImage,backgroundRepeat:bodyStyle.backgroundRepeat,backgroundAttachment:bodyStyle.backgroundAttachment,
+              borderStyle:bodyStyle.borderStyle,borderWidth:bodyStyle.borderWidth,borderColor:bodyStyle.borderColor,borderRadius:bodyStyle.borderRadius,
+              borderTopStyle:bodyStyle.borderTopStyle,borderTopWidth:bodyStyle.borderTopWidth,borderTopColor:bodyStyle.borderTopColor,
+              borderRightStyle:bodyStyle.borderRightStyle,borderRightWidth:bodyStyle.borderRightWidth,borderRightColor:bodyStyle.borderRightColor,
+              borderBottomStyle:bodyStyle.borderBottomStyle,borderBottomWidth:bodyStyle.borderBottomWidth,borderBottomColor:bodyStyle.borderBottomColor,
+              borderLeftStyle:bodyStyle.borderLeftStyle,borderLeftWidth:bodyStyle.borderLeftWidth,borderLeftColor:bodyStyle.borderLeftColor,borderTopLeftRadius:bodyStyle.borderTopLeftRadius
+            },rules:rules},'*');
           }
           if(document.readyState==='complete') setTimeout(report,0); else window.addEventListener('load',function(){setTimeout(report,0)});
         })();
