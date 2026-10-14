@@ -2,7 +2,7 @@
 
 Playground interaktif untuk latihan CSS secara bertahap. Siswa menulis CSS sendiri, melihat live preview, membaca struktur HTML tugas, dan mengecek hasil melalui computed style browser.
 
-## Kurikulum: 60 tugas bertahap
+## Kurikulum: 71 tugas bertahap
 
 ### CSS Selector — tugas 1–12
 
@@ -128,12 +128,44 @@ Materi rujukan:
 Materi rujukan:
 - [CSS Box Model](https://www.w3schools.com/css/css_boxmodel.asp)
 
+### Outline — tugas 61–64
+
+61. Outline dan Outline Offset
+62. Outline Width
+63. Outline Color
+64. Outline Shorthand
+
+Materi rujukan:
+- [CSS Outline](https://www.w3schools.com/css/css_outline.asp)
+- [Outline Width](https://www.w3schools.com/css/css_outline_width.asp)
+- [Outline Color](https://www.w3schools.com/css/css_outline_color.asp)
+- [Outline Shorthand](https://www.w3schools.com/css/css_outline_shorthand.asp)
+
+### Text — tugas 65–71
+
+65. CSS Text: Indent dan Line Height
+66. Text Align
+67. Text Decoration
+68. Text Decoration Styles
+69. Text Transformation
+70. Text Spacing
+71. Text Shadow
+
+Materi rujukan:
+- [CSS Text](https://www.w3schools.com/css/css_text.asp)
+- [Text Align](https://www.w3schools.com/css/css_text_align.asp)
+- [Text Decoration](https://www.w3schools.com/css/css_text_decoration.asp)
+- [Text Decoration Styles](https://www.w3schools.com/css/css_text_decoration_styles.asp)
+- [Text Transformation](https://www.w3schools.com/css/css_text_transformation.asp)
+- [Text Spacing](https://www.w3schools.com/css/css_text_spacing.asp)
+- [Text Shadow](https://www.w3schools.com/css/css_text_shadow.asp)
+
 ## Fitur
 
 - Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik.
 - Panel struktur HTML bertingkat menampilkan tag, class, ID, dan hubungan induk-anak. Klik tag, class, atau ID untuk menambahkan selector ke editor.
 - Pemeriksaan otomatis atas selector dan computed styles di browser.
-- Latihan Color, Background, Border, Margin, Padding, Width/Height, dan Box Model.
+- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, dan Text.
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
