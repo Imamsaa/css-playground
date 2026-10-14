@@ -779,6 +779,7 @@
         checks: [
           { label: 'Selector .border-sides-box mengatur sisi kiri', detail: 'Gunakan properti border-left atau properti border-left-*.', requiredSelectors: ['.border-sides-box'], declaredPropertyGroups: [['border-left','border-left-width','border-left-style','border-left-color']] },
           { label: 'Sisi kiri solid dan tebal 6px', detail: 'Sisi kiri harus solid dengan lebar 6px.', targetIds: ['borderSidesTarget'], computedProperty: 'borderLeftStyle', expected: 'solid' },
+          { label: 'Ketebalan sisi kiri 6px', detail: 'Border kiri harus tepat 6px.', targetIds: ['borderSidesTarget'], computedProperty: 'borderLeftWidth', expected: '6px' },
           { label: 'Warna sisi kiri teal', detail: 'Warna sisi kiri harus #0f766e.', targetIds: ['borderSidesTarget'], computedProperty: 'borderLeftColor', expected: 'rgb(15, 118, 110)' },
           { label: 'Sisi atas tetap tanpa border', detail: 'Sisi atas seharusnya tidak memiliki border.', targetIds: ['borderSidesTarget'], computedProperty: 'borderTopStyle', expected: 'none' },
           { label: 'Sisi kanan tetap tanpa border', detail: 'Sisi kanan seharusnya tidak memiliki border.', targetIds: ['borderSidesTarget'], computedProperty: 'borderRightStyle', expected: 'none' },
@@ -902,7 +903,7 @@
         hints: ['margin: auto', 'horizontal center'], hint: 'Lebar kotak sudah disiapkan. Gunakan .margin-auto-target { margin: auto; }. Pastikan ruang kiri dan kanan seimbang.',
         html: `<main class="mini-page"><span class="eyebrow">MARGIN AUTO</span><h1>Posisi Tengah</h1><p>Kotak ungu memiliki lebar tetap. Buat jarak kiri dan kanan otomatis seimbang.</p><div class="margin-auto-stage"><div class="margin-auto-target" id="marginAutoTarget">Kotak terpusat</div></div></main>`,
         checks: [
-          { label: 'Selector memakai margin: auto', detail: 'Gunakan shorthand margin dengan nilai auto.', requiredSelectors: ['.margin-auto-target'], declaredProperties: ['margin'] },
+          { label: 'Selector memakai margin: auto', detail: 'Gunakan shorthand margin dengan nilai auto.', requiredSelectors: ['.margin-auto-target'], declaredProperties: ['margin'], expectedDeclarationValues: {'margin':'auto'} },
           { label: 'Margin kiri dan kanan seimbang', detail: 'Nilai computed margin kiri dan kanan harus sama agar kotak berada di tengah.', targetIds: ['marginAutoTarget'], computedPropertiesEqual: ['marginLeft','marginRight'] }
         ]
       },
@@ -1016,7 +1017,7 @@
           { label: 'width, padding, border, dan box-sizing ditulis', detail: 'Semua properti harus ada pada selector .padding-box-sizing-target.', requiredSelectors: ['.padding-box-sizing-target'], declaredPropertyGroups: [['width'],['padding'],['border'],['box-sizing']] },
           { label: 'box-sizing bernilai border-box', detail: 'Computed box-sizing harus border-box.', targetIds: ['paddingBoxSizingTarget'], computedProperty: 'boxSizing', expected: 'border-box' },
           { label: 'Lebar konten yang ditentukan 220px', detail: 'Computed width harus 220px.', targetIds: ['paddingBoxSizingTarget'], computedProperty: 'width', expected: '220px' },
-          { label: 'Padding keempat sisi 20px', detail: 'Semua sisi memiliki padding 20px.', targetIds: ['paddingBoxSizingTarget'], computedPropertiesEqual: ['paddingTop','paddingRight','paddingBottom','paddingLeft'] },
+          { label: 'Padding keempat sisi 20px', detail: 'Padding atas, kanan, bawah, dan kiri harus masing-masing 20px.', targetIds: ['paddingBoxSizingTarget'], expectedComputedValues: { paddingTop: '20px', paddingRight: '20px', paddingBottom: '20px', paddingLeft: '20px' } },
           { label: 'Border 4px', detail: 'Border sisi atas harus 4px.', targetIds: ['paddingBoxSizingTarget'], computedProperty: 'borderTopWidth', expected: '4px' },
           { label: 'Lebar luar kotak tetap 220px', detail: 'Ukuran luar yang terlihat harus 220px.', targetIds: ['paddingBoxSizingTarget'], computedProperty: 'offsetWidth', expected: 220 }
         ]
@@ -1935,6 +1936,17 @@
       const safeCss = String(css).replace(/<\/style/gi, '<\\/style');
       const script = `
         (function(){
+          function collectAuthoredDeclarations(style, declarations){
+            var source = style.cssText || '';
+            source.split(';').forEach(function(part){
+              var colon = part.indexOf(':');
+              if(colon < 1) return;
+              var prop = part.slice(0, colon).trim().toLowerCase();
+              if(!/^(--[a-z0-9_-]+|[a-z][a-z0-9-]*)$/i.test(prop)) return;
+              var value = style.getPropertyValue(prop);
+              if(value) declarations[prop] = value.trim();
+            });
+          }
           function collectRules(rules, output){
             for(var i=0;i<rules.length;i++){
               var rule=rules[i];
@@ -1955,6 +1967,8 @@
                     if(value) declarations[prop]=value.trim();
                   }
                 }
+                /* Preserve authored shorthand names as well as CSSOM-expanded longhands. */
+                collectAuthoredDeclarations(rule.style, declarations);
                 output.push({selectors:rule.selectorText.split(',').map(function(s){return s.trim();}),declarations:declarations});
               } else if(rule.cssRules) { try{collectRules(rule.cssRules,output);}catch(e){} }
             }
