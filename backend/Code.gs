@@ -200,9 +200,15 @@ function normalizeCode_(value) {
 }
 
 function generateAccountCode_() {
+  // A UUID provides random seed material; SHA-256 bytes supply 5 bits per character.
+  const bytes = Utilities.computeDigest(
+    Utilities.DigestAlgorithm.SHA_256,
+    Utilities.getUuid(),
+    Utilities.Charset.UTF_8
+  );
   let suffix = '';
   for (let i = 0; i < 10; i++) {
-    suffix += CODE_ALPHABET.charAt(Math.floor(Math.random() * CODE_ALPHABET.length));
+    suffix += CODE_ALPHABET.charAt((bytes[i] & 255) & 31);
   }
   return 'ICT-' + suffix.slice(0, 5) + '-' + suffix.slice(5);
 }
