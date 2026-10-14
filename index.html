@@ -652,7 +652,7 @@
         hints: ['background-position', 'right top'], hint: 'Gunakan .background-position-target { background-position: right top; }. Gambar dan ukuran kotaknya sudah disiapkan untuk latihan ini.',
         html: `<main class="mini-page"><span class="eyebrow">BACKGROUND POSITION</span><h1>Posisi Gambar</h1><p>Pindahkan gambar kecil ke pojok kanan atas kotak.</p><div class="background-position-target" id="backgroundPositionTarget"></div></main>`,
         checks: [
-          { label: 'Selector .background-position-target mengatur background-position', detail: 'Gunakan properti background-position.', requiredSelectors: ['.background-position-target'], declaredProperties: ['background-position'], expectedDeclarationValues: {'background-position':'right top'} },
+          { label: 'Selector .background-position-target mengatur background-position', detail: 'Gunakan properti background-position.', requiredSelectors: ['.background-position-target'], declaredProperties: ['background-position'] },
           { label: 'Posisi target kanan atas', detail: 'Deklarasi background-position harus right top.', requiredSelectors: ['.background-position-target'], expectedDeclarationValues: {'background-position':'right top'} }
         ]
       },
@@ -663,8 +663,8 @@
         hints: ['background-size', '80px auto'], hint: 'Gunakan .background-size-target { background-size: 80px auto; }. Nilai auto menjaga rasio gambar.',
         html: `<main class="mini-page"><span class="eyebrow">BACKGROUND SIZE</span><h1>Ukuran Gambar</h1><p>Perbesar gambar latar menjadi 80px lebar.</p><div class="background-size-target" id="backgroundSizeTarget"></div></main>`,
         checks: [
-          { label: 'Selector .background-size-target mengatur background-size', detail: 'Gunakan properti background-size.', requiredSelectors: ['.background-size-target'], declaredProperties: ['background-size'], expectedDeclarationValues: {'background-size':'80px auto'} },
-          { label: 'Ukuran gambar menjadi 80px auto', detail: 'Gunakan ukuran 80px dengan tinggi otomatis.', requiredSelectors: ['.background-size-target'], expectedDeclarationValues: {'background-size':'80px auto'} }
+          { label: 'Selector .background-size-target mengatur background-size', detail: 'Gunakan properti background-size.', requiredSelectors: ['.background-size-target'], declaredProperties: ['background-size'] },
+          { label: 'Ukuran gambar menjadi 80px auto', detail: 'Browser dapat menormalkan background-size: 80px auto menjadi 80px; tinggi gambar tetap otomatis.', requiredSelectors: ['.background-size-target'], expectedDeclarationValues: {'background-size':'80px'} }
         ]
       },
       {
