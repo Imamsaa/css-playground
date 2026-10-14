@@ -1,69 +1,113 @@
 # ICT Al Firdaus Purwodadi — CSS Coding Playground
 
-Playground interaktif untuk latihan CSS Selector, `color`, Background, Border, dan Margin untuk siswa ICT Class.
+Playground interaktif untuk latihan CSS Selector, Color, Background, Border, dan Margin bagi siswa ICT Class.
 
-## Materi dan tugas
+## Kurikulum: 48 tugas bertahap
 
-1. Selector elemen
-2. Selector class
+### 1. CSS Selector — tugas 1–12
+
+1. Selector Elemen
+2. Universal Selector
 3. Selector ID
-4. Selector gabungan
-5. Descendant selector
-6. Background color pada halaman
-7. Background color pada kartu
-8. Background image
-9. Background repeat
-10. Background attachment
-11. Border style
-12. Border width
-13. Border color
-14. Border sisi tertentu
-15. Border shorthand
-16. Rounded border
-17. Margin pada tiap sisi
-18. Margin shorthand empat nilai
-19. Margin shorthand tiga nilai
-20. Margin shorthand dua nilai
-21. Margin shorthand satu nilai
-22. Margin auto untuk memusatkan elemen
-23. Margin inherit
-24. Margin persentase
-25. Margin negatif
+4. Selector Class
+5. Selector Tag + Class
+6. Selector Gabungan
+7. Descendant Selector
+8. Child Combinator
+9. Adjacent Sibling
+10. General Sibling
+11. Attribute Selector
+12. Pseudo-class `:hover`
 
-## Sumber materi Background
+Rujukan:
+- [CSS Selectors](https://www.w3schools.com/css/css_selectors.asp)
+- [Grouping and Universal Selectors](https://www.w3schools.com/css/css_selectors_grouping.asp)
+- [CSS Combinators](https://www.w3schools.com/css/css_combinators.asp)
+- [CSS Attribute Selectors](https://www.w3schools.com/css/css_attribute_selectors.asp)
+- [CSS Pseudo-classes](https://www.w3schools.com/css/css_pseudo_classes.asp)
 
-- [CSS Backgrounds / Background Color](https://www.w3schools.com/css/css_background.asp)
+### 2. Color — tugas 13–20
+
+13. Color Name
+14. Color HEX
+15. Color RGB
+16. Color HSL
+17. Color RGBA
+18. Color HEXA
+19. Color HSLA
+20. Opacity
+
+Rujukan:
+- [CSS Colors](https://www.w3schools.com/css/css_colors.asp)
+- [CSS Color Values](https://www.w3schools.com/css/css3_colors.asp)
+
+### 3. Background — tugas 21–29
+
+21. Background Color pada Halaman
+22. Background pada Kartu
+23. Background Image
+24. Background Repeat X
+25. Background Repeat Y
+26. Background Position
+27. Background Size
+28. Background Shorthand
+29. Background Attachment
+
+Rujukan:
+- [CSS Backgrounds](https://www.w3schools.com/css/css_background.asp)
 - [CSS Background Image](https://www.w3schools.com/css/css_background_image.asp)
 - [CSS Background Repeat](https://www.w3schools.com/css/css_background_repeat.asp)
 - [CSS Background Attachment](https://www.w3schools.com/css/css_background_attachment.asp)
+- [CSS Background Shorthand](https://www.w3schools.com/css/css_background_shorthand.asp)
 
-## Sumber materi Border
+### 4. Border — tugas 30–39
 
-- [CSS Borders / Border Style](https://www.w3schools.com/css/css_border.asp)
+30. Border Style
+31. Border Style per Sisi
+32. Border Width
+33. Border Width per Sisi
+34. Border Color
+35. Border Color per Sisi
+36. Border Sides
+37. Border Shorthand
+38. Rounded Border
+39. Border Radius per Sudut
+
+Rujukan:
+- [CSS Border Style](https://www.w3schools.com/css/css_border.asp)
 - [CSS Border Width](https://www.w3schools.com/css/css_border_width.asp)
 - [CSS Border Color](https://www.w3schools.com/css/css_border_color.asp)
 - [CSS Border Sides](https://www.w3schools.com/css/css_border_sides.asp)
 - [CSS Border Shorthand](https://www.w3schools.com/css/css_border_shorthand.asp)
 - [CSS Rounded Borders](https://www.w3schools.com/css/css_border_rounded.asp)
 
-## Sumber materi Margin
+### 5. Margin — tugas 40–48
 
+40. Margin Sides
+41. Margin Shorthand: 4 Nilai
+42. Margin Shorthand: 3 Nilai
+43. Margin Shorthand: 2 Nilai
+44. Margin Shorthand: 1 Nilai
+45. Margin Auto: Center
+46. Margin Inherit
+47. Margin Persentase
+48. Negative Margin
+
+Rujukan:
 - [CSS Margins](https://www.w3schools.com/css/css_margin.asp)
-
-Materi Margin mencakup empat properti sisi, shorthand dengan satu hingga empat nilai, `auto`, `inherit`, persentase, dan nilai negatif.
 
 ## Fitur
 
-- Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik
-- Panel struktur HTML bertingkat, termasuk tag, class, dan ID; klik item untuk memasukkan selector ke editor
-- Pemeriksaan otomatis menggunakan selector CSS dan computed style browser
-- Pemeriksaan properti Background, Border, dan Margin
-- Tautan materi W3Schools pada tugas yang relevan
-- Penyimpanan kode dan progres di browser siswa
-- Tautan langsung tugas melalui parameter URL `?task=<id>`
+- Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik.
+- Panel struktur HTML bertingkat menampilkan tag, class, ID, dan hubungan induk-anak. Klik tag, class, atau ID untuk menambahkan selector ke editor.
+- Pemeriksaan otomatis atas selector dan computed styles di browser.
+- Pemeriksaan properti Color, Background, Border, dan Margin sesuai tujuan masing-masing tugas.
+- Tautan materi W3Schools pada tugas yang relevan.
+- Kode dan progres tersimpan di browser lokal siswa.
+- Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
 
 ## Menjalankan
 
 Buka `index.html` di browser atau aktifkan GitHub Pages dari Settings → Pages, pilih branch `main` dan folder `/ (root)`.
 
-Catatan: progres disimpan di browser lokal. Nilai tidak dikirim ke server atau dashboard guru. Preview memuat gambar contoh dari W3Schools melalui URL HTTPS.
+Catatan: progres disimpan di browser masing-masing siswa; nilai belum dikirim ke server atau dashboard guru. Preview memuat gambar contoh dari W3Schools melalui URL HTTPS.
