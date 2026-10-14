@@ -2,7 +2,7 @@
 
 Playground interaktif untuk latihan CSS secara bertahap. Siswa menulis CSS sendiri, melihat live preview, membaca struktur HTML tugas, dan mengecek hasil melalui computed style browser.
 
-## Kurikulum: 81 tugas bertahap
+## Kurikulum: 98 tugas bertahap
 
 ### CSS Selector — tugas 1–12
 
@@ -169,6 +169,18 @@ Materi rujukan:
 - [CSS Font Style](https://www.w3schools.com/css/css_font_style.asp)
 - [CSS Font Size](https://www.w3schools.com/css/css_font_size.asp)
 
+### Penguatan Font — tugas 86–90
+
+86. Font Style: Normal
+87. Font Style: Oblique
+88. Font Size: em
+89. Font Size: rem
+90. Tantangan: Tipografi
+
+Materi rujukan:
+- [CSS Font Style](https://www.w3schools.com/css/css_font_style.asp)
+- [CSS Font Size](https://www.w3schools.com/css/css_font_size.asp)
+
 ### Links — tugas 74–75
 
 74. CSS Links
@@ -178,9 +190,29 @@ Materi rujukan:
 - [CSS Links](https://www.w3schools.com/css/css_link.asp)
 - [CSS Link Buttons](https://www.w3schools.com/css/css_link_buttons.asp)
 
+### Penguatan Link States — tugas 91–94
+
+91. Link State: :link
+92. Link State: :visited
+93. Link State: :hover
+94. Link State: :active
+
+Materi rujukan:
+- [CSS Links](https://www.w3schools.com/css/css_link.asp)
+
 ### Lists — tugas 76
 
 76. CSS Lists
+
+Materi rujukan:
+- [CSS Lists](https://www.w3schools.com/css/css_list.asp)
+
+### Penguatan Lists — tugas 82–85
+
+82. List Style Type
+83. List Style Position
+84. List Style Image
+85. Tantangan: Menu Navigasi
 
 Materi rujukan:
 - [CSS Lists](https://www.w3schools.com/css/css_list.asp)
@@ -199,6 +231,16 @@ Materi rujukan:
 - [CSS Table Alignment](https://www.w3schools.com/css/css_table_align.asp)
 - [CSS Table Style](https://www.w3schools.com/css/css_table_style.asp)
 - [CSS Responsive Table](https://www.w3schools.com/css/css_table_responsive.asp)
+
+### Penguatan Table Style — tugas 95–98
+
+95. Table Style: Header
+96. Table Style: Zebra Stripes
+97. Table Style: Row Hover
+98. Tantangan: Tabel Proyek ICT
+
+Materi rujukan:
+- [CSS Table Style](https://www.w3schools.com/css/css_table_style.asp)
 
 ## Fitur
 
