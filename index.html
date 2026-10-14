@@ -43,6 +43,9 @@
     .brand-name { font-size:15px; line-height:1.2; font-weight:850; letter-spacing:.01em; }
     .brand-sub { color:var(--muted); font-size:12px; margin-top:3px; }
     .top-actions { display:flex; align-items:center; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
+    .account-trigger { border-color:#e2defe; background:#f2f0ff; color:#5145cd; }
+    .account-trigger.has-account { border-color:#bee9d5; background:#eaf8f1; color:#14764d; }
+    .account-trigger-label { white-space:nowrap; }
     .pill-label { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:750; border:1px solid #e2defe; color:#594ed0; background:#f2f0ff; padding:8px 11px; border-radius:999px; white-space:nowrap; }
     .dot { width:7px;height:7px;border-radius:50%;background:#27ad7a; }
     .btn { border:1px solid var(--line); background:#fff; color:#344054; padding:9px 13px; border-radius:11px; font-size:12px; font-weight:750; display:inline-flex; align-items:center; justify-content:center; gap:7px; transition:transform .15s, box-shadow .15s, background .15s; }
@@ -189,6 +192,41 @@
     .bottom-note a { color:#6c61d9; text-decoration:none; }
     .toast { position:fixed; z-index:20; bottom:22px; left:50%; transform:translate(-50%,12px); opacity:0; pointer-events:none; color:#fff; background:#172033; border-radius:12px; padding:11px 15px; box-shadow:0 12px 28px rgba(15,23,42,.25); font-size:12px; font-weight:700; transition:.2s ease; max-width:calc(100% - 30px); text-align:center; }
     .toast.show { opacity:1; transform:translate(-50%,0); }
+    .account-overlay { position:fixed; z-index:50; inset:0; display:grid; place-items:center; padding:18px; background:rgba(15,23,42,.48); backdrop-filter:blur(5px); }
+    .account-overlay[hidden] { display:none; }
+    .account-dialog { width:min(100%,460px); max-height:min(90vh,720px); overflow:auto; padding:22px; border:1px solid rgba(255,255,255,.7); border-radius:20px; background:#fff; box-shadow:0 24px 80px rgba(15,23,42,.25); }
+    .account-dialog-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+    .account-dialog-title { margin:0; color:#172033; font-size:20px; line-height:1.25; letter-spacing:-.03em; }
+    .account-dialog-close { display:grid; place-items:center; width:34px; height:34px; flex:0 0 34px; border:1px solid var(--line); border-radius:10px; background:#fff; color:#667085; font-size:18px; }
+    .account-intro { margin:8px 0 16px; color:#667085; font-size:12px; line-height:1.6; }
+    .account-notice { margin:0 0 14px; padding:11px 12px; border:1px solid #f2d9a6; border-radius:11px; background:#fffaeb; color:#8a5b12; font-size:11px; line-height:1.55; }
+    .account-field { display:grid; gap:6px; margin:13px 0; }
+    .account-field label { color:#344054; font-size:11px; font-weight:800; }
+    .account-field input { width:100%; min-width:0; padding:11px 12px; border:1px solid #dce2ec; border-radius:10px; background:#fbfcff; color:#172033; font:inherit; font-size:13px; outline:none; }
+    .account-field input:focus { border-color:#aaa2ff; box-shadow:0 0 0 3px rgba(101,88,232,.1); }
+    .account-dialog .btn { min-height:40px; }
+    .account-dialog .btn:disabled { opacity:.5; cursor:not-allowed; transform:none; box-shadow:none; }
+    .account-primary { width:100%; color:#fff; border-color:var(--primary); background:var(--primary); }
+    .account-divider { display:flex; align-items:center; gap:10px; margin:17px 0; color:#98a2b3; font-size:10px; }
+    .account-divider::before,.account-divider::after { content:""; height:1px; flex:1; background:#e9edf4; }
+    .account-link-button { border:0; padding:0; background:transparent; color:var(--primary-dark); font-size:11px; font-weight:800; }
+    .account-code-card { margin:15px 0; padding:15px; border:1px dashed #b9b2ff; border-radius:13px; background:#f8f7ff; text-align:center; }
+    .account-code-caption { color:#667085; font-size:10px; }
+    .account-code-value { display:block; margin:7px 0 12px; color:#4035b5; font:850 25px/1.25 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; letter-spacing:.04em; overflow-wrap:anywhere; user-select:all; }
+    .account-warning { margin:12px 0 0; color:#9a5b0b; font-size:11px; line-height:1.55; }
+    .account-profile { display:flex; align-items:center; gap:12px; padding:13px; border:1px solid #e8eaf2; border-radius:13px; background:#fbfcff; }
+    .account-avatar { display:grid; place-items:center; width:42px; height:42px; flex:0 0 42px; border-radius:13px; background:#efedff; color:#5145cd; font-size:17px; font-weight:900; }
+    .account-profile-name { color:#172033; font-size:13px; font-weight:850; overflow-wrap:anywhere; }
+    .account-profile-meta { margin-top:3px; color:#667085; font-size:10px; }
+    .account-sync-status { display:flex; align-items:center; gap:7px; margin:12px 0; color:#667085; font-size:11px; }
+    .account-sync-dot { width:7px; height:7px; flex:0 0 7px; border-radius:50%; background:#98a2b3; }
+    .account-sync-status.success .account-sync-dot { background:#20a271; }
+    .account-sync-status.error .account-sync-dot { background:#c13b4b; }
+    .account-actions { display:grid; gap:8px; margin-top:14px; }
+    .account-secondary-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .account-secondary-actions .btn { flex:1; min-width:130px; }
+    .account-section[hidden] { display:none; }
+    .account-api-frame { position:fixed; width:1px; height:1px; left:-10px; top:-10px; opacity:0; pointer-events:none; border:0; }
     .empty-state { color:#8a94a7; font-size:12px; }
     @media (max-width: 1100px) {
       .app-shell { padding:18px; }
@@ -206,7 +244,9 @@
       .brand-logo { width:155px; max-height:44px; }
       .brand-logo-link { padding:3px 5px; border-radius:10px; }
       .pill-label { display:none; }
-      .top-actions .btn { padding:8px 10px; }
+      .top-actions { gap:6px; }
+      .top-actions .btn { padding:8px 9px; }
+      .account-trigger-label { max-width:110px; overflow:hidden; text-overflow:ellipsis; }
       .hero { display:block; }
       .progress-card { margin-top:16px; max-width:310px; }
       .layout { grid-template-columns:1fr; }
@@ -243,6 +283,7 @@
       </div>
       <div class="top-actions">
         <span class="pill-label"><span class="dot"></span> Editor aktif · Auto-check</span>
+        <button class="btn account-trigger" id="accountTriggerBtn" type="button" title="Buat akun atau pulihkan progres dengan kode"><span aria-hidden="true">◉</span> <span class="account-trigger-label" id="accountTriggerLabel">Akun &amp; Progres</span></button>
         <button class="btn btn-soft" id="shareTaskBtn" type="button" title="Salin tautan tugas yang sedang dipilih">↗ <span>Bagikan tugas</span></button>
       </div>
     </header>
@@ -356,6 +397,75 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="account-overlay" id="accountOverlay" hidden>
+    <section class="account-dialog" role="dialog" aria-modal="true" aria-labelledby="accountDialogTitle">
+      <div class="account-dialog-header">
+        <div>
+          <h2 class="account-dialog-title" id="accountDialogTitle">Simpan progres lintas perangkat</h2>
+          <p class="account-intro" id="accountDialogIntro">Buat akun sekali, simpan kode akun, lalu gunakan kode yang sama di perangkat lain untuk memulihkan pengerjaan terakhir.</p>
+        </div>
+        <button class="account-dialog-close" id="closeAccountDialogBtn" type="button" aria-label="Tutup dialog">×</button>
+      </div>
+
+      <div class="account-notice" id="accountSetupNotice" hidden>
+        Sinkronisasi lintas perangkat belum aktif karena URL backend belum dipasang. Admin perlu men-deploy <code>backend/Code.gs</code> sebagai Web App, lalu memasukkan URL deployment ke konstanta <code>ACCOUNT_API_URL</code> pada <code>index.html</code>.
+      </div>
+
+      <div class="account-section" id="accountGuestView">
+        <form id="createAccountForm">
+          <div class="account-field">
+            <label for="studentNameInput">Nama siswa</label>
+            <input id="studentNameInput" name="studentName" type="text" maxlength="60" placeholder="Contoh: Ahmad Fauzan" autocomplete="name" required />
+          </div>
+          <button class="btn account-primary" id="createAccountBtn" type="submit">Buat akun &amp; dapatkan kode</button>
+        </form>
+        <div class="account-divider">sudah memiliki kode?</div>
+        <button class="account-link-button" id="toggleRestoreViewBtn" type="button">Pulihkan progres dengan kode akun</button>
+        <form id="restoreAccountForm" hidden>
+          <div class="account-field">
+            <label for="restoreCodeInput">Kode akun siswa</label>
+            <input id="restoreCodeInput" name="restoreCode" type="text" maxlength="20" placeholder="ICT-ABCD-2345" autocomplete="off" autocapitalize="characters" />
+          </div>
+          <div class="account-actions">
+            <button class="btn account-primary" id="restoreAccountBtn" type="submit">Pulihkan progres</button>
+            <button class="btn btn-quiet" id="backToCreateBtn" type="button">Kembali</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="account-section" id="accountCreatedView" hidden>
+        <div class="account-profile">
+          <div class="account-avatar" id="createdAvatar">S</div>
+          <div><div class="account-profile-name" id="createdName"></div><div class="account-profile-meta">Akun ICT Al Firdaus berhasil dibuat</div></div>
+        </div>
+        <div class="account-code-card">
+          <span class="account-code-caption">SIMPAN KODE INI — INI KUNCI PROGRESMU</span>
+          <code class="account-code-value" id="createdCodeValue"></code>
+          <button class="btn account-primary" id="copyCreatedCodeBtn" type="button">Salin kode akun</button>
+        </div>
+        <p class="account-warning">Jangan hilangkan kode ini. Gunakan kode yang sama di laptop, komputer lab, atau perangkat lain. Siapa pun yang memiliki kode dapat membuka dan mengubah progres akun tersebut.</p>
+        <div class="account-actions"><button class="btn account-primary" id="continueAfterCreateBtn" type="button">Mulai belajar</button></div>
+      </div>
+
+      <div class="account-section" id="accountSignedInView" hidden>
+        <div class="account-profile">
+          <div class="account-avatar" id="signedInAvatar">S</div>
+          <div><div class="account-profile-name" id="signedInName"></div><div class="account-profile-meta">Kode: <code id="signedInCode"></code></div></div>
+        </div>
+        <div class="account-sync-status" id="accountSyncStatus"><span class="account-sync-dot"></span><span id="accountSyncStatusText">Menyiapkan sinkronisasi…</span></div>
+        <div class="account-actions">
+          <button class="btn account-primary" id="syncNowBtn" type="button">Simpan progres sekarang</button>
+          <button class="btn" id="copySignedInCodeBtn" type="button">Salin kode akun</button>
+        </div>
+        <div class="account-secondary-actions">
+          <button class="btn btn-quiet" id="unlinkAccountBtn" type="button">Keluar dari perangkat ini</button>
+        </div>
+        <p class="account-warning">Keluar hanya melepas akun dari perangkat ini; data online tidak dihapus. Simpan kode akun agar bisa masuk kembali.</p>
+      </div>
+    </section>
+  </div>
+  <iframe class="account-api-frame" id="accountApiFrame" name="ictAccountApiFrame" title="Koneksi akun CSS" aria-hidden="true"></iframe>
 
   <script>
     'use strict';
@@ -1016,6 +1126,15 @@
     let toastTimer = null;
     let renderTimer = null;
     let checkTimer = null;
+    const ACCOUNT_API_URL = 'PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+    const ACCOUNT_STORAGE_KEY = 'ict_css_account_v1';
+    let account = readStore(ACCOUNT_STORAGE_KEY, null);
+    let accountSaveTimer = null;
+    let accountSaveQueue = Promise.resolve();
+    let accountRequestSequence = 0;
+    let applyingRemoteState = false;
+    const pendingAccountRequests = new Map();
+    const accountApiFrame = $('#accountApiFrame');
     let codes = readStore('css_quest_codes_v1', {});
     let completed = new Set(readStore('css_quest_completed_v1', []).filter(id => TASKS.some(task => task.id === id)));
 
@@ -1203,6 +1322,7 @@
       const url = new URL(location.href);
       url.searchParams.set('task', currentTask.id);
       try { history.replaceState(null, '', url); } catch { /* Some local file contexts do not allow history changes. */ }
+      if (account && !applyingRemoteState) queueAccountSave();
     }
     function escapeHtml(text) {
       return String(text).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -1342,6 +1462,7 @@
       codes[currentTask.id] = editor.value;
       writeStore('css_quest_codes_v1', codes);
       renderTaskList();
+      if (account && !applyingRemoteState) queueAccountSave();
       showFeedback(lastResults);
     }
     function showFeedback(result) {
@@ -1386,6 +1507,269 @@
 
     $('#taskSearch').addEventListener('input', () => renderTaskList());
 
+    // Cross-device account handling. The Apps Script backend stores one private JSON file in Drive.
+    function accountApiConfigured() {
+      return /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec(?:\?.*)?$/.test(ACCOUNT_API_URL);
+    }
+    function updateAccountTrigger() {
+      const button = $('#accountTriggerBtn');
+      const label = $('#accountTriggerLabel');
+      if (account && account.code) {
+        button.classList.add('has-account');
+        label.textContent = account.name ? 'Akun: ' + account.name : 'Akun tersambung';
+      } else {
+        button.classList.remove('has-account');
+        label.textContent = 'Akun & Progres';
+      }
+    }
+    function setAccountSyncStatus(message, type) {
+      const status = $('#accountSyncStatus');
+      status.classList.remove('success','error');
+      if (type) status.classList.add(type);
+      $('#accountSyncStatusText').textContent = message;
+    }
+    function showAccountSection(sectionId) {
+      ['accountGuestView','accountCreatedView','accountSignedInView'].forEach(id => {
+        $('#' + id).hidden = id !== sectionId;
+      });
+    }
+    function openAccountDialog() {
+      const overlay = $('#accountOverlay');
+      overlay.hidden = false;
+      document.body.style.overflow = 'hidden';
+      $('#accountSetupNotice').hidden = accountApiConfigured();
+      $('#createAccountBtn').disabled = !accountApiConfigured();
+      $('#restoreAccountBtn').disabled = !accountApiConfigured();
+      if (account && account.code) {
+        showAccountSection('accountSignedInView');
+        $('#signedInName').textContent = account.name || 'Siswa ICT';
+        $('#signedInAvatar').textContent = (account.name || 'S').trim().slice(0,1).toUpperCase();
+        $('#signedInCode').textContent = account.code;
+        setAccountSyncStatus(accountApiConfigured() ? 'Akun tersambung di perangkat ini.' : 'Backend belum dikonfigurasi pada website.', accountApiConfigured() ? 'success' : 'error');
+      } else {
+        showAccountSection('accountGuestView');
+        $('#restoreAccountForm').hidden = true;
+        $('#toggleRestoreViewBtn').hidden = false;
+        $('#studentNameInput').focus();
+      }
+    }
+    function closeAccountDialog() {
+      $('#accountOverlay').hidden = true;
+      document.body.style.overflow = '';
+    }
+    function normalizeAccountCode(code) {
+      return String(code || '').toUpperCase().replace(/[^A-Z0-9]/g,'');
+    }
+    function accountSnapshot() {
+      if (currentTask) codes[currentTask.id] = editor.value;
+      return {
+        codes: { ...codes },
+        completedTaskIds: Array.from(completed),
+        lastTaskId: currentTask ? currentTask.id : TASKS[0].id
+      };
+    }
+    function postAccountRequest(action, values) {
+      if (!accountApiConfigured()) return Promise.reject(new Error('Backend akun belum dikonfigurasi. Admin perlu memasang URL deployment Apps Script terlebih dahulu.'));
+      const requestId = 'req-' + Date.now().toString(36) + '-' + (++accountRequestSequence).toString(36);
+      return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          pendingAccountRequests.delete(requestId);
+          reject(new Error('Server akun tidak merespons. Periksa koneksi dan coba lagi.'));
+        }, 25000);
+        pendingAccountRequests.set(requestId, { resolve, reject, timeout });
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = ACCOUNT_API_URL;
+        form.target = 'ictAccountApiFrame';
+        form.enctype = 'application/x-www-form-urlencoded';
+        form.acceptCharset = 'UTF-8';
+        form.style.display = 'none';
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'payload';
+        input.value = JSON.stringify({ action, requestId, ...values });
+        form.appendChild(input);
+        document.body.appendChild(form);
+        try {
+          form.submit();
+        } catch (error) {
+          clearTimeout(timeout);
+          pendingAccountRequests.delete(requestId);
+          reject(error);
+        } finally {
+          form.remove();
+        }
+      });
+    }
+    window.addEventListener('message', event => {
+      if (event.source !== accountApiFrame.contentWindow || !event.data || event.data.type !== 'ict-css-account-response') return;
+      const pending = pendingAccountRequests.get(event.data.requestId);
+      if (!pending) return;
+      clearTimeout(pending.timeout);
+      pendingAccountRequests.delete(event.data.requestId);
+      if (event.data.ok) pending.resolve(event.data);
+      else pending.reject(new Error(event.data.error || 'Permintaan akun gagal.'));
+    });
+    function applyRemoteAccount(remoteAccount) {
+      applyingRemoteState = true;
+      try {
+        codes = remoteAccount.codes && typeof remoteAccount.codes === 'object' ? { ...remoteAccount.codes } : {};
+        completed = new Set((remoteAccount.completedTaskIds || []).filter(id => TASKS.some(task => task.id === id)));
+        writeStore('css_quest_codes_v1', codes);
+        writeStore('css_quest_completed_v1', Array.from(completed));
+        const nextTask = TASKS.some(task => task.id === remoteAccount.lastTaskId) ? remoteAccount.lastTaskId : TASKS[0].id;
+        currentTask = null;
+        selectTask(nextTask);
+      } finally {
+        applyingRemoteState = false;
+      }
+      renderTaskList();
+    }
+    function persistLocalAccount() {
+      if (account) writeStore(ACCOUNT_STORAGE_KEY, account);
+      else {
+        try { localStorage.removeItem(ACCOUNT_STORAGE_KEY); } catch { /* Storage may be unavailable. */ }
+      }
+      updateAccountTrigger();
+    }
+    function queueAccountSave(delay = 1200) {
+      if (!account || !account.code || !accountApiConfigured() || applyingRemoteState) return;
+      clearTimeout(accountSaveTimer);
+      setAccountSyncStatus('Perubahan menunggu disimpan…', '');
+      accountSaveTimer = setTimeout(() => saveAccountNow(true), delay);
+    }
+    function saveAccountNow(silent = false) {
+      if (!account || !account.code || !accountApiConfigured() || applyingRemoteState) return Promise.resolve(false);
+      clearTimeout(accountSaveTimer);
+      const state = accountSnapshot();
+      setAccountSyncStatus('Menyimpan progres ke JSON…', '');
+      accountSaveQueue = accountSaveQueue.catch(() => {}).then(() =>
+        postAccountRequest('save', { code: account.code, state })
+      ).then(response => {
+        const updatedAt = response.account && response.account.updatedAt ? response.account.updatedAt : new Date().toISOString();
+        account.updatedAt = updatedAt;
+        account.lastTaskId = currentTask ? currentTask.id : TASKS[0].id;
+        persistLocalAccount();
+        setAccountSyncStatus('Tersinkron · ' + new Date(updatedAt).toLocaleString('id-ID'), 'success');
+        if (!silent) showToast('Progres berhasil disimpan ke akun.');
+        return true;
+      }).catch(error => {
+        setAccountSyncStatus(error.message || 'Gagal menyimpan progres.', 'error');
+        if (!silent) showToast(error.message || 'Gagal menyimpan progres ke server.');
+        return false;
+      });
+      return accountSaveQueue;
+    }
+    async function createStudentAccount(name) {
+      if (!accountApiConfigured()) throw new Error('Backend akun belum dikonfigurasi oleh admin.');
+      const response = await postAccountRequest('create', { name, state: accountSnapshot() });
+      if (!response.account || !response.account.code) throw new Error('Server tidak mengembalikan kode akun.');
+      account = { code: response.account.code, name: response.account.name, updatedAt: response.account.updatedAt };
+      persistLocalAccount();
+      codes = response.account.codes && typeof response.account.codes === 'object' ? { ...response.account.codes } : codes;
+      completed = new Set((response.account.completedTaskIds || Array.from(completed)).filter(id => TASKS.some(task => task.id === id)));
+      writeStore('css_quest_codes_v1', codes);
+      writeStore('css_quest_completed_v1', Array.from(completed));
+      $('#createdName').textContent = account.name;
+      $('#createdAvatar').textContent = (account.name || 'S').trim().slice(0,1).toUpperCase();
+      $('#createdCodeValue').textContent = account.code;
+      showAccountSection('accountCreatedView');
+      renderTaskList();
+      setAccountSyncStatus('Akun baru dibuat dan progres awal disimpan.', 'success');
+    }
+    async function restoreStudentAccount(code) {
+      if (!accountApiConfigured()) throw new Error('Backend akun belum dikonfigurasi oleh admin.');
+      const response = await postAccountRequest('restore', { code: normalizeAccountCode(code) });
+      if (!response.account) throw new Error('Data akun tidak ditemukan.');
+      account = { code: response.account.code, name: response.account.name, updatedAt: response.account.updatedAt };
+      persistLocalAccount();
+      applyRemoteAccount(response.account);
+      showAccountSection('accountSignedInView');
+      $('#signedInName').textContent = account.name || 'Siswa ICT';
+      $('#signedInAvatar').textContent = (account.name || 'S').trim().slice(0,1).toUpperCase();
+      $('#signedInCode').textContent = account.code;
+      setAccountSyncStatus('Progres terakhir berhasil dipulihkan.', 'success');
+      showToast('Selamat datang kembali, ' + (account.name || 'siswa') + '!');
+    }
+    async function restoreRememberedAccount() {
+      if (!account || !account.code || !accountApiConfigured()) return;
+      try {
+        const response = await postAccountRequest('restore', { code: account.code });
+        if (response.account) {
+          account.name = response.account.name || account.name;
+          account.updatedAt = response.account.updatedAt || account.updatedAt;
+          persistLocalAccount();
+          applyRemoteAccount(response.account);
+        }
+      } catch (error) {
+        // Keep local work available even when the network is offline.
+        console.warn('Sinkronisasi akun belum berhasil:', error.message);
+      }
+    }
+    $('#accountTriggerBtn').addEventListener('click', openAccountDialog);
+    $('#closeAccountDialogBtn').addEventListener('click', closeAccountDialog);
+    $('#accountOverlay').addEventListener('click', event => {
+      if (event.target === $('#accountOverlay')) closeAccountDialog();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !$('#accountOverlay').hidden) closeAccountDialog();
+    });
+    $('#createAccountForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const name = $('#studentNameInput').value.trim();
+      if (name.length < 2) return showToast('Masukkan nama minimal 2 karakter.');
+      const button = $('#createAccountBtn');
+      button.disabled = true;
+      button.textContent = 'Membuat akun…';
+      try {
+        await createStudentAccount(name);
+      } catch (error) {
+        showToast(error.message || 'Akun belum berhasil dibuat.');
+      } finally {
+        button.disabled = !accountApiConfigured();
+        button.textContent = 'Buat akun & dapatkan kode';
+      }
+    });
+    $('#toggleRestoreViewBtn').addEventListener('click', () => {
+      $('#restoreAccountForm').hidden = false;
+      $('#toggleRestoreViewBtn').hidden = true;
+      $('#restoreCodeInput').focus();
+    });
+    $('#backToCreateBtn').addEventListener('click', () => {
+      $('#restoreAccountForm').hidden = true;
+      $('#toggleRestoreViewBtn').hidden = false;
+    });
+    $('#restoreAccountForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const code = $('#restoreCodeInput').value.trim();
+      if (!code) return showToast('Masukkan kode akun terlebih dahulu.');
+      const button = $('#restoreAccountBtn');
+      button.disabled = true;
+      button.textContent = 'Memulihkan…';
+      try {
+        await restoreStudentAccount(code);
+      } catch (error) {
+        showToast(error.message || 'Progres belum berhasil dipulihkan.');
+      } finally {
+        button.disabled = !accountApiConfigured();
+        button.textContent = 'Pulihkan progres';
+      }
+    });
+    $('#copyCreatedCodeBtn').addEventListener('click', () => copyText($('#createdCodeValue').textContent, 'Kode akun berhasil disalin. Simpan baik-baik.'));
+    $('#copySignedInCodeBtn').addEventListener('click', () => copyText(account ? account.code : '', 'Kode akun berhasil disalin.'));
+    $('#continueAfterCreateBtn').addEventListener('click', closeAccountDialog);
+    $('#syncNowBtn').addEventListener('click', () => saveAccountNow(false));
+    $('#unlinkAccountBtn').addEventListener('click', () => {
+      clearTimeout(accountSaveTimer);
+      account = null;
+      persistLocalAccount();
+      closeAccountDialog();
+      showToast('Akun dilepas dari perangkat ini. Data online tetap aman.');
+    });
+    updateAccountTrigger();
+
+    
+
     editor.addEventListener('input', () => {
       codes[currentTask.id] = editor.value;
       writeStore('css_quest_codes_v1', codes);
@@ -1396,6 +1780,7 @@
       updateLineNumbers();
       clearTimeout(renderTimer);
       renderTimer = setTimeout(renderPreview, 50);
+      if (account && !applyingRemoteState) queueAccountSave();
     });
     editor.addEventListener('scroll', () => { $('#lineNumbers').scrollTop = editor.scrollTop; });
     editor.addEventListener('keydown', event => {
@@ -1440,6 +1825,7 @@
       lastResults = null;
       $('#editorStatus').textContent = 'Kode direset';
       updateLineNumbers(); renderTaskList(); renderPreview();
+      if (account && !applyingRemoteState) queueAccountSave();
       showToast('Editor tugas ini sudah direset.');
     });
     $('#hintBtn').addEventListener('click', () => {
@@ -1470,7 +1856,8 @@
 
     const requestedTask = new URLSearchParams(location.search).get('task');
     renderTaskList();
-    selectTask(taskById(requestedTask) ? requestedTask : TASKS[0].id);
+    selectTask(taskById(requestedTask) ? requestedTask : (taskById(account && account.lastTaskId) ? account.lastTaskId : TASKS[0].id));
+    restoreRememberedAccount();
   </script>
 </body>
 </html>
