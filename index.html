@@ -972,7 +972,7 @@
           return criterion.requiredSelectors.every(selector => ruleSelectors.includes(normalizedSelector(selector))) &&
             (!criterion.declaredProperties || criterion.declaredProperties.length === 0 || criterion.declaredProperties.some(prop => Object.prototype.hasOwnProperty.call(rule.declarations, prop))) &&
             (!criterion.declaredPropertyGroups || criterion.declaredPropertyGroups.every(group => group.some(prop => Object.prototype.hasOwnProperty.call(rule.declarations, prop)))) &&
-            (!criterion.expectedDeclarationValues || Object.entries(criterion.expectedDeclarationValues).every(([prop,value]) => String(rule.declarations[prop] || '').replace(/\\s+/g,'').toLowerCase() === String(value).replace(/\\s+/g,'').toLowerCase()));
+            (!criterion.expectedDeclarationValues || Object.entries(criterion.expectedDeclarationValues).every(([prop,value]) => String(rule.declarations[prop] || '').replace(/\s+/g,'').toLowerCase() === String(value).replace(/\s+/g,'').toLowerCase()));
         });
         if (!found) reasons.push('Selector atau properti CSS yang diminta belum ditemukan dalam aturan yang sama.');
       }
