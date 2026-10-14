@@ -581,7 +581,8 @@
           { label: 'Shorthand margin dua nilai digunakan', detail: 'Gunakan deklarasi margin dengan dua nilai.', requiredSelectors: ['.margin-two-target'], declaredProperties: ['margin'] },
           { label: 'Jarak atas-bawah 16px', detail: 'margin-top dan margin-bottom harus 16px.', targetIds: ['marginTwoTarget'], computedProperty: 'marginTop', expected: '16px' },
           { label: 'Jarak kanan-kiri 32px', detail: 'margin-right dan margin-left harus 32px.', targetIds: ['marginTwoTarget'], computedProperty: 'marginRight', expected: '32px' },
-          { label: 'Sisi bawah dan kiri juga sesuai', detail: 'margin-bottom harus 16px dan margin-left harus 32px.', targetIds: ['marginTwoTarget'], computedProperty: 'marginBottom', expected: '16px' }
+          { label: 'Jarak bawah 16px', detail: 'margin-bottom harus 16px.', targetIds: ['marginTwoTarget'], computedProperty: 'marginBottom', expected: '16px' },
+          { label: 'Jarak kiri 32px', detail: 'margin-left harus 32px.', targetIds: ['marginTwoTarget'], computedProperty: 'marginLeft', expected: '32px' }
         ]
       },
       {
@@ -594,7 +595,8 @@
           { label: 'Shorthand margin satu nilai digunakan', detail: 'Gunakan margin: 24px; pada selector .margin-one-target.', requiredSelectors: ['.margin-one-target'], declaredProperties: ['margin'] },
           { label: 'Keempat sisi memiliki margin 24px', detail: 'Margin atas, kanan, bawah, dan kiri harus 24px.', targetIds: ['marginOneTarget'], computedProperty: 'marginTop', expected: '24px' },
           { label: 'Sisi kanan dan bawah sama', detail: 'margin-right dan margin-bottom harus 24px.', targetIds: ['marginOneTarget'], computedProperty: 'marginRight', expected: '24px' },
-          { label: 'Sisi kiri juga 24px', detail: 'margin-left harus 24px.', targetIds: ['marginOneTarget'], computedProperty: 'marginLeft', expected: '24px' }
+          { label: 'Sisi kiri juga 24px', detail: 'margin-left harus 24px.', targetIds: ['marginOneTarget'], computedProperty: 'marginLeft', expected: '24px' },
+          { label: 'Jarak bawah 24px', detail: 'margin-bottom juga harus 24px.', targetIds: ['marginOneTarget'], computedProperty: 'marginBottom', expected: '24px' }
         ]
       },
       {
