@@ -262,7 +262,7 @@
 
     <main class="layout">
       <aside class="panel tasks-panel">
-        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">149 TUGAS</span></div>
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">180 TUGAS</span></div>
         <div class="task-search-wrap">
           <input class="task-search" id="taskSearch" type="search" placeholder="Cari tugas atau materi…" aria-label="Cari tugas berdasarkan nama atau materi" autocomplete="off" />
         </div>
@@ -8245,6 +8245,1417 @@
         "expected": "row"
       }
     ]
+  },
+  {
+    "number": 150,
+    "id": "flex-intro",
+    "title": "Flexbox: Container Dasar",
+    "category": "Flexbox",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox.asp",
+    "description": "Flexbox menyusun elemen anak dalam satu dimensi, yaitu baris atau kolom. Elemen induk menjadi flex container dengan display: flex.",
+    "goal": "Ubah pembungkus tiga kartu menjadi flex container.",
+    "hints": [
+      "display: flex",
+      "flex container"
+    ],
+    "hint": "Gunakan .flex-intro-container { display: flex; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FLEXBOX BASICS</span><h1>Flex Container</h1><p>Susun kartu agar dapat berada dalam satu baris.</p><div class=\"flex-intro-container\" id=\"flexIntroContainer\"><div class=\"flex-demo-item\">HTML</div><div class=\"flex-demo-item\">CSS</div><div class=\"flex-demo-item\">JS</div></div></main>",
+    "checks": [
+      {
+        "label": "Deklarasi display flex ditemukan",
+        "detail": "Gunakan display: flex pada pembungkus.",
+        "requiredSelectors": [
+          ".flex-intro-container"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "flex"
+        }
+      },
+      {
+        "label": "Computed display adalah flex",
+        "detail": "Pembungkus harus menjadi flex container.",
+        "targetIds": [
+          "flexIntroContainer"
+        ],
+        "computedProperty": "display",
+        "expected": "flex"
+      }
+    ]
+  },
+  {
+    "number": 151,
+    "id": "flex-direction-row",
+    "title": "Flexbox: Direction Row",
+    "category": "Flexbox",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_container.asp",
+    "description": "flex-direction menentukan arah utama item flex. Nilai row menempatkan item secara horizontal.",
+    "goal": "Tampilkan tiga kartu dalam baris menggunakan flex-direction: row.",
+    "hints": [
+      "flex-direction: row"
+    ],
+    "hint": "Gunakan .flex-direction-row { display: flex; flex-direction: row; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FLEX DIRECTION</span><h1>Direction Row</h1><div class=\"flex-direction-row\" id=\"flexDirectionRow\"><div class=\"flex-demo-item\">Satu</div><div class=\"flex-demo-item\">Dua</div><div class=\"flex-demo-item\">Tiga</div></div></main>",
+    "checks": [
+      {
+        "label": "Arah row dideklarasikan",
+        "detail": "Gunakan flex-direction: row.",
+        "requiredSelectors": [
+          ".flex-direction-row"
+        ],
+        "declaredProperties": [
+          "flex-direction"
+        ],
+        "expectedDeclarationValues": {
+          "flex-direction": "row"
+        }
+      },
+      {
+        "label": "Computed flex direction row",
+        "detail": "Item harus tersusun horizontal.",
+        "targetIds": [
+          "flexDirectionRow"
+        ],
+        "computedProperty": "flexDirection",
+        "expected": "row"
+      }
+    ]
+  },
+  {
+    "number": 152,
+    "id": "flex-direction-column",
+    "title": "Flexbox: Direction Column",
+    "category": "Flexbox",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_container.asp",
+    "description": "flex-direction: column menyusun item flex secara vertikal dari atas ke bawah.",
+    "goal": "Susun kartu menjadi kolom dengan flex-direction: column.",
+    "hints": [
+      "flex-direction: column"
+    ],
+    "hint": "Gunakan .flex-direction-column { display: flex; flex-direction: column; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FLEX DIRECTION</span><h1>Direction Column</h1><div class=\"flex-direction-column\" id=\"flexDirectionColumn\"><div class=\"flex-demo-item\">Satu</div><div class=\"flex-demo-item\">Dua</div><div class=\"flex-demo-item\">Tiga</div></div></main>",
+    "checks": [
+      {
+        "label": "Arah column dideklarasikan",
+        "detail": "Gunakan flex-direction: column.",
+        "requiredSelectors": [
+          ".flex-direction-column"
+        ],
+        "declaredProperties": [
+          "flex-direction"
+        ],
+        "expectedDeclarationValues": {
+          "flex-direction": "column"
+        }
+      },
+      {
+        "label": "Computed flex direction column",
+        "detail": "Item harus tersusun vertikal.",
+        "targetIds": [
+          "flexDirectionColumn"
+        ],
+        "computedProperty": "flexDirection",
+        "expected": "column"
+      }
+    ]
+  },
+  {
+    "number": 153,
+    "id": "flex-justify-center",
+    "title": "Flexbox: Justify Content Center",
+    "category": "Flexbox",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_container_justify.asp",
+    "description": "justify-content mengatur distribusi item sepanjang sumbu utama flex container.",
+    "goal": "Pusatkan tiga item secara horizontal menggunakan justify-content: center.",
+    "hints": [
+      "justify-content: center",
+      "main axis"
+    ],
+    "hint": "Gunakan .flex-justify-center { display: flex; justify-content: center; gap: 8px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">JUSTIFY CONTENT</span><h1>Konten di Tengah</h1><div class=\"flex-justify-center\" id=\"flexJustifyCenter\"><div class=\"flex-demo-item\">A</div><div class=\"flex-demo-item\">B</div><div class=\"flex-demo-item\">C</div></div></main>",
+    "checks": [
+      {
+        "label": "Justify-content center dideklarasikan",
+        "detail": "Gunakan justify-content: center.",
+        "requiredSelectors": [
+          ".flex-justify-center"
+        ],
+        "declaredProperties": [
+          "justify-content"
+        ],
+        "expectedDeclarationValues": {
+          "justify-content": "center"
+        }
+      },
+      {
+        "label": "Computed justify-content center",
+        "detail": "Item harus berkumpul di tengah.",
+        "targetIds": [
+          "flexJustifyCenter"
+        ],
+        "computedProperty": "justifyContent",
+        "expected": "center"
+      }
+    ]
+  },
+  {
+    "number": 154,
+    "id": "flex-justify-between",
+    "title": "Flexbox: Space Between",
+    "category": "Flexbox",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_container_justify.asp",
+    "description": "justify-content: space-between membagi ruang kosong di antara item, dengan item pertama dan terakhir berada dekat tepi.",
+    "goal": "Sebarkan item agar ruang tersisa dibagi di antara kartu menggunakan space-between.",
+    "hints": [
+      "justify-content: space-between"
+    ],
+    "hint": "Gunakan .flex-justify-between { display: flex; justify-content: space-between; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">JUSTIFY CONTENT</span><h1>Ruang di Antara Item</h1><div class=\"flex-justify-between\" id=\"flexJustifyBetween\"><div class=\"flex-demo-item\">Mulai</div><div class=\"flex-demo-item\">Proses</div><div class=\"flex-demo-item\">Selesai</div></div></main>",
+    "checks": [
+      {
+        "label": "Space-between dideklarasikan",
+        "detail": "Gunakan justify-content: space-between.",
+        "requiredSelectors": [
+          ".flex-justify-between"
+        ],
+        "declaredProperties": [
+          "justify-content"
+        ],
+        "expectedDeclarationValues": {
+          "justify-content": "space-between"
+        }
+      },
+      {
+        "label": "Computed justify-content space-between",
+        "detail": "Ruang didistribusikan di antara item.",
+        "targetIds": [
+          "flexJustifyBetween"
+        ],
+        "computedProperty": "justifyContent",
+        "expected": "space-between"
+      }
+    ]
+  },
+  {
+    "number": 155,
+    "id": "flex-align-center",
+    "title": "Flexbox: Align Items Center",
+    "category": "Flexbox",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_container_align.asp",
+    "description": "align-items mengatur posisi item pada sumbu silang, misalnya memusatkan kartu secara vertikal saat arah flex adalah row.",
+    "goal": "Pusatkan item secara vertikal dengan align-items: center.",
+    "hints": [
+      "align-items: center",
+      "cross axis"
+    ],
+    "hint": "Gunakan .flex-align-center { display: flex; align-items: center; height: 120px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">ALIGN ITEMS</span><h1>Sejajar Vertikal</h1><div class=\"flex-align-center\" id=\"flexAlignCenter\"><div class=\"flex-demo-item\">Kartu A</div><div class=\"flex-demo-item tall\">Kartu B</div><div class=\"flex-demo-item\">Kartu C</div></div></main>",
+    "checks": [
+      {
+        "label": "Align-items center dideklarasikan",
+        "detail": "Gunakan align-items: center.",
+        "requiredSelectors": [
+          ".flex-align-center"
+        ],
+        "declaredProperties": [
+          "align-items"
+        ],
+        "expectedDeclarationValues": {
+          "align-items": "center"
+        }
+      },
+      {
+        "label": "Computed align-items center",
+        "detail": "Item harus terpusat di sumbu silang.",
+        "targetIds": [
+          "flexAlignCenter"
+        ],
+        "computedProperty": "alignItems",
+        "expected": "center"
+      }
+    ]
+  },
+  {
+    "number": 156,
+    "id": "flex-wrap",
+    "title": "Flexbox: Flex Wrap",
+    "category": "Flexbox",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_container.asp",
+    "description": "flex-wrap: wrap mengizinkan item berpindah ke baris berikutnya ketika tidak ada cukup ruang horizontal.",
+    "goal": "Izinkan kartu pindah ke baris baru dengan flex-wrap: wrap.",
+    "hints": [
+      "flex-wrap: wrap"
+    ],
+    "hint": "Gunakan .flex-wrap-stage { display: flex; flex-wrap: wrap; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FLEX WRAP</span><h1>Item yang Membungkus</h1><p>Preview yang sempit seharusnya membuat kartu berpindah ke baris berikutnya.</p><div class=\"flex-wrap-stage\" id=\"flexWrapStage\"><div class=\"flex-wide-item\">HTML</div><div class=\"flex-wide-item\">CSS</div><div class=\"flex-wide-item\">JavaScript</div><div class=\"flex-wide-item\">Robotika</div></div></main>",
+    "checks": [
+      {
+        "label": "Flex-wrap wrap dideklarasikan",
+        "detail": "Gunakan flex-wrap: wrap.",
+        "requiredSelectors": [
+          ".flex-wrap-stage"
+        ],
+        "declaredProperties": [
+          "flex-wrap"
+        ],
+        "expectedDeclarationValues": {
+          "flex-wrap": "wrap"
+        }
+      },
+      {
+        "label": "Computed flex-wrap adalah wrap",
+        "detail": "Item boleh pindah baris.",
+        "targetIds": [
+          "flexWrapStage"
+        ],
+        "computedProperty": "flexWrap",
+        "expected": "wrap"
+      }
+    ]
+  },
+  {
+    "number": 157,
+    "id": "flex-gap",
+    "title": "Flexbox: Gap Antar Item",
+    "category": "Flexbox",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_container.asp",
+    "description": "Properti gap mengatur jarak antar item tanpa perlu menambah margin pada setiap item.",
+    "goal": "Beri jarak 12px di antara item flex menggunakan gap.",
+    "hints": [
+      "gap: 12px"
+    ],
+    "hint": "Gunakan .flex-gap-stage { display: flex; gap: 12px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FLEX GAP</span><h1>Jarak Antar Kartu</h1><div class=\"flex-gap-stage\" id=\"flexGapStage\"><div class=\"flex-demo-item\">HTML</div><div class=\"flex-demo-item\">CSS</div><div class=\"flex-demo-item\">JS</div></div></main>",
+    "checks": [
+      {
+        "label": "Gap 12px dideklarasikan",
+        "detail": "Gunakan gap: 12px.",
+        "requiredSelectors": [
+          ".flex-gap-stage"
+        ],
+        "declaredProperties": [
+          "gap"
+        ],
+        "expectedDeclarationValues": {
+          "gap": "12px"
+        }
+      },
+      {
+        "label": "Row gap 12px",
+        "detail": "Jarak vertikal antar baris harus 12px.",
+        "targetIds": [
+          "flexGapStage"
+        ],
+        "computedProperty": "rowGap",
+        "expected": "12px"
+      },
+      {
+        "label": "Column gap 12px",
+        "detail": "Jarak horizontal antar item harus 12px.",
+        "targetIds": [
+          "flexGapStage"
+        ],
+        "computedProperty": "columnGap",
+        "expected": "12px"
+      }
+    ]
+  },
+  {
+    "number": 158,
+    "id": "flex-grow",
+    "title": "Flexbox Item: Flex Grow",
+    "category": "Flexbox Items",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_items.asp",
+    "description": "flex-grow menentukan seberapa banyak item dapat tumbuh untuk mengisi ruang kosong dibandingkan item lain.",
+    "goal": "Buat item target tumbuh dengan flex-grow: 1.",
+    "hints": [
+      "flex-grow: 1"
+    ],
+    "hint": "Gunakan .flex-grow-target { flex-grow: 1; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FLEX ITEMS</span><h1>Item yang Tumbuh</h1><div class=\"flex-grow-stage\"><div class=\"flex-grow-target\" id=\"flexGrowTarget\">Melebar</div><div class=\"flex-grow-fixed\">Ukuran normal</div></div></main>",
+    "checks": [
+      {
+        "label": "Flex-grow 1 dideklarasikan",
+        "detail": "Gunakan flex-grow: 1 pada item target.",
+        "requiredSelectors": [
+          ".flex-grow-target"
+        ],
+        "declaredProperties": [
+          "flex-grow"
+        ],
+        "expectedDeclarationValues": {
+          "flex-grow": "1"
+        }
+      },
+      {
+        "label": "Computed flex-grow adalah 1",
+        "detail": "Item harus dapat tumbuh mengisi ruang.",
+        "targetIds": [
+          "flexGrowTarget"
+        ],
+        "computedProperty": "flexGrow",
+        "expected": "1"
+      }
+    ]
+  },
+  {
+    "number": 159,
+    "id": "flex-shrink-basis",
+    "title": "Flexbox Item: Shrink dan Basis",
+    "category": "Flexbox Items",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_items.asp",
+    "description": "flex-shrink mengatur kemampuan item menyusut, sedangkan flex-basis menentukan ukuran awalnya sebelum ruang dibagikan.",
+    "goal": "Atur item agar tidak menyusut dan memiliki flex-basis 140px.",
+    "hints": [
+      "flex-shrink: 0",
+      "flex-basis: 140px"
+    ],
+    "hint": "Gunakan .flex-shrink-basis-target { flex-shrink: 0; flex-basis: 140px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FLEX ITEMS</span><h1>Ukuran Awal Item</h1><div class=\"flex-shrink-basis-stage\"><div class=\"flex-shrink-basis-target\" id=\"flexShrinkBasisTarget\">Basis 140px</div><div class=\"flex-shrink-basis-other\">Item lainnya</div></div></main>",
+    "checks": [
+      {
+        "label": "Flex-shrink 0 dideklarasikan",
+        "detail": "Pastikan item tidak menyusut.",
+        "requiredSelectors": [
+          ".flex-shrink-basis-target"
+        ],
+        "declaredProperties": [
+          "flex-shrink"
+        ],
+        "expectedDeclarationValues": {
+          "flex-shrink": "0"
+        }
+      },
+      {
+        "label": "Flex-basis 140px dideklarasikan",
+        "detail": "Atur ukuran awal item menjadi 140px.",
+        "requiredSelectors": [
+          ".flex-shrink-basis-target"
+        ],
+        "declaredProperties": [
+          "flex-basis"
+        ],
+        "expectedDeclarationValues": {
+          "flex-basis": "140px"
+        }
+      },
+      {
+        "label": "Computed flex-shrink adalah 0",
+        "detail": "Computed flex-shrink harus 0.",
+        "targetIds": [
+          "flexShrinkBasisTarget"
+        ],
+        "computedProperty": "flexShrink",
+        "expected": "0"
+      },
+      {
+        "label": "Computed flex-basis 140px",
+        "detail": "Ukuran awal item harus 140px.",
+        "targetIds": [
+          "flexShrinkBasisTarget"
+        ],
+        "computedProperty": "flexBasis",
+        "expected": "140px"
+      }
+    ]
+  },
+  {
+    "number": 160,
+    "id": "flex-item-order",
+    "title": "Flexbox Item: Order",
+    "category": "Flexbox Items",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_items.asp",
+    "description": "Properti order mengubah urutan visual item flex tanpa mengubah urutan elemen di HTML.",
+    "goal": "Pindahkan kartu bertanda C ke posisi visual terakhir dengan order: 3.",
+    "hints": [
+      "order: 3"
+    ],
+    "hint": "Gunakan .flex-item-order-target { order: 3; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FLEX ORDER</span><h1>Urutan Visual</h1><div class=\"flex-order-stage\"><div class=\"flex-order-card\">A</div><div class=\"flex-order-card\">B</div><div class=\"flex-order-card flex-item-order-target\" id=\"flexItemOrderTarget\">C</div></div></main>",
+    "checks": [
+      {
+        "label": "Order 3 dideklarasikan",
+        "detail": "Gunakan order: 3 pada kartu C.",
+        "requiredSelectors": [
+          ".flex-item-order-target"
+        ],
+        "declaredProperties": [
+          "order"
+        ],
+        "expectedDeclarationValues": {
+          "order": "3"
+        }
+      },
+      {
+        "label": "Computed order adalah 3",
+        "detail": "Urutan visual kartu target harus ditetapkan 3.",
+        "targetIds": [
+          "flexItemOrderTarget"
+        ],
+        "computedProperty": "order",
+        "expected": "3"
+      }
+    ]
+  },
+  {
+    "number": 161,
+    "id": "flex-align-self",
+    "title": "Flexbox Item: Align Self",
+    "category": "Flexbox Items",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_items.asp",
+    "description": "align-self mengesampingkan align-items pada container untuk satu item tertentu.",
+    "goal": "Pusatkan item khusus pada sumbu silang menggunakan align-self: center.",
+    "hints": [
+      "align-self: center"
+    ],
+    "hint": "Gunakan .flex-align-self-target { align-self: center; } pada salah satu item.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">ALIGN SELF</span><h1>Atur Satu Item</h1><div class=\"flex-align-self-stage\" id=\"flexAlignSelfStage\"><div class=\"flex-demo-item\">Atas</div><div class=\"flex-demo-item flex-align-self-target\" id=\"flexAlignSelfTarget\">Tengah</div><div class=\"flex-demo-item\">Atas</div></div></main>",
+    "checks": [
+      {
+        "label": "Align-self center dideklarasikan",
+        "detail": "Gunakan align-self: center pada item tengah.",
+        "requiredSelectors": [
+          ".flex-align-self-target"
+        ],
+        "declaredProperties": [
+          "align-self"
+        ],
+        "expectedDeclarationValues": {
+          "align-self": "center"
+        }
+      },
+      {
+        "label": "Computed align-self adalah center",
+        "detail": "Item target harus menggunakan align-self center.",
+        "targetIds": [
+          "flexAlignSelfTarget"
+        ],
+        "computedProperty": "alignSelf",
+        "expected": "center"
+      }
+    ]
+  },
+  {
+    "number": 162,
+    "id": "flex-responsive-challenge",
+    "title": "Tantangan: Kartu Responsif Flexbox",
+    "category": "Flexbox",
+    "level": "LEVEL 3 · TANTANGAN",
+    "resourceUrl": "https://www.w3schools.com/css/css3_flexbox_responsive.asp",
+    "description": "Flexbox responsif menggabungkan flex-wrap, gap, dan flex-basis untuk membuat susunan kartu yang menyesuaikan lebar layar.",
+    "goal": "Buat layout flex yang membungkus kartu, memiliki gap 12px, dan kartu dengan flex-basis 120px agar responsif.",
+    "hints": [
+      "display: flex",
+      "flex-wrap: wrap",
+      "gap: 12px",
+      "flex-basis: 120px"
+    ],
+    "hint": "Gunakan .flex-responsive-challenge { display: flex; flex-wrap: wrap; gap: 12px; } dan .flex-responsive-card { flex: 1 1 120px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FLEX RESPONSIVE</span><h1>Kartu Materi</h1><p>Persempit area preview untuk melihat kartu tersusun ulang.</p><div class=\"flex-responsive-challenge\" id=\"flexResponsiveChallenge\"><div class=\"flex-responsive-card\">HTML</div><div class=\"flex-responsive-card\">CSS</div><div class=\"flex-responsive-card\">JavaScript</div><div class=\"flex-responsive-card\">Robotika</div></div></main>",
+    "checks": [
+      {
+        "label": "Container display flex",
+        "detail": "Gunakan display: flex.",
+        "requiredSelectors": [
+          ".flex-responsive-challenge"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "flex"
+        }
+      },
+      {
+        "label": "Container flex-wrap wrap",
+        "detail": "Izinkan kartu berpindah baris.",
+        "requiredSelectors": [
+          ".flex-responsive-challenge"
+        ],
+        "declaredProperties": [
+          "flex-wrap"
+        ],
+        "expectedDeclarationValues": {
+          "flex-wrap": "wrap"
+        }
+      },
+      {
+        "label": "Gap container 12px",
+        "detail": "Tambahkan gap 12px.",
+        "requiredSelectors": [
+          ".flex-responsive-challenge"
+        ],
+        "declaredProperties": [
+          "gap"
+        ],
+        "expectedDeclarationValues": {
+          "gap": "12px"
+        }
+      },
+      {
+        "label": "Basis kartu 120px",
+        "detail": "Tentukan basis minimum kartu.",
+        "requiredSelectors": [
+          ".flex-responsive-card"
+        ],
+        "declaredProperties": [
+          "flex"
+        ],
+        "expectedDeclarationValues": {
+          "flex": "1 1 120px"
+        }
+      },
+      {
+        "label": "Computed flex-wrap wrap",
+        "detail": "Container harus responsif dengan wrap.",
+        "targetIds": [
+          "flexResponsiveChallenge"
+        ],
+        "computedProperty": "flexWrap",
+        "expected": "wrap"
+      }
+    ]
+  },
+  {
+    "number": 163,
+    "id": "grid-intro",
+    "title": "Grid: Container Dasar",
+    "category": "CSS Grid",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid.asp",
+    "description": "CSS Grid mengatur item dalam baris dan kolom dua dimensi. Container dibuat dengan display: grid.",
+    "goal": "Ubah pembungkus menjadi grid container.",
+    "hints": [
+      "display: grid"
+    ],
+    "hint": "Gunakan .grid-intro-container { display: grid; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CSS GRID</span><h1>Grid Container</h1><div class=\"grid-intro-container\" id=\"gridIntroContainer\"><div class=\"grid-demo-item\">A</div><div class=\"grid-demo-item\">B</div><div class=\"grid-demo-item\">C</div><div class=\"grid-demo-item\">D</div></div></main>",
+    "checks": [
+      {
+        "label": "Deklarasi display grid ditemukan",
+        "detail": "Gunakan display: grid pada pembungkus.",
+        "requiredSelectors": [
+          ".grid-intro-container"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "grid"
+        }
+      },
+      {
+        "label": "Computed display adalah grid",
+        "detail": "Pembungkus harus menjadi grid container.",
+        "targetIds": [
+          "gridIntroContainer"
+        ],
+        "computedProperty": "display",
+        "expected": "grid"
+      }
+    ]
+  },
+  {
+    "number": 164,
+    "id": "grid-columns",
+    "title": "Grid Tracks: Kolom",
+    "category": "CSS Grid",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_tracks.asp",
+    "description": "grid-template-columns menetapkan jumlah dan ukuran track kolom pada grid.",
+    "goal": "Buat grid dengan tiga kolom sama besar menggunakan repeat(3, 1fr).",
+    "hints": [
+      "grid-template-columns",
+      "repeat(3, 1fr)"
+    ],
+    "hint": "Gunakan .grid-columns-stage { display: grid; grid-template-columns: repeat(3, 1fr); }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID TRACKS</span><h1>Tiga Kolom</h1><div class=\"grid-columns-stage\" id=\"gridColumnsStage\"><div class=\"grid-demo-item\">A</div><div class=\"grid-demo-item\">B</div><div class=\"grid-demo-item\">C</div><div class=\"grid-demo-item\">D</div><div class=\"grid-demo-item\">E</div><div class=\"grid-demo-item\">F</div></div></main>",
+    "checks": [
+      {
+        "label": "Tiga kolom sama besar",
+        "detail": "Gunakan repeat(3, 1fr) untuk kolom.",
+        "requiredSelectors": [
+          ".grid-columns-stage"
+        ],
+        "declaredProperties": [
+          "grid-template-columns"
+        ],
+        "expectedDeclarationValues": {
+          "grid-template-columns": "repeat(3, 1fr)"
+        }
+      },
+      {
+        "label": "Computed display grid",
+        "detail": "Container harus memakai grid.",
+        "targetIds": [
+          "gridColumnsStage"
+        ],
+        "computedProperty": "display",
+        "expected": "grid"
+      }
+    ]
+  },
+  {
+    "number": 165,
+    "id": "grid-rows",
+    "title": "Grid Tracks: Baris",
+    "category": "CSS Grid",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_tracks.asp",
+    "description": "grid-template-rows menetapkan tinggi track baris secara eksplisit.",
+    "goal": "Atur dua baris pertama menjadi 70px dan 90px.",
+    "hints": [
+      "grid-template-rows: 70px 90px"
+    ],
+    "hint": "Gunakan .grid-rows-stage { display: grid; grid-template-rows: 70px 90px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID TRACKS</span><h1>Tinggi Baris</h1><div class=\"grid-rows-stage\" id=\"gridRowsStage\"><div class=\"grid-demo-item\">Baris 1</div><div class=\"grid-demo-item\">Baris 2</div><div class=\"grid-demo-item\">Baris berikutnya</div><div class=\"grid-demo-item\">Item 4</div></div></main>",
+    "checks": [
+      {
+        "label": "Track baris 70px dan 90px",
+        "detail": "Gunakan grid-template-rows: 70px 90px.",
+        "requiredSelectors": [
+          ".grid-rows-stage"
+        ],
+        "declaredProperties": [
+          "grid-template-rows"
+        ],
+        "expectedDeclarationValues": {
+          "grid-template-rows": "70px 90px"
+        }
+      },
+      {
+        "label": "Computed display grid",
+        "detail": "Container harus memakai grid.",
+        "targetIds": [
+          "gridRowsStage"
+        ],
+        "computedProperty": "display",
+        "expected": "grid"
+      }
+    ]
+  },
+  {
+    "number": 166,
+    "id": "grid-gap",
+    "title": "Grid Gap: Jarak Antar Item",
+    "category": "CSS Grid",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_gap.asp",
+    "description": "gap menetapkan jarak antara baris dan kolom grid sekaligus.",
+    "goal": "Beri jarak 12px pada seluruh baris dan kolom grid.",
+    "hints": [
+      "gap: 12px"
+    ],
+    "hint": "Gunakan .grid-gap-stage { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID GAP</span><h1>Jarak Antar Item</h1><div class=\"grid-gap-stage\" id=\"gridGapStage\"><div class=\"grid-demo-item\">A</div><div class=\"grid-demo-item\">B</div><div class=\"grid-demo-item\">C</div><div class=\"grid-demo-item\">D</div></div></main>",
+    "checks": [
+      {
+        "label": "Gap 12px dideklarasikan",
+        "detail": "Gunakan gap: 12px.",
+        "requiredSelectors": [
+          ".grid-gap-stage"
+        ],
+        "declaredProperties": [
+          "gap"
+        ],
+        "expectedDeclarationValues": {
+          "gap": "12px"
+        }
+      },
+      {
+        "label": "Row gap 12px",
+        "detail": "Jarak antarbaris harus 12px.",
+        "targetIds": [
+          "gridGapStage"
+        ],
+        "computedProperty": "rowGap",
+        "expected": "12px"
+      },
+      {
+        "label": "Column gap 12px",
+        "detail": "Jarak antarkolom harus 12px.",
+        "targetIds": [
+          "gridGapStage"
+        ],
+        "computedProperty": "columnGap",
+        "expected": "12px"
+      }
+    ]
+  },
+  {
+    "number": 167,
+    "id": "grid-row-column-gap",
+    "title": "Grid Gap: Row dan Column",
+    "category": "CSS Grid",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_gap.asp",
+    "description": "row-gap dan column-gap mengatur jarak pada masing-masing sumbu secara terpisah.",
+    "goal": "Atur jarak baris 8px dan jarak kolom 16px.",
+    "hints": [
+      "row-gap: 8px",
+      "column-gap: 16px"
+    ],
+    "hint": "Gunakan .grid-specific-gap { display: grid; grid-template-columns: repeat(2, 1fr); row-gap: 8px; column-gap: 16px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID GAP</span><h1>Jarak Tiap Sumbu</h1><div class=\"grid-specific-gap\" id=\"gridSpecificGap\"><div class=\"grid-demo-item\">A</div><div class=\"grid-demo-item\">B</div><div class=\"grid-demo-item\">C</div><div class=\"grid-demo-item\">D</div></div></main>",
+    "checks": [
+      {
+        "label": "Row-gap 8px dideklarasikan",
+        "detail": "Gunakan row-gap: 8px.",
+        "requiredSelectors": [
+          ".grid-specific-gap"
+        ],
+        "declaredProperties": [
+          "row-gap"
+        ],
+        "expectedDeclarationValues": {
+          "row-gap": "8px"
+        }
+      },
+      {
+        "label": "Column-gap 16px dideklarasikan",
+        "detail": "Gunakan column-gap: 16px.",
+        "requiredSelectors": [
+          ".grid-specific-gap"
+        ],
+        "declaredProperties": [
+          "column-gap"
+        ],
+        "expectedDeclarationValues": {
+          "column-gap": "16px"
+        }
+      },
+      {
+        "label": "Computed row-gap 8px",
+        "detail": "Jarak baris harus 8px.",
+        "targetIds": [
+          "gridSpecificGap"
+        ],
+        "computedProperty": "rowGap",
+        "expected": "8px"
+      },
+      {
+        "label": "Computed column-gap 16px",
+        "detail": "Jarak kolom harus 16px.",
+        "targetIds": [
+          "gridSpecificGap"
+        ],
+        "computedProperty": "columnGap",
+        "expected": "16px"
+      }
+    ]
+  },
+  {
+    "number": 168,
+    "id": "grid-align-items",
+    "title": "Grid Align: Align Items",
+    "category": "CSS Grid",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_align.asp",
+    "description": "align-items mengatur perataan item grid pada sumbu blok di dalam area grid masing-masing.",
+    "goal": "Gunakan align-items: center agar isi item berada di tengah secara vertikal.",
+    "hints": [
+      "align-items: center"
+    ],
+    "hint": "Gunakan .grid-align-items-stage { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID ALIGN</span><h1>Perataan Item</h1><div class=\"grid-align-items-stage\" id=\"gridAlignItemsStage\"><div class=\"grid-demo-item\">A</div><div class=\"grid-demo-item tall\">B</div><div class=\"grid-demo-item\">C</div></div></main>",
+    "checks": [
+      {
+        "label": "Align-items center dideklarasikan",
+        "detail": "Gunakan align-items: center.",
+        "requiredSelectors": [
+          ".grid-align-items-stage"
+        ],
+        "declaredProperties": [
+          "align-items"
+        ],
+        "expectedDeclarationValues": {
+          "align-items": "center"
+        }
+      },
+      {
+        "label": "Computed align-items center",
+        "detail": "Grid items harus terpusat pada sumbu blok.",
+        "targetIds": [
+          "gridAlignItemsStage"
+        ],
+        "computedProperty": "alignItems",
+        "expected": "center"
+      }
+    ]
+  },
+  {
+    "number": 169,
+    "id": "grid-justify-items",
+    "title": "Grid Align: Justify Items",
+    "category": "CSS Grid",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_align.asp",
+    "description": "justify-items mengatur perataan item grid pada sumbu inline di dalam area grid masing-masing.",
+    "goal": "Pusatkan item grid secara horizontal menggunakan justify-items: center.",
+    "hints": [
+      "justify-items: center"
+    ],
+    "hint": "Gunakan .grid-justify-items-stage { display: grid; grid-template-columns: repeat(3, 1fr); justify-items: center; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID ALIGN</span><h1>Perataan Horizontal</h1><div class=\"grid-justify-items-stage\" id=\"gridJustifyItemsStage\"><div class=\"grid-demo-item\">A</div><div class=\"grid-demo-item\">B</div><div class=\"grid-demo-item\">C</div></div></main>",
+    "checks": [
+      {
+        "label": "Justify-items center dideklarasikan",
+        "detail": "Gunakan justify-items: center.",
+        "requiredSelectors": [
+          ".grid-justify-items-stage"
+        ],
+        "declaredProperties": [
+          "justify-items"
+        ],
+        "expectedDeclarationValues": {
+          "justify-items": "center"
+        }
+      },
+      {
+        "label": "Computed justify-items center",
+        "detail": "Item grid harus terpusat secara horizontal.",
+        "targetIds": [
+          "gridJustifyItemsStage"
+        ],
+        "computedProperty": "justifyItems",
+        "expected": "center"
+      }
+    ]
+  },
+  {
+    "number": 170,
+    "id": "grid-column-span",
+    "title": "Grid Item: Column Span",
+    "category": "CSS Grid Items",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_item.asp",
+    "description": "grid-column mengatur posisi item pada garis kolom. Nilai span 2 membuat item mencakup dua kolom.",
+    "goal": "Buat kartu pertama melebar dua kolom dengan grid-column: span 2.",
+    "hints": [
+      "grid-column: span 2"
+    ],
+    "hint": "Gunakan .grid-column-span-target { grid-column: span 2; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID ITEM</span><h1>Item Dua Kolom</h1><div class=\"grid-span-stage\"><div class=\"grid-demo-item grid-column-span-target\" id=\"gridColumnSpanTarget\">Lebar dua kolom</div><div class=\"grid-demo-item\">B</div><div class=\"grid-demo-item\">C</div><div class=\"grid-demo-item\">D</div></div></main>",
+    "checks": [
+      {
+        "label": "Grid column span 2 dideklarasikan",
+        "detail": "Gunakan grid-column: span 2.",
+        "requiredSelectors": [
+          ".grid-column-span-target"
+        ],
+        "declaredProperties": [
+          "grid-column"
+        ],
+        "expectedDeclarationValues": {
+          "grid-column": "span 2"
+        }
+      }
+    ]
+  },
+  {
+    "number": 171,
+    "id": "grid-row-span",
+    "title": "Grid Item: Row Span",
+    "category": "CSS Grid Items",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_item.asp",
+    "description": "grid-row mengatur posisi item pada garis baris. span 2 membuat item mencakup dua baris.",
+    "goal": "Buat kartu samping mencakup dua baris menggunakan grid-row: span 2.",
+    "hints": [
+      "grid-row: span 2"
+    ],
+    "hint": "Gunakan .grid-row-span-target { grid-row: span 2; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID ITEM</span><h1>Item Dua Baris</h1><div class=\"grid-row-span-stage\"><div class=\"grid-demo-item grid-row-span-target\" id=\"gridRowSpanTarget\">Panel tinggi</div><div class=\"grid-demo-item\">B</div><div class=\"grid-demo-item\">C</div><div class=\"grid-demo-item\">D</div></div></main>",
+    "checks": [
+      {
+        "label": "Grid row span 2 dideklarasikan",
+        "detail": "Gunakan grid-row: span 2.",
+        "requiredSelectors": [
+          ".grid-row-span-target"
+        ],
+        "declaredProperties": [
+          "grid-row"
+        ],
+        "expectedDeclarationValues": {
+          "grid-row": "span 2"
+        }
+      }
+    ]
+  },
+  {
+    "number": 172,
+    "id": "grid-item-align-self",
+    "title": "Grid Item: Align Self",
+    "category": "CSS Grid Items",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_item_align.asp",
+    "description": "align-self dan justify-self mengubah perataan satu item tanpa mengubah item grid lain.",
+    "goal": "Tempatkan satu item di ujung kanan dan tengah vertikal area grid menggunakan justify-self: end dan align-self: center.",
+    "hints": [
+      "justify-self: end",
+      "align-self: center"
+    ],
+    "hint": "Gunakan .grid-item-align-target { justify-self: end; align-self: center; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID ITEM ALIGN</span><h1>Atur Satu Item</h1><div class=\"grid-item-align-stage\" id=\"gridItemAlignStage\"><div class=\"grid-demo-item\">Normal</div><div class=\"grid-demo-item grid-item-align-target\" id=\"gridItemAlignTarget\">Diatur sendiri</div><div class=\"grid-demo-item\">Normal</div></div></main>",
+    "checks": [
+      {
+        "label": "Justify-self end dideklarasikan",
+        "detail": "Gunakan justify-self: end.",
+        "requiredSelectors": [
+          ".grid-item-align-target"
+        ],
+        "declaredProperties": [
+          "justify-self"
+        ],
+        "expectedDeclarationValues": {
+          "justify-self": "end"
+        }
+      },
+      {
+        "label": "Align-self center dideklarasikan",
+        "detail": "Gunakan align-self: center.",
+        "requiredSelectors": [
+          ".grid-item-align-target"
+        ],
+        "declaredProperties": [
+          "align-self"
+        ],
+        "expectedDeclarationValues": {
+          "align-self": "center"
+        }
+      },
+      {
+        "label": "Computed justify-self end",
+        "detail": "Item harus rata ke kanan.",
+        "targetIds": [
+          "gridItemAlignTarget"
+        ],
+        "computedProperty": "justifySelf",
+        "expected": "end"
+      },
+      {
+        "label": "Computed align-self center",
+        "detail": "Item harus rata vertikal ke tengah.",
+        "targetIds": [
+          "gridItemAlignTarget"
+        ],
+        "computedProperty": "alignSelf",
+        "expected": "center"
+      }
+    ]
+  },
+  {
+    "number": 173,
+    "id": "grid-item-order",
+    "title": "Grid Item: Order",
+    "category": "CSS Grid Items",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_item_order.asp",
+    "description": "Properti order dapat mengubah urutan visual item grid. Item dengan nilai order lebih kecil tampil lebih awal dalam urutan auto-placement.",
+    "goal": "Tetapkan order: -1 pada kartu unggulan untuk menempatkannya lebih awal.",
+    "hints": [
+      "order: -1"
+    ],
+    "hint": "Gunakan .grid-item-order-target { order: -1; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID ORDER</span><h1>Urutan Kartu</h1><div class=\"grid-order-stage\"><div class=\"grid-demo-item\">Kartu A</div><div class=\"grid-demo-item\">Kartu B</div><div class=\"grid-demo-item grid-item-order-target\" id=\"gridItemOrderTarget\">Unggulan</div><div class=\"grid-demo-item\">Kartu D</div></div></main>",
+    "checks": [
+      {
+        "label": "Order -1 dideklarasikan",
+        "detail": "Gunakan order: -1 pada kartu unggulan.",
+        "requiredSelectors": [
+          ".grid-item-order-target"
+        ],
+        "declaredProperties": [
+          "order"
+        ],
+        "expectedDeclarationValues": {
+          "order": "-1"
+        }
+      },
+      {
+        "label": "Computed order adalah -1",
+        "detail": "Urutan item unggulan harus -1.",
+        "targetIds": [
+          "gridItemOrderTarget"
+        ],
+        "computedProperty": "order",
+        "expected": "-1"
+      }
+    ]
+  },
+  {
+    "number": 174,
+    "id": "grid-item-placement",
+    "title": "Grid Item: Garis Kolom dan Baris",
+    "category": "CSS Grid Items",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_item.asp",
+    "description": "grid-column dan grid-row dapat menetapkan garis awal dan akhir item untuk mengatur penempatan lebih presisi.",
+    "goal": "Tempatkan kartu dari kolom 2 hingga 4 dan baris 1 hingga 3.",
+    "hints": [
+      "grid-column: 2 / 4",
+      "grid-row: 1 / 3"
+    ],
+    "hint": "Gunakan .grid-item-placement-target { grid-column: 2 / 4; grid-row: 1 / 3; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID PLACEMENT</span><h1>Posisi Berbasis Garis</h1><div class=\"grid-placement-stage\"><div class=\"grid-demo-item\">A</div><div class=\"grid-demo-item grid-item-placement-target\" id=\"gridItemPlacementTarget\">Posisi khusus</div><div class=\"grid-demo-item\">C</div><div class=\"grid-demo-item\">D</div><div class=\"grid-demo-item\">E</div><div class=\"grid-demo-item\">F</div></div></main>",
+    "checks": [
+      {
+        "label": "Grid-column 2 / 4 dideklarasikan",
+        "detail": "Tempatkan item dari garis kolom 2 sampai 4.",
+        "requiredSelectors": [
+          ".grid-item-placement-target"
+        ],
+        "declaredProperties": [
+          "grid-column"
+        ],
+        "expectedDeclarationValues": {
+          "grid-column": "2 / 4"
+        }
+      },
+      {
+        "label": "Grid-row 1 / 3 dideklarasikan",
+        "detail": "Tempatkan item dari garis baris 1 sampai 3.",
+        "requiredSelectors": [
+          ".grid-item-placement-target"
+        ],
+        "declaredProperties": [
+          "grid-row"
+        ],
+        "expectedDeclarationValues": {
+          "grid-row": "1 / 3"
+        }
+      }
+    ]
+  },
+  {
+    "number": 175,
+    "id": "grid-12-column",
+    "title": "Grid 12 Kolom",
+    "category": "CSS Grid",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_12column.asp",
+    "description": "Sistem grid 12 kolom membagi wadah menjadi 12 unit pecahan yang dapat digabung untuk membentuk kolom layout.",
+    "goal": "Buat sistem 12 kolom sama besar dengan repeat(12, 1fr).",
+    "hints": [
+      "grid-template-columns: repeat(12, 1fr)"
+    ],
+    "hint": "Gunakan .grid-12-column-stage { display: grid; grid-template-columns: repeat(12, 1fr); }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">12-COLUMN GRID</span><h1>Sistem Grid 12 Kolom</h1><div class=\"grid-12-column-stage\" id=\"grid12ColumnStage\"><div class=\"grid-number-item\">1</div><div class=\"grid-number-item\">2</div><div class=\"grid-number-item\">3</div><div class=\"grid-number-item\">4</div><div class=\"grid-number-item\">5</div><div class=\"grid-number-item\">6</div><div class=\"grid-number-item\">7</div><div class=\"grid-number-item\">8</div><div class=\"grid-number-item\">9</div><div class=\"grid-number-item\">10</div><div class=\"grid-number-item\">11</div><div class=\"grid-number-item\">12</div></div></main>",
+    "checks": [
+      {
+        "label": "Grid mempunyai 12 kolom",
+        "detail": "Gunakan grid-template-columns: repeat(12, 1fr).",
+        "requiredSelectors": [
+          ".grid-12-column-stage"
+        ],
+        "declaredProperties": [
+          "grid-template-columns"
+        ],
+        "expectedDeclarationValues": {
+          "grid-template-columns": "repeat(12, 1fr)"
+        }
+      },
+      {
+        "label": "Computed display adalah grid",
+        "detail": "Sistem 12 kolom harus memakai grid.",
+        "targetIds": [
+          "grid12ColumnStage"
+        ],
+        "computedProperty": "display",
+        "expected": "grid"
+      }
+    ]
+  },
+  {
+    "number": 176,
+    "id": "grid-12-column-spans",
+    "title": "Grid 12 Kolom: Lebar Kolom",
+    "category": "CSS Grid",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_12column.asp",
+    "description": "Item dapat menggunakan grid-column: span n untuk menempati beberapa unit dalam sistem grid 12 kolom.",
+    "goal": "Buat kolom utama span 8 dan sidebar span 4.",
+    "hints": [
+      "grid-column: span 8",
+      "grid-column: span 4"
+    ],
+    "hint": "Gunakan .grid-12-main { grid-column: span 8; } dan .grid-12-sidebar { grid-column: span 4; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">12-COLUMN LAYOUT</span><h1>Konten dan Sidebar</h1><div class=\"grid-12-span-stage\"><div class=\"grid-12-main\" id=\"grid12Main\">Konten utama · 8 kolom</div><div class=\"grid-12-sidebar\" id=\"grid12Sidebar\">Sidebar · 4 kolom</div></div></main>",
+    "checks": [
+      {
+        "label": "Konten utama span 8",
+        "detail": "Gunakan grid-column: span 8.",
+        "requiredSelectors": [
+          ".grid-12-main"
+        ],
+        "declaredProperties": [
+          "grid-column"
+        ],
+        "expectedDeclarationValues": {
+          "grid-column": "span 8"
+        }
+      },
+      {
+        "label": "Sidebar span 4",
+        "detail": "Gunakan grid-column: span 4.",
+        "requiredSelectors": [
+          ".grid-12-sidebar"
+        ],
+        "declaredProperties": [
+          "grid-column"
+        ],
+        "expectedDeclarationValues": {
+          "grid-column": "span 4"
+        }
+      }
+    ]
+  },
+  {
+    "number": 177,
+    "id": "grid-responsive",
+    "title": "Grid Responsif dengan Auto-fit",
+    "category": "CSS Grid",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_container.asp",
+    "description": "repeat(auto-fit, minmax(...)) membantu grid membuat jumlah kolom yang sesuai ruang tersedia sambil menjaga lebar minimum item.",
+    "goal": "Buat kolom responsif menggunakan repeat(auto-fit, minmax(110px, 1fr)).",
+    "hints": [
+      "repeat(auto-fit, minmax(110px, 1fr))"
+    ],
+    "hint": "Gunakan .grid-responsive-stage { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">RESPONSIVE GRID</span><h1>Kartu Otomatis</h1><p>Grid menyesuaikan jumlah kolom dengan lebar preview.</p><div class=\"grid-responsive-stage\" id=\"gridResponsiveStage\"><div class=\"grid-demo-item\">HTML</div><div class=\"grid-demo-item\">CSS</div><div class=\"grid-demo-item\">JavaScript</div><div class=\"grid-demo-item\">Robotika</div><div class=\"grid-demo-item\">Game</div></div></main>",
+    "checks": [
+      {
+        "label": "Kolom grid responsif",
+        "detail": "Gunakan repeat(auto-fit, minmax(110px, 1fr)).",
+        "requiredSelectors": [
+          ".grid-responsive-stage"
+        ],
+        "declaredProperties": [
+          "grid-template-columns"
+        ],
+        "expectedDeclarationValues": {
+          "grid-template-columns": "repeat(auto-fit, minmax(110px, 1fr))"
+        }
+      },
+      {
+        "label": "Grid mempunyai gap 10px",
+        "detail": "Tambahkan gap: 10px.",
+        "requiredSelectors": [
+          ".grid-responsive-stage"
+        ],
+        "declaredProperties": [
+          "gap"
+        ],
+        "expectedDeclarationValues": {
+          "gap": "10px"
+        }
+      },
+      {
+        "label": "Computed display grid",
+        "detail": "Layout responsif harus memakai grid.",
+        "targetIds": [
+          "gridResponsiveStage"
+        ],
+        "computedProperty": "display",
+        "expected": "grid"
+      }
+    ]
+  },
+  {
+    "number": 178,
+    "id": "grid-auto-flow",
+    "title": "Grid Container: Auto Flow",
+    "category": "CSS Grid",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_container.asp",
+    "description": "grid-auto-flow mengatur apakah item auto-placement mengisi baris atau kolom.",
+    "goal": "Susun item secara vertikal dengan grid-auto-flow: column.",
+    "hints": [
+      "grid-auto-flow: column"
+    ],
+    "hint": "Gunakan .grid-auto-flow-stage { display: grid; grid-auto-flow: column; grid-template-rows: repeat(2, 55px); }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID AUTO FLOW</span><h1>Alur Item Grid</h1><div class=\"grid-auto-flow-stage\" id=\"gridAutoFlowStage\"><div class=\"grid-demo-item\">A</div><div class=\"grid-demo-item\">B</div><div class=\"grid-demo-item\">C</div><div class=\"grid-demo-item\">D</div></div></main>",
+    "checks": [
+      {
+        "label": "Grid-auto-flow column dideklarasikan",
+        "detail": "Gunakan grid-auto-flow: column.",
+        "requiredSelectors": [
+          ".grid-auto-flow-stage"
+        ],
+        "declaredProperties": [
+          "grid-auto-flow"
+        ],
+        "expectedDeclarationValues": {
+          "grid-auto-flow": "column"
+        }
+      },
+      {
+        "label": "Computed grid-auto-flow column",
+        "detail": "Auto-placement harus mengisi kolom.",
+        "targetIds": [
+          "gridAutoFlowStage"
+        ],
+        "computedProperty": "gridAutoFlow",
+        "expected": "column"
+      }
+    ]
+  },
+  {
+    "number": 179,
+    "id": "grid-content-alignment",
+    "title": "Grid Container: Align Content",
+    "category": "CSS Grid",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid_align.asp",
+    "description": "align-content dan justify-content mengatur keseluruhan kumpulan track grid ketika tersedia ruang lebih di dalam container.",
+    "goal": "Pusatkan kumpulan track grid pada kedua sumbu menggunakan align-content dan justify-content center.",
+    "hints": [
+      "align-content: center",
+      "justify-content: center"
+    ],
+    "hint": "Gunakan .grid-content-align-stage { display: grid; grid-template-columns: repeat(2, 80px); grid-template-rows: repeat(2, 35px); align-content: center; justify-content: center; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID CONTENT ALIGN</span><h1>Pusatkan Kumpulan Grid</h1><div class=\"grid-content-align-stage\" id=\"gridContentAlignStage\"><div class=\"grid-demo-item\">A</div><div class=\"grid-demo-item\">B</div><div class=\"grid-demo-item\">C</div><div class=\"grid-demo-item\">D</div></div></main>",
+    "checks": [
+      {
+        "label": "Align-content center dideklarasikan",
+        "detail": "Gunakan align-content: center.",
+        "requiredSelectors": [
+          ".grid-content-align-stage"
+        ],
+        "declaredProperties": [
+          "align-content"
+        ],
+        "expectedDeclarationValues": {
+          "align-content": "center"
+        }
+      },
+      {
+        "label": "Justify-content center dideklarasikan",
+        "detail": "Gunakan justify-content: center.",
+        "requiredSelectors": [
+          ".grid-content-align-stage"
+        ],
+        "declaredProperties": [
+          "justify-content"
+        ],
+        "expectedDeclarationValues": {
+          "justify-content": "center"
+        }
+      },
+      {
+        "label": "Computed align-content center",
+        "detail": "Track grid harus terpusat pada sumbu blok.",
+        "targetIds": [
+          "gridContentAlignStage"
+        ],
+        "computedProperty": "alignContent",
+        "expected": "center"
+      },
+      {
+        "label": "Computed justify-content center",
+        "detail": "Track grid harus terpusat pada sumbu inline.",
+        "targetIds": [
+          "gridContentAlignStage"
+        ],
+        "computedProperty": "justifyContent",
+        "expected": "center"
+      }
+    ]
+  },
+  {
+    "number": 180,
+    "id": "grid-layout-challenge",
+    "title": "Tantangan: Dashboard Karya ICT",
+    "category": "CSS Grid",
+    "level": "LEVEL 3 · TANTANGAN",
+    "resourceUrl": "https://www.w3schools.com/css/css_grid.asp",
+    "description": "Gabungkan grid tracks, gap, spanning, serta penempatan item untuk merancang dashboard karya siswa.",
+    "goal": "Buat grid tiga kolom dengan gap 12px; kartu utama melebar dua kolom dan kartu lainnya menempati satu kolom.",
+    "hints": [
+      "grid-template-columns: repeat(3, 1fr)",
+      "gap: 12px",
+      "grid-column: span 2"
+    ],
+    "hint": "Gunakan .grid-dashboard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; } dan .grid-dashboard-feature { grid-column: span 2; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GRID CHALLENGE</span><h1>Dashboard Karya ICT</h1><div class=\"grid-dashboard\" id=\"gridDashboard\"><div class=\"grid-dashboard-feature\" id=\"gridDashboardFeature\"><strong>Robot Deteksi Sampah</strong><p>Proyek unggulan</p></div><div class=\"grid-dashboard-card\">Game Edukasi</div><div class=\"grid-dashboard-card\">Web Portofolio</div><div class=\"grid-dashboard-card\">Animasi</div></div></main>",
+    "checks": [
+      {
+        "label": "Dashboard menggunakan grid",
+        "detail": "Gunakan display: grid.",
+        "requiredSelectors": [
+          ".grid-dashboard"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "grid"
+        }
+      },
+      {
+        "label": "Dashboard memiliki tiga kolom",
+        "detail": "Gunakan repeat(3, 1fr).",
+        "requiredSelectors": [
+          ".grid-dashboard"
+        ],
+        "declaredProperties": [
+          "grid-template-columns"
+        ],
+        "expectedDeclarationValues": {
+          "grid-template-columns": "repeat(3, 1fr)"
+        }
+      },
+      {
+        "label": "Gap dashboard 12px",
+        "detail": "Gunakan gap: 12px.",
+        "requiredSelectors": [
+          ".grid-dashboard"
+        ],
+        "declaredProperties": [
+          "gap"
+        ],
+        "expectedDeclarationValues": {
+          "gap": "12px"
+        }
+      },
+      {
+        "label": "Kartu fitur span 2",
+        "detail": "Buat kartu unggulan menempati dua kolom.",
+        "requiredSelectors": [
+          ".grid-dashboard-feature"
+        ],
+        "declaredProperties": [
+          "grid-column"
+        ],
+        "expectedDeclarationValues": {
+          "grid-column": "span 2"
+        }
+      },
+      {
+        "label": "Computed dashboard memakai grid",
+        "detail": "Dashboard harus memakai grid.",
+        "targetIds": [
+          "gridDashboard"
+        ],
+        "computedProperty": "display",
+        "expected": "grid"
+      }
+    ]
   }
 ];
 
@@ -8434,6 +9845,31 @@
       .website-challenge-body{gap:10px;padding:10px;}
       .website-challenge-main,.website-challenge-sidebar{padding:10px;background:#f1f5f9;border:1px solid #cbd5e1;border-radius:7px;}
       .website-challenge-footer{padding:9px;background:#e2e8f0;color:#334155;font-size:11px;}
+
+
+      .flex-demo-item,.flex-wide-item,.flex-grow-target,.flex-grow-fixed,.flex-shrink-basis-target,.flex-shrink-basis-other,.flex-order-card,.flex-responsive-card{padding:10px;border:1px solid #93c5fd;background:#dbeafe;border-radius:7px;text-align:center;color:#1e40af;font-weight:750;}
+      .flex-intro-container,.flex-direction-row,.flex-direction-column,.flex-justify-center,.flex-justify-between,.flex-gap-stage,.flex-wrap-stage,.flex-grow-stage,.flex-shrink-basis-stage,.flex-order-stage,.flex-align-self-stage,.flex-responsive-challenge{padding:12px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .flex-demo-item.tall{padding-top:22px;padding-bottom:22px;}
+      .flex-direction-column{width:160px;}
+      .flex-align-center,.flex-align-self-stage{height:120px;padding:10px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .flex-wide-item{flex:0 0 125px;}
+      .flex-grow-stage,.flex-shrink-basis-stage{display:flex;gap:10px;}
+      .flex-grow-fixed,.flex-shrink-basis-other{flex:0 0 100px;}
+      .flex-order-card{padding:14px 20px;}
+      .flex-responsive-card{min-height:45px;}
+      .grid-demo-item,.grid-number-item,.grid-12-main,.grid-12-sidebar,.grid-dashboard-feature,.grid-dashboard-card{padding:10px;border:1px solid #93c5fd;background:#dbeafe;border-radius:7px;text-align:center;color:#1e40af;font-weight:750;}
+      .grid-intro-container,.grid-columns-stage,.grid-rows-stage,.grid-gap-stage,.grid-specific-gap,.grid-align-items-stage,.grid-justify-items-stage,.grid-span-stage,.grid-row-span-stage,.grid-item-align-stage,.grid-order-stage,.grid-placement-stage,.grid-12-column-stage,.grid-12-span-stage,.grid-responsive-stage,.grid-auto-flow-stage,.grid-content-align-stage,.grid-dashboard{padding:12px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .grid-demo-item.tall{padding-top:20px;padding-bottom:20px;}
+      .grid-rows-stage{grid-template-columns:repeat(2,1fr);}
+      .grid-span-stage,.grid-row-span-stage,.grid-item-align-stage,.grid-order-stage,.grid-placement-stage{grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(42px,auto);}
+      .grid-12-column-stage{gap:3px;}
+      .grid-number-item{padding:5px 1px;font-size:10px;}
+      .grid-12-span-stage{grid-template-columns:repeat(12,1fr);}
+      .grid-12-main,.grid-12-sidebar{font-size:11px;}
+      .grid-auto-flow-stage{grid-auto-columns:70px;min-height:130px;}
+      .grid-content-align-stage{min-height:160px;padding:12px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .grid-dashboard-feature,.grid-dashboard-card{min-height:70px;}
+      .grid-dashboard-feature p{margin-bottom:0;}
 
     `;
 
@@ -8678,7 +10114,7 @@
                      prop==='border-collapse' || prop==='border-spacing' || prop==='table-layout' ||
                      prop==='vertical-align' || prop==='overflow-x' || prop==='overflow-y' ||
                      prop==='position' || prop==='top' || prop==='right' || prop==='bottom' || prop==='left' || prop==='z-index' || prop==='visibility' || prop==='flex-direction' ||
-                     prop==='overflow' || prop==='float' || prop==='clear' || prop==='content' || prop==='align-items' || prop==='justify-content' || prop==='flex-wrap' ||
+                     prop==='overflow' || prop==='float' || prop==='clear' || prop==='content' || prop==='align-items' || prop==='justify-content' || prop==='flex-wrap' || prop==='flex-grow' || prop==='flex-shrink' || prop==='flex-basis' || prop==='flex' || prop==='order' || prop==='align-self' || prop==='justify-self' || prop==='justify-items' || prop==='align-content' || prop==='gap' || prop==='row-gap' || prop==='column-gap' || prop==='grid-template-columns' || prop==='grid-template-rows' || prop==='grid-column' || prop==='grid-row' || prop==='grid-auto-flow' ||
                      prop==='font-style' || prop==='font-size' || prop==='font-weight' || prop==='display' || prop.indexOf('list-style')===0){
                     var value=rule.style.getPropertyValue(prop);
                     if(value) declarations[prop]=value.trim();
@@ -8721,7 +10157,7 @@
                 borderCollapse:s.borderCollapse,borderSpacing:s.borderSpacing,tableLayout:s.tableLayout,verticalAlign:s.verticalAlign,
                 overflowX:s.overflowX,overflowY:s.overflowY,
                 position:s.position,top:s.top,right:s.right,bottom:s.bottom,left:s.left,zIndex:s.zIndex,visibility:s.visibility,flexDirection:s.flexDirection,
-                overflow:s.overflow,float:s.float,clear:s.clear,alignItems:s.alignItems,justifyContent:s.justifyContent,flexWrap:s.flexWrap,
+                overflow:s.overflow,float:s.float,clear:s.clear,alignItems:s.alignItems,justifyContent:s.justifyContent,flexWrap:s.flexWrap,flexGrow:s.flexGrow,flexShrink:s.flexShrink,flexBasis:s.flexBasis,order:s.order,gridTemplateColumns:s.gridTemplateColumns,gridTemplateRows:s.gridTemplateRows,rowGap:s.rowGap,columnGap:s.columnGap,gap:s.gap,gridColumnStart:s.gridColumnStart,gridColumnEnd:s.gridColumnEnd,gridRowStart:s.gridRowStart,gridRowEnd:s.gridRowEnd,justifyItems:s.justifyItems,alignContent:s.alignContent,justifySelf:s.justifySelf,alignSelf:s.alignSelf,gridAutoFlow:s.gridAutoFlow,
                 offsetWidth:el.offsetWidth,offsetHeight:el.offsetHeight,
                 widthWithMargins:el.offsetWidth+parseFloat(s.marginLeft||0)+parseFloat(s.marginRight||0),
                 heightWithMargins:el.offsetHeight+parseFloat(s.marginTop||0)+parseFloat(s.marginBottom||0)
