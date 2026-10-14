@@ -2,7 +2,7 @@
 
 Playground interaktif untuk latihan CSS secara bertahap. Siswa menulis CSS sendiri, melihat live preview, membaca struktur HTML tugas, dan mengecek hasil melalui computed style browser.
 
-## Kurikulum: 71 tugas bertahap
+## Kurikulum: 76 tugas bertahap
 
 ### CSS Selector — tugas 1–12
 
@@ -160,12 +160,37 @@ Materi rujukan:
 - [Text Spacing](https://www.w3schools.com/css/css_text_spacing.asp)
 - [Text Shadow](https://www.w3schools.com/css/css_text_shadow.asp)
 
+### Font — tugas 72–73
+
+72. Font Style
+73. Font Size
+
+Materi rujukan:
+- [CSS Font Style](https://www.w3schools.com/css/css_font_style.asp)
+- [CSS Font Size](https://www.w3schools.com/css/css_font_size.asp)
+
+### Links — tugas 74–75
+
+74. CSS Links
+75. Link Buttons
+
+Materi rujukan:
+- [CSS Links](https://www.w3schools.com/css/css_link.asp)
+- [CSS Link Buttons](https://www.w3schools.com/css/css_link_buttons.asp)
+
+### Lists — tugas 76
+
+76. CSS Lists
+
+Materi rujukan:
+- [CSS Lists](https://www.w3schools.com/css/css_list.asp)
+
 ## Fitur
 
 - Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik.
 - Panel struktur HTML bertingkat menampilkan tag, class, ID, dan hubungan induk-anak. Klik tag, class, atau ID untuk menambahkan selector ke editor.
 - Pemeriksaan otomatis atas selector dan computed styles di browser.
-- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, dan Text.
+- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, dan Lists.
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
