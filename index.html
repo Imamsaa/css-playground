@@ -94,7 +94,7 @@
     .reference-title { color:#202a40; font-size:13px; font-weight:850; }
     .reference-subtitle { margin:4px 0 0; color:var(--muted); font-size:11px; line-height:1.5; }
     .html-structure { padding:12px 10px; border:1px solid #e5e9f2; border-radius:12px; background:#fbfcff; overflow:auto; max-height:430px; }
-    .html-tree-line { display:flex; align-items:baseline; width:max-content; min-width:100%; min-height:25px; padding-left:calc(var(--depth, 0) * 19px); white-space:pre; font:12px/1.8 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    .html-tree-line { display:flex; align-items:baseline; width:max-content; min-width:100%; min-height:25px; padding-left:0; white-space:pre; font:12px/1.8 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
     .html-syntax { color:#98a2b3; }
     .html-token { display:inline; padding:0 1px; border:0; border-radius:3px; background:transparent; font:inherit; cursor:pointer; }
     .html-token:hover { background:#eeecff; text-decoration:underline; }
@@ -513,7 +513,7 @@
 
       function openTagMarkup(node) {
         const tag = node.tagName.toLowerCase();
-        let markup = '<div class="html-tree-line" style="--depth:DEPTH"><span class="html-syntax">&lt;</span>' +
+        let markup = '<div class="html-tree-line" style="padding-left:INDENTpx"><span class="html-syntax">&lt;</span>' +
           '<button class="html-token html-tag-token" type="button" data-selector="' + escapeHtml(tag) +
           '" title="Gunakan selector elemen ' + escapeHtml(tag) + '">' + escapeHtml(tag) + '</button>';
 
@@ -544,7 +544,7 @@
       function renderNode(node, depth) {
         const tag = node.tagName.toLowerCase();
         const indentation = depth;
-        const open = openTagMarkup(node).replace('DEPTH', String(indentation));
+        const open = openTagMarkup(node).replace('INDENT', String(indentation * 19));
         if (voidTags.has(tag)) {
           return open + '<span class="html-syntax"> /&gt;</span></div>';
         }
@@ -567,11 +567,11 @@
           if (child.nodeType === Node.ELEMENT_NODE) {
             markup += renderNode(child, depth + 1);
           } else if (child.nodeType === Node.TEXT_NODE && child.nodeValue.trim()) {
-            markup += '<div class="html-tree-line" style="--depth:' + (depth + 1) + '"><span class="html-text-node">' +
+            markup += '<div class="html-tree-line" style="padding-left:' + ((depth + 1) * 19) + 'px"><span class="html-text-node">' +
               escapeHtml(child.nodeValue.trim()) + '</span></div>';
           }
         });
-        markup += '<div class="html-tree-line" style="--depth:' + indentation + '"><span class="html-syntax">&lt;/</span><span class="html-tag-token">' +
+        markup += '<div class="html-tree-line" style="padding-left:' + (indentation * 19) + 'px"><span class="html-syntax">&lt;/</span><span class="html-tag-token">' +
           escapeHtml(tag) + '</span><span class="html-syntax">&gt;</span></div>';
         return markup;
       }
