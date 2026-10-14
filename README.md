@@ -17,7 +17,7 @@ Playground interaktif untuk latihan CSS Selector, Color, Background, Border, dan
 9. Adjacent Sibling
 10. General Sibling
 11. Attribute Selector
-12. Pseudo-class `:hover`
+12. Pseudo-class :hover
 
 Rujukan:
 - [CSS Selectors](https://www.w3schools.com/css/css_selectors.asp)
@@ -43,10 +43,10 @@ Rujukan:
 
 ### 3. Background — tugas 21–29
 
-21. Background Color pada Halaman
+21. Background Color
 22. Background pada Kartu
 23. Background Image
-24. Background Repeat X
+24. Background Repeat
 25. Background Repeat Y
 26. Background Position
 27. Background Size
