@@ -1076,15 +1076,15 @@
         hints: ['box-sizing: content-box', 'Hitung total ukuran'], hint: 'Tulis width: 200px; height: 80px; padding: 20px; border: 5px solid #7c3aed; margin: 15px; box-sizing: content-box;. Lebar luar = 200 + 40 + 10 = 250px. Dengan margin kiri dan kanan, total ruangnya 280px.',
         html: `<main class="mini-page"><span class="eyebrow">CSS BOX MODEL</span><h1>Content-box</h1><p>Ukuran CSS menentukan konten; padding dan border ditambahkan di luarnya.</p><div class="box-model-stage"><div class="box-model-content-target" id="boxModelContentTarget">Konten 200 × 80</div></div></main>`,
         checks: [
-          { label: 'Semua properti box model diatur', detail: 'Gunakan width, height, padding, border, margin, dan box-sizing.', requiredSelectors: ['.box-model-content-target'], declaredPropertyGroups: [['width'],['height'],['padding'],['border'],['margin'],['box-sizing']] },
+          { label: 'Selector target digunakan', detail: 'Gunakan selector .box-model-content-target untuk menargetkan kotak.', requiredSelectors: ['.box-model-content-target'] },
           { label: 'box-sizing adalah content-box', detail: 'Pilih box-sizing: content-box agar padding dan border menambah ukuran luar.', targetIds: ['boxModelContentTarget'], computedProperty: 'boxSizing', expected: 'content-box' },
           { label: 'Lebar konten 200px', detail: 'Computed width harus 200px.', targetIds: ['boxModelContentTarget'], computedProperty: 'width', expected: '200px' },
           { label: 'Tinggi konten 80px', detail: 'Computed height harus 80px.', targetIds: ['boxModelContentTarget'], computedProperty: 'height', expected: '80px' },
-          { label: 'Padding tiap sisi 20px', detail: 'Padding atas, kanan, bawah, dan kiri harus 20px.', targetIds: ['boxModelContentTarget'], computedPropertiesEqual: ['paddingTop','paddingRight','paddingBottom','paddingLeft'] },
+          { label: 'Padding tiap sisi 20px', detail: 'Padding atas, kanan, bawah, dan kiri harus masing-masing 20px.', targetIds: ['boxModelContentTarget'], expectedComputedValues: { paddingTop: '20px', paddingRight: '20px', paddingBottom: '20px', paddingLeft: '20px' } },
           { label: 'Border setebal 5px', detail: 'Border sisi atas harus 5px.', targetIds: ['boxModelContentTarget'], computedProperty: 'borderTopWidth', expected: '5px' },
           { label: 'Ukuran luar border adalah 250 × 130px', detail: 'Padding dan border ditambahkan di luar ukuran konten.', targetIds: ['boxModelContentTarget'], computedProperty: 'offsetWidth', expected: 250 },
           { label: 'Tinggi luar border adalah 130px', detail: 'Tinggi konten 80 + padding 40 + border 10 = 130px.', targetIds: ['boxModelContentTarget'], computedProperty: 'offsetHeight', expected: 130 },
-          { label: 'Margin luar adalah 15px', detail: 'Margin memberi jarak di luar border.', targetIds: ['boxModelContentTarget'], computedProperty: 'marginTop', expected: '15px' },
+          { label: 'Margin di semua sisi 15px', detail: 'Margin atas, kanan, bawah, dan kiri harus masing-masing 15px.', targetIds: ['boxModelContentTarget'], expectedComputedValues: { marginTop: '15px', marginRight: '15px', marginBottom: '15px', marginLeft: '15px' } },
           { label: 'Ruang total termasuk margin adalah 280px', detail: 'Lebar luar 250px ditambah margin kiri dan kanan 30px.', targetIds: ['boxModelContentTarget'], computedProperty: 'widthWithMargins', expected: 280 }
         ]
       },
@@ -1095,15 +1095,16 @@
         hints: ['box-sizing: border-box', 'Border termasuk ukuran'], hint: 'Gunakan width: 250px; height: 130px; padding: 20px; border: 5px solid #0f766e; margin: 15px; box-sizing: border-box;. Berbeda dari content-box, padding dan border tidak memperbesar ukuran luarnya.',
         html: `<main class="mini-page"><span class="eyebrow">CSS BOX MODEL</span><h1>Border-box</h1><p>Ukuran yang ditentukan sudah mencakup konten, padding, dan border.</p><div class="box-model-stage"><div class="box-model-border-target" id="boxModelBorderTarget">Kotak 250 × 130</div></div></main>`,
         checks: [
-          { label: 'Semua properti box model diatur', detail: 'Gunakan width, height, padding, border, margin, dan box-sizing.', requiredSelectors: ['.box-model-border-target'], declaredPropertyGroups: [['width'],['height'],['padding'],['border'],['margin'],['box-sizing']] },
+          { label: 'Selector target digunakan', detail: 'Gunakan selector .box-model-border-target untuk menargetkan kotak.', requiredSelectors: ['.box-model-border-target'] },
           { label: 'box-sizing adalah border-box', detail: 'Gunakan box-sizing: border-box.', targetIds: ['boxModelBorderTarget'], computedProperty: 'boxSizing', expected: 'border-box' },
           { label: 'Lebar yang ditentukan 250px', detail: 'Computed width harus 250px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'width', expected: '250px' },
           { label: 'Tinggi yang ditentukan 130px', detail: 'Computed height harus 130px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'height', expected: '130px' },
-          { label: 'Padding tiap sisi 20px', detail: 'Padding atas, kanan, bawah, dan kiri harus 20px.', targetIds: ['boxModelBorderTarget'], computedPropertiesEqual: ['paddingTop','paddingRight','paddingBottom','paddingLeft'] },
+          { label: 'Padding tiap sisi 20px', detail: 'Padding atas, kanan, bawah, dan kiri harus masing-masing 20px.', targetIds: ['boxModelBorderTarget'], expectedComputedValues: { paddingTop: '20px', paddingRight: '20px', paddingBottom: '20px', paddingLeft: '20px' } },
           { label: 'Border setebal 5px', detail: 'Border sisi atas harus 5px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'borderTopWidth', expected: '5px' },
+          { label: 'Gaya border solid', detail: 'Border harus menggunakan gaya solid.', targetIds: ['boxModelBorderTarget'], computedProperty: 'borderTopStyle', expected: 'solid' },
           { label: 'Ukuran luar border tetap 250 × 130px', detail: 'Border-box memasukkan padding dan border ke ukuran yang ditentukan.', targetIds: ['boxModelBorderTarget'], computedProperty: 'offsetWidth', expected: 250 },
           { label: 'Tinggi luar border tetap 130px', detail: 'Tinggi total kotak termasuk padding dan border harus 130px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'offsetHeight', expected: 130 },
-          { label: 'Margin tetap 15px di luar border', detail: 'Margin bukan bagian dari width/height border-box.', targetIds: ['boxModelBorderTarget'], computedProperty: 'marginTop', expected: '15px' },
+          { label: 'Margin di semua sisi 15px', detail: 'Margin atas, kanan, bawah, dan kiri harus masing-masing 15px.', targetIds: ['boxModelBorderTarget'], expectedComputedValues: { marginTop: '15px', marginRight: '15px', marginBottom: '15px', marginLeft: '15px' } },
           { label: 'Ruang total termasuk margin adalah 280px', detail: 'Lebar border-box 250px ditambah margin kiri dan kanan 30px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'widthWithMargins', expected: 280 }
         ]
       }
@@ -2060,6 +2061,7 @@
         else {
           const actualValues = targets.map(target => target[criterion.computedProperty]);
           if (criterion.expected !== undefined && !actualValues.every(value => value === criterion.expected)) reasons.push('Nilai tampilan belum sesuai dengan target.');
+          if (criterion.expectedComputedValues && !targets.every(target => Object.entries(criterion.expectedComputedValues).every(([prop, value]) => target[prop] === value))) reasons.push('Satu atau beberapa nilai computed style belum sesuai dengan target.');
           if (criterion.expectedIncludes !== undefined && !actualValues.every(value => String(value || '').includes(criterion.expectedIncludes))) reasons.push('Efek CSS yang diharapkan belum muncul.');
           if (criterion.expectedNot !== undefined && !actualValues.every(value => value !== criterion.expectedNot)) reasons.push('Elemen yang seharusnya tidak berubah masih memiliki nilai tersebut.');
           if (criterion.computedPropertiesEqual && !targets.every(target => criterion.computedPropertiesEqual.every(prop => target[prop] === target[criterion.computedPropertiesEqual[0]]))) reasons.push('Nilai properti yang dibandingkan belum sama.');
