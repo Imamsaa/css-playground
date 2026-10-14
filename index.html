@@ -5879,7 +5879,7 @@
     function readColorAlpha(value) {
       const text = String(value || '').trim().toLowerCase();
       if (text === 'transparent') return 0;
-      const rgb = text.match(/^rgba?\((.*)\)$/);
+      const rgb = text.match(/^(?:rgba?|hsla?)\((.*)\)$/);
       let alpha = null;
       if (rgb) {
         const inner = rgb[1];
