@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f8fafc" />
+  <title>CSS Quest — Coding Playground</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e5e9f2;
+      --primary: #6558e8;
+      --primary-dark: #5145cd;
+      --primary-soft: #efedff;
+      --green: #16835f;
+      --green-soft: #e8f8f0;
+      --red: #c13b4b;
+      --red-soft: #fff0f1;
+      --amber: #b7791f;
+      --shadow: 0 14px 40px rgba(20, 31, 58, .07);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    button, textarea { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, textarea:focus-visible { outline: 3px solid rgba(101,88,232,.26); outline-offset: 2px; }
+    .app-shell { max-width: 1600px; margin: 0 auto; padding: 22px 26px 34px; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:22px; }
+    .brand { display:flex; align-items:center; gap:12px; min-width:0; }
+    .brand-mark { width:44px; height:44px; border-radius:14px; color:#fff; background:linear-gradient(145deg,#7c6cf4,#5145cd); display:grid; place-items:center; font-weight:900; font-size:18px; box-shadow:0 8px 18px rgba(101,88,232,.23); letter-spacing:-1px; }
+    .brand-name { font-size:15px; line-height:1.2; font-weight:850; letter-spacing:.01em; }
+    .brand-sub { color:var(--muted); font-size:12px; margin-top:3px; }
+    .top-actions { display:flex; align-items:center; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
+    .pill-label { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:750; border:1px solid #e2defe; color:#594ed0; background:#f2f0ff; padding:8px 11px; border-radius:999px; white-space:nowrap; }
+    .dot { width:7px;height:7px;border-radius:50%;background:#27ad7a; }
+    .btn { border:1px solid var(--line); background:#fff; color:#344054; padding:9px 13px; border-radius:11px; font-size:12px; font-weight:750; display:inline-flex; align-items:center; justify-content:center; gap:7px; transition:transform .15s, box-shadow .15s, background .15s; }
+    .btn:hover { transform:translateY(-1px); box-shadow:0 5px 12px rgba(20,31,58,.08); }
+    .btn-primary { color:#fff; border-color:var(--primary); background:var(--primary); box-shadow:0 5px 13px rgba(101,88,232,.17); }
+    .btn-primary:hover { background:var(--primary-dark); }
+    .btn-soft { color:var(--primary-dark); background:var(--primary-soft); border-color:#e2defe; }
+    .btn-quiet { background:transparent; }
+    .hero { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin:6px 0 22px; }
+    .eyebrow { color:var(--primary); font-size:11px; font-weight:850; text-transform:uppercase; letter-spacing:.14em; margin-bottom:7px; }
+    h1 { font-size:clamp(27px,3vw,38px); letter-spacing:-.045em; line-height:1.1; margin:0; font-weight:900; }
+    .hero p { margin:9px 0 0; color:var(--muted); max-width:680px; font-size:14px; }
+    .progress-card { min-width:205px; background:var(--panel); border:1px solid var(--line); border-radius:15px; padding:13px 15px; box-shadow:0 5px 15px rgba(20,31,58,.025); }
+    .progress-top { display:flex; justify-content:space-between; gap:14px; color:var(--muted); font-size:11px; font-weight:750; margin-bottom:9px; }
+    .progress-top strong { color:var(--ink); font-size:12px; }
+    .progress-track { width:100%; height:7px; background:#edf0f7; border-radius:99px; overflow:hidden; }
+    .progress-fill { height:100%; width:0%; border-radius:99px; background:linear-gradient(90deg,#7467f3,#35b88a); transition:width .25s; }
+    .layout { display:grid; grid-template-columns:270px minmax(0,1fr); gap:20px; align-items:start; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); min-width:0; }
+    .tasks-panel { overflow:hidden; }
+    .panel-heading { display:flex; align-items:center; justify-content:space-between; padding:17px 17px 12px; }
+    .panel-title { font-size:13px; font-weight:850; letter-spacing:-.01em; }
+    .count-chip { border-radius:8px; padding:4px 7px; background:#f1f3f9; color:#647084; font-size:10px; font-weight:850; }
+    .task-list { padding:4px 9px 12px; display:grid; gap:5px; }
+    .task-item { display:flex; align-items:flex-start; gap:11px; width:100%; text-align:left; padding:12px 10px; border:1px solid transparent; background:transparent; border-radius:12px; color:var(--ink); }
+    .task-item:hover { background:#f8f8ff; }
+    .task-item.active { background:#f1efff; border-color:#dedaff; }
+    .task-number { width:28px; height:28px; border-radius:9px; flex:0 0 28px; display:grid; place-items:center; background:#f0f2f8; color:#647084; font-weight:850; font-size:11px; }
+    .task-item.active .task-number { background:var(--primary); color:#fff; }
+    .task-item.done .task-number { background:var(--green-soft); color:var(--green); }
+    .task-text { min-width:0; flex:1; }
+    .task-name { display:block; font-size:12px; font-weight:800; line-height:1.35; }
+    .task-category { display:block; margin-top:4px; color:var(--muted); font-size:10px; }
+    .task-done { color:var(--green); font-size:13px; font-weight:900; }
+    .sidebar-foot { margin:0 14px 14px; padding:12px; border-radius:12px; background:#f8f9fc; color:var(--muted); font-size:11px; }
+    .sidebar-foot strong { color:#344054; display:block; margin-bottom:4px; }
+    .workspace { display:grid; gap:16px; min-width:0; }
+    .assignment { padding:20px 22px 17px; }
+    .assignment-top { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+    .task-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+    .tag { background:#f1efff; color:#5c50d6; border-radius:7px; padding:5px 8px; font-size:10px; font-weight:850; }
+    .level { color:#778197; font-size:10px; font-weight:800; }
+    h2 { margin:0; letter-spacing:-.035em; font-size:23px; line-height:1.2; }
+    .assignment-desc { margin:9px 0 0; color:#5d687c; font-size:13px; max-width:850px; }
+    .goal-box { display:flex; gap:10px; align-items:flex-start; padding:12px 13px; border:1px solid #e8e7ff; background:#fbfaff; margin-top:16px; border-radius:12px; }
+    .goal-icon { flex:0 0 25px; width:25px; height:25px; display:grid; place-items:center; border-radius:8px; color:var(--primary); background:#eeecff; font-size:13px; font-weight:900; }
+    .goal-copy { color:#555f74; font-size:12px; }
+    .goal-copy strong { display:block; color:#2a3150; font-size:11px; margin-bottom:2px; }
+    .assignment-bottom { margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+    .check-list { display:flex; gap:13px; flex-wrap:wrap; color:#687387; font-size:11px; }
+    .check-list span { display:inline-flex; align-items:center; gap:5px; }
+    .check-bullet { display:inline-grid; place-items:center; border:1px solid #dce2ec; color:#96a0b0; width:15px;height:15px;border-radius:50%;font-size:9px; }
+    .practice-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:stretch; }
+    .editor-panel, .preview-panel { overflow:hidden; min-width:0; }
+    .tool-header { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 15px; border-bottom:1px solid #283249; background:#172033; color:#f8fafc; }
+    .tool-title { display:flex; align-items:center; gap:9px; font-size:12px; font-weight:850; }
+    .tool-icon { width:25px;height:25px; display:grid;place-items:center;border-radius:7px;background:#2c3550;color:#c6c0ff;font-size:11px;font-weight:900; }
+    .file-chip { color:#b8c0d3; background:#293248; padding:4px 7px; border-radius:6px; font:10px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .editor-body { background:#111827; }
+    .editor-tip { padding:9px 15px 0; color:#8d9ab0; font-size:10px; }
+    .code-wrap { position:relative; display:flex; min-height:320px; padding:12px 0 15px; background:#111827; }
+    .line-numbers { flex:0 0 39px; text-align:right; padding:5px 11px 5px 0; color:#64748b; font:12px/1.75 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; user-select:none; overflow:hidden; white-space:pre; }
+    #cssEditor { display:block; min-height:290px; width:100%; flex:1; resize:vertical; border:0; outline:0; padding:5px 12px 5px 0; background:transparent; color:#dbe5ff; caret-color:#b5aaff; font:12px/1.75 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; tab-size:2; white-space:pre; overflow:auto; }
+    #cssEditor:focus-visible { outline:0; }
+    #cssEditor::selection { background:rgba(117,102,255,.4); }
+    .editor-footer { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-top:1px solid #283249; background:#172033; }
+    .editor-status { color:#8e9ab0; font-size:10px; display:flex; align-items:center; gap:6px; }
+    .editor-status i { display:block; width:6px;height:6px;border-radius:50%;background:#31bd89; }
+    .editor-actions { display:flex; gap:7px; }
+    .editor-actions .btn { padding:8px 10px; font-size:11px; }
+    .preview-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:13px 15px; border-bottom:1px solid var(--line); background:#fff; }
+    .preview-title { display:flex; align-items:center; gap:9px; font-size:12px; font-weight:850; }
+    .preview-icon { width:25px;height:25px; display:grid;place-items:center;border-radius:7px;background:#eaf8f1;color:#16835f;font-size:12px; }
+    .preview-label { font-size:10px; color:#8791a3; }
+    .browser-bar { height:29px; background:#f7f8fb; border-bottom:1px solid #e9edf4; display:flex; align-items:center; padding:0 12px; gap:5px; }
+    .browser-dot { width:6px;height:6px;border-radius:50%;background:#d6dce7; }
+    .browser-address { height:15px; flex:1; max-width:190px; margin-left:6px; border-radius:5px; background:#eceff5; color:#8f98a9; font-size:8px; display:flex; align-items:center; padding:0 7px; }
+    .preview-frame-wrap { min-height:320px; background:#fff; }
+    #previewFrame { width:100%; height:100%; min-height:320px; display:block; border:0; background:#fff; }
+    .preview-note { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:9px 13px; border-top:1px solid var(--line); color:#8791a3; background:#fff; font-size:10px; }
+    .preview-note span:first-child { display:flex; align-items:center; gap:6px; }
+    .live-indicator { width:6px;height:6px;border-radius:50%;background:#30b980; }
+    .feedback { padding:17px 19px; display:none; }
+    .feedback.visible { display:block; }
+    .feedback-top { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }
+    .feedback-heading { display:flex; align-items:center; gap:9px; }
+    .feedback-icon { width:30px;height:30px;display:grid;place-items:center;border-radius:10px;background:#e8f8f0;color:#16835f;font-weight:900; }
+    .feedback.fail .feedback-icon { background:var(--red-soft); color:var(--red); }
+    .feedback h3 { margin:0; font-size:14px; }
+    .feedback p { margin:3px 0 0; font-size:11px; color:var(--muted); }
+    .score { color:var(--green); font-size:19px; font-weight:900; letter-spacing:-.04em; white-space:nowrap; }
+    .feedback.fail .score { color:var(--red); }
+    .results-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:14px; }
+    .result-item { display:flex; align-items:flex-start; gap:8px; padding:10px 11px; background:#f8fafc; border:1px solid #edf0f5; border-radius:10px; font-size:11px; color:#475467; }
+    .result-status { width:17px;height:17px; flex:0 0 17px; border-radius:50%; display:grid;place-items:center;background:#e8f8f0;color:var(--green);font-size:10px;font-weight:900; }
+    .result-item.fail .result-status { background:#fff0f1;color:var(--red); }
+    .result-item strong { display:block; color:#293449; font-size:11px; margin-bottom:2px; }
+    .result-item small { display:block; color:#7b8496; line-height:1.4; font-size:10px; }
+    .feedback-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:13px; }
+    .feedback-actions .btn { font-size:11px; padding:8px 10px; }
+    .bottom-note { display:flex; justify-content:space-between; gap:15px; color:#8b95a6; font-size:10px; padding:0 3px; }
+    .bottom-note a { color:#6c61d9; text-decoration:none; }
+    .toast { position:fixed; z-index:20; bottom:22px; left:50%; transform:translate(-50%,12px); opacity:0; pointer-events:none; color:#fff; background:#172033; border-radius:12px; padding:11px 15px; box-shadow:0 12px 28px rgba(15,23,42,.25); font-size:12px; font-weight:700; transition:.2s ease; max-width:calc(100% - 30px); text-align:center; }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+    .empty-state { color:#8a94a7; font-size:12px; }
+    @media (max-width: 1100px) {
+      .app-shell { padding:18px; }
+      .layout { grid-template-columns:230px minmax(0,1fr); gap:14px; }
+      .practice-grid { grid-template-columns:1fr; }
+      .code-wrap { min-height:250px; }
+      #cssEditor { min-height:225px; }
+      .preview-frame-wrap, #previewFrame { min-height:290px; }
+    }
+    @media (max-width: 720px) {
+      .app-shell { padding:14px 12px 25px; }
+      .topbar { align-items:flex-start; }
+      .pill-label { display:none; }
+      .top-actions .btn { padding:8px 10px; }
+      .hero { display:block; }
+      .progress-card { margin-top:16px; max-width:310px; }
+      .layout { grid-template-columns:1fr; }
+      .tasks-panel { overflow:visible; }
+      .panel-heading { padding-bottom:8px; }
+      .task-list { display:flex; overflow:auto; padding:4px 10px 12px; scroll-snap-type:x mandatory; }
+      .task-item { min-width:158px; max-width:190px; scroll-snap-align:start; }
+      .sidebar-foot { display:none; }
+      .assignment { padding:17px 15px; }
+      .assignment-top { display:block; }
+      h2 { font-size:21px; }
+      .assignment-bottom { align-items:flex-start; }
+      .check-list { gap:8px; }
+      .results-list { grid-template-columns:1fr; }
+      .bottom-note { display:block; line-height:1.6; }
+      .bottom-note span { display:block; }
+    }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { transition:none !important; scroll-behavior:auto !important; } }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">{ }</div>
+        <div>
+          <div class="brand-name">CSS QUEST</div>
+          <div class="brand-sub">Coding Playground · ICT Class</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="pill-label"><span class="dot"></span> Editor aktif · Auto-check</span>
+        <button class="btn btn-soft" id="shareTaskBtn" type="button" title="Salin tautan tugas yang sedang dipilih">↗ <span>Bagikan tugas</span></button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Belajar sambil praktik</div>
+        <h1>CSS Playground<span style="color:var(--primary)">.</span></h1>
+        <p>Kerjakan tantangan CSS, lihat perubahan secara langsung, dan periksa hasilmu dengan pengecekan otomatis.</p>
+      </div>
+      <div class="progress-card" aria-live="polite">
+        <div class="progress-top"><span>Progres latihan</span><strong id="progressText">0 / 9 tugas</strong></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+    </section>
+
+    <main class="layout">
+      <aside class="panel tasks-panel">
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">09 TUGAS</span></div>
+        <nav class="task-list" id="taskList" aria-label="Pilih tugas CSS"></nav>
+        <div class="sidebar-foot"><strong>💡 Tips belajar</strong>Baca instruksi, tulis CSS pada editor, lalu tekan <b>Periksa Jawaban</b>. Progres tersimpan di browser perangkat ini.</div>
+      </aside>
+
+      <section class="workspace" aria-label="Area coding playground">
+        <article class="panel assignment">
+          <div class="assignment-top">
+            <div>
+              <div class="task-meta"><span class="tag" id="taskTag">CSS SELECTOR</span><span class="level" id="taskLevel">LEVEL 1 · DASAR</span></div>
+              <h2 id="taskTitle">Selector Elemen</h2>
+              <p class="assignment-desc" id="taskDescription"></p>
+            </div>
+          </div>
+          <div class="goal-box">
+            <div class="goal-icon">✦</div>
+            <div class="goal-copy"><strong>Target tugas</strong><span id="taskGoal"></span></div>
+          </div>
+          <div class="assignment-bottom">
+            <div class="check-list" id="taskHints"></div>
+            <button class="btn btn-quiet" id="hintBtn" type="button">Lihat petunjuk <span aria-hidden="true">⌄</span></button>
+          </div>
+          <div id="hintPanel" hidden style="margin-top:12px;padding:12px 13px;border-radius:11px;background:#f8f9fc;color:#5c6679;font-size:12px;"></div>
+        </article>
+
+        <div class="practice-grid">
+          <section class="panel editor-panel" aria-label="Editor CSS">
+            <div class="tool-header">
+              <div class="tool-title"><span class="tool-icon">{ }</span> Editor kode</div>
+              <span class="file-chip">style.css</span>
+            </div>
+            <div class="editor-body">
+              <div class="editor-tip">Tulis CSS-mu di bawah ini. Gunakan Tab untuk indentasi.</div>
+              <div class="code-wrap">
+                <pre class="line-numbers" id="lineNumbers" aria-hidden="true">1</pre>
+                <textarea id="cssEditor" aria-label="Tulis kode CSS" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off" placeholder="/* Tulis kode CSS di sini */"></textarea>
+              </div>
+            </div>
+            <div class="editor-footer">
+              <div class="editor-status"><i></i><span id="editorStatus">Siap menerima kode</span></div>
+              <div class="editor-actions">
+                <button class="btn btn-quiet" id="resetBtn" type="button" style="color:#bbc4d6;border-color:#384157;background:#202a3e;">Reset</button>
+                <button class="btn btn-primary" id="checkBtn" type="button">✓ Periksa Jawaban</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel preview-panel" aria-label="Preview hasil CSS">
+            <div class="preview-header">
+              <div class="preview-title"><span class="preview-icon">◉</span> Live preview</div>
+              <span class="preview-label">Hasil kode kamu</span>
+            </div>
+            <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span><div class="browser-address">preview.local / tugas</div></div>
+            <div class="preview-frame-wrap"><iframe title="Hasil preview CSS" id="previewFrame" sandbox="allow-scripts"></iframe></div>
+            <div class="preview-note"><span><i class="live-indicator"></i> Preview terisolasi</span><span>Perubahan tampil otomatis</span></div>
+          </section>
+        </div>
+
+        <section class="panel feedback" id="feedbackPanel" aria-live="polite">
+          <div class="feedback-top">
+            <div class="feedback-heading"><div class="feedback-icon" id="feedbackIcon">✓</div><div><h3 id="feedbackTitle">Hasil pengecekan</h3><p id="feedbackSubtitle"></p></div></div>
+            <div class="score" id="feedbackScore">0%</div>
+          </div>
+          <div class="results-list" id="resultsList"></div>
+          <div class="feedback-actions">
+            <button class="btn btn-soft" id="copyResultBtn" type="button">▣ Salin hasil</button>
+            <button class="btn btn-primary" id="nextTaskBtn" type="button">Tugas berikutnya →</button>
+          </div>
+        </section>
+
+        <div class="bottom-note"><span>CSS Quest · Materi: selector, color, dan background.</span><span>Catatan: penilaian dilakukan di browser; belum mengirim nilai ke dashboard guru.</span></div>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    'use strict';
+
+    const TASKS = [
+      {
+        id: 'selector-element', number: 1, title: 'Selector Elemen', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
+        description: 'Gunakan selector elemen untuk menargetkan beberapa elemen HTML sekaligus tanpa menambahkan class atau id baru.',
+        goal: 'Buat semua paragraf pada preview berwarna biru dengan kode warna #2563eb.',
+        hints: ['Selector elemen', 'color'], hint: 'Pilih nama tag HTML sebagai selector. Contohnya, selector p akan menargetkan semua elemen paragraf. Gunakan properti color untuk mengatur warna teks.',
+        html: `<main class="mini-page"><span class="eyebrow">WELCOME TO CSS</span><h1 id="judul">Belajar Web Design</h1><p id="p1">CSS membuat halaman web lebih menarik.</p><p id="p2">Kamu bisa mengatur warna teks dengan mudah.</p><button class="demo-button" id="tombol">Mulai Belajar</button></main>`,
+        checks: [
+          { label: 'Selector p digunakan', detail: 'Buat satu aturan CSS dengan selector p dan properti color.', requiredSelectors: ['p'], declaredProperties: ['color'] },
+          { label: 'Kedua paragraf berwarna biru', detail: 'Pastikan semua paragraf menggunakan warna #2563eb.', targetIds: ['p1','p2'], computedProperty: 'color', expected: 'rgb(37, 99, 235)' }
+        ]
+      },
+      {
+        id: 'selector-class', number: 2, title: 'Selector Class', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
+        description: 'Class dipakai untuk memilih elemen tertentu yang memiliki nama class sama. Tidak semua teks harus ikut berubah.',
+        goal: 'Ubah hanya teks yang memiliki class highlight menjadi oranye (#b45309).',
+        hints: ['Selector class', 'color'], hint: 'Selector untuk class selalu diawali tanda titik. Contoh: .highlight { color: ... }',
+        html: `<main class="mini-page"><span class="eyebrow">SELECT THE RIGHT TEXT</span><h1>Warna Teks</h1><p>Ini teks biasa dan harus tetap seperti semula.</p><p id="teksHighlight" class="highlight">Teks ini perlu diwarnai oranye.</p><p id="teksBiasa">Teks biasa lainnya tidak ikut berubah.</p></main>`,
+        checks: [
+          { label: 'Selector .highlight digunakan', detail: 'Pilih class dengan tanda titik dan tambahkan properti color.', requiredSelectors: ['.highlight'], declaredProperties: ['color'] },
+          { label: 'Teks highlight berwarna oranye', detail: 'Warna teks highlight harus #b45309.', targetIds: ['teksHighlight'], computedProperty: 'color', expected: 'rgb(180, 83, 9)' },
+          { label: 'Teks biasa tidak ikut oranye', detail: 'Teks biasa harus tetap memiliki warna berbeda dari highlight.', targetIds: ['teksBiasa'], computedProperty: 'color', expectedNot: 'rgb(180, 83, 9)' }
+        ]
+      },
+      {
+        id: 'selector-id', number: 3, title: 'Selector ID', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
+        description: 'Selector ID digunakan untuk memilih satu elemen unik melalui atribut id pada HTML.',
+        goal: 'Ubah warna judul utama menjadi ungu (#7c3aed), tanpa mengubah subjudul.',
+        hints: ['Selector ID', 'color'], hint: 'Selector ID diawali tanda pagar (#). Perhatikan atribut id pada judul di preview.',
+        html: `<main class="mini-page"><span class="eyebrow">UNIQUE ELEMENT</span><h1 id="judulUtama">Kreatif dengan CSS</h1><h2 id="subjudulTetap">Belajar sedikit demi sedikit</h2><p>Atur warna judul utama saja menggunakan ID.</p></main>`,
+        checks: [
+          { label: 'Selector #judulUtama digunakan', detail: 'Gunakan selector ID #judulUtama dengan properti color.', requiredSelectors: ['#judulUtama'], declaredProperties: ['color'] },
+          { label: 'Judul utama berwarna ungu', detail: 'Warna judul utama harus #7c3aed.', targetIds: ['judulUtama'], computedProperty: 'color', expected: 'rgb(124, 58, 237)' },
+          { label: 'Subjudul tetap berbeda warna', detail: 'Jangan mengubah warna subjudul menjadi ungu yang sama.', targetIds: ['subjudulTetap'], computedProperty: 'color', expectedNot: 'rgb(124, 58, 237)' }
+        ]
+      },
+      {
+        id: 'selector-group', number: 4, title: 'Selector Gabungan', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH',
+        description: 'Gabungkan beberapa selector dalam satu aturan agar gaya yang sama dapat diterapkan secara ringkas.',
+        goal: 'Buat judul bagian dan tagline sama-sama berwarna teal (#0f766e) dalam satu aturan selector gabungan.',
+        hints: ['Selector gabungan', 'color'], hint: 'Pisahkan selector dengan koma. Pastikan h2 dan .tagline berada dalam aturan CSS yang sama.',
+        html: `<main class="mini-page"><span class="eyebrow">GROUP YOUR SELECTORS</span><h1>Belajar Bersama</h1><h2 id="subjudul">Tantangan Minggu Ini</h2><p id="tagline" class="tagline">Pilih selector secara cerdas.</p><p id="paragrafLain">Paragraf ini tidak perlu ikut berubah.</p></main>`,
+        checks: [
+          { label: 'h2 dan .tagline digabung', detail: 'Kedua selector harus berada dalam satu aturan CSS yang sama.', requiredSelectors: ['h2','.tagline'], declaredProperties: ['color'] },
+          { label: 'Judul dan tagline berwarna teal', detail: 'Kedua elemen harus memiliki warna #0f766e.', targetIds: ['subjudul','tagline'], computedProperty: 'color', expected: 'rgb(15, 118, 110)' }
+        ]
+      },
+      {
+        id: 'selector-descendant', number: 5, title: 'Descendant Selector', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH',
+        description: 'Selector turunan memilih elemen berdasarkan letaknya di dalam elemen lain, sehingga gaya bisa lebih spesifik.',
+        goal: 'Warnai merah (#be123c) hanya paragraf yang berada di dalam kartu. Paragraf di luar kartu jangan ikut berubah.',
+        hints: ['Descendant selector', 'color'], hint: 'Gunakan dua selector yang dipisahkan spasi, misalnya .kartu p. Spasi menunjukkan elemen p yang berada di dalam .kartu.',
+        html: `<main class="mini-page"><span class="eyebrow">TARGET ELEMENTS IN CONTEXT</span><h1>Pengumuman</h1><div class="kartu" id="kartu"><strong>Kartu Informasi</strong><p id="paragrafDalam">Paragraf di dalam kartu harus berwarna merah.</p></div><p id="paragrafLuar">Paragraf di luar kartu harus tetap berwarna normal.</p></main>`,
+        checks: [
+          { label: 'Selector .kartu p digunakan', detail: 'Gunakan selector turunan .kartu p dan properti color.', requiredSelectors: ['.kartu p'], declaredProperties: ['color'] },
+          { label: 'Paragraf di dalam kartu berwarna merah', detail: 'Warna paragraf dalam kartu harus #be123c.', targetIds: ['paragrafDalam'], computedProperty: 'color', expected: 'rgb(190, 18, 60)' },
+          { label: 'Paragraf luar tidak ikut merah', detail: 'Paragraf di luar kartu tidak boleh memakai warna merah yang sama.', targetIds: ['paragrafLuar'], computedProperty: 'color', expectedNot: 'rgb(190, 18, 60)' }
+        ]
+      },
+      {
+        id: 'background-body', number: 6, title: 'Background Halaman', category: 'Background', level: 'LEVEL 1 · DASAR',
+        description: 'Atur warna latar halaman untuk membangun suasana visual yang sesuai dengan desain.',
+        goal: 'Ubah background halaman menjadi kuning pastel (#fef3c7). Gunakan selector body.',
+        hints: ['Selector body', 'background-color'], hint: 'Untuk mengubah latar seluruh halaman, gunakan selector body dan properti background-color. Properti background juga dapat digunakan.',
+        html: `<main class="mini-page"><span class="eyebrow">PAGE BACKGROUND</span><h1>Halaman Ceria</h1><p>Warna latar halaman ini perlu diubah menjadi kuning pastel.</p><div class="mini-row"><span class="mini-dot"></span><span>Warna latar yang nyaman membuat konten lebih menarik.</span></div></main>`,
+        checks: [
+          { label: 'Selector body digunakan', detail: 'Atur warna latar pada selector body.', requiredSelectors: ['body'], declaredProperties: ['background','background-color'] },
+          { label: 'Latar halaman menjadi kuning pastel', detail: 'Warna background halaman harus #fef3c7.', targetBody: true, computedProperty: 'backgroundColor', expected: 'rgb(254, 243, 199)' }
+        ]
+      },
+      {
+        id: 'background-card', number: 7, title: 'Background pada Kartu', category: 'Background', level: 'LEVEL 2 · MENENGAH',
+        description: 'Properti background dapat menerima warna latar. Terapkan gaya hanya pada komponen kartu yang ditentukan.',
+        goal: 'Ubah latar kartu menjadi hijau pastel (#dcfce7) tanpa memberi latar yang sama pada kotak luar.',
+        hints: ['Selector class', 'background'], hint: 'Targetkan class .kartu. Gunakan background: #dcfce7; atau background-color: #dcfce7;.',
+        html: `<main class="mini-page"><span class="eyebrow">COMPONENT STYLING</span><h1>Kartu Profil</h1><div class="kartu" id="kartuProfil"><div class="avatar">AF</div><div><strong>Al Firdaus</strong><p>Belajar teknologi dengan kreatif.</p></div></div><div class="kotakLuar" id="kotakLuar">Kotak luar tidak perlu memiliki warna hijau yang sama.</div></main>`,
+        checks: [
+          { label: 'Selector .kartu digunakan', detail: 'Pilih kartu menggunakan selector class .kartu.', requiredSelectors: ['.kartu'], declaredProperties: ['background','background-color'] },
+          { label: 'Latar kartu menjadi hijau pastel', detail: 'Warna latar kartu harus #dcfce7.', targetIds: ['kartuProfil'], computedProperty: 'backgroundColor', expected: 'rgb(220, 252, 231)' },
+          { label: 'Kotak luar tidak ikut hijau', detail: 'Kotak luar tidak boleh memakai warna latar yang sama.', targetIds: ['kotakLuar'], computedProperty: 'backgroundColor', expectedNot: 'rgb(220, 252, 231)' }
+        ]
+      },
+      {
+        id: 'background-gradient', number: 8, title: 'Background Gradient', category: 'Background', level: 'LEVEL 2 · MENENGAH',
+        description: 'Buat latar gradasi dengan CSS agar banner terlihat lebih hidup. Gunakan linear-gradient sebagai background.',
+        goal: 'Buat banner memiliki gradasi linear dari ungu ke merah muda. Arah atau sudut gradasi boleh kamu pilih.',
+        hints: ['linear-gradient()', 'background'], hint: 'Contoh pola: background: linear-gradient(135deg, #7c3aed, #ec4899);. Kamu boleh memakai sudut dan dua warna yang berbeda.',
+        html: `<main class="mini-page"><div id="banner" class="banner"><span class="banner-kicker">CSS CREATIVE</span><h1>Make It Colorful</h1><p>Gabungkan dua warna untuk membuat gradasi.</p></div><p style="margin-top:18px">Banner di atas adalah target tugasmu.</p></main>`,
+        checks: [
+          { label: 'Selector .banner digunakan', detail: 'Targetkan elemen banner dengan selector .banner.', requiredSelectors: ['.banner'], declaredProperties: ['background','background-image'] },
+          { label: 'Banner memakai linear-gradient', detail: 'Latar banner harus menggunakan linear-gradient().', targetIds: ['banner'], computedProperty: 'backgroundImage', expectedIncludes: 'linear-gradient' }
+        ]
+      },
+      {
+        id: 'challenge-badge', number: 9, title: 'Tantangan: Badge', category: 'Challenge', level: 'LEVEL 3 · TANTANGAN',
+        description: 'Gabungkan selector class, warna teks, dan warna latar untuk menata badge status.',
+        goal: 'Buat badge .status berwarna teks putih (#ffffff) dengan latar teal (#0f766e).',
+        hints: ['Selector class', 'color + background'], hint: 'Kamu membutuhkan selector .status dan dua deklarasi: color untuk teks, serta background atau background-color untuk latar.',
+        html: `<main class="mini-page"><span class="eyebrow">FINAL CHALLENGE</span><h1>Status Proyek</h1><div class="status-row"><span id="badgeStatus" class="status">SELESAI</span><span>Proyek web siswa</span></div><p>Badge harus mudah dibaca dengan kontras warna yang baik.</p></main>`,
+        checks: [
+          { label: 'Selector .status mengatur teks dan latar', detail: 'Di selector .status, deklarasikan color dan background atau background-color.', requiredSelectors: ['.status'], declaredPropertyGroups: [['color'],['background','background-color']] },
+          { label: 'Teks badge berwarna putih', detail: 'Warna teks badge harus #ffffff.', targetIds: ['badgeStatus'], computedProperty: 'color', expected: 'rgb(255, 255, 255)' },
+          { label: 'Latar badge berwarna teal', detail: 'Warna latar badge harus #0f766e.', targetIds: ['badgeStatus'], computedProperty: 'backgroundColor', expected: 'rgb(15, 118, 110)' }
+        ]
+      }
+    ];
+
+    const BASE_PREVIEW_CSS = `
+      html,body{margin:0;min-height:100%;}
+      body{padding:22px;background-color:#ffffff;color:#1f2937;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;line-height:1.6;}
+      *{box-sizing:border-box;}
+      .mini-page{max-width:500px;margin:0 auto;}
+      .eyebrow{display:inline-block;color:#7c6cf4;font-size:10px;letter-spacing:.14em;font-weight:850;margin-bottom:9px;}
+      h1{font-size:25px;line-height:1.2;letter-spacing:-.04em;margin:0 0 13px;color:#182238;}
+      h2{font-size:18px;margin:12px 0;color:#344054;}
+      p{font-size:13px;margin:9px 0;color:#475467;}
+      .demo-button{margin-top:7px;background:#6658e8;border:0;border-radius:9px;padding:9px 13px;color:#fff;font-weight:750;font-size:12px;}
+      .highlight{padding:8px 10px;border-radius:8px;display:inline-block;}
+      .tagline{font-size:14px;}
+      .kartu{padding:14px;border-radius:13px;border:1px solid #e3e8f0;background:#f8fafc;margin:12px 0;}
+      .kartu p{margin-bottom:0;}
+      .kotakLuar{margin-top:13px;padding:12px;border:1px dashed #cbd5e1;border-radius:10px;background:#f8fafc;color:#64748b;font-size:12px;}
+      .mini-row{display:flex;gap:10px;align-items:center;margin-top:18px;padding:11px;background:#f8fafc;border-radius:10px;font-size:12px;color:#475467;}
+      .mini-dot{width:10px;height:10px;border-radius:50%;background:#94a3b8;flex:0 0 10px;}
+      .avatar{display:grid;place-items:center;float:left;width:38px;height:38px;margin-right:11px;border-radius:12px;background:#ddd6fe;color:#5b21b6;font-size:12px;font-weight:900;}
+      .kartu strong{font-size:13px;}
+      .banner{padding:21px;border-radius:15px;min-height:185px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;background:#e9e7ff;color:white;}
+      .banner-kicker{font-size:9px;font-weight:900;letter-spacing:.15em;opacity:.9;margin-bottom:6px;}
+      .banner h1{color:#fff;margin-bottom:7px;}
+      .banner p{color:#fff;margin:0;font-size:12px;}
+      .status-row{display:flex;align-items:center;gap:11px;padding:12px;background:#f8fafc;border-radius:12px;margin:14px 0;color:#64748b;font-size:12px;}
+      .status{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:7px;background:#e5e7eb;color:#374151;font-size:10px;font-weight:900;letter-spacing:.03em;}
+    `;
+
+    const $ = (selector) => document.querySelector(selector);
+    const editor = $('#cssEditor');
+    const previewFrame = $('#previewFrame');
+    const taskList = $('#taskList');
+    const feedbackPanel = $('#feedbackPanel');
+    let currentTask = TASKS[0];
+    let pendingCheck = false;
+    let lastResults = null;
+    let toastTimer = null;
+    let renderTimer = null;
+    let checkTimer = null;
+    let codes = readStore('css_quest_codes_v1', {});
+    let completed = new Set(readStore('css_quest_completed_v1', []));
+
+    function readStore(key, fallback) {
+      try { const value = localStorage.getItem(key); return value ? JSON.parse(value) : fallback; }
+      catch { return fallback; }
+    }
+    function writeStore(key, value) {
+      try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Browser storage may be unavailable. */ }
+    }
+    function taskById(id) { return TASKS.find(t => t.id === id); }
+    function renderTaskList() {
+      taskList.innerHTML = TASKS.map(task => {
+        const active = task.id === currentTask.id;
+        const done = completed.has(task.id);
+        return `<button type="button" class="task-item${active ? ' active' : ''}${done ? ' done' : ''}" data-task-id="${task.id}" aria-current="${active ? 'page' : 'false'}">
+          <span class="task-number">${done ? '✓' : String(task.number).padStart(2,'0')}</span>
+          <span class="task-text"><span class="task-name">${task.title}</span><span class="task-category">${task.category}</span></span>
+          ${done ? '<span class="task-done" aria-label="Selesai">✓</span>' : ''}
+        </button>`;
+      }).join('');
+      $('#taskCount').textContent = `${String(TASKS.length).padStart(2,'0')} TUGAS`;
+      $('#progressText').textContent = `${completed.size} / ${TASKS.length} tugas`;
+      $('#progressFill').style.width = `${Math.min(100, completed.size / TASKS.length * 100)}%`;
+      taskList.querySelectorAll('[data-task-id]').forEach(button => button.addEventListener('click', () => selectTask(button.dataset.taskId)));
+    }
+    function selectTask(taskId) {
+      const task = taskById(taskId);
+      if (!task) return;
+      if (currentTask) codes[currentTask.id] = editor.value;
+      writeStore('css_quest_codes_v1', codes);
+      currentTask = task;
+      editor.value = codes[currentTask.id] ?? '';
+      $('#taskTag').textContent = currentTask.category.toUpperCase();
+      $('#taskLevel').textContent = currentTask.level;
+      $('#taskTitle').textContent = currentTask.title;
+      $('#taskDescription').textContent = currentTask.description;
+      $('#taskGoal').textContent = currentTask.goal;
+      $('#taskHints').innerHTML = currentTask.hints.map(h => `<span><i class="check-bullet">✓</i>${escapeHtml(h)}</span>`).join('');
+      $('#hintPanel').hidden = true;
+      $('#hintPanel').textContent = currentTask.hint;
+      $('#hintBtn').innerHTML = 'Lihat petunjuk <span aria-hidden="true">⌄</span>';
+      feedbackPanel.classList.remove('visible','fail');
+      lastResults = null;
+      $('#editorStatus').textContent = editor.value.trim() ? 'Kode tersimpan di browser' : 'Siap menerima kode';
+      updateLineNumbers();
+      renderTaskList();
+      renderPreview();
+      const url = new URL(location.href);
+      url.searchParams.set('task', currentTask.id);
+      try { history.replaceState(null, '', url); } catch { /* Some local file contexts do not allow history changes. */ }
+    }
+    function escapeHtml(text) {
+      return String(text).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    }
+    function updateLineNumbers() {
+      const lines = Math.max(1, editor.value.split('\n').length);
+      $('#lineNumbers').textContent = Array.from({length: lines}, (_, index) => index + 1).join('\n');
+    }
+    function buildPreviewDocument(css) {
+      // Prevent CSS input from closing its own style element in the sandboxed preview.
+      const safeCss = String(css).replace(/<\/style/gi, '<\\/style');
+      const script = `
+        (function(){
+          function collectRules(rules, output){
+            for(var i=0;i<rules.length;i++){
+              var rule=rules[i];
+              if(rule.selectorText && rule.style){
+                var declarations={};
+                ['color','background','background-color','background-image'].forEach(function(prop){
+                  var value=rule.style.getPropertyValue(prop);
+                  if(value) declarations[prop]=value.trim();
+                });
+                output.push({selectors:rule.selectorText.split(',').map(function(s){return s.trim();}),declarations:declarations});
+              } else if(rule.cssRules) { try{collectRules(rule.cssRules,output);}catch(e){} }
+            }
+          }
+          function report(){
+            var elements={};
+            document.querySelectorAll('[id]').forEach(function(el){
+              var s=getComputedStyle(el);
+              elements[el.id]={color:s.color,backgroundColor:s.backgroundColor,backgroundImage:s.backgroundImage};
+            });
+            var bodyStyle=getComputedStyle(document.body);
+            var rules=[];
+            try{collectRules(document.getElementById('student-css').sheet.cssRules,rules);}catch(e){}
+            parent.postMessage({type:'css-quest-report',elements:elements,body:{color:bodyStyle.color,backgroundColor:bodyStyle.backgroundColor,backgroundImage:bodyStyle.backgroundImage},rules:rules},'*');
+          }
+          if(document.readyState==='complete') setTimeout(report,0); else window.addEventListener('load',function(){setTimeout(report,0)});
+        })();
+      `;
+      return `<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data: blob:; font-src data:;"><style id="base-css">${BASE_PREVIEW_CSS}</style><style id="student-css">${safeCss}</style></head><body>${currentTask.html}<script>${script}<\/script></body></html>`;
+    }
+    function renderPreview() {
+      previewFrame.srcdoc = buildPreviewDocument(editor.value);
+    }
+    function normalizedSelector(selector) {
+      return String(selector).trim().replace(/\s+/g,' ').replace(/\s*([>+~])\s*/g,'$1');
+    }
+    function criterionPasses(criterion, report) {
+      const reasons = [];
+      if (criterion.requiredSelectors && criterion.requiredSelectors.length) {
+        const found = report.rules.some(rule => {
+          const ruleSelectors = rule.selectors.map(normalizedSelector);
+          return criterion.requiredSelectors.every(selector => ruleSelectors.includes(normalizedSelector(selector))) &&
+            (!criterion.declaredProperties || criterion.declaredProperties.length === 0 || criterion.declaredProperties.some(prop => Object.prototype.hasOwnProperty.call(rule.declarations, prop))) &&
+            (!criterion.declaredPropertyGroups || criterion.declaredPropertyGroups.every(group => group.some(prop => Object.prototype.hasOwnProperty.call(rule.declarations, prop))));
+        });
+        if (!found) reasons.push('Selector atau properti CSS yang diminta belum ditemukan dalam aturan yang sama.');
+      }
+      const targets = criterion.targetBody ? [report.body] : (criterion.targetIds || []).map(id => report.elements[id]).filter(Boolean);
+      if (criterion.targetBody || (criterion.targetIds && criterion.targetIds.length)) {
+        if (targets.length !== (criterion.targetBody ? 1 : criterion.targetIds.length)) reasons.push('Elemen target tidak ditemukan pada preview.');
+        else {
+          const actualValues = targets.map(target => target[criterion.computedProperty]);
+          if (criterion.expected !== undefined && !actualValues.every(value => value === criterion.expected)) reasons.push('Nilai tampilan belum sesuai dengan target.');
+          if (criterion.expectedIncludes !== undefined && !actualValues.every(value => String(value || '').includes(criterion.expectedIncludes))) reasons.push('Efek CSS yang diharapkan belum muncul.');
+          if (criterion.expectedNot !== undefined && !actualValues.every(value => value !== criterion.expectedNot)) reasons.push('Elemen yang seharusnya tidak berubah masih memiliki nilai tersebut.');
+        }
+      }
+      return { passed: reasons.length === 0, reasons };
+    }
+    function runChecks(report) {
+      const results = currentTask.checks.map(criterion => ({...criterion, ...criterionPasses(criterion, report)}));
+      const passed = results.filter(result => result.passed).length;
+      lastResults = { task: currentTask, results, passed, total: results.length, percent: Math.round(passed / results.length * 100) };
+      if (passed === results.length) completed.add(currentTask.id);
+      else completed.delete(currentTask.id);
+      writeStore('css_quest_completed_v1', Array.from(completed));
+      codes[currentTask.id] = editor.value;
+      writeStore('css_quest_codes_v1', codes);
+      renderTaskList();
+      showFeedback(lastResults);
+    }
+    function showFeedback(result) {
+      feedbackPanel.classList.add('visible');
+      const perfect = result.passed === result.total;
+      feedbackPanel.classList.toggle('fail', !perfect);
+      $('#feedbackIcon').textContent = perfect ? '✓' : '!';
+      $('#feedbackTitle').textContent = perfect ? 'Mantap! Tugas berhasil.' : 'Sedikit lagi, coba perbaiki.';
+      $('#feedbackSubtitle').textContent = perfect ? 'Semua kriteria pada tugas ini sudah terpenuhi.' : 'Perhatikan bagian yang belum lolos, lalu ubah kode dan periksa lagi.';
+      $('#feedbackScore').textContent = `${result.percent}%`;
+      $('#resultsList').innerHTML = result.results.map(item => `<div class="result-item${item.passed ? '' : ' fail'}"><span class="result-status">${item.passed ? '✓' : '×'}</span><div><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.passed ? 'Lolos' : (item.reasons[0] || item.detail))}</small></div></div>`).join('');
+      $('#nextTaskBtn').textContent = result.task.id === TASKS[TASKS.length - 1].id ? 'Kembali ke tugas pertama ↺' : 'Tugas berikutnya →';
+    }
+    function showToast(message) {
+      const toast = $('#toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+    async function copyText(text, successMessage) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+        else {
+          const field = document.createElement('textarea');
+          field.value = text; field.style.position = 'fixed'; field.style.left = '-9999px';
+          document.body.appendChild(field); field.select();
+          const ok = document.execCommand('copy'); field.remove();
+          if (!ok) throw new Error('copy failed');
+        }
+        showToast(successMessage);
+      } catch {
+        showToast('Gagal menyalin otomatis. Silakan salin teks secara manual.');
+      }
+    }
+
+    editor.addEventListener('input', () => {
+      codes[currentTask.id] = editor.value;
+      writeStore('css_quest_codes_v1', codes);
+      if (completed.has(currentTask.id)) { completed.delete(currentTask.id); writeStore('css_quest_completed_v1', Array.from(completed)); renderTaskList(); }
+      feedbackPanel.classList.remove('visible','fail');
+      lastResults = null;
+      $('#editorStatus').textContent = editor.value.trim() ? 'Kode tersimpan di browser' : 'Siap menerima kode';
+      updateLineNumbers();
+      clearTimeout(renderTimer);
+      renderTimer = setTimeout(renderPreview, 220);
+    });
+    editor.addEventListener('scroll', () => { $('#lineNumbers').scrollTop = editor.scrollTop; });
+    editor.addEventListener('keydown', event => {
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        const start = editor.selectionStart, end = editor.selectionEnd;
+        editor.setRangeText('  ', start, end, 'end');
+        editor.dispatchEvent(new Event('input', {bubbles:true}));
+      }
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+        event.preventDefault(); $('#checkBtn').click();
+      }
+    });
+    window.addEventListener('message', event => {
+      if (event.source !== previewFrame.contentWindow || !event.data || event.data.type !== 'css-quest-report') return;
+      if (pendingCheck) {
+        pendingCheck = false;
+        clearTimeout(checkTimer);
+        runChecks(event.data);
+      }
+    });
+    $('#checkBtn').addEventListener('click', () => {
+      pendingCheck = true;
+      $('#editorStatus').textContent = 'Sedang memeriksa kode…';
+      clearTimeout(checkTimer);
+      renderPreview();
+      checkTimer = setTimeout(() => {
+        if (pendingCheck) {
+          pendingCheck = false;
+          $('#editorStatus').textContent = 'Preview belum merespons';
+          showToast('Preview belum merespons. Coba periksa lagi.');
+        }
+      }, 1800);
+    });
+    $('#resetBtn').addEventListener('click', () => {
+      editor.value = '';
+      codes[currentTask.id] = '';
+      completed.delete(currentTask.id);
+      writeStore('css_quest_codes_v1', codes);
+      writeStore('css_quest_completed_v1', Array.from(completed));
+      feedbackPanel.classList.remove('visible','fail');
+      lastResults = null;
+      $('#editorStatus').textContent = 'Kode direset';
+      updateLineNumbers(); renderTaskList(); renderPreview();
+      showToast('Editor tugas ini sudah direset.');
+    });
+    $('#hintBtn').addEventListener('click', () => {
+      const panel = $('#hintPanel');
+      panel.hidden = !panel.hidden;
+      $('#hintBtn').innerHTML = panel.hidden ? 'Lihat petunjuk <span aria-hidden="true">⌄</span>' : 'Sembunyikan petunjuk <span aria-hidden="true">⌃</span>';
+    });
+    $('#shareTaskBtn').addEventListener('click', () => {
+      const url = new URL(location.href);
+      url.searchParams.set('task', currentTask.id);
+      copyText(url.toString(), 'Tautan tugas berhasil disalin. Bagikan kepada siswa.');
+    });
+    $('#copyResultBtn').addEventListener('click', () => {
+      if (!lastResults) return showToast('Periksa jawaban terlebih dahulu.');
+      const lines = [
+        `Hasil CSS Quest — ${lastResults.task.title}`,
+        `Skor: ${lastResults.passed}/${lastResults.total} kriteria (${lastResults.percent}%)`,
+        ...lastResults.results.map(item => `${item.passed ? '[LOLOS]' : '[PERLU PERBAIKAN]'} ${item.label}`)
+      ];
+      copyText(lines.join('\n'), 'Ringkasan hasil berhasil disalin.');
+    });
+    $('#nextTaskBtn').addEventListener('click', () => {
+      const index = TASKS.findIndex(task => task.id === currentTask.id);
+      const next = TASKS[(index + 1) % TASKS.length];
+      selectTask(next.id);
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    const requestedTask = new URLSearchParams(location.search).get('task');
+    renderTaskList();
+    selectTask(taskById(requestedTask) ? requestedTask : TASKS[0].id);
+  </script>
+</body>
+</html>
