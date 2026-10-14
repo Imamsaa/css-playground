@@ -89,6 +89,21 @@
     .goal-icon { flex:0 0 25px; width:25px; height:25px; display:grid; place-items:center; border-radius:8px; color:var(--primary); background:#eeecff; font-size:13px; font-weight:900; }
     .goal-copy { color:#555f74; font-size:12px; }
     .goal-copy strong { display:block; color:#2a3150; font-size:11px; margin-bottom:2px; }
+    .reference-panel { padding:16px 18px; }
+    .reference-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:12px; }
+    .reference-title { color:#202a40; font-size:13px; font-weight:850; }
+    .reference-subtitle { margin:4px 0 0; color:var(--muted); font-size:11px; line-height:1.5; }
+    .reference-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+    .reference-group { min-width:0; padding:11px; border:1px solid #edf0f6; background:#fbfcff; border-radius:12px; }
+    .reference-group-title { display:flex; align-items:center; justify-content:space-between; gap:8px; color:#344054; font-size:11px; font-weight:850; }
+    .reference-count { flex:0 0 auto; padding:3px 6px; background:#f0efff; color:#5c50d6; border-radius:6px; font-size:9px; }
+    .reference-items { display:flex; flex-wrap:wrap; align-items:stretch; gap:7px; margin-top:9px; }
+    .ref-chip { display:flex; flex-direction:column; align-items:flex-start; gap:3px; max-width:100%; padding:7px 9px; border:1px solid #e1e6f0; border-radius:8px; background:#fff; color:#4b5568; text-align:left; cursor:pointer; transition:border-color .15s,background .15s,transform .15s; }
+    .ref-chip:hover { border-color:#bcb5ff; background:#f7f5ff; transform:translateY(-1px); }
+    .ref-chip:focus-visible { outline:3px solid rgba(101,88,232,.25); outline-offset:2px; }
+    .ref-chip code { color:#5145cd; font:750 11px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; overflow-wrap:anywhere; }
+    .ref-chip span { color:#7b8496; font-size:9px; line-height:1.35; overflow-wrap:anywhere; }
+    .reference-empty { margin:9px 0 0; color:#8791a3; font-size:10px; }
     .assignment-bottom { margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
     .check-list { display:flex; gap:13px; flex-wrap:wrap; color:#687387; font-size:11px; }
     .check-list span { display:inline-flex; align-items:center; gap:5px; }
@@ -153,6 +168,9 @@
       .code-wrap { min-height:250px; }
       #cssEditor { min-height:225px; }
       .preview-frame-wrap, #previewFrame { min-height:290px; }
+      .reference-panel { padding:14px; }
+      .reference-grid { gap:8px; }
+      .reference-group { padding:9px; }
     }
     @media (max-width: 720px) {
       .app-shell { padding:14px 12px 25px; }
@@ -172,6 +190,9 @@
       h2 { font-size:21px; }
       .assignment-bottom { align-items:flex-start; }
       .check-list { gap:8px; }
+      .reference-head { display:block; }
+      #referenceSummary { display:inline-flex; margin-top:8px; }
+      .reference-grid { grid-template-columns:1fr; }
       .results-list { grid-template-columns:1fr; }
       .bottom-note { display:block; line-height:1.6; }
       .bottom-note span { display:block; }
@@ -233,6 +254,17 @@
           </div>
           <div id="hintPanel" hidden style="margin-top:12px;padding:12px 13px;border-radius:11px;background:#f8f9fc;color:#5c6679;font-size:12px;"></div>
         </article>
+
+        <section class="panel reference-panel" aria-labelledby="referenceTitle">
+          <div class="reference-head">
+            <div>
+              <div class="reference-title" id="referenceTitle">Referensi HTML pada tugas ini</div>
+              <p class="reference-subtitle">Daftar ini diambil dari HTML pada preview. Class diawali titik (.) dan ID diawali tanda pagar (#). Klik nama untuk memasukkan pola selector ke editor CSS.</p>
+            </div>
+            <span class="count-chip" id="referenceSummary">Memuat…</span>
+          </div>
+          <div class="reference-grid" id="htmlReferenceGrid" aria-live="polite"></div>
+        </section>
 
         <div class="practice-grid">
           <section class="panel editor-panel" aria-label="Editor CSS">
@@ -436,6 +468,14 @@
     let codes = readStore('css_quest_codes_v1', {});
     let completed = new Set(readStore('css_quest_completed_v1', []));
 
+    const HTML_TAG_DESCRIPTIONS = {
+      main: 'Konten utama halaman', span: 'Teks pendek di dalam baris', h1: 'Judul utama', h2: 'Judul bagian', h3: 'Subjudul',
+      p: 'Paragraf teks', div: 'Wadah untuk mengelompokkan elemen', button: 'Tombol yang dapat diklik', strong: 'Teks penting atau tebal',
+      small: 'Teks berukuran kecil', section: 'Bagian halaman', article: 'Konten mandiri', header: 'Bagian kepala', footer: 'Bagian penutup',
+      nav: 'Navigasi halaman', ul: 'Daftar tidak berurutan', ol: 'Daftar berurutan', li: 'Item daftar', a: 'Tautan', label: 'Label formulir',
+      input: 'Kolom input', img: 'Gambar', form: 'Formulir', em: 'Penekanan teks', br: 'Pindah baris', hr: 'Garis pemisah'
+    };
+
     function readStore(key, fallback) {
       try { const value = localStorage.getItem(key); return value ? JSON.parse(value) : fallback; }
       catch { return fallback; }
@@ -444,6 +484,65 @@
       try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Browser storage may be unavailable. */ }
     }
     function taskById(id) { return TASKS.find(t => t.id === id); }
+    function renderHtmlReferences() {
+      const template = document.createElement('template');
+      template.innerHTML = currentTask.html;
+      const nodes = Array.from(template.content.querySelectorAll('*'));
+      const tags = new Set();
+      const classes = new Map();
+      const ids = new Map();
+
+      nodes.forEach(node => {
+        const tag = node.tagName.toLowerCase();
+        tags.add(tag);
+        Array.from(node.classList).forEach(name => {
+          if (!classes.has(name)) classes.set(name, new Set());
+          classes.get(name).add(tag);
+        });
+        if (node.id) {
+          if (!ids.has(node.id)) ids.set(node.id, new Set());
+          ids.get(node.id).add(tag);
+        }
+      });
+
+      const groups = [
+        {
+          title: 'Tag HTML', entries: Array.from(tags).sort().map(tag => ({
+            selector: tag, label: tag, detail: HTML_TAG_DESCRIPTIONS[tag] || 'Elemen HTML'
+          }))
+        },
+        {
+          title: 'Class', entries: Array.from(classes.keys()).sort().map(name => ({
+            selector: '.' + name, label: '.' + name, detail: 'Tag: ' + Array.from(classes.get(name)).join(', ')
+          }))
+        },
+        {
+          title: 'ID', entries: Array.from(ids.keys()).sort().map(name => ({
+            selector: '#' + name, label: '#' + name, detail: 'Tag: ' + Array.from(ids.get(name)).join(', ')
+          }))
+        }
+      ];
+
+      $('#referenceSummary').textContent = `${tags.size} tag · ${classes.size} class · ${ids.size} ID`;
+      $('#htmlReferenceGrid').innerHTML = groups.map(group => `
+        <section class="reference-group" aria-label="Referensi ${escapeHtml(group.title)}">
+          <div class="reference-group-title"><span>${escapeHtml(group.title)}</span><span class="reference-count">${group.entries.length}</span></div>
+          <div class="reference-items">${group.entries.length ? group.entries.map(entry => `
+            <button class="ref-chip" type="button" data-selector="${escapeHtml(entry.selector)}" title="Klik untuk menambahkan selector ${escapeHtml(entry.selector)} ke editor">
+              <code>${escapeHtml(entry.label)}</code><span>${escapeHtml(entry.detail)}</span>
+            </button>`).join('') : '<p class="reference-empty">Tidak ada pada tugas ini.</p>'}</div>
+        </section>`).join('');
+    }
+    function insertSelector(selector) {
+      const previous = editor.value.trimEnd();
+      const rule = `${selector} {\n  \n}`;
+      editor.value = previous ? `${previous}\n\n${rule}` : rule;
+      const cursorPosition = editor.value.length - 2;
+      editor.focus();
+      editor.setSelectionRange(cursorPosition, cursorPosition);
+      editor.dispatchEvent(new Event('input', { bubbles: true }));
+      showToast(`Selector ${selector} ditambahkan ke editor.`);
+    }
     function renderTaskList() {
       taskList.innerHTML = TASKS.map(task => {
         const active = task.id === currentTask.id;
@@ -475,6 +574,7 @@
       $('#hintPanel').hidden = true;
       $('#hintPanel').textContent = currentTask.hint;
       $('#hintBtn').innerHTML = 'Lihat petunjuk <span aria-hidden="true">⌄</span>';
+      renderHtmlReferences();
       feedbackPanel.classList.remove('visible','fail');
       lastResults = null;
       $('#editorStatus').textContent = editor.value.trim() ? 'Kode tersimpan di browser' : 'Siap menerima kode';
@@ -600,6 +700,12 @@
         showToast('Gagal menyalin otomatis. Silakan salin teks secara manual.');
       }
     }
+
+    $('#htmlReferenceGrid').addEventListener('click', event => {
+      const button = event.target.closest('[data-selector]');
+      if (!button || !$('#htmlReferenceGrid').contains(button)) return;
+      insertSelector(button.dataset.selector);
+    });
 
     editor.addEventListener('input', () => {
       codes[currentTask.id] = editor.value;
