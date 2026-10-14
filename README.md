@@ -2,7 +2,7 @@
 
 Playground interaktif untuk latihan CSS secara bertahap. Siswa menulis CSS sendiri, melihat live preview, membaca struktur HTML tugas, dan mengecek hasil melalui computed style browser.
 
-## Kurikulum: 149 tugas bertahap
+## Kurikulum: 180 tugas bertahap
 
 ### CSS Selector — tugas 1–12
 
@@ -380,12 +380,70 @@ Materi rujukan:
 - [CSS Website Layout](https://www.w3schools.com/css/css_website_layout.asp)
 
 
+
+### Flexbox — tugas 150–162
+
+150. Flexbox: Container Dasar
+151. Flexbox: Direction Row
+152. Flexbox: Direction Column
+153. Flexbox: Justify Content Center
+154. Flexbox: Space Between
+155. Flexbox: Align Items Center
+156. Flexbox: Flex Wrap
+157. Flexbox: Gap Antar Item
+158. Flexbox Item: Flex Grow
+159. Flexbox Item: Shrink dan Basis
+160. Flexbox Item: Order
+161. Flexbox Item: Align Self
+162. Tantangan: Kartu Responsif Flexbox
+
+Materi rujukan:
+- [CSS Flexbox](https://www.w3schools.com/css/css3_flexbox.asp)
+- [Flex Container](https://www.w3schools.com/css/css3_flexbox_container.asp)
+- [Flex Container: Justify Content](https://www.w3schools.com/css/css3_flexbox_container_justify.asp)
+- [Flex Container: Align Items](https://www.w3schools.com/css/css3_flexbox_container_align.asp)
+- [Flex Items](https://www.w3schools.com/css/css3_flexbox_items.asp)
+- [Responsive Flexbox](https://www.w3schools.com/css/css3_flexbox_responsive.asp)
+
+### CSS Grid — tugas 163–180
+
+163. Grid: Container Dasar
+164. Grid Tracks: Kolom
+165. Grid Tracks: Baris
+166. Grid Gap: Jarak Antar Item
+167. Grid Gap: Row dan Column
+168. Grid Align: Align Items
+169. Grid Align: Justify Items
+170. Grid Item: Column Span
+171. Grid Item: Row Span
+172. Grid Item: Align Self
+173. Grid Item: Order
+174. Grid Item: Garis Kolom dan Baris
+175. Grid 12 Kolom
+176. Grid 12 Kolom: Lebar Kolom
+177. Grid Responsif dengan Auto-fit
+178. Grid Container: Auto Flow
+179. Grid Container: Align Content
+180. Tantangan: Dashboard Karya ICT
+
+Materi rujukan:
+- [CSS Grid](https://www.w3schools.com/css/css_grid.asp)
+- [Grid Container](https://www.w3schools.com/css/css_grid_container.asp)
+- [Grid Tracks](https://www.w3schools.com/css/css_grid_tracks.asp)
+- [Grid Gap](https://www.w3schools.com/css/css_grid_gap.asp)
+- [Grid Align](https://www.w3schools.com/css/css_grid_align.asp)
+- [Grid Item](https://www.w3schools.com/css/css_grid_item.asp)
+- [Grid Item Align](https://www.w3schools.com/css/css_grid_item_align.asp)
+- [Grid Item Order](https://www.w3schools.com/css/css_grid_item_order.asp)
+- [12-Column Grid](https://www.w3schools.com/css/css_grid_12column.asp)
+
+
 ## Fitur
 
 - Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik.
 - Panel struktur HTML bertingkat menampilkan tag, class, ID, dan hubungan induk-anak. Klik tag, class, atau ID untuk menambahkan selector ke editor.
 - Pemeriksaan otomatis atas selector dan computed styles di browser.
-- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, Lists, Tables, Display, Max-width, Positioning, Overflow, Float/Clear, Inline-block, Alignment, Combinators, Image Transparency, Dropdown, dan Website Layout.
+- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, Lists, Tables, Display, Max-width, Positioning, Overflow, Float/Clear, Inline-block, Alignment, Combinators, Image Transparency, Dropdown, Website Layout, Flexbox, dan CSS Grid.
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
