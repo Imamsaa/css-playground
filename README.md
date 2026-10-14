@@ -2,7 +2,7 @@
 
 Playground interaktif untuk latihan CSS secara bertahap. Siswa menulis CSS sendiri, melihat live preview, membaca struktur HTML tugas, dan mengecek hasil melalui computed style browser.
 
-## Kurikulum: 114 tugas bertahap
+## Kurikulum: 137 tugas bertahap
 
 ### CSS Selector — tugas 1–12
 
@@ -277,15 +277,77 @@ Materi rujukan:
 
 Materi rujukan:
 - [CSS Position](https://www.w3schools.com/css/css_position.asp)
+- [Position Offsets](https://www.w3schools.com/css/css_position_offset.asp)
+- [CSS Z-index](https://www.w3schools.com/css/css_z-index.asp)
 - [Fixed and Absolute Positioning](https://www.w3schools.com/css/css_positioning_fixed_absolute.asp)
 - [Sticky Positioning](https://www.w3schools.com/css/css_positioning_sticky.asp)
+
+
+### Position Offset — tugas 115
+
+115. Position Offset: Bottom dan Right
+
+Materi rujukan:
+- [CSS Position Offsets](https://www.w3schools.com/css/css_position_offset.asp)
+
+### Overflow — tugas 116–121
+
+116. Overflow: Visible
+117. Overflow: Hidden
+118. Overflow: Scroll
+119. Overflow: Auto
+120. Overflow X dan Y
+121. Tantangan: Panel Gulir Horizontal
+
+Materi rujukan:
+- [CSS Overflow](https://www.w3schools.com/css/css_overflow.asp)
+- [CSS Overflow X dan Y](https://www.w3schools.com/css/css_overflow_xy.asp)
+
+### Float dan Clear — tugas 122–128
+
+122. Float: Left
+123. Float: Right
+124. Clear: Both
+125. Clearfix Modern: Flow-root
+126. Float Gambar dan Teks
+127. Float untuk Dua Kolom
+128. Tantangan: Thumbnail Artikel
+
+Materi rujukan:
+- [CSS Float](https://www.w3schools.com/css/css_float.asp)
+- [CSS Clear dan Clearfix](https://www.w3schools.com/css/css_float_clear.asp)
+- [CSS Float Examples](https://www.w3schools.com/css/css_float_examples.asp)
+
+### Inline-block — tugas 129–130
+
+129. Inline-block untuk Navigasi
+130. Inline-block untuk Kartu
+
+Materi rujukan:
+- [CSS Inline-block](https://www.w3schools.com/css/css_inline-block.asp)
+
+### Alignment — tugas 131–137
+
+131. Horizontal Align: Text Center
+132. Horizontal Align: Margin Auto
+133. Horizontal Align: Posisi Kanan
+134. Vertical Align: Middle
+135. Vertical Align: Line-height
+136. Vertical Align: Flex Center
+137. Tantangan: Konten Kartu di Tengah
+
+Materi rujukan:
+- [CSS Align](https://www.w3schools.com/css/css_align.asp)
+- [CSS Horizontal Align](https://www.w3schools.com/css/css_align_horizontal.asp)
+- [CSS Vertical Align](https://www.w3schools.com/css/css_align_vertical.asp)
+
 
 ## Fitur
 
 - Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik.
 - Panel struktur HTML bertingkat menampilkan tag, class, ID, dan hubungan induk-anak. Klik tag, class, atau ID untuk menambahkan selector ke editor.
 - Pemeriksaan otomatis atas selector dan computed styles di browser.
-- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, Lists, Tables, Display, Max-width, dan Positioning.
+- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, Lists, Tables, Display, Max-width, Positioning, Overflow, Float/Clear, Inline-block, dan Alignment.
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
