@@ -107,15 +107,14 @@ Rujukan:
 - Fitur akun siswa untuk membuat kode akun, memulihkan pengerjaan lintas perangkat, dan menyinkronkan kode CSS serta tugas selesai ke database JSON privat.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
 
-## Menyiapkan akun dan database JSON
+## Akun siswa dan database JSON
 
-Fitur akun memerlukan satu kali deployment backend Google Apps Script karena GitHub Pages tidak dapat menulis langsung ke file JSON privat.
+Fitur akun memakai backend Google Apps Script sebagai API server, tetapi **tidak menggunakan Google Drive untuk menyimpan data**.
 
-1. Ikuti panduan [backend/README.md](backend/README.md).
-2. Salin `backend/Code.gs` ke proyek Google Apps Script, jalankan `setupDatabase()`, lalu deploy sebagai Web App.
-3. Masukkan URL deployment yang berakhiran `/exec` ke konstanta `ACCOUNT_API_URL` di `index.html`, kemudian commit perubahan.
-
-File database JSON dibuat di Google Drive milik admin yang men-deploy Apps Script dan tetap privat. Jangan membagikan file JSON tersebut secara publik. Kode akun menjadi kunci untuk membaca serta memperbarui progres siswa, jadi siswa harus menyimpannya secara rahasia.
+- Data akun/progres ada di `data/accounts.json` pada branch `student-data` di repositori yang sama.
+- Karena repositori bersifat publik, isi JSON dienkripsi di server. Nama, kode akun, dan progres tidak disimpan sebagai teks terbaca.
+- Token GitHub serta kunci enkripsi hanya disimpan di Script Properties Apps Script, bukan di frontend.
+- Ikuti panduan [backend/README.md](backend/README.md) untuk mengonfigurasi token, men-deploy API, dan memasukkan URL `/exec` ke `ACCOUNT_API_URL` di `index.html`.
 
 ## Menjalankan
 
