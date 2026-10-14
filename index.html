@@ -85,6 +85,9 @@
     .level { color:#778197; font-size:10px; font-weight:800; }
     h2 { margin:0; letter-spacing:-.035em; font-size:23px; line-height:1.2; }
     .assignment-desc { margin:9px 0 0; color:#5d687c; font-size:13px; max-width:850px; }
+    .task-resource { display:inline-flex; align-items:center; gap:6px; margin-top:9px; color:var(--primary-dark); font-size:11px; font-weight:800; text-decoration:none; }
+    .task-resource:hover { text-decoration:underline; }
+    #taskResourceLink[hidden] { display:none; }
     .goal-box { display:flex; gap:10px; align-items:flex-start; padding:12px 13px; border:1px solid #e8e7ff; background:#fbfaff; margin-top:16px; border-radius:12px; }
     .goal-icon { flex:0 0 25px; width:25px; height:25px; display:grid; place-items:center; border-radius:8px; color:var(--primary); background:#eeecff; font-size:13px; font-weight:900; }
     .goal-copy { color:#555f74; font-size:12px; }
@@ -248,6 +251,7 @@
               <div class="task-meta"><span class="tag" id="taskTag">CSS SELECTOR</span><span class="level" id="taskLevel">LEVEL 1 · DASAR</span></div>
               <h2 id="taskTitle">Selector Elemen</h2>
               <p class="assignment-desc" id="taskDescription"></p>
+              <a class="task-resource" id="taskResourceLink" href="" target="_blank" rel="noopener noreferrer" hidden>Baca materi W3Schools ↗</a>
             </div>
           </div>
           <div class="goal-box">
@@ -391,7 +395,7 @@
         ]
       },
       {
-        id: 'background-body', number: 6, title: 'Background Color', category: 'Background', level: 'LEVEL 1 · DASAR',
+        id: 'background-body', number: 6, title: 'Background Color', category: 'Background', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_background.asp',
         description: 'Properti background-color memberi warna pada latar sebuah elemen. Mulai dari latar seluruh halaman.',
         goal: 'Ubah latar halaman menjadi kuning pastel (#fef3c7) dengan selector body.',
         hints: ['background-color', 'Selector body'], hint: 'Tulis body { background-color: #fef3c7; }. Kamu juga dapat menggunakan properti background untuk latar warna sederhana.',
@@ -402,7 +406,7 @@
         ]
       },
       {
-        id: 'background-card', number: 7, title: 'Background pada Kartu', category: 'Background', level: 'LEVEL 1 · DASAR',
+        id: 'background-card', number: 7, title: 'Background pada Kartu', category: 'Background', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_background.asp',
         description: 'Properti background dapat mengatur warna latar elemen tertentu, tidak harus seluruh halaman.',
         goal: 'Ubah latar kartu menjadi hijau pastel (#dcfce7), tetapi jangan mengubah warna latar kotak luar.',
         hints: ['Selector class', 'background / background-color'], hint: 'Targetkan class .kartu. Gunakan background: #dcfce7; atau background-color: #dcfce7;.',
@@ -414,7 +418,7 @@
         ]
       },
       {
-        id: 'background-image', number: 8, title: 'Background Image', category: 'Background', level: 'LEVEL 2 · MENENGAH',
+        id: 'background-image', number: 8, title: 'Background Image', category: 'Background', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_background_image.asp',
         description: 'Gunakan gambar sebagai latar elemen. Gambar dan ukuran kotak sudah disiapkan pada preview.',
         goal: 'Tambahkan gambar pohon sebagai latar kotak poster menggunakan background-image dan url().',
         hints: ['background-image', 'url()'], hint: 'Gunakan selector .image-poster. Contoh deklarasi: background-image: url("https://www.w3schools.com/css/img_tree.png");',
@@ -425,7 +429,7 @@
         ]
       },
       {
-        id: 'background-repeat', number: 9, title: 'Background Repeat', category: 'Background', level: 'LEVEL 2 · MENENGAH',
+        id: 'background-repeat', number: 9, title: 'Background Repeat', category: 'Background', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_background_repeat.asp',
         description: 'Gambar latar secara default diulang secara horizontal dan vertikal. Atur arah pengulangannya agar sesuai desain.',
         goal: 'Buat pola gambar hanya berulang secara horizontal menggunakan background-repeat: repeat-x.',
         hints: ['background-repeat', 'repeat-x'], hint: 'Targetkan .pattern-box lalu tulis background-repeat: repeat-x;. Nilai lain yang bisa dipelajari: repeat-y dan no-repeat.',
@@ -436,7 +440,7 @@
         ]
       },
       {
-        id: 'background-attachment', number: 10, title: 'Background Attachment', category: 'Background', level: 'LEVEL 3 · TANTANGAN',
+        id: 'background-attachment', number: 10, title: 'Background Attachment', category: 'Background', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_background_attachment.asp',
         description: 'background-attachment menentukan apakah gambar latar ikut bergulir dengan isi halaman atau tetap pada posisi viewport.',
         goal: 'Pasang gambar pohon pada latar halaman, lalu buat gambar tetap saat isi preview digulir dengan background-attachment: fixed.',
         hints: ['background-image', 'background-attachment: fixed'], hint: 'Gunakan selector body dengan background-image: url("https://www.w3schools.com/css/img_tree.png");, background-repeat: no-repeat;, dan background-attachment: fixed;. Gulir bagian preview untuk melihat efeknya.',
@@ -632,6 +636,14 @@
       $('#taskLevel').textContent = currentTask.level;
       $('#taskTitle').textContent = currentTask.title;
       $('#taskDescription').textContent = currentTask.description;
+      const resourceLink = $('#taskResourceLink');
+      if (currentTask.resourceUrl) {
+        resourceLink.href = currentTask.resourceUrl;
+        resourceLink.hidden = false;
+      } else {
+        resourceLink.hidden = true;
+        resourceLink.removeAttribute('href');
+      }
       $('#taskGoal').textContent = currentTask.goal;
       $('#taskHints').innerHTML = currentTask.hints.map(h => `<span><i class="check-bullet">✓</i>${escapeHtml(h)}</span>`).join('');
       $('#hintPanel').hidden = true;
