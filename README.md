@@ -1,10 +1,10 @@
 # ICT Al Firdaus Purwodadi — CSS Coding Playground
 
-Playground interaktif untuk latihan CSS Selector, Color, Background, Border, dan Margin bagi siswa ICT Class.
+Playground interaktif untuk latihan CSS secara bertahap. Siswa menulis CSS sendiri, melihat live preview, membaca struktur HTML tugas, dan mengecek hasil melalui computed style browser.
 
-## Kurikulum: 48 tugas bertahap
+## Kurikulum: 60 tugas bertahap
 
-### 1. CSS Selector — tugas 1–12
+### CSS Selector — tugas 1–12
 
 1. Selector Elemen
 2. Universal Selector
@@ -19,14 +19,14 @@ Playground interaktif untuk latihan CSS Selector, Color, Background, Border, dan
 11. Attribute Selector
 12. Pseudo-class :hover
 
-Rujukan:
+Materi rujukan:
 - [CSS Selectors](https://www.w3schools.com/css/css_selectors.asp)
-- [Grouping and Universal Selectors](https://www.w3schools.com/css/css_selectors_grouping.asp)
+- [Grouping Selectors](https://www.w3schools.com/css/css_selectors_grouping.asp)
 - [CSS Combinators](https://www.w3schools.com/css/css_combinators.asp)
-- [CSS Attribute Selectors](https://www.w3schools.com/css/css_attribute_selectors.asp)
-- [CSS Pseudo-classes](https://www.w3schools.com/css/css_pseudo_classes.asp)
+- [Attribute Selectors](https://www.w3schools.com/css/css_attribute_selectors.asp)
+- [Pseudo-classes](https://www.w3schools.com/css/css_pseudo_classes.asp)
 
-### 2. Color — tugas 13–20
+### Color — tugas 13–20
 
 13. Color Name
 14. Color HEX
@@ -37,11 +37,11 @@ Rujukan:
 19. Color HSLA
 20. Opacity
 
-Rujukan:
+Materi rujukan:
 - [CSS Colors](https://www.w3schools.com/css/css_colors.asp)
-- [CSS Color Values](https://www.w3schools.com/css/css3_colors.asp)
+- [CSS Color Values (RGB/HEX/HSL)](https://www.w3schools.com/css/css3_colors.asp)
 
-### 3. Background — tugas 21–29
+### Background — tugas 21–29
 
 21. Background Color
 22. Background pada Kartu
@@ -53,14 +53,14 @@ Rujukan:
 28. Background Shorthand
 29. Background Attachment
 
-Rujukan:
-- [CSS Backgrounds](https://www.w3schools.com/css/css_background.asp)
-- [CSS Background Image](https://www.w3schools.com/css/css_background_image.asp)
-- [CSS Background Repeat](https://www.w3schools.com/css/css_background_repeat.asp)
-- [CSS Background Attachment](https://www.w3schools.com/css/css_background_attachment.asp)
-- [CSS Background Shorthand](https://www.w3schools.com/css/css_background_shorthand.asp)
+Materi rujukan:
+- [Background Color](https://www.w3schools.com/css/css_background.asp)
+- [Background Image](https://www.w3schools.com/css/css_background_image.asp)
+- [Background Repeat](https://www.w3schools.com/css/css_background_repeat.asp)
+- [Background Attachment](https://www.w3schools.com/css/css_background_attachment.asp)
+- [Background Shorthand](https://www.w3schools.com/css/css_background_shorthand.asp)
 
-### 4. Border — tugas 30–39
+### Border — tugas 30–39
 
 30. Border Style
 31. Border Style per Sisi
@@ -73,15 +73,15 @@ Rujukan:
 38. Rounded Border
 39. Border Radius per Sudut
 
-Rujukan:
-- [CSS Border Style](https://www.w3schools.com/css/css_border.asp)
-- [CSS Border Width](https://www.w3schools.com/css/css_border_width.asp)
-- [CSS Border Color](https://www.w3schools.com/css/css_border_color.asp)
-- [CSS Border Sides](https://www.w3schools.com/css/css_border_sides.asp)
-- [CSS Border Shorthand](https://www.w3schools.com/css/css_border_shorthand.asp)
-- [CSS Rounded Borders](https://www.w3schools.com/css/css_border_rounded.asp)
+Materi rujukan:
+- [Border Style](https://www.w3schools.com/css/css_border.asp)
+- [Border Width](https://www.w3schools.com/css/css_border_width.asp)
+- [Border Color](https://www.w3schools.com/css/css_border_color.asp)
+- [Border Sides](https://www.w3schools.com/css/css_border_sides.asp)
+- [Border Shorthand](https://www.w3schools.com/css/css_border_shorthand.asp)
+- [Rounded Borders](https://www.w3schools.com/css/css_border_rounded.asp)
 
-### 5. Margin — tugas 40–48
+### Margin — tugas 40–48
 
 40. Margin Sides
 41. Margin Shorthand: 4 Nilai
@@ -93,22 +93,54 @@ Rujukan:
 47. Margin Persentase
 48. Negative Margin
 
-Rujukan:
+Materi rujukan:
 - [CSS Margins](https://www.w3schools.com/css/css_margin.asp)
+
+### Padding — tugas 49–54
+
+49. Padding Sides
+50. Padding Shorthand: 4 Nilai
+51. Padding Shorthand: 3 Nilai
+52. Padding Shorthand: 2 Nilai
+53. Padding Shorthand: 1 Nilai
+54. Padding dan Box-sizing
+
+Materi rujukan:
+- [CSS Padding](https://www.w3schools.com/css/css_padding.asp)
+- [Padding and box-sizing](https://www.w3schools.com/css/css_padding_box-sizing.asp)
+
+### Width & Height — tugas 55–58
+
+55. Width dan Height
+56. Width Persentase
+57. Min-width dan Max-width
+58. Min-height dan Max-height
+
+Materi rujukan:
+- [Height and Width](https://www.w3schools.com/css/css_height_width.asp)
+- [Min/Max Height and Width](https://www.w3schools.com/css/css_height_width_min_max.asp)
+
+### Box Model — tugas 59–60
+
+59. Box Model: Content-box
+60. Box Model: Border-box
+
+Materi rujukan:
+- [CSS Box Model](https://www.w3schools.com/css/css_boxmodel.asp)
 
 ## Fitur
 
 - Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik.
 - Panel struktur HTML bertingkat menampilkan tag, class, ID, dan hubungan induk-anak. Klik tag, class, atau ID untuk menambahkan selector ke editor.
 - Pemeriksaan otomatis atas selector dan computed styles di browser.
-- Pemeriksaan properti Color, Background, Border, dan Margin sesuai tujuan masing-masing tugas.
-- Tautan materi W3Schools pada tugas yang relevan.
-- Progres dan kode CSS setiap tugas disimpan secara lokal di browser siswa.
+- Latihan Color, Background, Border, Margin, Padding, Width/Height, dan Box Model.
+- Tautan materi W3Schools pada setiap tugas yang relevan.
+- Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
 
 ## Penyimpanan progres
 
-Playground menggunakan `localStorage` browser untuk menyimpan kode dan progres pada perangkat yang sedang digunakan. Data tidak dikirim ke server. Jika siswa berpindah browser atau perangkat, data lokal tidak ikut berpindah.
+Playground menggunakan `localStorage` untuk menyimpan kode CSS dan progres pada browser yang sedang digunakan. Data tidak dikirim ke server. Jika siswa berpindah browser atau perangkat, data lokal tidak ikut berpindah.
 
 ## Menjalankan
 
