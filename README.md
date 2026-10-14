@@ -2,7 +2,7 @@
 
 Playground interaktif untuk latihan CSS secara bertahap. Siswa menulis CSS sendiri, melihat live preview, membaca struktur HTML tugas, dan mengecek hasil melalui computed style browser.
 
-## Kurikulum: 98 tugas bertahap
+## Kurikulum: 114 tugas bertahap
 
 ### CSS Selector — tugas 1–12
 
@@ -241,6 +241,44 @@ Materi rujukan:
 
 Materi rujukan:
 - [CSS Table Style](https://www.w3schools.com/css/css_table_style.asp)
+
+
+### Display — tugas 99–104
+
+99. Display: Block
+100. Display: Inline
+101. Display: Inline-block
+102. Display: None
+103. Visibility Hidden vs Display None
+104. Display: Flex
+
+Materi rujukan:
+- [CSS Display](https://www.w3schools.com/css/css_display.asp)
+- [CSS Hide Elements](https://www.w3schools.com/css/css_display_hide.asp)
+
+### Max-width — tugas 105–107
+
+105. Max-width Dasar
+106. Max-width dan Margin Auto
+107. Max-width untuk Layout Responsif
+
+Materi rujukan:
+- [CSS Max-width](https://www.w3schools.com/css/css_max-width.asp)
+
+### Positioning — tugas 108–114
+
+108. Position: Static
+109. Position: Relative
+110. Position: Absolute
+111. Position: Fixed
+112. Position: Sticky
+113. Positioning: Z-index
+114. Tantangan: Badge di Kartu
+
+Materi rujukan:
+- [CSS Position](https://www.w3schools.com/css/css_position.asp)
+- [Fixed and Absolute Positioning](https://www.w3schools.com/css/css_positioning_fixed_absolute.asp)
+- [Sticky Positioning](https://www.w3schools.com/css/css_positioning_sticky.asp)
 
 ## Fitur
 
