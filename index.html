@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f8fafc" />
-  <title>CSS Quest — Coding Playground</title>
+  <meta name="description" content="ICT Al Firdaus Purwodadi — Coding Playground interaktif untuk belajar CSS selector, color, dan background." />
+  <title>ICT Al Firdaus Purwodadi — CSS Coding Playground</title>
   <style>
     :root {
       --bg: #f5f7fb;
@@ -37,7 +38,8 @@
     .app-shell { max-width: 1600px; margin: 0 auto; padding: 22px 26px 34px; }
     .topbar { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:22px; }
     .brand { display:flex; align-items:center; gap:12px; min-width:0; }
-    .brand-mark { width:44px; height:44px; border-radius:14px; color:#fff; background:linear-gradient(145deg,#7c6cf4,#5145cd); display:grid; place-items:center; font-weight:900; font-size:18px; box-shadow:0 8px 18px rgba(101,88,232,.23); letter-spacing:-1px; }
+    .brand-logo-link { display:flex; align-items:center; justify-content:center; flex:0 0 auto; padding:4px 7px; background:#fff; border:1px solid var(--line); border-radius:12px; }
+    .brand-logo { display:block; width:205px; height:auto; max-height:58px; object-fit:contain; }
     .brand-name { font-size:15px; line-height:1.2; font-weight:850; letter-spacing:.01em; }
     .brand-sub { color:var(--muted); font-size:12px; margin-top:3px; }
     .top-actions { display:flex; align-items:center; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
@@ -184,6 +186,8 @@
     @media (max-width: 720px) {
       .app-shell { padding:14px 12px 25px; }
       .topbar { align-items:flex-start; }
+      .brand-logo { width:155px; max-height:44px; }
+      .brand-logo-link { padding:3px 5px; border-radius:10px; }
       .pill-label { display:none; }
       .top-actions .btn { padding:8px 10px; }
       .hero { display:block; }
@@ -213,11 +217,9 @@
   <div class="app-shell">
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark">{ }</div>
-        <div>
-          <div class="brand-name">CSS QUEST</div>
-          <div class="brand-sub">Coding Playground · ICT Class</div>
-        </div>
+        <a class="brand-logo-link" href="./" aria-label="ICT Al Firdaus Purwodadi">
+          <img class="brand-logo" src="assets/ict-al-firdaus-logo.webp" alt="Logo ICT Al Firdaus — Fun Coding Schools" width="560" height="148" fetchpriority="high" />
+        </a>
       </div>
       <div class="top-actions">
         <span class="pill-label"><span class="dot"></span> Editor aktif · Auto-check</span>
@@ -228,8 +230,8 @@
     <section class="hero">
       <div>
         <div class="eyebrow">Belajar sambil praktik</div>
-        <h1>CSS Playground<span style="color:var(--primary)">.</span></h1>
-        <p>Kerjakan tantangan CSS, lihat perubahan secara langsung, dan periksa hasilmu dengan pengecekan otomatis.</p>
+        <h1>ICT Al Firdaus Purwodadi</h1>
+        <p>CSS Coding Playground untuk belajar selector, color, dan background melalui latihan interaktif dengan preview langsung dan pengecekan otomatis.</p>
       </div>
       <div class="progress-card" aria-live="polite">
         <div class="progress-top"><span>Progres latihan</span><strong id="progressText">0 / 9 tugas</strong></div>
