@@ -62,23 +62,40 @@
     .progress-fill { height:100%; width:0%; border-radius:99px; background:linear-gradient(90deg,#7467f3,#35b88a); transition:width .25s; }
     .layout { display:grid; grid-template-columns:270px minmax(0,1fr); gap:20px; align-items:start; }
     .panel { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); min-width:0; }
-    .tasks-panel { overflow:hidden; }
-    .panel-heading { display:flex; align-items:center; justify-content:space-between; padding:17px 17px 12px; }
+    .tasks-panel { position:sticky; top:16px; display:flex; flex-direction:column; max-height:calc(100vh - 32px); overflow:hidden; }
+    .panel-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:17px 17px 12px; flex:0 0 auto; }
     .panel-title { font-size:13px; font-weight:850; letter-spacing:-.01em; }
-    .count-chip { border-radius:8px; padding:4px 7px; background:#f1f3f9; color:#647084; font-size:10px; font-weight:850; }
-    .task-list { padding:4px 9px 12px; display:grid; gap:5px; }
-    .task-item { display:flex; align-items:flex-start; gap:11px; width:100%; text-align:left; padding:12px 10px; border:1px solid transparent; background:transparent; border-radius:12px; color:var(--ink); }
+    .count-chip { border-radius:8px; padding:4px 7px; background:#f1f3f9; color:#647084; font-size:10px; font-weight:850; white-space:nowrap; }
+    .task-search-wrap { padding:0 12px 10px; flex:0 0 auto; }
+    .task-search { display:block; width:100%; min-width:0; border:1px solid var(--line); border-radius:10px; padding:10px 11px; background:#fbfcff; color:var(--ink); font:inherit; font-size:12px; outline:none; transition:border-color .15s,box-shadow .15s; }
+    .task-search::placeholder { color:#98a2b3; }
+    .task-search:focus { border-color:#aaa2ff; box-shadow:0 0 0 3px rgba(101,88,232,.1); }
+    .task-list { padding:2px 9px 10px; display:grid; align-content:start; gap:7px; flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; scrollbar-gutter:stable; }
+    .task-group { border:1px solid #edf0f6; border-radius:12px; background:#fff; overflow:hidden; }
+    .task-group[open] { border-color:#e2defe; background:#fdfdff; }
+    .task-group-summary { display:flex; align-items:center; gap:9px; min-height:42px; padding:9px 10px; list-style:none; cursor:pointer; user-select:none; }
+    .task-group-summary::-webkit-details-marker { display:none; }
+    .task-group-summary::before { content:""; width:7px; height:7px; flex:0 0 7px; border-right:1.5px solid #8b95a6; border-bottom:1.5px solid #8b95a6; transform:rotate(-45deg); transition:transform .15s; }
+    .task-group[open] > .task-group-summary::before { transform:rotate(45deg) translate(-1px,-1px); }
+    .task-group-summary:hover { background:#f8f8ff; }
+    .task-group-name { flex:1; min-width:0; color:#344054; font-size:11px; font-weight:850; }
+    .task-group-meta { display:flex; align-items:center; gap:6px; color:#8a94a7; font-size:9px; white-space:nowrap; }
+    .task-group-count { padding:3px 6px; border-radius:6px; background:#f1f3f9; color:#667085; font-size:9px; font-weight:850; }
+    .task-group[open] .task-group-count { background:#efedff; color:#5c50d6; }
+    .task-group-items { display:grid; gap:3px; padding:0 5px 6px; }
+    .task-item { display:flex; align-items:center; gap:9px; width:100%; min-width:0; text-align:left; padding:8px 7px; border:1px solid transparent; background:transparent; border-radius:9px; color:var(--ink); }
     .task-item:hover { background:#f8f8ff; }
     .task-item.active { background:#f1efff; border-color:#dedaff; }
-    .task-number { width:28px; height:28px; border-radius:9px; flex:0 0 28px; display:grid; place-items:center; background:#f0f2f8; color:#647084; font-weight:850; font-size:11px; }
+    .task-number { width:25px; height:25px; border-radius:8px; flex:0 0 25px; display:grid; place-items:center; background:#f0f2f8; color:#647084; font-weight:850; font-size:10px; }
     .task-item.active .task-number { background:var(--primary); color:#fff; }
     .task-item.done .task-number { background:var(--green-soft); color:var(--green); }
     .task-text { min-width:0; flex:1; }
-    .task-name { display:block; font-size:12px; font-weight:800; line-height:1.35; }
-    .task-category { display:block; margin-top:4px; color:var(--muted); font-size:10px; }
-    .task-done { color:var(--green); font-size:13px; font-weight:900; }
-    .sidebar-foot { margin:0 14px 14px; padding:12px; border-radius:12px; background:#f8f9fc; color:var(--muted); font-size:11px; }
-    .sidebar-foot strong { color:#344054; display:block; margin-bottom:4px; }
+    .task-name { display:block; font-size:11px; font-weight:800; line-height:1.35; overflow-wrap:anywhere; }
+    .task-category { display:none; }
+    .task-done { color:var(--green); font-size:12px; font-weight:900; }
+    .task-empty { padding:14px 10px; color:var(--muted); font-size:11px; text-align:center; }
+    .sidebar-foot { margin:0 12px 12px; padding:10px 11px; border-radius:10px; background:#f8f9fc; color:var(--muted); font-size:10px; line-height:1.45; flex:0 0 auto; }
+    .sidebar-foot strong { color:#344054; display:block; margin-bottom:3px; }
     .workspace { display:grid; gap:16px; min-width:0; }
     .assignment { padding:20px 22px 17px; }
     .assignment-top { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
@@ -193,10 +210,11 @@
       .hero { display:block; }
       .progress-card { margin-top:16px; max-width:310px; }
       .layout { grid-template-columns:1fr; }
-      .tasks-panel { overflow:visible; }
-      .panel-heading { padding-bottom:8px; }
-      .task-list { display:flex; overflow:auto; padding:4px 10px 12px; scroll-snap-type:x mandatory; }
-      .task-item { min-width:158px; max-width:190px; scroll-snap-align:start; }
+      .tasks-panel { position:static; max-height:none; overflow:hidden; }
+      .panel-heading { padding-bottom:10px; }
+      .task-search-wrap { padding:0 12px 10px; }
+      .task-list { display:grid; max-height:38vh; overflow-y:auto; padding:2px 9px 10px; }
+      .task-item { min-width:0; max-width:none; }
       .sidebar-foot { display:none; }
       .assignment { padding:17px 15px; }
       .assignment-top { display:block; }
@@ -241,7 +259,10 @@
 
     <main class="layout">
       <aside class="panel tasks-panel">
-        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">09 TUGAS</span></div>
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">48 TUGAS</span></div>
+        <div class="task-search-wrap">
+          <input class="task-search" id="taskSearch" type="search" placeholder="Cari tugas atau materi…" aria-label="Cari tugas berdasarkan nama atau materi" autocomplete="off" />
+        </div>
         <nav class="task-list" id="taskList" aria-label="Pilih tugas CSS"></nav>
         <div class="sidebar-foot"><strong>💡 Tips belajar</strong>Baca instruksi, tulis CSS pada editor, lalu tekan <b>Periksa Jawaban</b>. Progres tersimpan di browser perangkat ini.</div>
       </aside>
@@ -1107,18 +1128,43 @@
       showToast(`Selector ${selector} ditambahkan ke editor.`);
     }
     function renderTaskList() {
-      taskList.innerHTML = TASKS.map(task => {
-        const active = task.id === currentTask.id;
-        const done = completed.has(task.id);
-        return `<button type="button" class="task-item${active ? ' active' : ''}${done ? ' done' : ''}" data-task-id="${task.id}" aria-current="${active ? 'page' : 'false'}">
-          <span class="task-number">${done ? '✓' : String(task.number).padStart(2,'0')}</span>
-          <span class="task-text"><span class="task-name">${task.title}</span><span class="task-category">${task.category}</span></span>
-          ${done ? '<span class="task-done" aria-label="Selesai">✓</span>' : ''}
-        </button>`;
-      }).join('');
-      $('#taskCount').textContent = `${String(TASKS.length).padStart(2,'0')} TUGAS`;
-      $('#progressText').textContent = `${completed.size} / ${TASKS.length} tugas`;
-      $('#progressFill').style.width = `${Math.min(100, completed.size / TASKS.length * 100)}%`;
+      const query = ($('#taskSearch')?.value || '').trim().toLowerCase();
+      const filteredTasks = TASKS.filter(task => {
+        const searchable = [task.number, task.title, task.category, task.id].join(' ').toLowerCase();
+        return searchable.includes(query);
+      });
+      const categories = [...new Set(TASKS.map(task => task.category))];
+      const visibleCount = filteredTasks.length;
+
+      if (!visibleCount) {
+        taskList.innerHTML = '<div class="task-empty">Tidak ada tugas yang cocok. Coba kata kunci lain.</div>';
+      } else {
+        taskList.innerHTML = categories.map(category => {
+          const allInCategory = TASKS.filter(task => task.category === category);
+          const items = filteredTasks.filter(task => task.category === category);
+          if (!items.length) return '';
+          const doneCount = allInCategory.filter(task => completed.has(task.id)).length;
+          const containsActive = items.some(task => task.id === currentTask.id);
+          const expanded = Boolean(query) || containsActive;
+          return '<details class="task-group" data-category="' + escapeHtml(category) + '" ' + (expanded ? 'open' : '') + '>' +
+            '<summary class="task-group-summary"><span class="task-group-name">' + escapeHtml(category) + '</span>' +
+            '<span class="task-group-meta">' + (doneCount ? doneCount + '/' + allInCategory.length + ' selesai' : '') +
+            '<span class="task-group-count">' + items.length + (query ? '/' + allInCategory.length : '') + '</span></span></summary>' +
+            '<div class="task-group-items">' + items.map(task => {
+              const active = task.id === currentTask.id;
+              const done = completed.has(task.id);
+              return '<button type="button" class="task-item' + (active ? ' active' : '') + (done ? ' done' : '') + '" data-task-id="' + task.id + '" aria-current="' + (active ? 'page' : 'false') + '">' +
+                '<span class="task-number">' + (done ? '✓' : String(task.number).padStart(2,'0')) + '</span>' +
+                '<span class="task-text"><span class="task-name">' + escapeHtml(task.title) + '</span></span>' +
+                (done ? '<span class="task-done" aria-label="Selesai">✓</span>' : '') +
+              '</button>';
+            }).join('') + '</div></details>';
+        }).join('');
+      }
+
+      $('#taskCount').textContent = query ? (visibleCount + '/' + TASKS.length + ' HASIL') : (String(TASKS.length).padStart(2,'0') + ' TUGAS');
+      $('#progressText').textContent = completed.size + ' / ' + TASKS.length + ' tugas';
+      $('#progressFill').style.width = Math.min(100, completed.size / TASKS.length * 100) + '%';
       taskList.querySelectorAll('[data-task-id]').forEach(button => button.addEventListener('click', () => selectTask(button.dataset.taskId)));
     }
     function selectTask(taskId) {
@@ -1335,6 +1381,8 @@
       if (!button || !$('#htmlStructureTree').contains(button)) return;
       insertSelector(button.dataset.selector);
     });
+
+    $('#taskSearch').addEventListener('input', () => renderTaskList());
 
     editor.addEventListener('input', () => {
       codes[currentTask.id] = editor.value;
