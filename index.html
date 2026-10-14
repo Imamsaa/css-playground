@@ -262,7 +262,7 @@
 
     <main class="layout">
       <aside class="panel tasks-panel">
-        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">98 TUGAS</span></div>
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">114 TUGAS</span></div>
         <div class="task-search-wrap">
           <input class="task-search" id="taskSearch" type="search" placeholder="Cari tugas atau materi…" aria-label="Cari tugas berdasarkan nama atau materi" autocomplete="off" />
         </div>
@@ -5436,6 +5436,836 @@
               "expected": "rgb(219, 234, 254)"
             }
           ]
+        },
+        {
+          "id": "display-block",
+          "number": 99,
+          "title": "Display: Block",
+          "category": "Display",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_display.asp",
+          "description": "display: block membuat elemen dimulai pada baris baru dan mengambil lebar yang tersedia secara default.",
+          "goal": "Ubah span menjadi elemen block menggunakan display: block.",
+          "hints": [
+            "display",
+            "block"
+          ],
+          "hint": "Gunakan .display-block-target { display: block; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">DISPLAY BLOCK</span><h1>Elemen Block</h1><p>Ubah label kecil berikut menjadi block sehingga tampil di baris terpisah.</p><div class=\"display-stage\"><span class=\"display-block-target\" id=\"displayBlockTarget\">Label block</span><span class=\"display-block-sibling\">Elemen setelahnya</span></div></main>",
+          "checks": [
+            {
+              "label": "Selector menggunakan display block",
+              "detail": "Deklarasikan display: block pada span target.",
+              "requiredSelectors": [
+                ".display-block-target"
+              ],
+              "declaredProperties": [
+                "display"
+              ],
+              "expectedDeclarationValues": {
+                "display": "block"
+              }
+            },
+            {
+              "label": "Computed display adalah block",
+              "detail": "Computed display target harus block.",
+              "targetIds": [
+                "displayBlockTarget"
+              ],
+              "computedProperty": "display",
+              "expected": "block"
+            }
+          ]
+        },
+        {
+          "id": "display-inline",
+          "number": 100,
+          "title": "Display: Inline",
+          "category": "Display",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_display.asp",
+          "description": "display: inline membuat elemen mengikuti alur teks tanpa memulai baris baru.",
+          "goal": "Atur dua label menjadi inline agar keduanya berada pada satu baris jika ruang mencukupi.",
+          "hints": [
+            "display: inline",
+            "alur teks"
+          ],
+          "hint": "Gunakan .display-inline-target { display: inline; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">DISPLAY INLINE</span><h1>Elemen Inline</h1><p>Label berikut harus mengikuti alur teks dan tidak memulai baris baru.</p><div class=\"display-stage\"><span class=\"display-inline-target\" id=\"displayInlineTarget\">Label pertama</span> <span class=\"display-inline-target\">Label kedua</span></div></main>",
+          "checks": [
+            {
+              "label": "Selector menggunakan display inline",
+              "detail": "Deklarasikan display: inline pada label target.",
+              "requiredSelectors": [
+                ".display-inline-target"
+              ],
+              "declaredProperties": [
+                "display"
+              ],
+              "expectedDeclarationValues": {
+                "display": "inline"
+              }
+            },
+            {
+              "label": "Computed display adalah inline",
+              "detail": "Computed display target harus inline.",
+              "targetIds": [
+                "displayInlineTarget"
+              ],
+              "computedProperty": "display",
+              "expected": "inline"
+            }
+          ]
+        },
+        {
+          "id": "display-inline-block",
+          "number": 101,
+          "title": "Display: Inline-block",
+          "category": "Display",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_display.asp",
+          "description": "inline-block menjaga elemen tetap sebaris, tetapi tetap mendukung pengaturan width dan height.",
+          "goal": "Buat label menjadi inline-block dengan lebar 120px dan tinggi 50px.",
+          "hints": [
+            "display: inline-block",
+            "width",
+            "height"
+          ],
+          "hint": "Gunakan .display-inline-block-target { display: inline-block; width: 120px; height: 50px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">DISPLAY INLINE-BLOCK</span><h1>Inline-block</h1><p>Buat dua kotak tampil sebaris namun tetap memiliki ukuran.</p><div class=\"display-stage\"><span class=\"display-inline-block-target\" id=\"displayInlineBlockTarget\">Kotak A</span> <span class=\"display-inline-block-target\">Kotak B</span></div></main>",
+          "checks": [
+            {
+              "label": "Display inline-block digunakan",
+              "detail": "Terapkan display: inline-block.",
+              "requiredSelectors": [
+                ".display-inline-block-target"
+              ],
+              "declaredProperties": [
+                "display"
+              ],
+              "expectedDeclarationValues": {
+                "display": "inline-block"
+              }
+            },
+            {
+              "label": "Computed display inline-block",
+              "detail": "Computed display harus inline-block.",
+              "targetIds": [
+                "displayInlineBlockTarget"
+              ],
+              "computedProperty": "display",
+              "expected": "inline-block"
+            },
+            {
+              "label": "Lebar kotak 120px",
+              "detail": "Computed width target harus 120px.",
+              "targetIds": [
+                "displayInlineBlockTarget"
+              ],
+              "computedProperty": "width",
+              "expected": "120px"
+            },
+            {
+              "label": "Tinggi kotak 50px",
+              "detail": "Computed height target harus 50px.",
+              "targetIds": [
+                "displayInlineBlockTarget"
+              ],
+              "computedProperty": "height",
+              "expected": "50px"
+            }
+          ]
+        },
+        {
+          "id": "display-none",
+          "number": 102,
+          "title": "Display: None",
+          "category": "Display",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_display_hide.asp",
+          "description": "display: none menyembunyikan elemen dan menghilangkannya dari tata letak halaman.",
+          "goal": "Sembunyikan pemberitahuan menggunakan display: none.",
+          "hints": [
+            "display: none",
+            "menyembunyikan elemen"
+          ],
+          "hint": "Gunakan .display-none-target { display: none; }. Elemen tetap ada di HTML, tetapi tidak mengambil ruang pada tata letak.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">DISPLAY NONE</span><h1>Sembunyikan Elemen</h1><p>Pesan di bawah perlu disembunyikan dan tidak mengambil ruang pada layout.</p><div class=\"display-stage\"><div class=\"display-none-target\" id=\"displayNoneTarget\">Pesan ini seharusnya tidak terlihat.</div><div class=\"display-after-hidden-target\" id=\"displayAfterHiddenTarget\">Konten setelah pesan tersembunyi.</div></div></main>",
+          "checks": [
+            {
+              "label": "Selector menggunakan display none",
+              "detail": "Deklarasikan display: none pada elemen pesan.",
+              "requiredSelectors": [
+                ".display-none-target"
+              ],
+              "declaredProperties": [
+                "display"
+              ],
+              "expectedDeclarationValues": {
+                "display": "none"
+              }
+            },
+            {
+              "label": "Elemen tidak ditampilkan",
+              "detail": "Computed display target harus none.",
+              "targetIds": [
+                "displayNoneTarget"
+              ],
+              "computedProperty": "display",
+              "expected": "none"
+            },
+            {
+              "label": "Elemen berikutnya tetap tampil",
+              "detail": "Elemen sesudah pesan harus tetap memiliki display block.",
+              "targetIds": [
+                "displayAfterHiddenTarget"
+              ],
+              "computedProperty": "display",
+              "expected": "block"
+            }
+          ]
+        },
+        {
+          "id": "visibility-hidden",
+          "number": 103,
+          "title": "Visibility Hidden vs Display None",
+          "category": "Display",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_display_hide.asp",
+          "description": "visibility: hidden menyembunyikan isi tetapi tetap mempertahankan ruangnya. display: none menghilangkan elemen dari layout.",
+          "goal": "Sembunyikan kotak pertama dengan visibility: hidden dan kotak kedua dengan display: none.",
+          "hints": [
+            "visibility: hidden",
+            "display: none"
+          ],
+          "hint": "Atur .visibility-hidden-target { visibility: hidden; } dan .visibility-display-none-target { display: none; }. Keduanya tidak terlihat, tetapi efek tata letaknya berbeda.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">HIDE ELEMENTS</span><h1>Dua Cara Menyembunyikan</h1><p>Kotak pertama menyisakan ruang; kotak kedua tidak.</p><div class=\"display-stage\"><div class=\"visibility-hidden-target\" id=\"visibilityHiddenTarget\">Kotak visibility hidden</div><div class=\"visibility-display-none-target\" id=\"visibilityDisplayNoneTarget\">Kotak display none</div><div class=\"visibility-after-target\">Konten setelahnya</div></div></main>",
+          "checks": [
+            {
+              "label": "visibility hidden diterapkan",
+              "detail": "Gunakan visibility: hidden pada kotak pertama.",
+              "requiredSelectors": [
+                ".visibility-hidden-target"
+              ],
+              "declaredProperties": [
+                "visibility"
+              ],
+              "expectedDeclarationValues": {
+                "visibility": "hidden"
+              }
+            },
+            {
+              "label": "Computed visibility adalah hidden",
+              "detail": "Computed visibility harus hidden.",
+              "targetIds": [
+                "visibilityHiddenTarget"
+              ],
+              "computedProperty": "visibility",
+              "expected": "hidden"
+            },
+            {
+              "label": "display none diterapkan pada kotak kedua",
+              "detail": "Gunakan display: none pada kotak kedua.",
+              "requiredSelectors": [
+                ".visibility-display-none-target"
+              ],
+              "declaredProperties": [
+                "display"
+              ],
+              "expectedDeclarationValues": {
+                "display": "none"
+              }
+            },
+            {
+              "label": "Kotak kedua hilang dari layout",
+              "detail": "Computed display kotak kedua harus none.",
+              "targetIds": [
+                "visibilityDisplayNoneTarget"
+              ],
+              "computedProperty": "display",
+              "expected": "none"
+            }
+          ]
+        },
+        {
+          "id": "display-flex-intro",
+          "number": 104,
+          "title": "Display: Flex",
+          "category": "Display",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_display.asp",
+          "description": "display: flex mengatur anak sebagai item flex untuk menyusun elemen dalam baris atau kolom.",
+          "goal": "Jadikan wadah kotak menjadi flex container dengan arah baris (row).",
+          "hints": [
+            "display: flex",
+            "flex-direction: row"
+          ],
+          "hint": "Gunakan .display-flex-target { display: flex; flex-direction: row; gap: 10px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">DISPLAY FLEX</span><h1>Susunan Flex</h1><p>Susun tiga kartu dalam satu baris menggunakan flexbox.</p><div class=\"display-flex-target\" id=\"displayFlexTarget\"><div class=\"display-flex-item\">HTML</div><div class=\"display-flex-item\">CSS</div><div class=\"display-flex-item\">JS</div></div></main>",
+          "checks": [
+            {
+              "label": "Wadah menggunakan display flex",
+              "detail": "Deklarasikan display: flex pada wadah.",
+              "requiredSelectors": [
+                ".display-flex-target"
+              ],
+              "declaredProperties": [
+                "display"
+              ],
+              "expectedDeclarationValues": {
+                "display": "flex"
+              }
+            },
+            {
+              "label": "Computed display adalah flex",
+              "detail": "Computed display container harus flex.",
+              "targetIds": [
+                "displayFlexTarget"
+              ],
+              "computedProperty": "display",
+              "expected": "flex"
+            },
+            {
+              "label": "Arah susunan adalah row",
+              "detail": "Computed flex-direction harus row.",
+              "targetIds": [
+                "displayFlexTarget"
+              ],
+              "computedProperty": "flexDirection",
+              "expected": "row"
+            }
+          ]
+        },
+        {
+          "id": "max-width-basic",
+          "number": 105,
+          "title": "Max-width Dasar",
+          "category": "Max-width",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_max-width.asp",
+          "description": "max-width membatasi lebar maksimum elemen, sementara width dapat tetap fleksibel.",
+          "goal": "Buat panel selebar mungkin tetapi batasi lebar maksimumnya menjadi 360px.",
+          "hints": [
+            "width: 100%",
+            "max-width: 360px"
+          ],
+          "hint": "Gunakan .max-width-basic-target { width: 100%; max-width: 360px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">MAX WIDTH</span><h1>Batas Lebar</h1><p>Panel dapat menyusut mengikuti wadah, tetapi tidak boleh lebih lebar dari 360px.</p><div class=\"max-width-stage\"><div class=\"max-width-basic-target\" id=\"maxWidthBasicTarget\">Panel dengan batas lebar</div></div></main>",
+          "checks": [
+            {
+              "label": "Width fleksibel dan max-width digunakan",
+              "detail": "Gunakan width: 100% dan max-width: 360px.",
+              "requiredSelectors": [
+                ".max-width-basic-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "width"
+                ],
+                [
+                  "max-width"
+                ]
+              ],
+              "expectedDeclarationValues": {
+                "width": "100%",
+                "max-width": "360px"
+              }
+            },
+            {
+              "label": "Max-width diterapkan",
+              "detail": "Computed max-width harus 360px.",
+              "targetIds": [
+                "maxWidthBasicTarget"
+              ],
+              "computedProperty": "maxWidth",
+              "expected": "360px"
+            }
+          ]
+        },
+        {
+          "id": "max-width-centered",
+          "number": 106,
+          "title": "Max-width dan Margin Auto",
+          "category": "Max-width",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_max-width.asp",
+          "description": "Kombinasi width: 100%, max-width, dan margin: auto membuat konten responsif dan berada di tengah.",
+          "goal": "Batasi kartu hingga 420px dan pusatkan secara horizontal dengan margin: auto.",
+          "hints": [
+            "max-width: 420px",
+            "margin: auto"
+          ],
+          "hint": "Gunakan .max-width-centered-target { width: 100%; max-width: 420px; margin: auto; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CENTERED CONTENT</span><h1>Kartu Terpusat</h1><p>Kartu tidak terlalu lebar di layar besar dan tetap fleksibel pada layar sempit.</p><div class=\"max-width-stage\"><div class=\"max-width-centered-target\" id=\"maxWidthCenteredTarget\">Konten responsif di tengah</div></div></main>",
+          "checks": [
+            {
+              "label": "Kartu memakai max-width 420px",
+              "detail": "Gunakan max-width: 420px pada kartu.",
+              "requiredSelectors": [
+                ".max-width-centered-target"
+              ],
+              "declaredProperties": [
+                "max-width"
+              ],
+              "expectedDeclarationValues": {
+                "max-width": "420px"
+              }
+            },
+            {
+              "label": "Kartu memakai margin auto",
+              "detail": "Deklarasikan margin: auto untuk memusatkan kartu.",
+              "requiredSelectors": [
+                ".max-width-centered-target"
+              ],
+              "declaredProperties": [
+                "margin"
+              ],
+              "expectedDeclarationValues": {
+                "margin": "auto"
+              }
+            },
+            {
+              "label": "Margin kiri dan kanan seimbang",
+              "detail": "Nilai computed margin kiri dan kanan harus sama.",
+              "targetIds": [
+                "maxWidthCenteredTarget"
+              ],
+              "computedPropertiesEqual": [
+                "marginLeft",
+                "marginRight"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "max-width-responsive",
+          "number": 107,
+          "title": "Max-width untuk Layout Responsif",
+          "category": "Max-width",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_max-width.asp",
+          "description": "max-width: 100% mencegah konten lebih lebar daripada pembungkusnya, khususnya pada layar sempit.",
+          "goal": "Buat panel memiliki width 560px pada layar besar tetapi batasi agar tidak melampaui wadah dengan max-width: 100%.",
+          "hints": [
+            "width: 560px",
+            "max-width: 100%"
+          ],
+          "hint": "Gunakan .max-width-responsive-target { width: 560px; max-width: 100%; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">RESPONSIVE WIDTH</span><h1>Panel Responsif</h1><p>Panel dibatasi oleh lebar wadah agar tidak menimbulkan overflow horizontal.</p><div class=\"max-width-stage\"><div class=\"max-width-responsive-target\" id=\"maxWidthResponsiveTarget\">Panel responsif</div></div></main>",
+          "checks": [
+            {
+              "label": "Width 560px dan max-width 100% digunakan",
+              "detail": "Deklarasikan width 560px dan max-width 100%.",
+              "requiredSelectors": [
+                ".max-width-responsive-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "width"
+                ],
+                [
+                  "max-width"
+                ]
+              ],
+              "expectedDeclarationValues": {
+                "width": "560px",
+                "max-width": "100%"
+              }
+            },
+            {
+              "label": "Max-width 100% diterapkan",
+              "detail": "Computed max-width harus 100%.",
+              "targetIds": [
+                "maxWidthResponsiveTarget"
+              ],
+              "computedProperty": "maxWidth",
+              "expected": "100%"
+            }
+          ]
+        },
+        {
+          "id": "position-static",
+          "number": 108,
+          "title": "Position: Static",
+          "category": "Positioning",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_position.asp",
+          "description": "position: static adalah posisi normal elemen. Properti top, right, bottom, dan left tidak menggeser elemen static.",
+          "goal": "Terapkan position: static pada label target.",
+          "hints": [
+            "position",
+            "static"
+          ],
+          "hint": "Gunakan .position-static-target { position: static; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">POSITION STATIC</span><h1>Posisi Normal</h1><p>Static adalah posisi standar elemen di dalam dokumen.</p><div class=\"position-stage\"><div class=\"position-static-target\" id=\"positionStaticTarget\">Elemen static</div></div></main>",
+          "checks": [
+            {
+              "label": "Selector position static digunakan",
+              "detail": "Deklarasikan position: static.",
+              "requiredSelectors": [
+                ".position-static-target"
+              ],
+              "declaredProperties": [
+                "position"
+              ],
+              "expectedDeclarationValues": {
+                "position": "static"
+              }
+            },
+            {
+              "label": "Computed position adalah static",
+              "detail": "Computed position target harus static.",
+              "targetIds": [
+                "positionStaticTarget"
+              ],
+              "computedProperty": "position",
+              "expected": "static"
+            }
+          ]
+        },
+        {
+          "id": "position-relative",
+          "number": 109,
+          "title": "Position: Relative",
+          "category": "Positioning",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_position.asp",
+          "description": "position: relative menggeser elemen dari posisi normalnya, sementara ruang asalnya tetap dipertahankan.",
+          "goal": "Geser kotak 12px dari atas dan 18px dari kiri menggunakan position: relative.",
+          "hints": [
+            "position: relative",
+            "top",
+            "left"
+          ],
+          "hint": "Gunakan .position-relative-target { position: relative; top: 12px; left: 18px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">POSITION RELATIVE</span><h1>Geser dari Posisi Asli</h1><p>Kotak bergeser, tetapi ruang awalnya tetap tersedia.</p><div class=\"position-stage\"><div class=\"position-relative-target\" id=\"positionRelativeTarget\">Kotak relative</div><div class=\"position-following-target\">Elemen berikutnya</div></div></main>",
+          "checks": [
+            {
+              "label": "Position relative digunakan",
+              "detail": "Deklarasikan position: relative.",
+              "requiredSelectors": [
+                ".position-relative-target"
+              ],
+              "declaredProperties": [
+                "position"
+              ],
+              "expectedDeclarationValues": {
+                "position": "relative"
+              }
+            },
+            {
+              "label": "Computed position relative",
+              "detail": "Computed position harus relative.",
+              "targetIds": [
+                "positionRelativeTarget"
+              ],
+              "computedProperty": "position",
+              "expected": "relative"
+            },
+            {
+              "label": "Offset atas 12px",
+              "detail": "Computed top harus 12px.",
+              "targetIds": [
+                "positionRelativeTarget"
+              ],
+              "computedProperty": "top",
+              "expected": "12px"
+            },
+            {
+              "label": "Offset kiri 18px",
+              "detail": "Computed left harus 18px.",
+              "targetIds": [
+                "positionRelativeTarget"
+              ],
+              "computedProperty": "left",
+              "expected": "18px"
+            }
+          ]
+        },
+        {
+          "id": "position-absolute",
+          "number": 110,
+          "title": "Position: Absolute",
+          "category": "Positioning",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_positioning_fixed_absolute.asp",
+          "description": "Elemen absolute diposisikan relatif terhadap ancestor terdekat yang memiliki position selain static.",
+          "goal": "Jadikan pembungkus relative dan letakkan label absolute 10px dari sisi atas dan kanan pembungkus.",
+          "hints": [
+            "parent: position relative",
+            "child: position absolute",
+            "top/right"
+          ],
+          "hint": "Gunakan .position-absolute-stage { position: relative; } dan .position-absolute-target { position: absolute; top: 10px; right: 10px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">POSITION ABSOLUTE</span><h1>Label di Dalam Kartu</h1><p>Posisikan label di pojok kanan atas kartu.</p><div class=\"position-absolute-stage\"><strong>Kartu Proyek</strong><p>Isi kartu tetap berada dalam alur normal.</p><span class=\"position-absolute-target\" id=\"positionAbsoluteTarget\">BARU</span></div></main>",
+          "checks": [
+            {
+              "label": "Pembungkus menjadi relative",
+              "detail": "Deklarasikan position: relative pada pembungkus.",
+              "requiredSelectors": [
+                ".position-absolute-stage"
+              ],
+              "declaredProperties": [
+                "position"
+              ],
+              "expectedDeclarationValues": {
+                "position": "relative"
+              }
+            },
+            {
+              "label": "Label menggunakan absolute",
+              "detail": "Deklarasikan position: absolute pada label.",
+              "requiredSelectors": [
+                ".position-absolute-target"
+              ],
+              "declaredProperties": [
+                "position"
+              ],
+              "expectedDeclarationValues": {
+                "position": "absolute"
+              }
+            },
+            {
+              "label": "Computed position label absolute",
+              "detail": "Computed position label harus absolute.",
+              "targetIds": [
+                "positionAbsoluteTarget"
+              ],
+              "computedProperty": "position",
+              "expected": "absolute"
+            },
+            {
+              "label": "Offset atas dan kanan 10px",
+              "detail": "Computed top dan right harus masing-masing 10px.",
+              "targetIds": [
+                "positionAbsoluteTarget"
+              ],
+              "expectedComputedValues": {
+                "top": "10px",
+                "right": "10px"
+              }
+            }
+          ]
+        },
+        {
+          "id": "position-fixed",
+          "number": 111,
+          "title": "Position: Fixed",
+          "category": "Positioning",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_positioning_fixed_absolute.asp",
+          "description": "position: fixed menempatkan elemen relatif terhadap viewport sehingga tetap pada posisi yang sama saat halaman digulir.",
+          "goal": "Letakkan badge bantuan tetap 12px dari pojok kanan bawah preview menggunakan position: fixed.",
+          "hints": [
+            "position: fixed",
+            "right",
+            "bottom"
+          ],
+          "hint": "Gunakan .position-fixed-target { position: fixed; right: 12px; bottom: 12px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">POSITION FIXED</span><h1>Elemen Fixed</h1><p>Badge bantuan di bawah dibuat tetap terhadap viewport preview.</p><div class=\"position-fixed-stage\"><p>Konten contoh untuk mensimulasikan halaman yang dapat digulir.</p><p>Position fixed tidak mengambil posisi dari pembungkus biasa.</p><p>Gulir area preview untuk mengamati badge fixed.</p><div class=\"position-fixed-target\" id=\"positionFixedTarget\">Bantuan</div></div></main>",
+          "checks": [
+            {
+              "label": "Badge menggunakan position fixed",
+              "detail": "Deklarasikan position: fixed.",
+              "requiredSelectors": [
+                ".position-fixed-target"
+              ],
+              "declaredProperties": [
+                "position"
+              ],
+              "expectedDeclarationValues": {
+                "position": "fixed"
+              }
+            },
+            {
+              "label": "Computed position adalah fixed",
+              "detail": "Computed position badge harus fixed.",
+              "targetIds": [
+                "positionFixedTarget"
+              ],
+              "computedProperty": "position",
+              "expected": "fixed"
+            },
+            {
+              "label": "Jarak kanan dan bawah 12px",
+              "detail": "Computed right dan bottom harus 12px.",
+              "targetIds": [
+                "positionFixedTarget"
+              ],
+              "expectedComputedValues": {
+                "right": "12px",
+                "bottom": "12px"
+              }
+            }
+          ]
+        },
+        {
+          "id": "position-sticky",
+          "number": 112,
+          "title": "Position: Sticky",
+          "category": "Positioning",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_positioning_sticky.asp",
+          "description": "position: sticky mengikuti alur normal, lalu menempel pada batas scroll saat posisi yang ditentukan tercapai.",
+          "goal": "Buat header pada area scroll menempel di bagian atas menggunakan position: sticky dan top: 0.",
+          "hints": [
+            "position: sticky",
+            "top: 0"
+          ],
+          "hint": "Gunakan .position-sticky-target { position: sticky; top: 0; background-color: #dbeafe; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">POSITION STICKY</span><h1>Header Sticky</h1><p>Gulir area di bawah untuk melihat header menempel di atas pembungkus.</p><div class=\"position-sticky-scroll\"><div class=\"position-sticky-target\" id=\"positionStickyTarget\">Header Sticky</div><p>Konten pertama di bawah header.</p><p>Konten kedua untuk mengisi area.</p><p>Konten ketiga.</p><p>Konten keempat.</p><p>Konten kelima.</p><p>Konten keenam.</p></div></main>",
+          "checks": [
+            {
+              "label": "Header menggunakan position sticky",
+              "detail": "Deklarasikan position: sticky.",
+              "requiredSelectors": [
+                ".position-sticky-target"
+              ],
+              "declaredProperties": [
+                "position"
+              ],
+              "expectedDeclarationValues": {
+                "position": "sticky"
+              }
+            },
+            {
+              "label": "Computed position adalah sticky",
+              "detail": "Computed position harus sticky.",
+              "targetIds": [
+                "positionStickyTarget"
+              ],
+              "computedProperty": "position",
+              "expected": "sticky"
+            },
+            {
+              "label": "Header menempel pada top 0",
+              "detail": "Computed top harus 0px.",
+              "targetIds": [
+                "positionStickyTarget"
+              ],
+              "computedProperty": "top",
+              "expected": "0px"
+            }
+          ]
+        },
+        {
+          "id": "position-z-index",
+          "number": 113,
+          "title": "Positioning: Z-index",
+          "category": "Positioning",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_position.asp",
+          "description": "z-index menentukan urutan tumpukan elemen yang diposisikan. Nilai lebih tinggi biasanya berada di depan nilai yang lebih rendah pada konteks tumpukan yang sama.",
+          "goal": "Posisikan badge secara relative dan beri z-index 3 agar berada di atas elemen lain.",
+          "hints": [
+            "position: relative",
+            "z-index: 3"
+          ],
+          "hint": "Gunakan .position-z-index-target { position: relative; z-index: 3; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">Z-INDEX</span><h1>Urutan Tumpukan</h1><p>Badge dengan z-index lebih tinggi berada di lapisan atas.</p><div class=\"position-z-index-stage\"><div class=\"position-z-index-back\">Lapisan belakang</div><div class=\"position-z-index-target\" id=\"positionZIndexTarget\">Lapisan depan</div></div></main>",
+          "checks": [
+            {
+              "label": "Position relative digunakan",
+              "detail": "z-index bekerja pada elemen yang diposisikan dalam konteks ini.",
+              "requiredSelectors": [
+                ".position-z-index-target"
+              ],
+              "declaredProperties": [
+                "position"
+              ],
+              "expectedDeclarationValues": {
+                "position": "relative"
+              }
+            },
+            {
+              "label": "Z-index bernilai 3",
+              "detail": "Deklarasikan z-index: 3.",
+              "requiredSelectors": [
+                ".position-z-index-target"
+              ],
+              "declaredProperties": [
+                "z-index"
+              ],
+              "expectedDeclarationValues": {
+                "z-index": "3"
+              }
+            },
+            {
+              "label": "Computed z-index adalah 3",
+              "detail": "Computed z-index target harus 3.",
+              "targetIds": [
+                "positionZIndexTarget"
+              ],
+              "computedProperty": "zIndex",
+              "expected": "3"
+            }
+          ]
+        },
+        {
+          "id": "position-card-challenge",
+          "number": 114,
+          "title": "Tantangan: Badge di Kartu",
+          "category": "Positioning",
+          "level": "LEVEL 3 · TANTANGAN",
+          "resourceUrl": "https://www.w3schools.com/css/css_positioning_fixed_absolute.asp",
+          "description": "Gunakan relative pada kartu sebagai konteks posisi, lalu absolute untuk menaruh badge di sudut kartu.",
+          "goal": "Posisikan kartu sebagai relative dan letakkan badge absolute 8px dari sisi atas dan kanan, dengan z-index 2.",
+          "hints": [
+            "position: relative",
+            "position: absolute",
+            "top/right",
+            "z-index"
+          ],
+          "hint": "Gunakan .position-card-target { position: relative; } dan .position-card-badge { position: absolute; top: 8px; right: 8px; z-index: 2; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">POSITIONING CHALLENGE</span><h1>Kartu Karya Siswa</h1><p>Letakkan label unggulan di pojok kanan atas kartu tanpa mengganggu teks.</p><div class=\"position-card-target\" id=\"positionCardTarget\"><strong>Game Edukasi: Eco Squad</strong><p>Proyek siswa tentang kepedulian terhadap lingkungan.</p><span class=\"position-card-badge\" id=\"positionCardBadge\">UNGGULAN</span></div></main>",
+          "checks": [
+            {
+              "label": "Kartu menggunakan position relative",
+              "detail": "Jadikan kartu sebagai konteks untuk badge absolute.",
+              "requiredSelectors": [
+                ".position-card-target"
+              ],
+              "declaredProperties": [
+                "position"
+              ],
+              "expectedDeclarationValues": {
+                "position": "relative"
+              }
+            },
+            {
+              "label": "Badge menggunakan position absolute",
+              "detail": "Posisikan badge secara absolute.",
+              "requiredSelectors": [
+                ".position-card-badge"
+              ],
+              "declaredProperties": [
+                "position"
+              ],
+              "expectedDeclarationValues": {
+                "position": "absolute"
+              }
+            },
+            {
+              "label": "Badge berada 8px dari atas dan kanan",
+              "detail": "Computed top dan right badge harus 8px.",
+              "targetIds": [
+                "positionCardBadge"
+              ],
+              "expectedComputedValues": {
+                "top": "8px",
+                "right": "8px"
+              }
+            },
+            {
+              "label": "Badge berada pada lapisan z-index 2",
+              "detail": "Computed z-index harus 2.",
+              "targetIds": [
+                "positionCardBadge"
+              ],
+              "computedProperty": "zIndex",
+              "expected": "2"
+            }
+          ]
         }
     ];
 
@@ -5530,6 +6360,27 @@
       .table-responsive-wrapper{max-width:100%;background:#f8fafc;border:1px dashed #b8c8d6;padding:10px;}
       .font-size-em-stage{font-size:16px;}
       .list-nav-stage{padding:10px;border:1px dashed #b8c8d6;background:#f8fafc;}
+
+      .display-stage,.max-width-stage,.position-stage,.position-absolute-stage,.position-fixed-stage,.position-z-index-stage{padding:12px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .display-block-target,.display-inline-target,.display-inline-block-target,.display-none-target,.visibility-hidden-target,.visibility-display-none-target{padding:8px;border:1px solid #94a3b8;background:#dbeafe;margin:3px;}
+      .display-after-hidden-target,.visibility-after-target{padding:8px;border:1px solid #cbd5e1;background:#fff;margin:3px;}
+      .display-inline-block-target{width:120px;height:50px;}
+      .display-flex-target{padding:10px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .display-flex-item{padding:12px;background:#dbeafe;border:1px solid #93c5fd;text-align:center;}
+      .max-width-stage{width:100%;padding:12px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .max-width-basic-target,.max-width-centered-target,.max-width-responsive-target{padding:12px;border:1px solid #60a5fa;background:#dbeafe;text-align:center;}
+      .position-static-target,.position-relative-target,.position-following-target{padding:10px;border:1px solid #93c5fd;background:#dbeafe;}
+      .position-absolute-stage{min-height:120px;}
+      .position-absolute-target{padding:5px 8px;background:#2563eb;color:#fff;}
+      .position-fixed-stage{min-height:360px;}
+      .position-fixed-target{padding:8px 12px;background:#1d4ed8;color:#fff;border-radius:6px;}
+      .position-sticky-scroll{height:150px;overflow:auto;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .position-sticky-target{padding:9px;border-bottom:1px solid #93c5fd;}
+      .position-z-index-stage{position:relative;min-height:105px;}
+      .position-z-index-back{position:absolute;top:18px;left:18px;padding:14px 20px;background:#fef3c7;border:1px solid #f59e0b;}
+      .position-z-index-target{padding:14px 20px;background:#dbeafe;border:1px solid #2563eb;}
+      .position-card-target{padding:24px 14px 14px;border:1px solid #cbd5e1;background:#f8fafc;border-radius:12px;}
+      .position-card-badge{padding:4px 7px;border-radius:5px;background:#0f766e;color:white;font-size:10px;font-weight:800;}
       .table-responsive-wrapper th,.table-responsive-wrapper td{white-space:nowrap;padding:8px;}
       .links-stage p,.list-stage p{margin:12px 0 0;}
 
@@ -5777,6 +6628,7 @@
                      prop==='letter-spacing' || prop==='word-spacing' || prop==='text-shadow' ||
                      prop==='border-collapse' || prop==='border-spacing' || prop==='table-layout' ||
                      prop==='vertical-align' || prop==='overflow-x' || prop==='overflow-y' ||
+                     prop==='position' || prop==='top' || prop==='right' || prop==='bottom' || prop==='left' || prop==='z-index' || prop==='visibility' || prop==='flex-direction' ||
                      prop==='font-style' || prop==='font-size' || prop==='font-weight' || prop==='display' || prop.indexOf('list-style')===0){
                     var value=rule.style.getPropertyValue(prop);
                     if(value) declarations[prop]=value.trim();
@@ -5818,6 +6670,7 @@
                 listStyleType:s.listStyleType,listStylePosition:s.listStylePosition,listStyleImage:s.listStyleImage,
                 borderCollapse:s.borderCollapse,borderSpacing:s.borderSpacing,tableLayout:s.tableLayout,verticalAlign:s.verticalAlign,
                 overflowX:s.overflowX,overflowY:s.overflowY,
+                position:s.position,top:s.top,right:s.right,bottom:s.bottom,left:s.left,zIndex:s.zIndex,visibility:s.visibility,flexDirection:s.flexDirection,
                 offsetWidth:el.offsetWidth,offsetHeight:el.offsetHeight,
                 widthWithMargins:el.offsetWidth+parseFloat(s.marginLeft||0)+parseFloat(s.marginRight||0),
                 heightWithMargins:el.offsetHeight+parseFloat(s.marginTop||0)+parseFloat(s.marginBottom||0)
