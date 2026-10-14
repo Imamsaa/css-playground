@@ -262,7 +262,7 @@
 
     <main class="layout">
       <aside class="panel tasks-panel">
-        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">71 TUGAS</span></div>
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">76 TUGAS</span></div>
         <div class="task-search-wrap">
           <input class="task-search" id="taskSearch" type="search" placeholder="Cari tugas atau materi…" aria-label="Cari tugas berdasarkan nama atau materi" autocomplete="off" />
         </div>
@@ -1637,6 +1637,298 @@
             }
           ]
         }
+,
+        {
+          "id": "font-style",
+          "number": 72,
+          "title": "Font Style",
+          "category": "Font",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_font_style.asp",
+          "description": "Properti font-style mengatur apakah teks tampil normal, italic (miring), atau oblique.",
+          "goal": "Buat paragraf target tampil miring menggunakan font-style: italic.",
+          "hints": [
+            "font-style",
+            "italic"
+          ],
+          "hint": "Gunakan .font-style-target { font-style: italic; }. Properti ini mengubah gaya huruf tanpa perlu mengubah teks HTML.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CSS FONT STYLE</span><h1>Gaya Huruf</h1><p class=\"font-style-target\" id=\"fontStyleTarget\">Paragraf ini akan tampil miring setelah font-style diterapkan.</p></main>",
+          "checks": [
+            {
+              "label": "Selector menggunakan font-style",
+              "detail": "Deklarasikan font-style pada paragraf target.",
+              "requiredSelectors": [
+                ".font-style-target"
+              ],
+              "declaredProperties": [
+                "font-style"
+              ]
+            },
+            {
+              "label": "Teks tampil miring",
+              "detail": "Computed font-style harus italic.",
+              "targetIds": [
+                "fontStyleTarget"
+              ],
+              "computedProperty": "fontStyle",
+              "expected": "italic"
+            }
+          ]
+        },
+        {
+          "id": "font-size",
+          "number": 73,
+          "title": "Font Size",
+          "category": "Font",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_font_size.asp",
+          "description": "Properti font-size mengatur ukuran teks. CSS mendukung satuan seperti px, em, rem, dan persentase.",
+          "goal": "Atur ukuran huruf paragraf menjadi 24px menggunakan font-size.",
+          "hints": [
+            "font-size",
+            "24px"
+          ],
+          "hint": "Gunakan .font-size-target { font-size: 24px; }. Perhatikan perubahan ukuran teks pada preview.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CSS FONT SIZE</span><h1>Ukuran Huruf</h1><p class=\"font-size-target\" id=\"fontSizeTarget\">Teks ini harus terlihat lebih besar daripada paragraf biasa.</p></main>",
+          "checks": [
+            {
+              "label": "Selector menggunakan font-size",
+              "detail": "Deklarasikan font-size pada paragraf target.",
+              "requiredSelectors": [
+                ".font-size-target"
+              ],
+              "declaredProperties": [
+                "font-size"
+              ]
+            },
+            {
+              "label": "Ukuran huruf adalah 24px",
+              "detail": "Computed font-size harus 24px.",
+              "targetIds": [
+                "fontSizeTarget"
+              ],
+              "computedProperty": "fontSize",
+              "expected": "24px"
+            }
+          ]
+        },
+        {
+          "id": "css-links",
+          "number": 74,
+          "title": "CSS Links",
+          "category": "Links",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_link.asp",
+          "description": "Link dapat diberi gaya menurut kondisinya: link belum dikunjungi (:link), sudah dikunjungi (:visited), pointer berada di atasnya (:hover), dan sedang ditekan (:active).",
+          "goal": "Atur warna untuk keempat kondisi link dengan selector a:link, a:visited, a:hover, dan a:active.",
+          "hints": [
+            ":link",
+            " :visited",
+            " :hover",
+            " :active"
+          ],
+          "hint": "Buat empat aturan terpisah. Contoh: a:link { color: #2563eb; }, a:visited { color: #7c3aed; }, a:hover { color: #ea580c; }, dan a:active { color: #dc2626; }. Urutan aturan pseudo-class dapat memengaruhi gaya link.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CSS LINKS</span><h1>Gaya Tautan</h1><p>Ubah warna link sesuai kondisinya. Arahkan pointer ke link dan coba klik untuk melihat perubahan.</p><div class=\"links-stage\"><a href=\"#link-normal\" id=\"cssLinkTarget\">Coba arahkan dan klik link ini</a><p id=\"link-normal\">Target tautan ada di bagian ini.</p></div></main>",
+          "checks": [
+            {
+              "label": "Selector a:link digunakan",
+              "detail": "Buat aturan untuk link yang belum dikunjungi dan atur properti color.",
+              "requiredSelectors": [
+                "a:link"
+              ],
+              "declaredProperties": [
+                "color"
+              ]
+            },
+            {
+              "label": "Selector a:visited digunakan",
+              "detail": "Buat aturan untuk link yang sudah dikunjungi dan atur properti color.",
+              "requiredSelectors": [
+                "a:visited"
+              ],
+              "declaredProperties": [
+                "color"
+              ]
+            },
+            {
+              "label": "Selector a:hover digunakan",
+              "detail": "Buat aturan hover untuk mengubah warna link saat pointer berada di atasnya.",
+              "requiredSelectors": [
+                "a:hover"
+              ],
+              "declaredProperties": [
+                "color"
+              ]
+            },
+            {
+              "label": "Selector a:active digunakan",
+              "detail": "Buat aturan active untuk mengubah warna saat link sedang ditekan.",
+              "requiredSelectors": [
+                "a:active"
+              ],
+              "declaredProperties": [
+                "color"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "link-buttons",
+          "number": 75,
+          "title": "Link Buttons",
+          "category": "Links",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_link_buttons.asp",
+          "description": "Link dapat ditata seperti tombol dengan display, warna latar, warna teks, padding, dan text-decoration.",
+          "goal": "Buat link tampil seperti tombol biru dengan teks putih, padding 10px 16px, sudut 8px, dan tanpa garis bawah.",
+          "hints": [
+            "display: inline-block",
+            "background-color",
+            "text-decoration"
+          ],
+          "hint": "Gunakan .link-button-target { display: inline-block; background-color: #2563eb; color: white; padding: 10px 16px; text-decoration: none; border-radius: 8px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">LINK BUTTONS</span><h1>Tautan seperti Tombol</h1><p>Styling link berikut supaya tampak seperti tombol.</p><div class=\"link-button-stage\"><a class=\"link-button-target\" id=\"linkButtonTarget\" href=\"#button-destination\">Buka halaman</a></div><p id=\"button-destination\">Area tujuan contoh.</p></main>",
+          "checks": [
+            {
+              "label": "Properti dasar tombol link digunakan",
+              "detail": "Gunakan display, background-color, color, padding, text-decoration, dan border-radius.",
+              "requiredSelectors": [
+                ".link-button-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "display"
+                ],
+                [
+                  "background-color"
+                ],
+                [
+                  "color"
+                ],
+                [
+                  "padding"
+                ],
+                [
+                  "text-decoration"
+                ],
+                [
+                  "border-radius"
+                ]
+              ]
+            },
+            {
+              "label": "Link menggunakan inline-block",
+              "detail": "Computed display harus inline-block.",
+              "targetIds": [
+                "linkButtonTarget"
+              ],
+              "computedProperty": "display",
+              "expected": "inline-block"
+            },
+            {
+              "label": "Latar tombol biru",
+              "detail": "Computed background-color harus rgb(37, 99, 235).",
+              "targetIds": [
+                "linkButtonTarget"
+              ],
+              "computedProperty": "backgroundColor",
+              "expected": "rgb(37, 99, 235)"
+            },
+            {
+              "label": "Teks tombol putih",
+              "detail": "Computed color harus putih.",
+              "targetIds": [
+                "linkButtonTarget"
+              ],
+              "computedProperty": "color",
+              "expected": "rgb(255, 255, 255)"
+            },
+            {
+              "label": "Padding atas-bawah 10px",
+              "detail": "Padding vertikal harus 10px.",
+              "targetIds": [
+                "linkButtonTarget"
+              ],
+              "computedProperty": "paddingTop",
+              "expected": "10px"
+            },
+            {
+              "label": "Padding kiri-kanan 16px",
+              "detail": "Padding horizontal harus 16px.",
+              "targetIds": [
+                "linkButtonTarget"
+              ],
+              "expectedComputedValues": {
+                "paddingLeft": "16px",
+                "paddingRight": "16px"
+              }
+            },
+            {
+              "label": "Tombol tidak memiliki garis bawah",
+              "detail": "text-decoration-line harus none.",
+              "targetIds": [
+                "linkButtonTarget"
+              ],
+              "computedProperty": "textDecorationLine",
+              "expected": "none"
+            },
+            {
+              "label": "Sudut tombol 8px",
+              "detail": "Sudut kiri atas harus membulat 8px.",
+              "targetIds": [
+                "linkButtonTarget"
+              ],
+              "computedProperty": "borderTopLeftRadius",
+              "expected": "8px"
+            }
+          ]
+        },
+        {
+          "id": "css-lists",
+          "number": 76,
+          "title": "CSS Lists",
+          "category": "Lists",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_list.asp",
+          "description": "Properti list-style mengatur penanda dan posisi daftar. Shorthand dapat menggabungkan jenis penanda dan posisinya.",
+          "goal": "Gunakan satu deklarasi list-style untuk membuat penanda berbentuk kotak (square) berada di dalam area daftar (inside).",
+          "hints": [
+            "list-style",
+            "square inside"
+          ],
+          "hint": "Gunakan .list-style-target { list-style: square inside; }. list-style menggabungkan jenis penanda dan posisi penanda dalam satu deklarasi.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CSS LISTS</span><h1>Daftar Kegiatan</h1><p>Atur jenis penanda dan posisinya pada daftar di bawah.</p><div class=\"list-stage\"><ul class=\"list-style-target\" id=\"listStyleTarget\"><li>Belajar HTML</li><li>Mengatur tampilan dengan CSS</li><li>Membuat halaman web</li></ul></div></main>",
+          "checks": [
+            {
+              "label": "Shorthand list-style digunakan",
+              "detail": "Deklarasikan list-style pada selector daftar.",
+              "requiredSelectors": [
+                ".list-style-target"
+              ],
+              "declaredProperties": [
+                "list-style"
+              ]
+            },
+            {
+              "label": "Penanda daftar berbentuk kotak",
+              "detail": "Computed list-style-type harus square.",
+              "targetIds": [
+                "listStyleTarget"
+              ],
+              "computedProperty": "listStyleType",
+              "expected": "square"
+            },
+            {
+              "label": "Penanda berada di dalam area daftar",
+              "detail": "Computed list-style-position harus inside.",
+              "targetIds": [
+                "listStyleTarget"
+              ],
+              "computedProperty": "listStylePosition",
+              "expected": "inside"
+            }
+          ]
+        }
     ];
 
     const BASE_PREVIEW_CSS = `
@@ -1720,6 +2012,10 @@
       .text-decoration-stage{padding:10px;border:1px dashed #cbd5e1;background:#f8fafc;}
       .text-decoration-target,.text-decoration-style-target{margin:8px 0;padding:8px;background:#fff;}
       .text-transform-target,.text-spacing-target,.text-shadow-target{padding:10px;border:1px solid #e2e8f0;background:#f8fafc;}
+
+      /* Font, link, and list tasks provide only the preview structure. */
+      .links-stage,.link-button-stage,.list-stage{padding:14px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .links-stage p,.list-stage p{margin:12px 0 0;}
 
 
 
@@ -1999,6 +2295,8 @@
                 boxSizing:s.boxSizing,outlineStyle:s.outlineStyle,outlineWidth:s.outlineWidth,outlineColor:s.outlineColor,outlineOffset:s.outlineOffset,
                 textAlign:s.textAlign,textDecorationLine:s.textDecorationLine,textDecorationStyle:s.textDecorationStyle,textDecorationColor:s.textDecorationColor,
                 textTransform:s.textTransform,textIndent:s.textIndent,lineHeight:s.lineHeight,letterSpacing:s.letterSpacing,wordSpacing:s.wordSpacing,textShadow:s.textShadow,
+                fontStyle:s.fontStyle,fontSize:s.fontSize,fontWeight:s.fontWeight,display:s.display,
+                listStyleType:s.listStyleType,listStylePosition:s.listStylePosition,
                 offsetWidth:el.offsetWidth,offsetHeight:el.offsetHeight,
                 widthWithMargins:el.offsetWidth+parseFloat(s.marginLeft||0)+parseFloat(s.marginRight||0),
                 heightWithMargins:el.offsetHeight+parseFloat(s.marginTop||0)+parseFloat(s.marginBottom||0)
