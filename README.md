@@ -1,6 +1,6 @@
 # ICT Al Firdaus Purwodadi — CSS Coding Playground
 
-Playground interaktif untuk latihan CSS Selector, `color`, Background, dan Border untuk siswa ICT Class.
+Playground interaktif untuk latihan CSS Selector, `color`, Background, Border, dan Margin untuk siswa ICT Class.
 
 ## Materi dan tugas
 
@@ -20,6 +20,15 @@ Playground interaktif untuk latihan CSS Selector, `color`, Background, dan Borde
 14. Border sisi tertentu
 15. Border shorthand
 16. Rounded border
+17. Margin pada tiap sisi
+18. Margin shorthand empat nilai
+19. Margin shorthand tiga nilai
+20. Margin shorthand dua nilai
+21. Margin shorthand satu nilai
+22. Margin auto untuk memusatkan elemen
+23. Margin inherit
+24. Margin persentase
+25. Margin negatif
 
 ## Sumber materi Background
 
@@ -37,13 +46,19 @@ Playground interaktif untuk latihan CSS Selector, `color`, Background, dan Borde
 - [CSS Border Shorthand](https://www.w3schools.com/css/css_border_shorthand.asp)
 - [CSS Rounded Borders](https://www.w3schools.com/css/css_border_rounded.asp)
 
+## Sumber materi Margin
+
+- [CSS Margins](https://www.w3schools.com/css/css_margin.asp)
+
+Materi Margin mencakup empat properti sisi, shorthand dengan satu hingga empat nilai, `auto`, `inherit`, persentase, dan nilai negatif.
+
 ## Fitur
 
 - Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik
 - Panel struktur HTML bertingkat, termasuk tag, class, dan ID; klik item untuk memasukkan selector ke editor
 - Pemeriksaan otomatis menggunakan selector CSS dan computed style browser
-- Pemeriksaan properti Background dan Border, termasuk style, width, color, sides, shorthand, serta border-radius
-- Tautan materi W3Schools di tugas yang relevan
+- Pemeriksaan properti Background, Border, dan Margin
+- Tautan materi W3Schools pada tugas yang relevan
 - Penyimpanan kode dan progres di browser siswa
 - Tautan langsung tugas melalui parameter URL `?task=<id>`
 
