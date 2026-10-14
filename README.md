@@ -2,7 +2,7 @@
 
 Playground interaktif untuk latihan CSS secara bertahap. Siswa menulis CSS sendiri, melihat live preview, membaca struktur HTML tugas, dan mengecek hasil melalui computed style browser.
 
-## Kurikulum: 137 tugas bertahap
+## Kurikulum: 149 tugas bertahap
 
 ### CSS Selector — tugas 1–12
 
@@ -342,12 +342,50 @@ Materi rujukan:
 - [CSS Vertical Align](https://www.w3schools.com/css/css_align_vertical.asp)
 
 
+
+### Penguatan Combinators — tugas 138
+
+138. Tantangan: Gabungan Combinators
+
+Materi rujukan:
+- [CSS Combinators](https://www.w3schools.com/css/css_combinators.asp)
+
+### Image Transparency — tugas 139–141
+
+139. Image Transparency: Opacity
+140. Image Transparency: Hover
+141. Tantangan: Galeri Transparansi
+
+Materi rujukan:
+- [CSS Image Transparency](https://www.w3schools.com/css/css_image_transparency.asp)
+
+### Dropdown — tugas 142–144
+
+142. Dropdown: Dasar
+143. Dropdown: Gaya Item Menu
+144. Tantangan: Dropdown Navigasi
+
+Materi rujukan:
+- [CSS Dropdowns](https://www.w3schools.com/css/css_dropdowns.asp)
+
+### Website Layout — tugas 145–149
+
+145. Website Layout: Struktur Dasar
+146. Website Layout: Navigasi Horizontal
+147. Website Layout: Dua Kolom
+148. Website Layout: Flex Responsif
+149. Tantangan: Halaman Website ICT
+
+Materi rujukan:
+- [CSS Website Layout](https://www.w3schools.com/css/css_website_layout.asp)
+
+
 ## Fitur
 
 - Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik.
 - Panel struktur HTML bertingkat menampilkan tag, class, ID, dan hubungan induk-anak. Klik tag, class, atau ID untuk menambahkan selector ke editor.
 - Pemeriksaan otomatis atas selector dan computed styles di browser.
-- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, Lists, Tables, Display, Max-width, Positioning, Overflow, Float/Clear, Inline-block, dan Alignment.
+- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, Lists, Tables, Display, Max-width, Positioning, Overflow, Float/Clear, Inline-block, Alignment, Combinators, Image Transparency, Dropdown, dan Website Layout.
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
