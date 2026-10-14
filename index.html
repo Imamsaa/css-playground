@@ -1936,7 +1936,7 @@
       const safeCss = String(css).replace(/<\/style/gi, '<\\/style');
       const script = `
         (function(){
-          function collectAuthoredDeclarations(style, declarations){
+          function collectSerializedDeclarations(style, declarations){
             var source = style.cssText || '';
             source.split(';').forEach(function(part){
               var colon = part.indexOf(':');
@@ -1967,8 +1967,8 @@
                     if(value) declarations[prop]=value.trim();
                   }
                 }
-                /* Preserve authored shorthand names as well as CSSOM-expanded longhands. */
-                collectAuthoredDeclarations(rule.style, declarations);
+                /* CSSOM may expose shorthand values as expanded longhands in the indexed list; also collect serialized shorthand names. */
+                collectSerializedDeclarations(rule.style, declarations);
                 output.push({selectors:rule.selectorText.split(',').map(function(s){return s.trim();}),declarations:declarations});
               } else if(rule.cssRules) { try{collectRules(rule.cssRules,output);}catch(e){} }
             }
