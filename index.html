@@ -262,7 +262,7 @@
 
     <main class="layout">
       <aside class="panel tasks-panel">
-        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">137 TUGAS</span></div>
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">149 TUGAS</span></div>
         <div class="task-search-wrap">
           <input class="task-search" id="taskSearch" type="search" placeholder="Cari tugas atau materi…" aria-label="Cari tugas berdasarkan nama atau materi" autocomplete="off" />
         </div>
@@ -7527,6 +7527,724 @@
         "expected": "center"
       }
     ]
+  },
+  {
+    "number": 138,
+    "id": "combinators-combined-challenge",
+    "title": "Tantangan: Gabungan Combinators",
+    "category": "CSS Selector",
+    "level": "LEVEL 3 · TANTANGAN",
+    "resourceUrl": "https://www.w3schools.com/css/css_combinators.asp",
+    "description": "Combinator menghubungkan selector berdasarkan hubungan antar elemen: descendant, child, adjacent sibling, dan general sibling.",
+    "goal": "Gunakan empat combinator untuk memberi gaya pada paragraf, daftar anak langsung, paragraf setelah intro, dan tombol yang menjadi sibling sesudah intro.",
+    "hints": [
+      "descendant space",
+      "child >",
+      "adjacent +",
+      "general sibling ~"
+    ],
+    "hint": "Contoh selector: .combinator-article p, .combinator-article > ul, .combinator-intro + .combinator-body, dan .combinator-intro ~ .combinator-action.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">COMBINATORS CHALLENGE</span><h1>Berita Proyek ICT</h1><article class=\"combinator-article\"><p class=\"combinator-intro\" id=\"combinatorIntro\">Tim ICT memperkenalkan proyek baru.</p><p class=\"combinator-body\" id=\"combinatorBody\">Proyek dibuat melalui proses desain dan pengujian.</p><ul class=\"combinator-list\"><li>Perencanaan</li><li>Pengujian</li></ul><button class=\"combinator-action\" id=\"combinatorAction\">Lihat Proyek</button></article></main>",
+    "checks": [
+      {
+        "label": "Descendant selector digunakan",
+        "detail": "Targetkan paragraf di dalam artikel dengan descendant combinator.",
+        "requiredSelectors": [
+          ".combinator-article p"
+        ],
+        "declaredProperties": [
+          "color"
+        ]
+      },
+      {
+        "label": "Child combinator digunakan",
+        "detail": "Targetkan daftar yang merupakan anak langsung artikel.",
+        "requiredSelectors": [
+          ".combinator-article > ul"
+        ],
+        "declaredProperties": [
+          "background-color"
+        ]
+      },
+      {
+        "label": "Adjacent sibling digunakan",
+        "detail": "Targetkan paragraf tepat setelah intro.",
+        "requiredSelectors": [
+          ".combinator-intro + .combinator-body"
+        ],
+        "declaredProperties": [
+          "font-weight"
+        ]
+      },
+      {
+        "label": "General sibling digunakan",
+        "detail": "Targetkan tombol yang merupakan sibling setelah intro.",
+        "requiredSelectors": [
+          ".combinator-intro ~ .combinator-action"
+        ],
+        "declaredProperties": [
+          "background-color"
+        ]
+      }
+    ]
+  },
+  {
+    "number": 139,
+    "id": "image-transparency-basic",
+    "title": "Image Transparency: Opacity",
+    "category": "Image Transparency",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css_image_transparency.asp",
+    "description": "Properti opacity mengatur tingkat keterlihatan elemen. Nilai 1 berarti tidak transparan, sedangkan 0.5 membuatnya setengah transparan.",
+    "goal": "Buat gambar memiliki opacity 0.5.",
+    "hints": [
+      "opacity: 0.5",
+      "nilai 0 sampai 1"
+    ],
+    "hint": "Gunakan .image-transparency-target { opacity: 0.5; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">IMAGE TRANSPARENCY</span><h1>Gambar Transparan</h1><p>Kurangi opacity gambar hingga setengah.</p><img class=\"image-transparency-target\" id=\"imageTransparencyTarget\" src=\"https://www.w3schools.com/css/img_forest.jpg\" alt=\"Pemandangan hutan\"></main>",
+    "checks": [
+      {
+        "label": "Deklarasi opacity 0.5",
+        "detail": "Terapkan opacity: 0.5 pada gambar.",
+        "requiredSelectors": [
+          ".image-transparency-target"
+        ],
+        "declaredProperties": [
+          "opacity"
+        ],
+        "expectedDeclarationValues": {
+          "opacity": "0.5"
+        }
+      },
+      {
+        "label": "Computed opacity adalah 0.5",
+        "detail": "Opacity gambar harus bernilai 0.5.",
+        "targetIds": [
+          "imageTransparencyTarget"
+        ],
+        "computedProperty": "opacity",
+        "expected": "0.5"
+      }
+    ]
+  },
+  {
+    "number": 140,
+    "id": "image-transparency-hover",
+    "title": "Image Transparency: Hover",
+    "category": "Image Transparency",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_image_transparency.asp",
+    "description": "Opacity dapat berubah saat pointer berada di atas gambar dengan pseudo-class :hover.",
+    "goal": "Buat gambar normal pada awalnya dan menjadi transparan dengan opacity 0.5 saat di-hover.",
+    "hints": [
+      ".image-hover-target:hover",
+      "opacity: 0.5"
+    ],
+    "hint": "Gunakan .image-hover-target:hover { opacity: 0.5; }. Arahkan pointer ke gambar pada preview untuk melihat efeknya.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">HOVER TRANSPARENCY</span><h1>Arahkan Pointer ke Gambar</h1><p>Gambar seharusnya berubah transparan ketika pointer menyentuhnya.</p><img class=\"image-hover-target\" id=\"imageHoverTarget\" src=\"https://www.w3schools.com/css/img_forest.jpg\" alt=\"Pemandangan hutan\"></main>",
+    "checks": [
+      {
+        "label": "Selector hover gambar digunakan",
+        "detail": "Gunakan pseudo-class :hover pada gambar.",
+        "requiredSelectors": [
+          ".image-hover-target:hover"
+        ],
+        "declaredProperties": [
+          "opacity"
+        ],
+        "expectedDeclarationValues": {
+          "opacity": "0.5"
+        }
+      }
+    ]
+  },
+  {
+    "number": 141,
+    "id": "image-transparency-gallery",
+    "title": "Tantangan: Galeri Transparansi",
+    "category": "Image Transparency",
+    "level": "LEVEL 3 · TANTANGAN",
+    "resourceUrl": "https://www.w3schools.com/css/css_image_transparency.asp",
+    "description": "Gunakan opacity pada kartu gambar dan tingkatkan kembali opacity saat gambar di-hover agar galeri memberi umpan balik visual.",
+    "goal": "Buat semua gambar memiliki opacity 0.7, lalu kembalikan opacity menjadi 1 ketika di-hover.",
+    "hints": [
+      "opacity: 0.7",
+      "opacity: 1 saat hover"
+    ],
+    "hint": "Gunakan .transparency-gallery img { opacity: 0.7; } dan .transparency-gallery img:hover { opacity: 1; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">GALLERY CHALLENGE</span><h1>Galeri Karya</h1><p>Arahkan pointer ke gambar untuk menonjolkan karya yang dipilih.</p><div class=\"transparency-gallery\"><img class=\"transparency-gallery-image\" id=\"transparencyGalleryImage\" src=\"https://www.w3schools.com/css/img_forest.jpg\" alt=\"Pemandangan hutan\"><img class=\"transparency-gallery-image\" src=\"https://www.w3schools.com/css/img_5terre.jpg\" alt=\"Pemandangan pesisir\"></div></main>",
+    "checks": [
+      {
+        "label": "Opacity galeri 0.7",
+        "detail": "Atur gambar galeri dengan opacity: 0.7.",
+        "requiredSelectors": [
+          ".transparency-gallery img"
+        ],
+        "declaredProperties": [
+          "opacity"
+        ],
+        "expectedDeclarationValues": {
+          "opacity": "0.7"
+        }
+      },
+      {
+        "label": "Opacity kembali penuh saat hover",
+        "detail": "Gunakan hover dengan opacity: 1.",
+        "requiredSelectors": [
+          ".transparency-gallery img:hover"
+        ],
+        "declaredProperties": [
+          "opacity"
+        ],
+        "expectedDeclarationValues": {
+          "opacity": "1"
+        }
+      }
+    ]
+  },
+  {
+    "number": 142,
+    "id": "dropdown-basic",
+    "title": "Dropdown: Dasar",
+    "category": "Dropdown",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_dropdowns.asp",
+    "description": "Menu dropdown biasanya memiliki wadah position: relative, panel position: absolute, dan panel disembunyikan sampai pemicu di-hover.",
+    "goal": "Buat panel dropdown tersembunyi, lalu tampilkan saat pemicu di-hover.",
+    "hints": [
+      "position: relative",
+      "display: none",
+      ":hover ... display: block"
+    ],
+    "hint": "Gunakan .dropdown-basic { position: relative; display: inline-block; }, .dropdown-basic-content { display: none; position: absolute; top: 100%; left: 0; }, dan .dropdown-basic:hover .dropdown-basic-content { display: block; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CSS DROPDOWN</span><h1>Menu Pilihan</h1><p>Arahkan pointer ke tombol Menu untuk membuka daftar.</p><div class=\"dropdown-basic\" id=\"dropdownBasic\"><button class=\"dropdown-basic-button\">Menu ▼</button><div class=\"dropdown-basic-content\" id=\"dropdownBasicContent\"><a href=\"#materi\">Materi CSS</a><a href=\"#latihan\">Latihan</a><a href=\"#proyek\">Proyek</a></div></div></main>",
+    "checks": [
+      {
+        "label": "Wadah dropdown menjadi relative",
+        "detail": "Wadah harus menjadi konteks posisi panel.",
+        "requiredSelectors": [
+          ".dropdown-basic"
+        ],
+        "declaredProperties": [
+          "position"
+        ],
+        "expectedDeclarationValues": {
+          "position": "relative"
+        }
+      },
+      {
+        "label": "Panel disembunyikan",
+        "detail": "Gunakan display: none pada panel menu.",
+        "requiredSelectors": [
+          ".dropdown-basic-content"
+        ],
+        "declaredProperties": [
+          "display",
+          "position"
+        ],
+        "expectedDeclarationValues": {
+          "display": "none",
+          "position": "absolute"
+        }
+      },
+      {
+        "label": "Panel tampil ketika hover",
+        "detail": "Gunakan combinator descendant bersama pseudo-class hover.",
+        "requiredSelectors": [
+          ".dropdown-basic:hover .dropdown-basic-content"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "block"
+        }
+      }
+    ]
+  },
+  {
+    "number": 143,
+    "id": "dropdown-link-styles",
+    "title": "Dropdown: Gaya Item Menu",
+    "category": "Dropdown",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_dropdowns.asp",
+    "description": "Item dropdown biasanya ditampilkan sebagai baris penuh agar mudah diklik dan dapat memiliki latar berbeda saat di-hover.",
+    "goal": "Ubah tautan menu menjadi block dan beri warna latar biru muda saat di-hover.",
+    "hints": [
+      "display: block",
+      "a:hover",
+      "background-color"
+    ],
+    "hint": "Gunakan .dropdown-style-content a { display: block; } dan .dropdown-style-content a:hover { background-color: #dbeafe; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">DROPDOWN LINKS</span><h1>Gaya Item Menu</h1><p>Setiap tautan harus menempati satu baris dan berubah latar saat di-hover.</p><div class=\"dropdown-style-content\"><a class=\"dropdown-style-link\" id=\"dropdownStyleLink\" href=\"#materi\">Materi</a><a class=\"dropdown-style-link\" href=\"#latihan\">Latihan</a><a class=\"dropdown-style-link\" href=\"#proyek\">Proyek</a></div></main>",
+    "checks": [
+      {
+        "label": "Item menu menjadi block",
+        "detail": "Tampilkan masing-masing tautan sebagai block.",
+        "requiredSelectors": [
+          ".dropdown-style-content a"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "block"
+        }
+      },
+      {
+        "label": "Item menu memiliki efek hover",
+        "detail": "Gunakan pseudo-class :hover pada tautan.",
+        "requiredSelectors": [
+          ".dropdown-style-content a:hover"
+        ],
+        "declaredProperties": [
+          "background-color"
+        ]
+      }
+    ]
+  },
+  {
+    "number": 144,
+    "id": "dropdown-challenge",
+    "title": "Tantangan: Dropdown Navigasi",
+    "category": "Dropdown",
+    "level": "LEVEL 3 · TANTANGAN",
+    "resourceUrl": "https://www.w3schools.com/css/css_dropdowns.asp",
+    "description": "Dropdown pada navigasi membutuhkan positioning untuk panel utama dan sub-menu, serta selector hover yang sesuai untuk membuka setiap panel.",
+    "goal": "Buat menu utama muncul saat navigasi di-hover, lalu tampilkan sub-menu di sebelah kanan saat opsi Projek di-hover.",
+    "hints": [
+      "position: relative",
+      "position: absolute",
+      "display: none/block"
+    ],
+    "hint": "Gunakan .dropdown-challenge { position: relative; }, .dropdown-challenge-menu { display: none; position: absolute; top: 100%; left: 0; }, .dropdown-challenge:hover .dropdown-challenge-menu { display: block; }, lalu atur sub-menu dengan selector hover yang serupa.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">DROPDOWN CHALLENGE</span><h1>Navigasi Program</h1><nav class=\"dropdown-challenge-nav\"><div class=\"dropdown-challenge\" id=\"dropdownChallenge\"><button>Program ▼</button><div class=\"dropdown-challenge-menu\" id=\"dropdownChallengeMenu\"><a href=\"#ict\">ICT</a><div class=\"dropdown-challenge-more\"><a href=\"#proyek\">Projek ▸</a><div class=\"dropdown-challenge-submenu\" id=\"dropdownChallengeSubmenu\"><a href=\"#robotika\">Robotika</a><a href=\"#web\">Web</a></div></div><a href=\"#tahfidz\">Tahfidz</a></div></div></nav></main>",
+    "checks": [
+      {
+        "label": "Wadah menu menjadi relative",
+        "detail": "Jadikan wadah menu sebagai konteks positioning.",
+        "requiredSelectors": [
+          ".dropdown-challenge"
+        ],
+        "declaredProperties": [
+          "position"
+        ],
+        "expectedDeclarationValues": {
+          "position": "relative"
+        }
+      },
+      {
+        "label": "Menu utama tersembunyi dan absolute",
+        "detail": "Atur panel utama agar tersembunyi dan diposisikan absolute.",
+        "requiredSelectors": [
+          ".dropdown-challenge-menu"
+        ],
+        "declaredProperties": [
+          "display",
+          "position"
+        ],
+        "expectedDeclarationValues": {
+          "display": "none",
+          "position": "absolute"
+        }
+      },
+      {
+        "label": "Menu utama muncul saat hover",
+        "detail": "Tampilkan panel ketika wadah menu di-hover.",
+        "requiredSelectors": [
+          ".dropdown-challenge:hover .dropdown-challenge-menu"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "block"
+        }
+      },
+      {
+        "label": "Parent sub-menu menjadi relative",
+        "detail": "Jadikan opsi Projek acuan posisi sub-menu.",
+        "requiredSelectors": [
+          ".dropdown-challenge-more"
+        ],
+        "declaredProperties": [
+          "position"
+        ],
+        "expectedDeclarationValues": {
+          "position": "relative"
+        }
+      },
+      {
+        "label": "Sub-menu tersembunyi dan absolute",
+        "detail": "Posisikan sub-menu sebagai panel tersendiri.",
+        "requiredSelectors": [
+          ".dropdown-challenge-submenu"
+        ],
+        "declaredProperties": [
+          "display",
+          "position"
+        ],
+        "expectedDeclarationValues": {
+          "display": "none",
+          "position": "absolute"
+        }
+      },
+      {
+        "label": "Sub-menu muncul saat hover",
+        "detail": "Tampilkan sub-menu saat pilihan Projek di-hover.",
+        "requiredSelectors": [
+          ".dropdown-challenge-more:hover .dropdown-challenge-submenu"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "block"
+        }
+      }
+    ]
+  },
+  {
+    "number": 145,
+    "id": "website-layout-structure",
+    "title": "Website Layout: Struktur Dasar",
+    "category": "Website Layout",
+    "level": "LEVEL 1 · DASAR",
+    "resourceUrl": "https://www.w3schools.com/css/css_website_layout.asp",
+    "description": "Halaman website sering dibagi menjadi header, navigasi, area konten, sidebar, dan footer. Setiap area dapat diberi gaya secara terpisah.",
+    "goal": "Berikan latar gelap pada header, latar biru pada navigasi, dan padding pada area konten.",
+    "hints": [
+      "selector per bagian",
+      "background-color",
+      "padding"
+    ],
+    "hint": "Gunakan .website-layout-header { background-color: #1e293b; color: white; } .website-layout-nav { background-color: #dbeafe; } dan .website-layout-main { padding: 12px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">WEBSITE LAYOUT</span><h1>Struktur Halaman</h1><div class=\"website-layout-demo\"><header class=\"website-layout-header\" id=\"websiteLayoutHeader\"><strong>ICT AL FIRDAUS</strong><p>Belajar dan berkarya dengan teknologi.</p></header><nav class=\"website-layout-nav\" id=\"websiteLayoutNav\"><a href=\"#beranda\">Beranda</a> <a href=\"#materi\">Materi</a> <a href=\"#kontak\">Kontak</a></nav><section class=\"website-layout-main\" id=\"websiteLayoutMain\"><h2>Konten Utama</h2><p>Area untuk artikel, materi, dan informasi program.</p></section><footer class=\"website-layout-footer\">© ICT Al Firdaus</footer></div></main>",
+    "checks": [
+      {
+        "label": "Header diberi latar gelap",
+        "detail": "Deklarasikan background-color pada header.",
+        "requiredSelectors": [
+          ".website-layout-header"
+        ],
+        "declaredProperties": [
+          "background-color",
+          "color"
+        ]
+      },
+      {
+        "label": "Navigasi diberi latar",
+        "detail": "Deklarasikan background-color pada navigasi.",
+        "requiredSelectors": [
+          ".website-layout-nav"
+        ],
+        "declaredProperties": [
+          "background-color"
+        ]
+      },
+      {
+        "label": "Area konten diberi padding",
+        "detail": "Deklarasikan padding pada konten utama.",
+        "requiredSelectors": [
+          ".website-layout-main"
+        ],
+        "declaredProperties": [
+          "padding"
+        ]
+      },
+      {
+        "label": "Warna latar header sesuai",
+        "detail": "Gunakan latar #1e293b pada header.",
+        "targetIds": [
+          "websiteLayoutHeader"
+        ],
+        "computedProperty": "backgroundColor",
+        "expected": "rgb(30, 41, 59)"
+      }
+    ]
+  },
+  {
+    "number": 146,
+    "id": "website-layout-navigation",
+    "title": "Website Layout: Navigasi Horizontal",
+    "category": "Website Layout",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_website_layout.asp",
+    "description": "Navigasi website umum menempatkan item menu dalam satu baris. display: inline-block memungkinkan setiap tautan memiliki padding dan ukuran kotak.",
+    "goal": "Buat tautan navigasi tampil sebagai inline-block dengan padding 10px.",
+    "hints": [
+      "display: inline-block",
+      "padding: 10px"
+    ],
+    "hint": "Gunakan .website-nav-item { display: inline-block; padding: 10px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">WEBSITE NAV</span><h1>Navigasi Horizontal</h1><nav class=\"website-nav-demo\"><a class=\"website-nav-item\" id=\"websiteNavItem\" href=\"#beranda\">Beranda</a><a class=\"website-nav-item\" href=\"#materi\">Materi</a><a class=\"website-nav-item\" href=\"#tentang\">Tentang</a></nav></main>",
+    "checks": [
+      {
+        "label": "Tautan navigasi inline-block",
+        "detail": "Gunakan display: inline-block pada item menu.",
+        "requiredSelectors": [
+          ".website-nav-item"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "inline-block"
+        }
+      },
+      {
+        "label": "Padding navigasi 10px",
+        "detail": "Tambahkan padding: 10px pada tautan.",
+        "requiredSelectors": [
+          ".website-nav-item"
+        ],
+        "declaredProperties": [
+          "padding"
+        ],
+        "expectedDeclarationValues": {
+          "padding": "10px"
+        }
+      },
+      {
+        "label": "Computed display inline-block",
+        "detail": "Tautan pertama harus inline-block.",
+        "targetIds": [
+          "websiteNavItem"
+        ],
+        "computedProperty": "display",
+        "expected": "inline-block"
+      }
+    ]
+  },
+  {
+    "number": 147,
+    "id": "website-layout-columns",
+    "title": "Website Layout: Dua Kolom",
+    "category": "Website Layout",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_website_layout.asp",
+    "description": "Layout dua kolom dapat dibangun dengan flexbox: area utama di satu sisi dan sidebar di sisi lain.",
+    "goal": "Jadikan pembungkus sebagai flex container dengan arah row, lalu atur lebar area utama dan sidebar.",
+    "hints": [
+      "display: flex",
+      "flex-direction: row",
+      "width"
+    ],
+    "hint": "Gunakan .website-columns { display: flex; flex-direction: row; gap: 12px; }, .website-main-column { width: 65%; }, dan .website-sidebar { width: 35%; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TWO-COLUMN LAYOUT</span><h1>Artikel dan Sidebar</h1><div class=\"website-columns\" id=\"websiteColumns\"><article class=\"website-main-column\" id=\"websiteMainColumn\"><strong>Konten Utama</strong><p>Artikel atau informasi utama ditampilkan di bagian ini.</p></article><aside class=\"website-sidebar\" id=\"websiteSidebar\"><strong>Sidebar</strong><p>Link dan informasi tambahan.</p></aside></div></main>",
+    "checks": [
+      {
+        "label": "Pembungkus menggunakan flex",
+        "detail": "Gunakan display: flex pada pembungkus.",
+        "requiredSelectors": [
+          ".website-columns"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "flex"
+        }
+      },
+      {
+        "label": "Arah layout row",
+        "detail": "Gunakan flex-direction: row.",
+        "requiredSelectors": [
+          ".website-columns"
+        ],
+        "declaredProperties": [
+          "flex-direction"
+        ],
+        "expectedDeclarationValues": {
+          "flex-direction": "row"
+        }
+      },
+      {
+        "label": "Area utama memiliki lebar",
+        "detail": "Deklarasikan width untuk area utama.",
+        "requiredSelectors": [
+          ".website-main-column"
+        ],
+        "declaredProperties": [
+          "width"
+        ]
+      },
+      {
+        "label": "Sidebar memiliki lebar",
+        "detail": "Deklarasikan width untuk sidebar.",
+        "requiredSelectors": [
+          ".website-sidebar"
+        ],
+        "declaredProperties": [
+          "width"
+        ]
+      },
+      {
+        "label": "Computed layout row",
+        "detail": "Arah flex harus row.",
+        "targetIds": [
+          "websiteColumns"
+        ],
+        "computedProperty": "flexDirection",
+        "expected": "row"
+      }
+    ]
+  },
+  {
+    "number": 148,
+    "id": "website-layout-responsive",
+    "title": "Website Layout: Flex Responsif",
+    "category": "Website Layout",
+    "level": "LEVEL 2 · MENENGAH",
+    "resourceUrl": "https://www.w3schools.com/css/css_website_layout.asp",
+    "description": "flex-wrap: wrap mengizinkan item berpindah ke baris berikutnya ketika ruang horizontal tidak cukup, membantu layout menghadapi ukuran layar berbeda.",
+    "goal": "Buat kartu layout menggunakan flex-wrap: wrap agar item dapat turun ke baris berikutnya saat ruang sempit.",
+    "hints": [
+      "display: flex",
+      "flex-wrap: wrap"
+    ],
+    "hint": "Gunakan .website-responsive-layout { display: flex; flex-wrap: wrap; gap: 10px; }.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">RESPONSIVE WEBSITE</span><h1>Bagian Halaman</h1><p>Ubah lebar preview untuk melihat apakah kartu dapat melipat ke baris baru.</p><div class=\"website-responsive-layout\" id=\"websiteResponsiveLayout\"><div class=\"website-responsive-card\">Konten A</div><div class=\"website-responsive-card\">Konten B</div><div class=\"website-responsive-card\">Konten C</div></div></main>",
+    "checks": [
+      {
+        "label": "Pembungkus menggunakan flex",
+        "detail": "Gunakan display: flex pada pembungkus.",
+        "requiredSelectors": [
+          ".website-responsive-layout"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "flex"
+        }
+      },
+      {
+        "label": "Pembungkus menggunakan wrap",
+        "detail": "Gunakan flex-wrap: wrap.",
+        "requiredSelectors": [
+          ".website-responsive-layout"
+        ],
+        "declaredProperties": [
+          "flex-wrap"
+        ],
+        "expectedDeclarationValues": {
+          "flex-wrap": "wrap"
+        }
+      },
+      {
+        "label": "Computed flex-wrap adalah wrap",
+        "detail": "Item harus dapat berpindah ke baris baru.",
+        "targetIds": [
+          "websiteResponsiveLayout"
+        ],
+        "computedProperty": "flexWrap",
+        "expected": "wrap"
+      }
+    ]
+  },
+  {
+    "number": 149,
+    "id": "website-layout-challenge",
+    "title": "Tantangan: Halaman Website ICT",
+    "category": "Website Layout",
+    "level": "LEVEL 3 · TANTANGAN",
+    "resourceUrl": "https://www.w3schools.com/css/css_website_layout.asp",
+    "description": "Gabungkan header, navigasi, dua kolom konten, sidebar, dan footer untuk membuat struktur website sederhana.",
+    "goal": "Gunakan flexbox untuk dua kolom, pusatkan judul header, dan jadikan area utama lebih lebar daripada sidebar.",
+    "hints": [
+      "header",
+      "navigation",
+      "display: flex",
+      "width"
+    ],
+    "hint": "Atur .website-challenge-header dengan text-align: center; .website-challenge-body dengan display: flex dan flex-direction: row; lalu atur lebar konten dan sidebar.",
+    "html": "<main class=\"mini-page\"><span class=\"eyebrow\">WEBSITE LAYOUT CHALLENGE</span><h1>Rancang Halaman ICT</h1><div class=\"website-challenge-page\"><header class=\"website-challenge-header\" id=\"websiteChallengeHeader\"><strong>ICT AL FIRDAUS</strong><p>Explore · Create · Share</p></header><nav class=\"website-challenge-nav\"><a href=\"#beranda\">Beranda</a> <a href=\"#kelas\">Kelas</a> <a href=\"#karya\">Karya</a></nav><div class=\"website-challenge-body\" id=\"websiteChallengeBody\"><article class=\"website-challenge-main\" id=\"websiteChallengeMain\"><strong>Konten Utama</strong><p>Tempatkan berita dan karya siswa di area ini.</p></article><aside class=\"website-challenge-sidebar\" id=\"websiteChallengeSidebar\"><strong>Informasi</strong><p>Link tambahan dan pengumuman.</p></aside></div><footer class=\"website-challenge-footer\" id=\"websiteChallengeFooter\">ICT ParentLink · ICT Playground</footer></div></main>",
+    "checks": [
+      {
+        "label": "Header dipusatkan",
+        "detail": "Gunakan text-align: center pada header.",
+        "requiredSelectors": [
+          ".website-challenge-header"
+        ],
+        "declaredProperties": [
+          "text-align"
+        ],
+        "expectedDeclarationValues": {
+          "text-align": "center"
+        }
+      },
+      {
+        "label": "Layout utama menggunakan flex",
+        "detail": "Gunakan display: flex pada area dua kolom.",
+        "requiredSelectors": [
+          ".website-challenge-body"
+        ],
+        "declaredProperties": [
+          "display"
+        ],
+        "expectedDeclarationValues": {
+          "display": "flex"
+        }
+      },
+      {
+        "label": "Layout memiliki arah row",
+        "detail": "Gunakan flex-direction: row.",
+        "requiredSelectors": [
+          ".website-challenge-body"
+        ],
+        "declaredProperties": [
+          "flex-direction"
+        ],
+        "expectedDeclarationValues": {
+          "flex-direction": "row"
+        }
+      },
+      {
+        "label": "Konten utama memakai lebar 65%",
+        "detail": "Deklarasikan width pada konten utama.",
+        "requiredSelectors": [
+          ".website-challenge-main"
+        ],
+        "declaredProperties": [
+          "width"
+        ]
+      },
+      {
+        "label": "Sidebar memakai lebar 35%",
+        "detail": "Deklarasikan width pada sidebar.",
+        "requiredSelectors": [
+          ".website-challenge-sidebar"
+        ],
+        "declaredProperties": [
+          "width"
+        ]
+      },
+      {
+        "label": "Footer rata tengah",
+        "detail": "Gunakan text-align: center pada footer.",
+        "requiredSelectors": [
+          ".website-challenge-footer"
+        ],
+        "declaredProperties": [
+          "text-align"
+        ],
+        "expectedDeclarationValues": {
+          "text-align": "center"
+        }
+      },
+      {
+        "label": "Computed area utama flex row",
+        "detail": "Arah susunan harus row.",
+        "targetIds": [
+          "websiteChallengeBody"
+        ],
+        "computedProperty": "flexDirection",
+        "expected": "row"
+      }
+    ]
   }
 ];
 
@@ -7684,6 +8402,38 @@
       .vertical-flex-stage{height:120px;padding:10px;border:1px dashed #b8c8d6;background:#f8fafc;}
       .vertical-flex-child{padding:10px 15px;background:#dbeafe;border:1px solid #93c5fd;border-radius:7px;font-weight:800;}
       .align-card-challenge{min-height:135px;padding:12px;border:1px solid #93c5fd;background:#dbeafe;border-radius:12px;}
+
+
+      .combinator-article{padding:12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;}
+      .combinator-article ul{padding:8px 8px 8px 28px;border-radius:7px;}
+      .combinator-action{padding:7px 10px;border:1px solid #0f766e;border-radius:6px;background:#d1fae5;}
+      .image-transparency-target,.image-hover-target{display:block;width:100%;max-width:240px;height:auto;border-radius:10px;}
+      .transparency-gallery{display:flex;gap:10px;flex-wrap:wrap;}
+      .transparency-gallery-image{display:block;width:calc(50% - 5px);min-width:115px;max-width:230px;height:auto;border-radius:9px;}
+      .dropdown-basic,.dropdown-challenge{padding:6px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .dropdown-basic-button,.dropdown-challenge button{padding:9px 12px;border:1px solid #64748b;border-radius:6px;background:#dbeafe;color:#1e3a8a;font-weight:750;}
+      .dropdown-basic-content,.dropdown-style-content,.dropdown-challenge-menu,.dropdown-challenge-submenu{min-width:150px;border:1px solid #cbd5e1;background:#fff;box-shadow:0 5px 15px rgba(15,23,42,.12);}
+      .dropdown-basic-content a,.dropdown-style-content a,.dropdown-challenge-menu a,.dropdown-challenge-submenu a{padding:8px 11px;color:#334155;text-decoration:none;font-size:12px;}
+      .dropdown-challenge-nav{padding:8px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .website-layout-demo{border:1px solid #cbd5e1;border-radius:10px;overflow:hidden;background:white;}
+      .website-layout-header{padding:12px;}
+      .website-layout-header p{margin-bottom:0;}
+      .website-layout-nav{padding:8px;}
+      .website-layout-main{min-height:80px;}
+      .website-layout-footer{padding:8px;background:#f1f5f9;color:#475569;font-size:11px;}
+      .website-nav-demo{padding:7px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .website-nav-item{margin:2px;background:#dbeafe;color:#1d4ed8;text-decoration:none;border-radius:5px;}
+      .website-columns{gap:12px;padding:10px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .website-main-column,.website-sidebar{padding:10px;border:1px solid #93c5fd;background:#dbeafe;border-radius:8px;}
+      .website-responsive-layout{gap:10px;padding:10px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .website-responsive-card{flex:1 1 120px;padding:14px;border:1px solid #93c5fd;background:#dbeafe;border-radius:8px;text-align:center;}
+      .website-challenge-page{overflow:hidden;border:1px solid #cbd5e1;border-radius:10px;background:#fff;}
+      .website-challenge-header{padding:14px;background:#1e293b;color:white;}
+      .website-challenge-header p{margin:4px 0 0;}
+      .website-challenge-nav{padding:9px;background:#dbeafe;color:#1e3a8a;}
+      .website-challenge-body{gap:10px;padding:10px;}
+      .website-challenge-main,.website-challenge-sidebar{padding:10px;background:#f1f5f9;border:1px solid #cbd5e1;border-radius:7px;}
+      .website-challenge-footer{padding:9px;background:#e2e8f0;color:#334155;font-size:11px;}
 
     `;
 
@@ -7928,7 +8678,7 @@
                      prop==='border-collapse' || prop==='border-spacing' || prop==='table-layout' ||
                      prop==='vertical-align' || prop==='overflow-x' || prop==='overflow-y' ||
                      prop==='position' || prop==='top' || prop==='right' || prop==='bottom' || prop==='left' || prop==='z-index' || prop==='visibility' || prop==='flex-direction' ||
-                     prop==='overflow' || prop==='float' || prop==='clear' || prop==='content' || prop==='align-items' || prop==='justify-content' ||
+                     prop==='overflow' || prop==='float' || prop==='clear' || prop==='content' || prop==='align-items' || prop==='justify-content' || prop==='flex-wrap' ||
                      prop==='font-style' || prop==='font-size' || prop==='font-weight' || prop==='display' || prop.indexOf('list-style')===0){
                     var value=rule.style.getPropertyValue(prop);
                     if(value) declarations[prop]=value.trim();
@@ -7971,7 +8721,7 @@
                 borderCollapse:s.borderCollapse,borderSpacing:s.borderSpacing,tableLayout:s.tableLayout,verticalAlign:s.verticalAlign,
                 overflowX:s.overflowX,overflowY:s.overflowY,
                 position:s.position,top:s.top,right:s.right,bottom:s.bottom,left:s.left,zIndex:s.zIndex,visibility:s.visibility,flexDirection:s.flexDirection,
-                overflow:s.overflow,float:s.float,clear:s.clear,alignItems:s.alignItems,justifyContent:s.justifyContent,
+                overflow:s.overflow,float:s.float,clear:s.clear,alignItems:s.alignItems,justifyContent:s.justifyContent,flexWrap:s.flexWrap,
                 offsetWidth:el.offsetWidth,offsetHeight:el.offsetHeight,
                 widthWithMargins:el.offsetWidth+parseFloat(s.marginLeft||0)+parseFloat(s.marginRight||0),
                 heightWithMargins:el.offsetHeight+parseFloat(s.marginTop||0)+parseFloat(s.marginBottom||0)
