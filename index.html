@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f8fafc" />
-  <meta name="description" content="ICT Al Firdaus Purwodadi — Coding Playground interaktif untuk belajar CSS selector, color, dan background." />
+  <meta name="description" content="ICT Al Firdaus Purwodadi — Coding Playground interaktif untuk belajar CSS selector, color, background, border, spacing, outline, dan text." />
   <title>ICT Al Firdaus Purwodadi — CSS Coding Playground</title>
   <style>
     :root {
@@ -262,7 +262,7 @@
 
     <main class="layout">
       <aside class="panel tasks-panel">
-        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">60 TUGAS</span></div>
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">71 TUGAS</span></div>
         <div class="task-search-wrap">
           <input class="task-search" id="taskSearch" type="search" placeholder="Cari tugas atau materi…" aria-label="Cari tugas berdasarkan nama atau materi" autocomplete="off" />
         </div>
@@ -1107,6 +1107,534 @@
           { label: 'Ruang total termasuk margin adalah 280px', detail: 'Lebar border-box 250px ditambah margin kiri dan kanan 30px.', targetIds: ['boxModelBorderTarget'], computedProperty: 'widthWithMargins', expected: 280 }
         ]
       }
+,
+        {
+          "id": "outline-basics",
+          "number": 61,
+          "title": "Outline dan Outline Offset",
+          "category": "Outline",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_outline.asp",
+          "description": "Outline adalah garis di luar border dan tidak ikut menambah ukuran elemen. Properti outline-offset mengatur jarak antara border dan outline.",
+          "goal": "Beri target outline-style solid dan outline-offset 4px agar garis outline terpisah dari border.",
+          "hints": [
+            "outline-style",
+            "outline-offset"
+          ],
+          "hint": "Gunakan .outline-basic-target { outline-style: solid; outline-offset: 4px; }. Outline berbeda dari border karena tidak mengubah ukuran tata letak elemen.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CSS OUTLINE</span><h1>Outline dan Border</h1><p>Perhatikan garis outline berada di luar border kotak.</p><div class=\"outline-stage\"><div class=\"outline-basic-target\" id=\"outlineBasicTarget\">Outline dengan jarak 4px</div></div></main>",
+          "checks": [
+            {
+              "label": "Selector dan dua properti outline digunakan",
+              "detail": "Deklarasikan outline-style dan outline-offset pada target.",
+              "requiredSelectors": [
+                ".outline-basic-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "outline-style"
+                ],
+                [
+                  "outline-offset"
+                ]
+              ]
+            },
+            {
+              "label": "Outline menggunakan gaya solid",
+              "detail": "Gaya garis outline harus solid.",
+              "targetIds": [
+                "outlineBasicTarget"
+              ],
+              "computedProperty": "outlineStyle",
+              "expected": "solid"
+            },
+            {
+              "label": "Jarak outline adalah 4px",
+              "detail": "Gunakan outline-offset: 4px.",
+              "targetIds": [
+                "outlineBasicTarget"
+              ],
+              "computedProperty": "outlineOffset",
+              "expected": "4px"
+            }
+          ]
+        },
+        {
+          "id": "outline-width",
+          "number": 62,
+          "title": "Outline Width",
+          "category": "Outline",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_outline_width.asp",
+          "description": "outline-width mengatur ketebalan garis outline. Agar terlihat, outline juga perlu memiliki outline-style selain none.",
+          "goal": "Buat outline target bergaya solid dengan ketebalan 5px.",
+          "hints": [
+            "outline-width",
+            "outline-style"
+          ],
+          "hint": "Gunakan .outline-width-target { outline-style: solid; outline-width: 5px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">OUTLINE WIDTH</span><h1>Ketebalan Outline</h1><p>Bandingkan ketebalan outline dengan border kotak.</p><div class=\"outline-stage\"><div class=\"outline-width-target\" id=\"outlineWidthTarget\">Outline setebal 5px</div></div></main>",
+          "checks": [
+            {
+              "label": "outline-style dan outline-width digunakan",
+              "detail": "Deklarasikan kedua properti pada selector target.",
+              "requiredSelectors": [
+                ".outline-width-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "outline-style"
+                ],
+                [
+                  "outline-width"
+                ]
+              ]
+            },
+            {
+              "label": "Gaya outline solid",
+              "detail": "Outline harus aktif menggunakan gaya solid.",
+              "targetIds": [
+                "outlineWidthTarget"
+              ],
+              "computedProperty": "outlineStyle",
+              "expected": "solid"
+            },
+            {
+              "label": "Ketebalan outline 5px",
+              "detail": "Computed outline-width harus 5px.",
+              "targetIds": [
+                "outlineWidthTarget"
+              ],
+              "computedProperty": "outlineWidth",
+              "expected": "5px"
+            }
+          ]
+        },
+        {
+          "id": "outline-color",
+          "number": 63,
+          "title": "Outline Color",
+          "category": "Outline",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_outline_color.asp",
+          "description": "outline-color menentukan warna garis outline. Kamu dapat menggunakan nama warna, HEX, RGB, atau format warna CSS lain.",
+          "goal": "Buat outline solid berwarna pink dengan kode #db2777.",
+          "hints": [
+            "outline-color",
+            "HEX"
+          ],
+          "hint": "Gunakan .outline-color-target { outline-style: solid; outline-color: #db2777; }. Outline perlu outline-style yang terlihat.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">OUTLINE COLOR</span><h1>Warna Outline</h1><p>Ubah warna garis di luar border menjadi pink.</p><div class=\"outline-stage\"><div class=\"outline-color-target\" id=\"outlineColorTarget\">Outline pink</div></div></main>",
+          "checks": [
+            {
+              "label": "outline-style dan outline-color digunakan",
+              "detail": "Deklarasikan kedua properti pada selector target.",
+              "requiredSelectors": [
+                ".outline-color-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "outline-style"
+                ],
+                [
+                  "outline-color"
+                ]
+              ]
+            },
+            {
+              "label": "Outline aktif dengan gaya solid",
+              "detail": "Gaya outline harus solid.",
+              "targetIds": [
+                "outlineColorTarget"
+              ],
+              "computedProperty": "outlineStyle",
+              "expected": "solid"
+            },
+            {
+              "label": "Warna outline sesuai #db2777",
+              "detail": "Warna computed harus rgb(219, 39, 119).",
+              "targetIds": [
+                "outlineColorTarget"
+              ],
+              "computedProperty": "outlineColor",
+              "expected": "rgb(219, 39, 119)"
+            }
+          ]
+        },
+        {
+          "id": "outline-shorthand",
+          "number": 64,
+          "title": "Outline Shorthand",
+          "category": "Outline",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_outline_shorthand.asp",
+          "description": "Properti outline adalah shorthand untuk menetapkan outline-width, outline-style, dan outline-color sekaligus.",
+          "goal": "Gunakan satu deklarasi outline untuk membuat garis 3px, dashed, berwarna oranye #ea580c.",
+          "hints": [
+            "outline shorthand",
+            "width · style · color"
+          ],
+          "hint": "Tulis .outline-shorthand-target { outline: 3px dashed #ea580c; }. Urutan nilai width, style, dan color dapat ditulis dalam satu deklarasi.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">OUTLINE SHORTHAND</span><h1>Outline Sekaligus</h1><p>Ketiga nilai outline diatur menggunakan satu properti shorthand.</p><div class=\"outline-stage\"><div class=\"outline-shorthand-target\" id=\"outlineShorthandTarget\">Outline oranye putus-putus</div></div></main>",
+          "checks": [
+            {
+              "label": "Properti shorthand outline digunakan",
+              "detail": "Gunakan properti outline pada selector target.",
+              "requiredSelectors": [
+                ".outline-shorthand-target"
+              ],
+              "declaredProperties": [
+                "outline"
+              ]
+            },
+            {
+              "label": "Ketebalan outline 3px",
+              "detail": "Nilai outline-width harus 3px.",
+              "targetIds": [
+                "outlineShorthandTarget"
+              ],
+              "computedProperty": "outlineWidth",
+              "expected": "3px"
+            },
+            {
+              "label": "Gaya outline dashed",
+              "detail": "Nilai outline-style harus dashed.",
+              "targetIds": [
+                "outlineShorthandTarget"
+              ],
+              "computedProperty": "outlineStyle",
+              "expected": "dashed"
+            },
+            {
+              "label": "Warna outline oranye",
+              "detail": "Warna computed harus rgb(234, 88, 12).",
+              "targetIds": [
+                "outlineShorthandTarget"
+              ],
+              "computedProperty": "outlineColor",
+              "expected": "rgb(234, 88, 12)"
+            }
+          ]
+        },
+        {
+          "id": "text-basics",
+          "number": 65,
+          "title": "CSS Text: Indent dan Line Height",
+          "category": "Text",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_text.asp",
+          "description": "CSS Text mengatur tampilan teks. text-indent memberi inden pada baris pertama, sedangkan line-height mengatur jarak vertikal baris teks.",
+          "goal": "Atur inden paragraf menjadi 24px dan line-height menjadi 2.",
+          "hints": [
+            "text-indent",
+            "line-height"
+          ],
+          "hint": "Gunakan .text-basics-target { text-indent: 24px; line-height: 2; }. Karena ukuran teks paragraf adalah 13px, line-height: 2 menghasilkan tinggi baris 26px.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CSS TEXT</span><h1>Format Teks</h1><p class=\"text-basics-target\" id=\"textBasicsTarget\">Paragraf ini memiliki inden pada baris pertama. Atur juga jarak antarbaris agar teks lebih nyaman dibaca saat paragraf tampil dalam beberapa baris.</p></main>",
+          "checks": [
+            {
+              "label": "text-indent dan line-height digunakan",
+              "detail": "Deklarasikan kedua properti pada paragraf target.",
+              "requiredSelectors": [
+                ".text-basics-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "text-indent"
+                ],
+                [
+                  "line-height"
+                ]
+              ]
+            },
+            {
+              "label": "Inden baris pertama 24px",
+              "detail": "Computed text-indent harus 24px.",
+              "targetIds": [
+                "textBasicsTarget"
+              ],
+              "computedProperty": "textIndent",
+              "expected": "24px"
+            },
+            {
+              "label": "Tinggi baris menjadi 26px",
+              "detail": "line-height: 2 pada teks 13px menghasilkan 26px.",
+              "targetIds": [
+                "textBasicsTarget"
+              ],
+              "computedProperty": "lineHeight",
+              "expected": "26px"
+            }
+          ]
+        },
+        {
+          "id": "text-align",
+          "number": 66,
+          "title": "Text Align",
+          "category": "Text",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_text_align.asp",
+          "description": "text-align mengatur perataan teks secara horizontal, misalnya left, right, center, atau justify.",
+          "goal": "Buat teks di dalam kotak target menjadi rata tengah.",
+          "hints": [
+            "text-align",
+            "center"
+          ],
+          "hint": "Gunakan .text-align-target { text-align: center; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TEXT ALIGN</span><h1>Perataan Teks</h1><p class=\"text-align-target\" id=\"textAlignTarget\">Teks ini harus rata tengah di dalam kotak.</p></main>",
+          "checks": [
+            {
+              "label": "text-align digunakan pada target",
+              "detail": "Deklarasikan text-align pada selector target.",
+              "requiredSelectors": [
+                ".text-align-target"
+              ],
+              "declaredProperties": [
+                "text-align"
+              ]
+            },
+            {
+              "label": "Teks rata tengah",
+              "detail": "Nilai computed text-align harus center.",
+              "targetIds": [
+                "textAlignTarget"
+              ],
+              "computedProperty": "textAlign",
+              "expected": "center"
+            }
+          ]
+        },
+        {
+          "id": "text-decoration",
+          "number": 67,
+          "title": "Text Decoration",
+          "category": "Text",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_text_decoration.asp",
+          "description": "text-decoration-line menentukan garis dekorasi teks, seperti underline, overline, line-through, atau none.",
+          "goal": "Tambahkan garis bawah pada teks target menggunakan text-decoration-line: underline.",
+          "hints": [
+            "text-decoration-line",
+            "underline"
+          ],
+          "hint": "Gunakan .text-decoration-target { text-decoration-line: underline; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TEXT DECORATION</span><h1>Dekorasi Teks</h1><div class=\"text-decoration-stage\"><p class=\"text-decoration-target\" id=\"textDecorationTarget\">Teks dengan garis bawah</p></div></main>",
+          "checks": [
+            {
+              "label": "text-decoration-line digunakan",
+              "detail": "Gunakan text-decoration-line pada target.",
+              "requiredSelectors": [
+                ".text-decoration-target"
+              ],
+              "declaredProperties": [
+                "text-decoration-line"
+              ]
+            },
+            {
+              "label": "Garis bawah diterapkan",
+              "detail": "Computed text-decoration-line harus mencakup underline.",
+              "targetIds": [
+                "textDecorationTarget"
+              ],
+              "computedProperty": "textDecorationLine",
+              "expectedIncludes": "underline"
+            }
+          ]
+        },
+        {
+          "id": "text-decoration-styles",
+          "number": 68,
+          "title": "Text Decoration Styles",
+          "category": "Text",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_text_decoration_styles.asp",
+          "description": "text-decoration-style mengatur bentuk garis dekorasi teks, seperti solid, double, dotted, dashed, atau wavy.",
+          "goal": "Buat garis bawah bergelombang (wavy) berwarna merah muda.",
+          "hints": [
+            "text-decoration-style",
+            "wavy"
+          ],
+          "hint": "Gunakan .text-decoration-style-target { text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: #db2777; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TEXT DECORATION STYLE</span><h1>Gaya Dekorasi</h1><div class=\"text-decoration-stage\"><p class=\"text-decoration-style-target\" id=\"textDecorationStyleTarget\">Garis bawah bergelombang</p></div></main>",
+          "checks": [
+            {
+              "label": "Line dan style dekorasi digunakan",
+              "detail": "Deklarasikan text-decoration-line dan text-decoration-style.",
+              "requiredSelectors": [
+                ".text-decoration-style-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "text-decoration-line"
+                ],
+                [
+                  "text-decoration-style"
+                ]
+              ]
+            },
+            {
+              "label": "Dekorasi berupa garis bawah",
+              "detail": "Gunakan text-decoration-line: underline.",
+              "targetIds": [
+                "textDecorationStyleTarget"
+              ],
+              "computedProperty": "textDecorationLine",
+              "expectedIncludes": "underline"
+            },
+            {
+              "label": "Gaya garis bergelombang",
+              "detail": "Computed text-decoration-style harus wavy.",
+              "targetIds": [
+                "textDecorationStyleTarget"
+              ],
+              "computedProperty": "textDecorationStyle",
+              "expected": "wavy"
+            },
+            {
+              "label": "Warna garis merah muda",
+              "detail": "Warna computed harus rgb(219, 39, 119).",
+              "targetIds": [
+                "textDecorationStyleTarget"
+              ],
+              "computedProperty": "textDecorationColor",
+              "expected": "rgb(219, 39, 119)"
+            }
+          ]
+        },
+        {
+          "id": "text-transform",
+          "number": 69,
+          "title": "Text Transformation",
+          "category": "Text",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_text_transformation.asp",
+          "description": "text-transform mengubah tampilan kapitalisasi teks tanpa perlu mengubah teks asli di HTML.",
+          "goal": "Tampilkan teks target dengan semua huruf kapital menggunakan uppercase.",
+          "hints": [
+            "text-transform",
+            "uppercase"
+          ],
+          "hint": "Gunakan .text-transform-target { text-transform: uppercase; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TEXT TRANSFORMATION</span><h1>Kapitalisasi</h1><p class=\"text-transform-target\" id=\"textTransformTarget\">teks ini akan ditampilkan dengan huruf kapital.</p></main>",
+          "checks": [
+            {
+              "label": "text-transform digunakan",
+              "detail": "Deklarasikan text-transform pada selector target.",
+              "requiredSelectors": [
+                ".text-transform-target"
+              ],
+              "declaredProperties": [
+                "text-transform"
+              ]
+            },
+            {
+              "label": "Teks menggunakan uppercase",
+              "detail": "Computed text-transform harus uppercase.",
+              "targetIds": [
+                "textTransformTarget"
+              ],
+              "computedProperty": "textTransform",
+              "expected": "uppercase"
+            }
+          ]
+        },
+        {
+          "id": "text-spacing",
+          "number": 70,
+          "title": "Text Spacing",
+          "category": "Text",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_text_spacing.asp",
+          "description": "letter-spacing mengatur jarak antarkarakter dan word-spacing mengatur jarak antarkata.",
+          "goal": "Atur jarak antarkarakter menjadi 2px dan jarak antarkata menjadi 6px.",
+          "hints": [
+            "letter-spacing",
+            "word-spacing"
+          ],
+          "hint": "Gunakan .text-spacing-target { letter-spacing: 2px; word-spacing: 6px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TEXT SPACING</span><h1>Jarak Teks</h1><p class=\"text-spacing-target\" id=\"textSpacingTarget\">Atur jarak huruf dan kata agar perbedaannya terlihat jelas.</p></main>",
+          "checks": [
+            {
+              "label": "letter-spacing dan word-spacing digunakan",
+              "detail": "Deklarasikan kedua properti jarak teks.",
+              "requiredSelectors": [
+                ".text-spacing-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "letter-spacing"
+                ],
+                [
+                  "word-spacing"
+                ]
+              ]
+            },
+            {
+              "label": "Jarak antarkarakter 2px",
+              "detail": "Computed letter-spacing harus 2px.",
+              "targetIds": [
+                "textSpacingTarget"
+              ],
+              "computedProperty": "letterSpacing",
+              "expected": "2px"
+            },
+            {
+              "label": "Jarak antarkata 6px",
+              "detail": "Computed word-spacing harus 6px.",
+              "targetIds": [
+                "textSpacingTarget"
+              ],
+              "computedProperty": "wordSpacing",
+              "expected": "6px"
+            }
+          ]
+        },
+        {
+          "id": "text-shadow",
+          "number": 71,
+          "title": "Text Shadow",
+          "category": "Text",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_text_shadow.asp",
+          "description": "text-shadow menambahkan bayangan pada teks dengan nilai offset horizontal, offset vertikal, blur, dan warna.",
+          "goal": "Beri teks target bayangan dengan offset 2px 2px, blur 3px, dan warna hitam transparan.",
+          "hints": [
+            "text-shadow",
+            "horizontal · vertical · blur · color"
+          ],
+          "hint": "Gunakan .text-shadow-target { text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35); }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TEXT SHADOW</span><h1>Bayangan Teks</h1><p class=\"text-shadow-target\" id=\"textShadowTarget\">Bayangan membuat teks terlihat lebih menonjol.</p></main>",
+          "checks": [
+            {
+              "label": "text-shadow digunakan",
+              "detail": "Deklarasikan properti text-shadow pada target.",
+              "requiredSelectors": [
+                ".text-shadow-target"
+              ],
+              "declaredProperties": [
+                "text-shadow"
+              ]
+            },
+            {
+              "label": "Bayangan teks aktif",
+              "detail": "Computed text-shadow tidak boleh bernilai none.",
+              "targetIds": [
+                "textShadowTarget"
+              ],
+              "computedProperty": "textShadow",
+              "expectedNot": "none"
+            },
+            {
+              "label": "Offset dan blur bayangan sesuai",
+              "detail": "Bayangan harus memuat offset 2px 2px dan blur 3px.",
+              "targetIds": [
+                "textShadowTarget"
+              ],
+              "computedProperty": "textShadow",
+              "expectedIncludes": "2px 2px 3px"
+            }
+          ]
+        }
     ];
 
     const BASE_PREVIEW_CSS = `
@@ -1180,6 +1708,16 @@
       .border-style-multi,.border-width-sides,.border-color-sides,.border-radius-corners{min-height:82px;display:flex;align-items:center;justify-content:center;padding:18px;margin:14px 0;background:#f8fafc;text-align:center;}
       /* Margin/image scaffolding helpers. */
       .margin-side-stage,.margin-four-stage,.margin-three-stage,.margin-two-stage,.margin-one-stage,.margin-auto-stage,.margin-percent-stage,.margin-negative-stage{width:100%;}
+
+      /* Outline tasks: keep the border visible so students can compare it with outline. */
+      .outline-stage{padding:18px;border:1px dashed #b8c8d6;background:#f8fafc;}
+      .outline-basic-target,.outline-width-target,.outline-color-target,.outline-shorthand-target{display:block;padding:14px;border:2px solid #64748b;background:#fff;text-align:center;}
+      /* Text-formatting tasks: base appearance only; requested text properties are left to students. */
+      .text-basics-target{padding:10px;border-left:3px solid #94a3b8;background:#f8fafc;}
+      .text-align-target{padding:12px;border:1px solid #93c5fd;background:#eff6ff;}
+      .text-decoration-stage{padding:10px;border:1px dashed #cbd5e1;background:#f8fafc;}
+      .text-decoration-target,.text-decoration-style-target{margin:8px 0;padding:8px;background:#fff;}
+      .text-transform-target,.text-spacing-target,.text-shadow-target{padding:10px;border:1px solid #e2e8f0;background:#f8fafc;}
 
 
 
@@ -1408,7 +1946,10 @@
                      prop==='background-size' || prop==='opacity' || prop==='width' || prop==='height' ||
                      prop==='box-sizing' || prop.indexOf('padding')===0 || prop.indexOf('min-width')===0 ||
                      prop.indexOf('max-width')===0 || prop.indexOf('min-height')===0 || prop.indexOf('max-height')===0 ||
-                     prop.indexOf('border')===0 || prop.indexOf('margin')===0){
+                     prop.indexOf('border')===0 || prop.indexOf('margin')===0 ||
+                     prop.indexOf('outline')===0 || prop.indexOf('text-decoration')===0 ||
+                     prop==='text-align' || prop==='text-transform' || prop==='text-indent' || prop==='line-height' ||
+                     prop==='letter-spacing' || prop==='word-spacing' || prop==='text-shadow'){
                     var value=rule.style.getPropertyValue(prop);
                     if(value) declarations[prop]=value.trim();
                   }
@@ -1440,7 +1981,10 @@
                 borderTopRightRadius:s.borderTopRightRadius,borderBottomRightRadius:s.borderBottomRightRadius,borderBottomLeftRadius:s.borderBottomLeftRadius,
                 paddingTop:s.paddingTop,paddingRight:s.paddingRight,paddingBottom:s.paddingBottom,paddingLeft:s.paddingLeft,
                 width:s.width,height:s.height,minWidth:s.minWidth,maxWidth:s.maxWidth,minHeight:s.minHeight,maxHeight:s.maxHeight,
-                boxSizing:s.boxSizing,offsetWidth:el.offsetWidth,offsetHeight:el.offsetHeight,
+                boxSizing:s.boxSizing,outlineStyle:s.outlineStyle,outlineWidth:s.outlineWidth,outlineColor:s.outlineColor,outlineOffset:s.outlineOffset,
+                textAlign:s.textAlign,textDecorationLine:s.textDecorationLine,textDecorationStyle:s.textDecorationStyle,textDecorationColor:s.textDecorationColor,
+                textTransform:s.textTransform,textIndent:s.textIndent,lineHeight:s.lineHeight,letterSpacing:s.letterSpacing,wordSpacing:s.wordSpacing,textShadow:s.textShadow,
+                offsetWidth:el.offsetWidth,offsetHeight:el.offsetHeight,
                 widthWithMargins:el.offsetWidth+parseFloat(s.marginLeft||0)+parseFloat(s.marginRight||0),
                 heightWithMargins:el.offsetHeight+parseFloat(s.marginTop||0)+parseFloat(s.marginBottom||0)
               };
