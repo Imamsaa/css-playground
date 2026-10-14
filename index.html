@@ -339,7 +339,7 @@
 
     const TASKS = [
 {
-        id: 'selector-element', number: 1, title: 'Selector Elemen', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
+        id: 'selector-element', number: 1, title: 'Selector Elemen', category: 'CSS Selector', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_selectors.asp',
         description: 'Gunakan selector elemen untuk menargetkan beberapa elemen HTML sekaligus tanpa menambahkan class atau id baru.',
         goal: 'Buat semua paragraf pada preview berwarna biru dengan kode warna #2563eb.',
         hints: ['Selector elemen', 'color'], hint: 'Pilih nama tag HTML sebagai selector. Contohnya, selector p akan menargetkan semua elemen paragraf. Gunakan properti color untuk mengatur warna teks.',
@@ -361,7 +361,7 @@
         ]
       },
 {
-        id: 'selector-id', number: 3, title: 'Selector ID', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
+        id: 'selector-id', number: 3, title: 'Selector ID', category: 'CSS Selector', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_selectors.asp',
         description: 'Selector ID digunakan untuk memilih satu elemen unik melalui atribut id pada HTML.',
         goal: 'Ubah warna judul utama menjadi ungu (#7c3aed), tanpa mengubah subjudul.',
         hints: ['Selector ID', 'color'], hint: 'Selector ID diawali tanda pagar (#). Perhatikan atribut id pada judul di preview.',
@@ -373,7 +373,7 @@
         ]
       },
 {
-        id: 'selector-class', number: 4, title: 'Selector Class', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
+        id: 'selector-class', number: 4, title: 'Selector Class', category: 'CSS Selector', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_selectors.asp',
         description: 'Class dipakai untuk memilih elemen tertentu yang memiliki nama class sama. Tidak semua teks harus ikut berubah.',
         goal: 'Ubah hanya teks yang memiliki class highlight menjadi oranye (#b45309).',
         hints: ['Selector class', 'color'], hint: 'Selector untuk class selalu diawali tanda titik. Contoh: .highlight { color: ... }',
@@ -397,7 +397,7 @@
         ]
       },
 {
-        id: 'selector-group', number: 6, title: 'Selector Gabungan', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH',
+        id: 'selector-group', number: 6, title: 'Selector Gabungan', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_selectors_grouping.asp',
         description: 'Gabungkan beberapa selector dalam satu aturan agar gaya yang sama dapat diterapkan secara ringkas.',
         goal: 'Buat judul bagian dan tagline sama-sama berwarna teal (#0f766e) dalam satu aturan selector gabungan.',
         hints: ['Selector gabungan', 'color'], hint: 'Pisahkan selector dengan koma. Pastikan h2 dan .tagline berada dalam aturan CSS yang sama.',
@@ -408,7 +408,7 @@
         ]
       },
 {
-        id: 'selector-descendant', number: 7, title: 'Descendant Selector', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH',
+        id: 'selector-descendant', number: 7, title: 'Descendant Selector', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_combinators.asp',
         description: 'Selector turunan memilih elemen berdasarkan letaknya di dalam elemen lain, sehingga gaya bisa lebih spesifik.',
         goal: 'Warnai merah (#be123c) hanya paragraf yang berada di dalam kartu. Paragraf di luar kartu jangan ikut berubah.',
         hints: ['Descendant selector', 'color'], hint: 'Gunakan dua selector yang dipisahkan spasi, misalnya .kartu p. Spasi menunjukkan elemen p yang berada di dalam .kartu.',
@@ -739,6 +739,7 @@
         html: `<main class="mini-page"><span class="eyebrow">BORDER COLOR SIDES</span><h1>Warna Tiap Sisi</h1><p>Berikan warna berbeda pada keempat sisi kotak.</p><div class="border-color-sides" id="borderColorSidesTarget">Border color per sisi</div></main>`,
         checks: [
           { label: 'border-color empat nilai digunakan', detail: 'Gunakan border-color dengan empat nilai.', requiredSelectors: ['.border-color-sides'], declaredProperties: ['border-color'] },
+          { label: 'Border memakai gaya solid', detail: 'Sisi harus memiliki border-style: solid agar warnanya terlihat.', targetIds: ['borderColorSidesTarget'], computedProperty: 'borderTopStyle', expected: 'solid' },
           { label: 'Sisi atas merah', detail: 'Warna sisi atas harus rgb(239, 68, 68).', targetIds: ['borderColorSidesTarget'], computedProperty: 'borderTopColor', expected: 'rgb(239, 68, 68)' },
           { label: 'Sisi kanan biru', detail: 'Warna sisi kanan harus rgb(59, 130, 246).', targetIds: ['borderColorSidesTarget'], computedProperty: 'borderRightColor', expected: 'rgb(59, 130, 246)' },
           { label: 'Sisi bawah hijau', detail: 'Warna sisi bawah harus rgb(34, 197, 94).', targetIds: ['borderColorSidesTarget'], computedProperty: 'borderBottomColor', expected: 'rgb(34, 197, 94)' },
