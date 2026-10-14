@@ -93,17 +93,24 @@
     .reference-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:12px; }
     .reference-title { color:#202a40; font-size:13px; font-weight:850; }
     .reference-subtitle { margin:4px 0 0; color:var(--muted); font-size:11px; line-height:1.5; }
-    .reference-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
-    .reference-group { min-width:0; padding:11px; border:1px solid #edf0f6; background:#fbfcff; border-radius:12px; }
-    .reference-group-title { display:flex; align-items:center; justify-content:space-between; gap:8px; color:#344054; font-size:11px; font-weight:850; }
-    .reference-count { flex:0 0 auto; padding:3px 6px; background:#f0efff; color:#5c50d6; border-radius:6px; font-size:9px; }
-    .reference-items { display:flex; flex-wrap:wrap; align-items:stretch; gap:7px; margin-top:9px; }
-    .ref-chip { display:flex; flex-direction:column; align-items:flex-start; gap:3px; max-width:100%; padding:7px 9px; border:1px solid #e1e6f0; border-radius:8px; background:#fff; color:#4b5568; text-align:left; cursor:pointer; transition:border-color .15s,background .15s,transform .15s; }
-    .ref-chip:hover { border-color:#bcb5ff; background:#f7f5ff; transform:translateY(-1px); }
-    .ref-chip:focus-visible { outline:3px solid rgba(101,88,232,.25); outline-offset:2px; }
-    .ref-chip code { color:#5145cd; font:750 11px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; overflow-wrap:anywhere; }
-    .ref-chip span { color:#7b8496; font-size:9px; line-height:1.35; overflow-wrap:anywhere; }
-    .reference-empty { margin:9px 0 0; color:#8791a3; font-size:10px; }
+    .html-structure { padding:12px 10px; border:1px solid #e5e9f2; border-radius:12px; background:#fbfcff; overflow:auto; max-height:430px; }
+    .html-tree-line { display:flex; align-items:baseline; width:max-content; min-width:100%; min-height:25px; padding-left:calc(var(--depth, 0) * 19px); white-space:pre; font:12px/1.8 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    .html-syntax { color:#98a2b3; }
+    .html-token { display:inline; padding:0 1px; border:0; border-radius:3px; background:transparent; font:inherit; cursor:pointer; }
+    .html-token:hover { background:#eeecff; text-decoration:underline; }
+    .html-token:focus-visible { outline:2px solid rgba(101,88,232,.35); outline-offset:1px; }
+    .html-tag-token { color:#6754d8; font-weight:800; }
+    .html-attr-name { color:#64748b; }
+    .html-class-token { color:#0f8a65; font-weight:750; }
+    .html-id-token { color:#c26a16; font-weight:750; }
+    .html-attr-value { color:#0f8a65; }
+    .html-text-node { color:#475467; }
+    .html-tree-hint { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:10px; color:#7b8496; font-size:10px; }
+    .html-tree-hint span { display:inline-flex; align-items:center; gap:5px; }
+    .html-tree-hint b { font:750 10px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    .html-tree-hint .hint-tag { color:#6754d8; }
+    .html-tree-hint .hint-class { color:#0f8a65; }
+    .html-tree-hint .hint-id { color:#c26a16; }
     .assignment-bottom { margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
     .check-list { display:flex; gap:13px; flex-wrap:wrap; color:#687387; font-size:11px; }
     .check-list span { display:inline-flex; align-items:center; gap:5px; }
@@ -169,8 +176,7 @@
       #cssEditor { min-height:225px; }
       .preview-frame-wrap, #previewFrame { min-height:290px; }
       .reference-panel { padding:14px; }
-      .reference-grid { gap:8px; }
-      .reference-group { padding:9px; }
+      .html-structure { max-height:380px; }
     }
     @media (max-width: 720px) {
       .app-shell { padding:14px 12px 25px; }
@@ -192,7 +198,7 @@
       .check-list { gap:8px; }
       .reference-head { display:block; }
       #referenceSummary { display:inline-flex; margin-top:8px; }
-      .reference-grid { grid-template-columns:1fr; }
+      .html-tree-line { font-size:11px; }
       .results-list { grid-template-columns:1fr; }
       .bottom-note { display:block; line-height:1.6; }
       .bottom-note span { display:block; }
@@ -258,12 +264,17 @@
         <section class="panel reference-panel" aria-labelledby="referenceTitle">
           <div class="reference-head">
             <div>
-              <div class="reference-title" id="referenceTitle">Referensi HTML pada tugas ini</div>
-              <p class="reference-subtitle">Daftar ini diambil dari HTML pada preview. Class diawali titik (.) dan ID diawali tanda pagar (#). Klik nama untuk memasukkan pola selector ke editor CSS.</p>
+              <div class="reference-title" id="referenceTitle">Struktur HTML pada tugas ini</div>
+              <p class="reference-subtitle">Perhatikan elemen induk dan anaknya. Klik nama tag, class, atau ID untuk memasukkan selector ke editor CSS.</p>
             </div>
             <span class="count-chip" id="referenceSummary">Memuat…</span>
           </div>
-          <div class="reference-grid" id="htmlReferenceGrid" aria-live="polite"></div>
+          <div class="html-structure" id="htmlStructureTree" aria-live="polite"></div>
+          <div class="html-tree-hint">
+            <span><b class="hint-tag">tag</b> selector elemen</span>
+            <span><b class="hint-class">class</b> gunakan titik, misalnya .kartu</span>
+            <span><b class="hint-id">id</b> gunakan #, misalnya #judul</span>
+          </div>
         </section>
 
         <div class="practice-grid">
@@ -487,51 +498,86 @@
     function renderHtmlReferences() {
       const template = document.createElement('template');
       template.innerHTML = currentTask.html;
-      const nodes = Array.from(template.content.querySelectorAll('*'));
+      const rootNodes = Array.from(template.content.children);
+      const allElements = Array.from(template.content.querySelectorAll('*'));
       const tags = new Set();
-      const classes = new Map();
-      const ids = new Map();
+      const classes = new Set();
+      const ids = new Set();
+      const voidTags = new Set(['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']);
 
-      nodes.forEach(node => {
-        const tag = node.tagName.toLowerCase();
-        tags.add(tag);
-        Array.from(node.classList).forEach(name => {
-          if (!classes.has(name)) classes.set(name, new Set());
-          classes.get(name).add(tag);
-        });
-        if (node.id) {
-          if (!ids.has(node.id)) ids.set(node.id, new Set());
-          ids.get(node.id).add(tag);
-        }
+      allElements.forEach(node => {
+        tags.add(node.tagName.toLowerCase());
+        Array.from(node.classList).forEach(name => classes.add(name));
+        if (node.id) ids.add(node.id);
       });
 
-      const groups = [
-        {
-          title: 'Tag HTML', entries: Array.from(tags).sort().map(tag => ({
-            selector: tag, label: tag, detail: HTML_TAG_DESCRIPTIONS[tag] || 'Elemen HTML'
-          }))
-        },
-        {
-          title: 'Class', entries: Array.from(classes.keys()).sort().map(name => ({
-            selector: '.' + name, label: '.' + name, detail: 'Tag: ' + Array.from(classes.get(name)).join(', ')
-          }))
-        },
-        {
-          title: 'ID', entries: Array.from(ids.keys()).sort().map(name => ({
-            selector: '#' + name, label: '#' + name, detail: 'Tag: ' + Array.from(ids.get(name)).join(', ')
-          }))
-        }
-      ];
+      function openTagMarkup(node) {
+        const tag = node.tagName.toLowerCase();
+        let markup = '<div class="html-tree-line" style="--depth:DEPTH"><span class="html-syntax">&lt;</span>' +
+          '<button class="html-token html-tag-token" type="button" data-selector="' + escapeHtml(tag) +
+          '" title="Gunakan selector elemen ' + escapeHtml(tag) + '">' + escapeHtml(tag) + '</button>';
 
-      $('#referenceSummary').textContent = `${tags.size} tag · ${classes.size} class · ${ids.size} ID`;
-      $('#htmlReferenceGrid').innerHTML = groups.map(group => `
-        <section class="reference-group" aria-label="Referensi ${escapeHtml(group.title)}">
-          <div class="reference-group-title"><span>${escapeHtml(group.title)}</span><span class="reference-count">${group.entries.length}</span></div>
-          <div class="reference-items">${group.entries.length ? group.entries.map(entry => `
-            <button class="ref-chip" type="button" data-selector="${escapeHtml(entry.selector)}" title="Klik untuk menambahkan selector ${escapeHtml(entry.selector)} ke editor">
-              <code>${escapeHtml(entry.label)}</code><span>${escapeHtml(entry.detail)}</span>
-            </button>`).join('') : '<p class="reference-empty">Tidak ada pada tugas ini.</p>'}</div>
-        </section>`).join('');
+        Array.from(node.attributes).forEach(attribute => {
+          const name = attribute.name;
+          const value = attribute.value;
+          if (name === 'class') {
+            markup += '<span class="html-attr-name"> class=</span><span class="html-syntax">"</span>';
+            const classNames = value.trim().split(/\s+/).filter(Boolean);
+            markup += classNames.map(className =>
+              '<button class="html-token html-class-token" type="button" data-selector=".' + escapeHtml(className) +
+              '" title="Gunakan selector class .' + escapeHtml(className) + '">' + escapeHtml(className) + '</button>'
+            ).join('<span class="html-syntax"> </span>');
+            markup += '<span class="html-syntax">"</span>';
+          } else if (name === 'id') {
+            markup += '<span class="html-attr-name"> id=</span><span class="html-syntax">"</span>' +
+              '<button class="html-token html-id-token" type="button" data-selector="#' + escapeHtml(value) +
+              '" title="Gunakan selector ID #' + escapeHtml(value) + '">' + escapeHtml(value) + '</button>' +
+              '<span class="html-syntax">"</span>';
+          } else {
+            markup += '<span class="html-attr-name"> ' + escapeHtml(name) + '</span>';
+            if (value !== '') markup += '<span class="html-attr-name">=</span><span class="html-syntax">"</span><span class="html-attr-value">' + escapeHtml(value) + '</span><span class="html-syntax">"</span>';
+          }
+        });
+        return markup;
+      }
+
+      function renderNode(node, depth) {
+        const tag = node.tagName.toLowerCase();
+        const indentation = depth;
+        const open = openTagMarkup(node).replace('DEPTH', String(indentation));
+        if (voidTags.has(tag)) {
+          return open + '<span class="html-syntax"> /&gt;</span></div>';
+        }
+
+        const elementChildren = Array.from(node.children);
+        const text = Array.from(node.childNodes)
+          .filter(child => child.nodeType === Node.TEXT_NODE)
+          .map(child => child.nodeValue.trim())
+          .filter(Boolean);
+
+        if (elementChildren.length === 0) {
+          const content = text.join(' ');
+          return open + '<span class="html-syntax">&gt;</span>' +
+            (content ? '<span class="html-text-node">' + escapeHtml(content) + '</span>' : '') +
+            '<span class="html-syntax">&lt;/</span><span class="html-tag-token">' + escapeHtml(tag) + '</span><span class="html-syntax">&gt;</span></div>';
+        }
+
+        let markup = open + '<span class="html-syntax">&gt;</span></div>';
+        Array.from(node.childNodes).forEach(child => {
+          if (child.nodeType === Node.ELEMENT_NODE) {
+            markup += renderNode(child, depth + 1);
+          } else if (child.nodeType === Node.TEXT_NODE && child.nodeValue.trim()) {
+            markup += '<div class="html-tree-line" style="--depth:' + (depth + 1) + '"><span class="html-text-node">' +
+              escapeHtml(child.nodeValue.trim()) + '</span></div>';
+          }
+        });
+        markup += '<div class="html-tree-line" style="--depth:' + indentation + '"><span class="html-syntax">&lt;/</span><span class="html-tag-token">' +
+          escapeHtml(tag) + '</span><span class="html-syntax">&gt;</span></div>';
+        return markup;
+      }
+
+      $('#referenceSummary').textContent = tags.size + ' tag · ' + classes.size + ' class · ' + ids.size + ' ID';
+      $('#htmlStructureTree').innerHTML = rootNodes.map(node => renderNode(node, 0)).join('');
     }
     function insertSelector(selector) {
       const previous = editor.value.trimEnd();
@@ -701,9 +747,9 @@
       }
     }
 
-    $('#htmlReferenceGrid').addEventListener('click', event => {
+    $('#htmlStructureTree').addEventListener('click', event => {
       const button = event.target.closest('[data-selector]');
-      if (!button || !$('#htmlReferenceGrid').contains(button)) return;
+      if (!button || !$('#htmlStructureTree').contains(button)) return;
       insertSelector(button.dataset.selector);
     });
 
