@@ -392,7 +392,7 @@
           </div>
         </section>
 
-        <div class="bottom-note"><span>ICT Al Firdaus Purwodadi · Materi: Selector, Color, Background, Border, dan Margin.</span><span>Catatan: penilaian dilakukan di browser; nilai belum dikirim ke dashboard guru.</span></div>
+        <div class="bottom-note"><span>ICT Al Firdaus Purwodadi · Materi: Selector, Color, Background, Border, dan Margin.</span><span>Progres lokal tersedia tanpa akun; sinkronisasi kode akun memerlukan backend aktif.</span></div>
       </section>
     </main>
   </div>
@@ -1634,6 +1634,8 @@
     }
     function queueAccountSave(delay = 1200) {
       if (!account || !account.code || !accountApiConfigured() || applyingRemoteState) return;
+      if (currentTask) account.lastTaskId = currentTask.id;
+      persistLocalAccount();
       clearTimeout(accountSaveTimer);
       setAccountSyncStatus('Perubahan menunggu disimpan…', '');
       accountSaveTimer = setTimeout(() => saveAccountNow(true), delay);
@@ -1664,7 +1666,7 @@
       if (!accountApiConfigured()) throw new Error('Backend akun belum dikonfigurasi oleh admin.');
       const response = await postAccountRequest('create', { name, state: accountSnapshot() });
       if (!response.account || !response.account.code) throw new Error('Server tidak mengembalikan kode akun.');
-      account = { code: response.account.code, name: response.account.name, updatedAt: response.account.updatedAt };
+      account = { code: response.account.code, name: response.account.name, updatedAt: response.account.updatedAt, lastTaskId: response.account.lastTaskId || (currentTask && currentTask.id) };
       persistLocalAccount();
       codes = response.account.codes && typeof response.account.codes === 'object' ? { ...response.account.codes } : codes;
       completed = new Set((response.account.completedTaskIds || Array.from(completed)).filter(id => TASKS.some(task => task.id === id)));
@@ -1681,7 +1683,7 @@
       if (!accountApiConfigured()) throw new Error('Backend akun belum dikonfigurasi oleh admin.');
       const response = await postAccountRequest('restore', { code: normalizeAccountCode(code) });
       if (!response.account) throw new Error('Data akun tidak ditemukan.');
-      account = { code: response.account.code, name: response.account.name, updatedAt: response.account.updatedAt };
+      account = { code: response.account.code, name: response.account.name, updatedAt: response.account.updatedAt, lastTaskId: response.account.lastTaskId || (currentTask && currentTask.id) };
       persistLocalAccount();
       applyRemoteAccount(response.account);
       showAccountSection('accountSignedInView');
@@ -1698,6 +1700,7 @@
         if (response.account) {
           account.name = response.account.name || account.name;
           account.updatedAt = response.account.updatedAt || account.updatedAt;
+          account.lastTaskId = response.account.lastTaskId || account.lastTaskId;
           persistLocalAccount();
           applyRemoteAccount(response.account);
         }
