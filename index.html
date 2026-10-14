@@ -601,7 +601,7 @@
     let pendingCheck = false;
     let lastResults = null;
     let toastTimer = null;
-    let renderTimer = null;
+    let renderFrame = null;
     let saveCodesTimer = null;
     let lastLineCount = 0;
     let checkTimer = null;
@@ -776,6 +776,10 @@
     function selectTask(taskId) {
       const task = taskById(taskId);
       if (!task) return;
+      if (renderFrame !== null) {
+        cancelAnimationFrame(renderFrame);
+        renderFrame = null;
+      }
       if (currentTask) codes[currentTask.id] = editor.value;
       saveCodesNow();
       currentTask = task;
@@ -1072,8 +1076,11 @@
       lastResults = null;
       $('#editorStatus').textContent = editor.value.trim() ? 'Kode tersimpan di browser' : 'Siap menerima kode';
       updateLineNumbers();
-      clearTimeout(renderTimer);
-      renderTimer = setTimeout(renderPreview, 70);
+      if (renderFrame !== null) cancelAnimationFrame(renderFrame);
+      renderFrame = requestAnimationFrame(() => {
+        renderFrame = null;
+        renderPreview();
+      });
     });
     editor.addEventListener('scroll', () => { $('#lineNumbers').scrollTop = editor.scrollTop; });
     editor.addEventListener('keydown', event => {
