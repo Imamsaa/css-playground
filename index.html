@@ -262,7 +262,7 @@
 
     <main class="layout">
       <aside class="panel tasks-panel">
-        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">76 TUGAS</span></div>
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">81 TUGAS</span></div>
         <div class="task-search-wrap">
           <input class="task-search" id="taskSearch" type="search" placeholder="Cari tugas atau materi…" aria-label="Cari tugas berdasarkan nama atau materi" autocomplete="off" />
         </div>
@@ -1929,6 +1929,320 @@
             }
           ]
         }
+,
+        {
+          "id": "table-basics",
+          "number": 77,
+          "title": "CSS Table",
+          "category": "Tables",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_table.asp",
+          "description": "CSS dapat mengatur border tabel, jarak isi sel, dan apakah garis antarsel digabung.",
+          "goal": "Gabungkan border tabel menggunakan border-collapse: collapse, lalu beri border 1px solid pada setiap sel dan padding 8px.",
+          "hints": [
+            "border-collapse",
+            "border",
+            "padding"
+          ],
+          "hint": "Gunakan .table-basic-target { border-collapse: collapse; } lalu .table-basic-target th, .table-basic-target td { border: 1px solid #94a3b8; padding: 8px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">CSS TABLE</span><h1>Data Siswa</h1><p>Gabungkan garis batas dan rapikan isi setiap sel.</p><div class=\"table-stage table-basic-stage\"><table class=\"table-basic-target\" id=\"tableBasicTarget\"><thead><tr><th>Nama</th><th>Kelas</th><th>Proyek</th></tr></thead><tbody><tr><td>Amira</td><td>7A</td><td>Website</td></tr><tr><td>Rafi</td><td>7B</td><td>Game</td></tr><tr><td>Nadia</td><td>7A</td><td>Animasi</td></tr></tbody></table></div></main>",
+          "checks": [
+            {
+              "label": "Tabel menggunakan border-collapse",
+              "detail": "Deklarasikan border-collapse pada tabel target.",
+              "requiredSelectors": [
+                ".table-basic-target"
+              ],
+              "declaredProperties": [
+                "border-collapse"
+              ],
+              "expectedDeclarationValues": {
+                "border-collapse": "collapse"
+              }
+            },
+            {
+              "label": "Header dan sel memiliki border serta padding",
+              "detail": "Beri border dan padding pada th dan td.",
+              "requiredSelectors": [
+                ".table-basic-target th",
+                ".table-basic-target td"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "border"
+                ],
+                [
+                  "padding"
+                ]
+              ]
+            },
+            {
+              "label": "Garis antarsel menyatu",
+              "detail": "Computed border-collapse harus collapse.",
+              "targetIds": [
+                "tableBasicTarget"
+              ],
+              "computedProperty": "borderCollapse",
+              "expected": "collapse"
+            }
+          ]
+        },
+        {
+          "id": "table-size",
+          "number": 78,
+          "title": "Table Size",
+          "category": "Tables",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_table_size.asp",
+          "description": "Ukuran tabel dan sel dapat diatur menggunakan width dan height. table-layout membantu menentukan cara browser menghitung lebar kolom.",
+          "goal": "Atur tabel agar lebarnya 100%, menggunakan table-layout: fixed, dan setiap sel memiliki tinggi 42px.",
+          "hints": [
+            "width: 100%",
+            "table-layout: fixed",
+            "height"
+          ],
+          "hint": "Gunakan .table-size-target { width: 100%; table-layout: fixed; } dan .table-size-target th, .table-size-target td { height: 42px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TABLE SIZE</span><h1>Ukuran Tabel</h1><p>Tabel menyesuaikan lebar wadah, dengan tinggi sel yang konsisten.</p><div class=\"table-stage\"><table class=\"table-size-target\" id=\"tableSizeTarget\"><thead><tr><th>Materi</th><th>Durasi</th><th>Status</th></tr></thead><tbody><tr><td>HTML</td><td>2 minggu</td><td>Selesai</td></tr><tr><td>CSS</td><td>3 minggu</td><td>Proses</td></tr><tr><td>JavaScript</td><td>4 minggu</td><td>Antrean</td></tr></tbody></table></div></main>",
+          "checks": [
+            {
+              "label": "Lebar tabel 100%",
+              "detail": "Gunakan width: 100% pada tabel.",
+              "requiredSelectors": [
+                ".table-size-target"
+              ],
+              "declaredProperties": [
+                "width"
+              ],
+              "expectedDeclarationValues": {
+                "width": "100%"
+              }
+            },
+            {
+              "label": "table-layout menggunakan fixed",
+              "detail": "Gunakan table-layout: fixed agar perhitungan lebar kolom lebih konsisten.",
+              "requiredSelectors": [
+                ".table-size-target"
+              ],
+              "declaredProperties": [
+                "table-layout"
+              ],
+              "expectedDeclarationValues": {
+                "table-layout": "fixed"
+              }
+            },
+            {
+              "label": "Tinggi header dan sel 42px",
+              "detail": "Atur height 42px pada semua th dan td.",
+              "requiredSelectors": [
+                ".table-size-target th",
+                ".table-size-target td"
+              ],
+              "declaredProperties": [
+                "height"
+              ],
+              "expectedDeclarationValues": {
+                "height": "42px"
+              }
+            },
+            {
+              "label": "Tabel menerapkan layout fixed",
+              "detail": "Computed table-layout harus fixed.",
+              "targetIds": [
+                "tableSizeTarget"
+              ],
+              "computedProperty": "tableLayout",
+              "expected": "fixed"
+            }
+          ]
+        },
+        {
+          "id": "table-align",
+          "number": 79,
+          "title": "Table Alignment",
+          "category": "Tables",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_table_align.asp",
+          "description": "text-align mengatur perataan horizontal isi sel, sementara vertical-align mengatur perataan vertikal.",
+          "goal": "Buat teks pada semua sel rata tengah secara horizontal dan vertikal.",
+          "hints": [
+            "text-align: center",
+            "vertical-align: middle"
+          ],
+          "hint": "Gunakan .table-align-target th, .table-align-target td { text-align: center; vertical-align: middle; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TABLE ALIGNMENT</span><h1>Jadwal ICT</h1><p>Ratakan teks di tengah setiap sel, baik secara horizontal maupun vertikal.</p><div class=\"table-stage\"><table class=\"table-align-target\" id=\"tableAlignTarget\"><thead><tr><th id=\"tableAlignHeader\">Hari</th><th>Materi</th><th>Jam</th></tr></thead><tbody><tr><td id=\"tableAlignCell\">Senin</td><td>Robotika</td><td>08.00</td></tr><tr><td>Rabu</td><td>Web Design</td><td>10.00</td></tr></tbody></table></div></main>",
+          "checks": [
+            {
+              "label": "Selector sel tabel mengatur kedua alignment",
+              "detail": "Deklarasikan text-align dan vertical-align pada th dan td.",
+              "requiredSelectors": [
+                ".table-align-target th",
+                ".table-align-target td"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "text-align"
+                ],
+                [
+                  "vertical-align"
+                ]
+              ]
+            },
+            {
+              "label": "Teks rata tengah horizontal",
+              "detail": "text-align pada sel harus center.",
+              "targetIds": [
+                "tableAlignHeader",
+                "tableAlignCell"
+              ],
+              "computedProperty": "textAlign",
+              "expected": "center"
+            },
+            {
+              "label": "Teks rata tengah vertikal",
+              "detail": "vertical-align pada sel harus middle.",
+              "targetIds": [
+                "tableAlignHeader",
+                "tableAlignCell"
+              ],
+              "computedProperty": "verticalAlign",
+              "expected": "middle"
+            }
+          ]
+        },
+        {
+          "id": "table-style",
+          "number": 80,
+          "title": "Table Style",
+          "category": "Tables",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_table_style.asp",
+          "description": "Tampilan tabel dapat dipercantik menggunakan warna header, garis pemisah, warna sel berselang-seling, dan efek hover pada baris.",
+          "goal": "Buat header berwarna biru tua dengan teks putih, baris genap berwarna biru muda, serta efek hover pada baris tabel.",
+          "hints": [
+            "background-color",
+            "nth-child(even)",
+            "tr:hover"
+          ],
+          "hint": "Gunakan .table-style-target th { background-color: #1d4ed8; color: white; }, .table-style-target tbody tr:nth-child(even) { background-color: #dbeafe; }, dan .table-style-target tbody tr:hover { background-color: #bfdbfe; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TABLE STYLE</span><h1>Rekap Proyek</h1><p>Arahkan pointer ke baris tabel untuk melihat efek hover.</p><div class=\"table-stage\"><table class=\"table-style-target\" id=\"tableStyleTarget\"><thead><tr><th>Nama</th><th>Proyek</th><th>Nilai</th></tr></thead><tbody><tr><td>Dina</td><td>Website</td><td>90</td></tr><tr id=\"tableStyleEvenRow\"><td>Faris</td><td>Game</td><td>88</td></tr><tr><td>Salma</td><td>Animasi</td><td>95</td></tr><tr><td>Rizky</td><td>Robot</td><td>86</td></tr></tbody></table></div></main>",
+          "checks": [
+            {
+              "label": "Header berwarna biru dan teks putih",
+              "detail": "Atur latar dan warna teks header tabel.",
+              "requiredSelectors": [
+                ".table-style-target th"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "background-color"
+                ],
+                [
+                  "color"
+                ]
+              ]
+            },
+            {
+              "label": "Header biru tua",
+              "detail": "Computed background-color header harus rgb(29, 78, 216).",
+              "targetIds": [
+                "tableStyleTarget"
+              ],
+              "computedProperty": "backgroundColor",
+              "expectedNot": "rgb(255, 255, 255)"
+            },
+            {
+              "label": "Baris genap memiliki latar biru muda",
+              "detail": "Gunakan nth-child(even) pada baris tabel untuk memberi warna latar biru muda.",
+              "requiredSelectors": [
+                ".table-style-target tbody tr:nth-child(even)"
+              ],
+              "declaredProperties": [
+                "background-color"
+              ]
+            },
+            {
+              "label": "Warna latar baris genap sesuai",
+              "detail": "Baris genap harus memiliki latar rgb(219, 234, 254).",
+              "targetIds": [
+                "tableStyleEvenRow"
+              ],
+              "computedProperty": "backgroundColor",
+              "expected": "rgb(219, 234, 254)"
+            },
+            {
+              "label": "Efek hover pada baris tersedia",
+              "detail": "Buat aturan hover yang mengubah background-color baris.",
+              "requiredSelectors": [
+                ".table-style-target tbody tr:hover"
+              ],
+              "declaredProperties": [
+                "background-color"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "table-responsive",
+          "number": 81,
+          "title": "Responsive Table",
+          "category": "Tables",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_table_responsive.asp",
+          "description": "Tabel dengan banyak kolom bisa lebih lebar daripada layar. Wadah overflow-x:auto memungkinkan pengguna menggulir tabel secara horizontal.",
+          "goal": "Aktifkan scroll horizontal pada wadah tabel dan buat tabel memiliki min-width 560px agar tidak terlalu sempit.",
+          "hints": [
+            "overflow-x: auto",
+            "min-width: 560px"
+          ],
+          "hint": "Gunakan .table-responsive-wrapper { overflow-x: auto; } dan .table-responsive-target { min-width: 560px; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">RESPONSIVE TABLE</span><h1>Data Perangkat</h1><p>Geser area tabel secara horizontal bila seluruh kolom tidak muat pada layar.</p><div class=\"table-responsive-wrapper\" id=\"tableResponsiveWrapper\"><table class=\"table-responsive-target\" id=\"tableResponsiveTarget\"><thead><tr><th>Perangkat</th><th>Kategori</th><th>Jumlah</th><th>Kondisi</th><th>Lokasi</th></tr></thead><tbody><tr><td>Arduino Uno</td><td>Robotika</td><td>12</td><td>Baik</td><td>Lab ICT</td></tr><tr><td>ESP32</td><td>IoT</td><td>10</td><td>Baik</td><td>Lab ICT</td></tr><tr><td>Motor Servo</td><td>Robotika</td><td>8</td><td>Perlu cek</td><td>Gudang</td></tr></tbody></table></div></main>",
+          "checks": [
+            {
+              "label": "Wadah mengaktifkan scroll horizontal",
+              "detail": "Gunakan overflow-x: auto pada pembungkus tabel.",
+              "requiredSelectors": [
+                ".table-responsive-wrapper"
+              ],
+              "declaredProperties": [
+                "overflow-x"
+              ],
+              "expectedDeclarationValues": {
+                "overflow-x": "auto"
+              }
+            },
+            {
+              "label": "Computed overflow-x adalah auto",
+              "detail": "Browser harus menampilkan overflow-x auto pada pembungkus.",
+              "targetIds": [
+                "tableResponsiveWrapper"
+              ],
+              "computedProperty": "overflowX",
+              "expected": "auto"
+            },
+            {
+              "label": "Tabel memiliki min-width 560px",
+              "detail": "Gunakan min-width agar tabel tetap terbaca pada layar sempit.",
+              "requiredSelectors": [
+                ".table-responsive-target"
+              ],
+              "declaredProperties": [
+                "min-width"
+              ],
+              "expectedDeclarationValues": {
+                "min-width": "560px"
+              }
+            },
+            {
+              "label": "Batas minimum lebar diterapkan",
+              "detail": "Computed min-width harus 560px.",
+              "targetIds": [
+                "tableResponsiveTarget"
+              ],
+              "computedProperty": "minWidth",
+              "expected": "560px"
+            }
+          ]
+        }
     ];
 
     const BASE_PREVIEW_CSS = `
@@ -2015,6 +2329,12 @@
 
       /* Font, link, and list tasks provide only the preview structure. */
       .links-stage,.link-button-stage,.list-stage{padding:14px;border:1px dashed #b8c8d6;background:#f8fafc;}
+
+      /* Table previews: neutral scaffolding only; table lesson properties stay for student CSS. */
+      .table-stage{max-width:100%;background:#f8fafc;border:1px dashed #b8c8d6;padding:10px;}
+      .table-stage table,.table-responsive-wrapper table{width:100%;}
+      .table-responsive-wrapper{max-width:100%;background:#f8fafc;border:1px dashed #b8c8d6;padding:10px;}
+      .table-responsive-wrapper th,.table-responsive-wrapper td{white-space:nowrap;padding:8px;}
       .links-stage p,.list-stage p{margin:12px 0 0;}
 
 
@@ -2258,7 +2578,10 @@
                      prop.indexOf('border')===0 || prop.indexOf('margin')===0 ||
                      prop.indexOf('outline')===0 || prop.indexOf('text-decoration')===0 ||
                      prop==='text-align' || prop==='text-transform' || prop==='text-indent' || prop==='line-height' ||
-                     prop==='letter-spacing' || prop==='word-spacing' || prop==='text-shadow'){
+                     prop==='letter-spacing' || prop==='word-spacing' || prop==='text-shadow' ||
+                     prop==='border-collapse' || prop==='border-spacing' || prop==='table-layout' ||
+                     prop==='vertical-align' || prop==='overflow-x' || prop==='overflow-y' ||
+                     prop==='font-style' || prop==='font-size' || prop==='font-weight' || prop==='display'){
                     var value=rule.style.getPropertyValue(prop);
                     if(value) declarations[prop]=value.trim();
                   }
@@ -2297,6 +2620,8 @@
                 textTransform:s.textTransform,textIndent:s.textIndent,lineHeight:s.lineHeight,letterSpacing:s.letterSpacing,wordSpacing:s.wordSpacing,textShadow:s.textShadow,
                 fontStyle:s.fontStyle,fontSize:s.fontSize,fontWeight:s.fontWeight,display:s.display,
                 listStyleType:s.listStyleType,listStylePosition:s.listStylePosition,
+                borderCollapse:s.borderCollapse,borderSpacing:s.borderSpacing,tableLayout:s.tableLayout,verticalAlign:s.verticalAlign,
+                overflowX:s.overflowX,overflowY:s.overflowY,
                 offsetWidth:el.offsetWidth,offsetHeight:el.offsetHeight,
                 widthWithMargins:el.offsetWidth+parseFloat(s.marginLeft||0)+parseFloat(s.marginRight||0),
                 heightWithMargins:el.offsetHeight+parseFloat(s.marginTop||0)+parseFloat(s.marginBottom||0)
