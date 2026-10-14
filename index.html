@@ -528,6 +528,119 @@
           { label: 'Border setebal 2px', detail: 'Ketebalan sisi atas harus 2px.', targetIds: ['borderRoundedTarget'], computedProperty: 'borderTopWidth', expected: '2px' },
           { label: 'Border berwarna amber', detail: 'Warna garis harus #f59e0b.', targetIds: ['borderRoundedTarget'], computedProperty: 'borderTopColor', expected: 'rgb(245, 158, 11)' }
         ]
+      },
+      {
+        id: 'margin-sides', number: 17, title: 'Margin Sides', category: 'Margin', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+        description: 'Margin memberi jarak di luar border elemen. Kamu bisa mengatur jarak atas, kanan, bawah, dan kiri secara terpisah.',
+        goal: 'Atur jarak atas 8px, kanan 16px, bawah 24px, dan kiri 32px pada kotak contoh.',
+        hints: ['margin-top', 'margin-right', 'margin-bottom', 'margin-left'], hint: 'Gunakan empat properti sisi: margin-top: 8px; margin-right: 16px; margin-bottom: 24px; margin-left: 32px. Kamu juga boleh mencoba satuan %.',
+        html: `<main class="mini-page"><span class="eyebrow">MARGIN INDIVIDUAL SIDES</span><h1>Jarak Tiap Sisi</h1><p>Atur jarak kotak dari elemen di sekelilingnya.</p><div class="margin-side-stage"><div class="margin-sides-target" id="marginSidesTarget">Kotak target</div></div></main>`,
+        checks: [
+          { label: 'Keempat properti sisi digunakan', detail: 'Deklarasikan margin-top, margin-right, margin-bottom, dan margin-left dalam aturan yang sama.', requiredSelectors: ['.margin-sides-target'], declaredPropertyGroups: [['margin-top'],['margin-right'],['margin-bottom'],['margin-left']] },
+          { label: 'Jarak atas 8px', detail: 'margin-top harus 8px.', targetIds: ['marginSidesTarget'], computedProperty: 'marginTop', expected: '8px' },
+          { label: 'Jarak kanan 16px', detail: 'margin-right harus 16px.', targetIds: ['marginSidesTarget'], computedProperty: 'marginRight', expected: '16px' },
+          { label: 'Jarak bawah 24px', detail: 'margin-bottom harus 24px.', targetIds: ['marginSidesTarget'], computedProperty: 'marginBottom', expected: '24px' },
+          { label: 'Jarak kiri 32px', detail: 'margin-left harus 32px.', targetIds: ['marginSidesTarget'], computedProperty: 'marginLeft', expected: '32px' }
+        ]
+      },
+      {
+        id: 'margin-shorthand-four', number: 18, title: 'Margin Shorthand: 4 Nilai', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+        description: 'Shorthand margin dengan empat nilai dibaca berurutan: atas, kanan, bawah, lalu kiri.',
+        goal: 'Gunakan satu deklarasi margin untuk mengatur 10px atas, 20px kanan, 30px bawah, dan 40px kiri.',
+        hints: ['margin shorthand', '4 nilai'], hint: 'Tulis margin: 10px 20px 30px 40px;. Urutan nilainya mengikuti arah jarum jam mulai dari atas.',
+        html: `<main class="mini-page"><span class="eyebrow">MARGIN SHORTHAND</span><h1>Empat Nilai</h1><p>Gunakan satu deklarasi untuk empat sisi.</p><div class="margin-four-stage"><div class="margin-four-target" id="marginFourTarget">Margin 4 nilai</div></div></main>`,
+        checks: [
+          { label: 'Properti shorthand margin digunakan', detail: 'Gunakan margin dengan empat nilai dalam selector .margin-four-target.', requiredSelectors: ['.margin-four-target'], declaredProperties: ['margin'] },
+          { label: 'Atas 10px dan kanan 20px', detail: 'Pastikan nilai sisi atas 10px dan kanan 20px.', targetIds: ['marginFourTarget'], computedProperty: 'marginTop', expected: '10px' },
+          { label: 'Bawah 30px dan kiri 40px', detail: 'Pastikan nilai sisi bawah 30px dan kiri 40px.', targetIds: ['marginFourTarget'], computedProperty: 'marginBottom', expected: '30px' },
+          { label: 'Jarak kanan 20px', detail: 'margin-right harus 20px.', targetIds: ['marginFourTarget'], computedProperty: 'marginRight', expected: '20px' },
+          { label: 'Jarak kiri 40px', detail: 'margin-left harus 40px.', targetIds: ['marginFourTarget'], computedProperty: 'marginLeft', expected: '40px' }
+        ]
+      },
+      {
+        id: 'margin-shorthand-three', number: 19, title: 'Margin Shorthand: 3 Nilai', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+        description: 'Dengan tiga nilai, urutannya adalah atas, kanan-kiri, lalu bawah.',
+        goal: 'Atur margin menjadi 12px atas, 20px kanan-kiri, dan 28px bawah dengan tiga nilai.',
+        hints: ['margin', '3 nilai'], hint: 'Tulis margin: 12px 20px 28px;. Nilai kedua dipakai untuk sisi kanan dan kiri.',
+        html: `<main class="mini-page"><span class="eyebrow">MARGIN SHORTHAND</span><h1>Tiga Nilai</h1><p>Nilai tengah berlaku untuk kedua sisi horizontal.</p><div class="margin-three-stage"><div class="margin-three-target" id="marginThreeTarget">Margin 3 nilai</div></div></main>`,
+        checks: [
+          { label: 'Shorthand margin tiga nilai digunakan', detail: 'Gunakan deklarasi margin dengan tiga nilai.', requiredSelectors: ['.margin-three-target'], declaredProperties: ['margin'] },
+          { label: 'Jarak atas 12px', detail: 'margin-top harus 12px.', targetIds: ['marginThreeTarget'], computedProperty: 'marginTop', expected: '12px' },
+          { label: 'Jarak kanan dan kiri 20px', detail: 'Kedua margin horizontal harus 20px.', targetIds: ['marginThreeTarget'], computedProperty: 'marginRight', expected: '20px' },
+          { label: 'Jarak bawah 28px', detail: 'margin-bottom harus 28px.', targetIds: ['marginThreeTarget'], computedProperty: 'marginBottom', expected: '28px' },
+          { label: 'Kiri juga 20px', detail: 'margin-left harus 20px.', targetIds: ['marginThreeTarget'], computedProperty: 'marginLeft', expected: '20px' }
+        ]
+      },
+      {
+        id: 'margin-shorthand-two', number: 20, title: 'Margin Shorthand: 2 Nilai', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+        description: 'Dengan dua nilai, nilai pertama mengatur atas-bawah dan nilai kedua mengatur kanan-kiri.',
+        goal: 'Gunakan margin dengan dua nilai: 16px untuk atas-bawah dan 32px untuk kanan-kiri.',
+        hints: ['margin', '2 nilai'], hint: 'Tulis margin: 16px 32px;. Browser menggunakan 16px di atas/bawah serta 32px di kanan/kiri.',
+        html: `<main class="mini-page"><span class="eyebrow">MARGIN SHORTHAND</span><h1>Dua Nilai</h1><p>Gunakan dua nilai untuk mengatur vertikal dan horizontal.</p><div class="margin-two-stage"><div class="margin-two-target" id="marginTwoTarget">Margin 2 nilai</div></div></main>`,
+        checks: [
+          { label: 'Shorthand margin dua nilai digunakan', detail: 'Gunakan deklarasi margin dengan dua nilai.', requiredSelectors: ['.margin-two-target'], declaredProperties: ['margin'] },
+          { label: 'Jarak atas-bawah 16px', detail: 'margin-top dan margin-bottom harus 16px.', targetIds: ['marginTwoTarget'], computedProperty: 'marginTop', expected: '16px' },
+          { label: 'Jarak kanan-kiri 32px', detail: 'margin-right dan margin-left harus 32px.', targetIds: ['marginTwoTarget'], computedProperty: 'marginRight', expected: '32px' },
+          { label: 'Sisi bawah dan kiri juga sesuai', detail: 'margin-bottom harus 16px dan margin-left harus 32px.', targetIds: ['marginTwoTarget'], computedProperty: 'marginBottom', expected: '16px' }
+        ]
+      },
+      {
+        id: 'margin-shorthand-one', number: 21, title: 'Margin Shorthand: 1 Nilai', category: 'Margin', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+        description: 'Satu nilai shorthand margin menerapkan jarak yang sama pada keempat sisi.',
+        goal: 'Terapkan jarak 24px pada sisi atas, kanan, bawah, dan kiri dengan satu nilai.',
+        hints: ['margin', '1 nilai'], hint: 'Cukup tulis margin: 24px;. Nilai ini berlaku untuk keempat sisi elemen.',
+        html: `<main class="mini-page"><span class="eyebrow">MARGIN SHORTHAND</span><h1>Satu Nilai</h1><p>Satu deklarasi dapat memberi jarak sama di semua sisi.</p><div class="margin-one-stage"><div class="margin-one-target" id="marginOneTarget">Margin 1 nilai</div></div></main>`,
+        checks: [
+          { label: 'Shorthand margin satu nilai digunakan', detail: 'Gunakan margin: 24px; pada selector .margin-one-target.', requiredSelectors: ['.margin-one-target'], declaredProperties: ['margin'] },
+          { label: 'Keempat sisi memiliki margin 24px', detail: 'Margin atas, kanan, bawah, dan kiri harus 24px.', targetIds: ['marginOneTarget'], computedProperty: 'marginTop', expected: '24px' },
+          { label: 'Sisi kanan dan bawah sama', detail: 'margin-right dan margin-bottom harus 24px.', targetIds: ['marginOneTarget'], computedProperty: 'marginRight', expected: '24px' },
+          { label: 'Sisi kiri juga 24px', detail: 'margin-left harus 24px.', targetIds: ['marginOneTarget'], computedProperty: 'marginLeft', expected: '24px' }
+        ]
+      },
+      {
+        id: 'margin-auto', number: 22, title: 'Margin Auto: Center', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+        description: 'Nilai auto dapat membagi ruang kosong secara seimbang untuk memusatkan elemen block yang memiliki lebar tertentu.',
+        goal: 'Pusatkan kotak target secara horizontal menggunakan margin: auto;.',
+        hints: ['margin: auto', 'horizontal center'], hint: 'Lebar kotak sudah disiapkan. Gunakan .margin-auto-target { margin: auto; }. Pastikan ruang kiri dan kanan seimbang.',
+        html: `<main class="mini-page"><span class="eyebrow">MARGIN AUTO</span><h1>Posisi Tengah</h1><p>Kotak ungu memiliki lebar tetap. Buat jarak kiri dan kanan otomatis seimbang.</p><div class="margin-auto-stage"><div class="margin-auto-target" id="marginAutoTarget">Kotak terpusat</div></div></main>`,
+        checks: [
+          { label: 'Selector memakai margin: auto', detail: 'Gunakan shorthand margin dengan nilai auto.', requiredSelectors: ['.margin-auto-target'], declaredProperties: ['margin'] },
+          { label: 'Margin kiri dan kanan seimbang', detail: 'Nilai computed margin kiri dan kanan harus sama agar kotak berada di tengah.', targetIds: ['marginAutoTarget'], computedPropertiesEqual: ['marginLeft','marginRight'] }
+        ]
+      },
+      {
+        id: 'margin-inherit', number: 23, title: 'Margin Inherit', category: 'Margin', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+        description: 'Nilai inherit mengambil nilai properti dari elemen induk. Properti margin biasanya tidak diwariskan otomatis, jadi gunakan inherit secara eksplisit.',
+        goal: 'Beri elemen induk margin-left 40px, kemudian buat elemen anak mewarisi nilai itu dengan margin-left: inherit;.',
+        hints: ['inherit', 'parent-child'], hint: 'Buat aturan .margin-inherit-parent { margin-left: 40px; } dan .margin-inherit-child { margin-left: inherit; }.',
+        html: `<main class="mini-page"><span class="eyebrow">MARGIN INHERIT</span><h1>Mewarisi Jarak</h1><p>Kotak anak harus memiliki margin kiri yang sama seperti induknya.</p><div class="margin-inherit-parent" id="marginInheritParent"><strong>Elemen induk</strong><div class="margin-inherit-child" id="marginInheritChild">Elemen anak</div></div></main>`,
+        checks: [
+          { label: 'Induk diberi margin-left 40px', detail: 'Selector induk harus mengatur margin-left: 40px.', requiredSelectors: ['.margin-inherit-parent'], declaredProperties: ['margin-left'], targetIds: ['marginInheritParent'], computedProperty: 'marginLeft', expected: '40px' },
+          { label: 'Anak menggunakan inherit', detail: 'Selector anak harus memakai margin-left: inherit;.', requiredSelectors: ['.margin-inherit-child'], declaredProperties: ['margin-left'], expectedDeclarationValues: {'margin-left':'inherit'} },
+          { label: 'Margin kiri anak ikut menjadi 40px', detail: 'Computed margin-left anak harus mewarisi 40px dari induk.', targetIds: ['marginInheritChild'], computedProperty: 'marginLeft', expected: '40px' }
+        ]
+      },
+      {
+        id: 'margin-percent', number: 24, title: 'Margin Persentase', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+        description: 'Margin juga dapat memakai persentase. Nilai persentase margin dihitung dari lebar containing block.',
+        goal: 'Beri kotak target margin-left sebesar 10% menggunakan satuan persentase.',
+        hints: ['margin-left', '%'], hint: 'Gunakan .margin-percent-target { margin-left: 10%; }. Persentase membuat jarak mengikuti lebar wadahnya.',
+        html: `<main class="mini-page"><span class="eyebrow">MARGIN PERCENTAGE</span><h1>Jarak Persentase</h1><p>Jarak kiri target harus menggunakan 10% lebar wadahnya.</p><div class="margin-percent-stage"><div class="margin-percent-target" id="marginPercentTarget">Margin kiri 10%</div></div></main>`,
+        checks: [
+          { label: 'Selector menggunakan margin-left 10%', detail: 'Deklarasi harus memiliki margin-left: 10%.', requiredSelectors: ['.margin-percent-target'], declaredProperties: ['margin-left'], expectedDeclarationValues: {'margin-left':'10%'} },
+          { label: 'Browser menerapkan margin kiri', detail: 'Computed margin kiri harus lebih besar dari nol.', targetIds: ['marginPercentTarget'], computedProperty: 'marginLeft', expectedNot: '0px' }
+        ]
+      },
+      {
+        id: 'margin-negative', number: 25, title: 'Negative Margin', category: 'Margin', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+        description: 'Nilai margin negatif diperbolehkan dan dapat menarik elemen mendekati atau menimpa area elemen lain.',
+        goal: 'Gunakan margin-top: -12px; agar kotak merah bergerak ke atas mendekati kotak hijau.',
+        hints: ['margin-top', 'nilai negatif'], hint: 'Tulis .margin-negative-target { margin-top: -12px; }. Amati perubahan jarak antara kedua kotak pada preview.',
+        html: `<main class="mini-page"><span class="eyebrow">NEGATIVE MARGIN</span><h1>Margin Negatif</h1><p>Margin negatif bisa menarik elemen ke arah yang berlawanan dari jarak normal.</p><div class="margin-negative-stage"><div class="margin-negative-previous">Kotak hijau di atas</div><div class="margin-negative-target" id="marginNegativeTarget">Kotak merah bergerak ke atas</div></div></main>`,
+        checks: [
+          { label: 'Selector menggunakan margin-top negatif', detail: 'Deklarasikan margin-top: -12px; pada target.', requiredSelectors: ['.margin-negative-target'], declaredProperties: ['margin-top'], expectedDeclarationValues: {'margin-top':'-12px'} },
+          { label: 'Margin atas menjadi -12px', detail: 'Computed margin-top harus -12px.', targetIds: ['marginNegativeTarget'], computedProperty: 'marginTop', expected: '-12px' }
+        ]
       }
     ];
 
@@ -566,6 +679,16 @@
       .scroll-section p{margin-bottom:0;}
       /* Layout styles for border lessons; target border properties are left to students. */
       .border-demo-box,.border-width-box,.border-color-box,.border-sides-box,.border-shorthand-box,.border-rounded-box{min-height:82px;display:flex;align-items:center;justify-content:center;padding:18px;margin:14px 0;background:#f8fafc;text-align:center;}
+      /* Margin challenge scaffolding: target margin values are intentionally left to students. */
+      .margin-side-stage,.margin-four-stage,.margin-three-stage,.margin-two-stage,.margin-one-stage,.margin-auto-stage,.margin-percent-stage,.margin-negative-stage{padding:10px;border:1px dashed #b8c8d6;background:#f1f7fa;}
+      .margin-sides-target,.margin-four-target,.margin-three-target,.margin-two-target,.margin-one-target,.margin-percent-target{display:block;padding:12px;border:1px solid #94a3b8;background:#fff;text-align:center;}
+      .margin-auto-stage{width:100%;padding:10px;border:1px dashed #b8c8d6;background:#f1f0ff;}
+      .margin-auto-target{width:220px;max-width:100%;padding:12px;border:1px solid #8b7af5;background:#eeecff;text-align:center;}
+      .margin-inherit-parent{padding:12px;border:1px solid #9aa7b7;background:#f8fafc;}
+      .margin-inherit-child{padding:10px;border:1px solid #80b6a0;background:#e4f8ed;}
+      .margin-negative-previous{padding:12px;border:1px solid #80b6a0;background:#e4f8ed;text-align:center;}
+      .margin-negative-target{padding:12px;border:1px solid #f0a3ae;background:#fff0f1;text-align:center;}
+
 
     `;
 
@@ -763,7 +886,7 @@
                 for(var j=0;j<rule.style.length;j++){
                   var prop=rule.style[j];
                   if(prop==='color' || prop==='background' || prop==='background-color' || prop==='background-image' ||
-                     prop==='background-repeat' || prop==='background-attachment' || prop.indexOf('border')===0){
+                     prop==='background-repeat' || prop==='background-attachment' || prop.indexOf('border')===0 || prop.indexOf('margin')===0){
                     var value=rule.style.getPropertyValue(prop);
                     if(value) declarations[prop]=value.trim();
                   }
@@ -789,7 +912,8 @@
                 borderRightStyle:s.borderRightStyle,borderRightWidth:s.borderRightWidth,borderRightColor:s.borderRightColor,
                 borderBottomStyle:s.borderBottomStyle,borderBottomWidth:s.borderBottomWidth,borderBottomColor:s.borderBottomColor,
                 borderLeftStyle:s.borderLeftStyle,borderLeftWidth:s.borderLeftWidth,borderLeftColor:s.borderLeftColor,
-                borderTopLeftRadius:s.borderTopLeftRadius
+                borderTopLeftRadius:s.borderTopLeftRadius,
+                marginTop:s.marginTop,marginRight:s.marginRight,marginBottom:s.marginBottom,marginLeft:s.marginLeft
               };
             });
             var bodyStyle=getComputedStyle(document.body);
@@ -801,7 +925,8 @@
               borderTopStyle:bodyStyle.borderTopStyle,borderTopWidth:bodyStyle.borderTopWidth,borderTopColor:bodyStyle.borderTopColor,
               borderRightStyle:bodyStyle.borderRightStyle,borderRightWidth:bodyStyle.borderRightWidth,borderRightColor:bodyStyle.borderRightColor,
               borderBottomStyle:bodyStyle.borderBottomStyle,borderBottomWidth:bodyStyle.borderBottomWidth,borderBottomColor:bodyStyle.borderBottomColor,
-              borderLeftStyle:bodyStyle.borderLeftStyle,borderLeftWidth:bodyStyle.borderLeftWidth,borderLeftColor:bodyStyle.borderLeftColor,borderTopLeftRadius:bodyStyle.borderTopLeftRadius
+              borderLeftStyle:bodyStyle.borderLeftStyle,borderLeftWidth:bodyStyle.borderLeftWidth,borderLeftColor:bodyStyle.borderLeftColor,borderTopLeftRadius:bodyStyle.borderTopLeftRadius,
+              marginTop:bodyStyle.marginTop,marginRight:bodyStyle.marginRight,marginBottom:bodyStyle.marginBottom,marginLeft:bodyStyle.marginLeft
             },rules:rules},'*');
           }
           if(document.readyState==='complete') setTimeout(report,0); else window.addEventListener('load',function(){setTimeout(report,0)});
@@ -846,7 +971,8 @@
           const ruleSelectors = rule.selectors.map(normalizedSelector);
           return criterion.requiredSelectors.every(selector => ruleSelectors.includes(normalizedSelector(selector))) &&
             (!criterion.declaredProperties || criterion.declaredProperties.length === 0 || criterion.declaredProperties.some(prop => Object.prototype.hasOwnProperty.call(rule.declarations, prop))) &&
-            (!criterion.declaredPropertyGroups || criterion.declaredPropertyGroups.every(group => group.some(prop => Object.prototype.hasOwnProperty.call(rule.declarations, prop))));
+            (!criterion.declaredPropertyGroups || criterion.declaredPropertyGroups.every(group => group.some(prop => Object.prototype.hasOwnProperty.call(rule.declarations, prop)))) &&
+            (!criterion.expectedDeclarationValues || Object.entries(criterion.expectedDeclarationValues).every(([prop,value]) => String(rule.declarations[prop] || '').replace(/\\s+/g,'').toLowerCase() === String(value).replace(/\\s+/g,'').toLowerCase()));
         });
         if (!found) reasons.push('Selector atau properti CSS yang diminta belum ditemukan dalam aturan yang sama.');
       }
@@ -858,6 +984,7 @@
           if (criterion.expected !== undefined && !actualValues.every(value => value === criterion.expected)) reasons.push('Nilai tampilan belum sesuai dengan target.');
           if (criterion.expectedIncludes !== undefined && !actualValues.every(value => String(value || '').includes(criterion.expectedIncludes))) reasons.push('Efek CSS yang diharapkan belum muncul.');
           if (criterion.expectedNot !== undefined && !actualValues.every(value => value !== criterion.expectedNot)) reasons.push('Elemen yang seharusnya tidak berubah masih memiliki nilai tersebut.');
+          if (criterion.computedPropertiesEqual && !targets.every(target => criterion.computedPropertiesEqual.every(prop => target[prop] === target[criterion.computedPropertiesEqual[0]]))) reasons.push('Nilai properti yang dibandingkan belum sama.');
         }
       }
       return { passed: reasons.length === 0, reasons };
