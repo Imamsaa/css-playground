@@ -262,7 +262,7 @@
 
     <main class="layout">
       <aside class="panel tasks-panel">
-        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">81 TUGAS</span></div>
+        <div class="panel-heading"><div class="panel-title">Daftar Tugas</div><span class="count-chip" id="taskCount">98 TUGAS</span></div>
         <div class="task-search-wrap">
           <input class="task-search" id="taskSearch" type="search" placeholder="Cari tugas atau materi…" aria-label="Cari tugas berdasarkan nama atau materi" autocomplete="off" />
         </div>
@@ -1056,12 +1056,12 @@
             },
             {
               "label": "Alpha RGBA bernilai 0.4",
-              "detail": "Warna computed harus memiliki alpha 0.4.",
+              "detail": "Nilai transparansi (alpha) background harus tepat 0.4.",
               "targetIds": [
                 "colorRgbaTarget"
               ],
               "computedProperty": "backgroundColor",
-              "expectedIncludes": "0.4"
+              "expectedColorAlpha": 0.4
             }
           ]
         },
@@ -1093,12 +1093,12 @@
             },
             {
               "label": "HEXA memiliki alpha sekitar 0.2",
-              "detail": "Warna computed harus menunjukkan alpha 0.2.",
+              "detail": "Nilai transparansi (alpha) background harus tepat 0.2.",
               "targetIds": [
                 "colorHexaTarget"
               ],
               "computedProperty": "backgroundColor",
-              "expectedIncludes": "0.2"
+              "expectedColorAlpha": 0.2
             }
           ]
         },
@@ -1130,12 +1130,12 @@
             },
             {
               "label": "Alpha HSLA bernilai 0.35",
-              "detail": "Computed background harus memiliki alpha 0.35.",
+              "detail": "Nilai transparansi (alpha) background harus tepat 0.35.",
               "targetIds": [
                 "colorHslaTarget"
               ],
               "computedProperty": "backgroundColor",
-              "expectedIncludes": "0.35"
+              "expectedColorAlpha": 0.35
             }
           ]
         },
@@ -4418,7 +4418,7 @@
             "height"
           ],
           "hint": "Gunakan .table-size-target { width: 100%; table-layout: fixed; } dan .table-size-target th, .table-size-target td { height: 42px; }.",
-          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TABLE SIZE</span><h1>Ukuran Tabel</h1><p>Tabel menyesuaikan lebar wadah, dengan tinggi sel yang konsisten.</p><div class=\"table-stage\"><table class=\"table-size-target\" id=\"tableSizeTarget\"><thead><tr><th>Materi</th><th>Durasi</th><th>Status</th></tr></thead><tbody><tr><td>HTML</td><td>2 minggu</td><td>Selesai</td></tr><tr><td>CSS</td><td>3 minggu</td><td>Proses</td></tr><tr><td>JavaScript</td><td>4 minggu</td><td>Antrean</td></tr></tbody></table></div></main>",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TABLE SIZE</span><h1>Ukuran Tabel</h1><p>Tabel menyesuaikan lebar wadah, dengan tinggi sel yang konsisten.</p><div class=\"table-stage\"><table class=\"table-size-target\" id=\"tableSizeTarget\"><thead><tr><th id=\"tableSizeCell\">Materi</th><th>Durasi</th><th>Status</th></tr></thead><tbody><tr><td>HTML</td><td>2 minggu</td><td>Selesai</td></tr><tr><td>CSS</td><td>3 minggu</td><td>Proses</td></tr><tr><td>JavaScript</td><td>4 minggu</td><td>Antrean</td></tr></tbody></table></div></main>",
           "checks": [
             {
               "label": "Lebar tabel 100%",
@@ -4468,6 +4468,15 @@
               ],
               "computedProperty": "tableLayout",
               "expected": "fixed"
+            },
+            {
+              "label": "Tinggi sel diterapkan 42px",
+              "detail": "Computed height pada sel tabel harus 42px.",
+              "targetIds": [
+                "tableSizeCell"
+              ],
+              "computedProperty": "height",
+              "expected": "42px"
             }
           ]
         },
@@ -4667,6 +4676,766 @@
               "expected": "560px"
             }
           ]
+        },
+        {
+          "id": "list-style-type",
+          "number": 82,
+          "title": "List Style Type",
+          "category": "Lists",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_list.asp",
+          "description": "list-style-type mengubah bentuk penanda daftar, misalnya disc, circle, square, atau decimal.",
+          "goal": "Ubah penanda daftar menjadi circle menggunakan list-style-type.",
+          "hints": [
+            "list-style-type",
+            "circle"
+          ],
+          "hint": "Gunakan .list-type-target { list-style-type: circle; }. Perhatikan bentuk bullet di sebelah kiri setiap item.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">LIST STYLE TYPE</span><h1>Jenis Penanda</h1><p>Ubah bullet daftar menjadi lingkaran kosong.</p><div class=\"list-stage\"><ul class=\"list-type-target\" id=\"listTypeTarget\"><li>HTML dasar</li><li>CSS dasar</li><li>JavaScript dasar</li></ul></div></main>",
+          "checks": [
+            {
+              "label": "Selector list-style-type digunakan",
+              "detail": "Deklarasikan list-style-type pada ul target.",
+              "requiredSelectors": [
+                ".list-type-target"
+              ],
+              "declaredProperties": [
+                "list-style-type"
+              ],
+              "expectedDeclarationValues": {
+                "list-style-type": "circle"
+              }
+            },
+            {
+              "label": "Penanda berbentuk circle",
+              "detail": "Computed list-style-type harus circle.",
+              "targetIds": [
+                "listTypeTarget"
+              ],
+              "computedProperty": "listStyleType",
+              "expected": "circle"
+            }
+          ]
+        },
+        {
+          "id": "list-style-position",
+          "number": 83,
+          "title": "List Style Position",
+          "category": "Lists",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_list.asp",
+          "description": "list-style-position mengatur apakah penanda masuk ke dalam area konten item daftar (inside) atau berada di luarnya (outside).",
+          "goal": "Tempatkan penanda daftar di dalam area daftar menggunakan list-style-position: inside.",
+          "hints": [
+            "list-style-position",
+            "inside"
+          ],
+          "hint": "Gunakan .list-position-target { list-style-position: inside; }. Perhatikan perataan baris ketika sebuah item membungkus ke baris berikutnya.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">LIST STYLE POSITION</span><h1>Posisi Penanda</h1><p>Item kedua sengaja lebih panjang agar kamu bisa mengamati perataan baris.</p><div class=\"list-stage\"><ul class=\"list-position-target\" id=\"listPositionTarget\"><li>Belajar CSS</li><li>Membuat tampilan halaman yang rapi dan konsisten</li><li>Menguji hasil di browser</li></ul></div></main>",
+          "checks": [
+            {
+              "label": "Selector list-style-position digunakan",
+              "detail": "Deklarasikan list-style-position pada daftar target.",
+              "requiredSelectors": [
+                ".list-position-target"
+              ],
+              "declaredProperties": [
+                "list-style-position"
+              ],
+              "expectedDeclarationValues": {
+                "list-style-position": "inside"
+              }
+            },
+            {
+              "label": "Penanda berada di dalam daftar",
+              "detail": "Computed list-style-position harus inside.",
+              "targetIds": [
+                "listPositionTarget"
+              ],
+              "computedProperty": "listStylePosition",
+              "expected": "inside"
+            }
+          ]
+        },
+        {
+          "id": "list-style-image",
+          "number": 84,
+          "title": "List Style Image",
+          "category": "Lists",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_list.asp",
+          "description": "list-style-image mengganti bullet standar dengan gambar kecil.",
+          "goal": "Gunakan gambar sebagai penanda item daftar dengan list-style-image.",
+          "hints": [
+            "list-style-image",
+            "url()"
+          ],
+          "hint": "Gunakan .list-image-target { list-style-image: url(\"https://www.w3schools.com/css/sqpurple.gif\"); }. Properti ini memakai URL gambar untuk penanda.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">LIST STYLE IMAGE</span><h1>Penanda Bergambar</h1><p>Ganti bullet biasa dengan ikon gambar.</p><div class=\"list-stage\"><ul class=\"list-image-target\" id=\"listImageTarget\"><li>Desain antarmuka</li><li>Animasi interaktif</li><li>Robotika</li></ul></div></main>",
+          "checks": [
+            {
+              "label": "Selector menggunakan list-style-image",
+              "detail": "Deklarasikan list-style-image pada daftar target.",
+              "requiredSelectors": [
+                ".list-image-target"
+              ],
+              "declaredProperties": [
+                "list-style-image"
+              ]
+            },
+            {
+              "label": "Gambar menjadi penanda daftar",
+              "detail": "Nilai computed list-style-image harus merujuk pada sqpurple.gif.",
+              "targetIds": [
+                "listImageTarget"
+              ],
+              "computedProperty": "listStyleImage",
+              "expectedIncludes": "sqpurple.gif"
+            }
+          ]
+        },
+        {
+          "id": "list-nav-challenge",
+          "number": 85,
+          "title": "Tantangan: Menu Navigasi",
+          "category": "Lists",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_list.asp",
+          "description": "Daftar juga bisa menjadi dasar menu navigasi. Tantangan ini menggabungkan list-style, padding, dan tampilan tautan.",
+          "goal": "Hilangkan bullet daftar dan tampilkan tautan sebagai blok agar area setiap item mudah diklik.",
+          "hints": [
+            "list-style-type: none",
+            "display: block"
+          ],
+          "hint": "Gunakan .list-nav-target { list-style-type: none; padding-left: 0; } dan .list-nav-target a { display: block; padding: 8px; background-color: #eff6ff; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">LIST NAVIGATION</span><h1>Menu ICT</h1><p>Buat daftar tautan sederhana seperti menu situs.</p><div class=\"list-nav-stage\"><ul class=\"list-nav-target\" id=\"listNavTarget\"><li><a id=\"listNavLinkOne\" href=\"#nav-html\">Materi HTML</a></li><li><a href=\"#nav-css\">Materi CSS</a></li><li><a href=\"#nav-js\">Materi JavaScript</a></li></ul></div></main>",
+          "checks": [
+            {
+              "label": "Bullet daftar dihilangkan",
+              "detail": "list-style-type pada daftar harus none.",
+              "requiredSelectors": [
+                ".list-nav-target"
+              ],
+              "declaredProperties": [
+                "list-style-type"
+              ],
+              "expectedDeclarationValues": {
+                "list-style-type": "none"
+              }
+            },
+            {
+              "label": "Padding kiri daftar dihilangkan",
+              "detail": "Gunakan padding-left: 0 agar menu sejajar dengan tepi pembungkus.",
+              "requiredSelectors": [
+                ".list-nav-target"
+              ],
+              "declaredProperties": [
+                "padding-left"
+              ],
+              "expectedDeclarationValues": {
+                "padding-left": "0"
+              }
+            },
+            {
+              "label": "Tautan memenuhi area blok",
+              "detail": "Tampilkan tautan sebagai block agar seluruh area tautan mudah diklik.",
+              "requiredSelectors": [
+                ".list-nav-target a"
+              ],
+              "declaredProperties": [
+                "display"
+              ],
+              "expectedDeclarationValues": {
+                "display": "block"
+              }
+            },
+            {
+              "label": "Tautan menggunakan display block",
+              "detail": "Computed display tautan harus block.",
+              "targetIds": [
+                "listNavLinkOne"
+              ],
+              "computedProperty": "display",
+              "expected": "block"
+            }
+          ]
+        },
+        {
+          "id": "font-style-normal",
+          "number": 86,
+          "title": "Font Style: Normal",
+          "category": "Font",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_font_style.asp",
+          "description": "font-style: normal mengembalikan teks ke bentuk tegak, termasuk pada elemen seperti em yang secara default tampil miring.",
+          "goal": "Buat teks dalam elemen em tampil tegak menggunakan font-style: normal.",
+          "hints": [
+            "font-style",
+            "normal"
+          ],
+          "hint": "Gunakan .font-normal-target { font-style: normal; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FONT STYLE NORMAL</span><h1>Huruf Tegak</h1><p>Secara bawaan, elemen <code>em</code> tampil miring. <em class=\"font-normal-target\" id=\"fontNormalTarget\">Buat teks ini kembali tegak.</em></p></main>",
+          "checks": [
+            {
+              "label": "Selector menggunakan font-style",
+              "detail": "Deklarasikan font-style pada elemen em target.",
+              "requiredSelectors": [
+                ".font-normal-target"
+              ],
+              "declaredProperties": [
+                "font-style"
+              ],
+              "expectedDeclarationValues": {
+                "font-style": "normal"
+              }
+            },
+            {
+              "label": "Teks tampil normal",
+              "detail": "Computed font-style harus normal.",
+              "targetIds": [
+                "fontNormalTarget"
+              ],
+              "computedProperty": "fontStyle",
+              "expected": "normal"
+            }
+          ]
+        },
+        {
+          "id": "font-style-oblique",
+          "number": 87,
+          "title": "Font Style: Oblique",
+          "category": "Font",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_font_style.asp",
+          "description": "Selain italic, font-style dapat menggunakan oblique untuk memberi tampilan teks miring.",
+          "goal": "Terapkan font-style: oblique pada teks target.",
+          "hints": [
+            "font-style",
+            "oblique"
+          ],
+          "hint": "Gunakan .font-oblique-target { font-style: oblique; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FONT STYLE OBLIQUE</span><h1>Huruf Oblique</h1><p class=\"font-oblique-target\" id=\"fontObliqueTarget\">Teks ini menggunakan gaya oblique.</p></main>",
+          "checks": [
+            {
+              "label": "Selector menggunakan font-style oblique",
+              "detail": "Deklarasikan font-style: oblique.",
+              "requiredSelectors": [
+                ".font-oblique-target"
+              ],
+              "declaredProperties": [
+                "font-style"
+              ],
+              "expectedDeclarationValues": {
+                "font-style": "oblique"
+              }
+            },
+            {
+              "label": "Computed font-style adalah oblique",
+              "detail": "Computed font-style harus menunjukkan oblique.",
+              "targetIds": [
+                "fontObliqueTarget"
+              ],
+              "computedProperty": "fontStyle",
+              "expectedIncludes": "oblique"
+            }
+          ]
+        },
+        {
+          "id": "font-size-em",
+          "number": 88,
+          "title": "Font Size: em",
+          "category": "Font",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_font_size.asp",
+          "description": "Satuan em bersifat relatif terhadap ukuran font elemen induk.",
+          "goal": "Dengan ukuran font induk 16px, atur teks target menjadi 1.5em sehingga ukuran akhirnya 24px.",
+          "hints": [
+            "em",
+            "1.5em"
+          ],
+          "hint": "Gunakan .font-size-em-target { font-size: 1.5em; }. Karena wadahnya 16px, hasil computed font-size adalah 24px.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FONT SIZE EM</span><h1>Ukuran Relatif em</h1><div class=\"font-size-em-stage\"><p class=\"font-size-em-target\" id=\"fontSizeEmTarget\">Ukuran teks ini 1.5 kali ukuran font induknya.</p></div></main>",
+          "checks": [
+            {
+              "label": "Ukuran memakai satuan em",
+              "detail": "Gunakan font-size: 1.5em.",
+              "requiredSelectors": [
+                ".font-size-em-target"
+              ],
+              "declaredProperties": [
+                "font-size"
+              ],
+              "expectedDeclarationValues": {
+                "font-size": "1.5em"
+              }
+            },
+            {
+              "label": "Ukuran computed menjadi 24px",
+              "detail": "Ukuran induk 16px dikalikan 1.5 menghasilkan 24px.",
+              "targetIds": [
+                "fontSizeEmTarget"
+              ],
+              "computedProperty": "fontSize",
+              "expected": "24px"
+            }
+          ]
+        },
+        {
+          "id": "font-size-rem",
+          "number": 89,
+          "title": "Font Size: rem",
+          "category": "Font",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_font_size.asp",
+          "description": "Satuan rem mengikuti ukuran font elemen root (html), sehingga lebih konsisten dibanding bergantung pada ukuran induk.",
+          "goal": "Atur font-size menjadi 1.25rem. Dengan ukuran root default 16px, hasilnya 20px.",
+          "hints": [
+            "rem",
+            "1.25rem"
+          ],
+          "hint": "Gunakan .font-size-rem-target { font-size: 1.25rem; }. Browser biasanya memakai ukuran root 16px jika tidak diubah.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">FONT SIZE REM</span><h1>Ukuran Relatif rem</h1><p class=\"font-size-rem-target\" id=\"fontSizeRemTarget\">Teks ini menggunakan satuan rem.</p></main>",
+          "checks": [
+            {
+              "label": "Ukuran memakai satuan rem",
+              "detail": "Gunakan font-size: 1.25rem.",
+              "requiredSelectors": [
+                ".font-size-rem-target"
+              ],
+              "declaredProperties": [
+                "font-size"
+              ],
+              "expectedDeclarationValues": {
+                "font-size": "1.25rem"
+              }
+            },
+            {
+              "label": "Ukuran computed menjadi 20px",
+              "detail": "Dengan root 16px, 1.25rem menghasilkan 20px.",
+              "targetIds": [
+                "fontSizeRemTarget"
+              ],
+              "computedProperty": "fontSize",
+              "expected": "20px"
+            }
+          ]
+        },
+        {
+          "id": "font-combo-challenge",
+          "number": 90,
+          "title": "Tantangan: Tipografi",
+          "category": "Font",
+          "level": "LEVEL 3 · TANTANGAN",
+          "resourceUrl": "https://www.w3schools.com/css/css_font_style.asp",
+          "description": "Gabungkan beberapa properti font untuk menciptakan judul dengan penekanan yang jelas.",
+          "goal": "Buat teks target italic, ukuran 22px, tebal 700, dan line-height 1.4.",
+          "hints": [
+            "font-style",
+            "font-size",
+            "font-weight",
+            "line-height"
+          ],
+          "hint": "Gunakan .font-combo-target { font-style: italic; font-size: 22px; font-weight: 700; line-height: 1.4; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TYPOGRAPHY CHALLENGE</span><h1>Judul Poster</h1><p class=\"font-combo-target\" id=\"fontComboTarget\">Kolaborasi dan Inovasi dalam Karya Digital.</p></main>",
+          "checks": [
+            {
+              "label": "Empat properti font digunakan",
+              "detail": "Deklarasikan font-style, font-size, font-weight, dan line-height pada target.",
+              "requiredSelectors": [
+                ".font-combo-target"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "font-style"
+                ],
+                [
+                  "font-size"
+                ],
+                [
+                  "font-weight"
+                ],
+                [
+                  "line-height"
+                ]
+              ]
+            },
+            {
+              "label": "Gaya teks italic",
+              "detail": "Computed font-style harus italic.",
+              "targetIds": [
+                "fontComboTarget"
+              ],
+              "computedProperty": "fontStyle",
+              "expected": "italic"
+            },
+            {
+              "label": "Ukuran teks 22px",
+              "detail": "Computed font-size harus 22px.",
+              "targetIds": [
+                "fontComboTarget"
+              ],
+              "computedProperty": "fontSize",
+              "expected": "22px"
+            },
+            {
+              "label": "Ketebalan font 700",
+              "detail": "Computed font-weight harus 700.",
+              "targetIds": [
+                "fontComboTarget"
+              ],
+              "computedProperty": "fontWeight",
+              "expected": "700"
+            }
+          ]
+        },
+        {
+          "id": "link-state-link",
+          "number": 91,
+          "title": "Link State: :link",
+          "category": "Links",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_link.asp",
+          "description": "Pseudo-class :link menargetkan tautan yang belum dikunjungi.",
+          "goal": "Atur warna link yang belum dikunjungi menjadi biru.",
+          "hints": [
+            "a:link",
+            "color"
+          ],
+          "hint": "Gunakan .link-practice-target:link { color: #2563eb; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">LINK STATE</span><h1>Link Belum Dikunjungi</h1><p><a class=\"link-practice-target\" id=\"linkPracticeTarget\" href=\"#link-demo-91\">Tautan latihan :link</a></p><p id=\"link-demo-91\">Target contoh.</p></main>",
+          "checks": [
+            {
+              "label": "Selector :link digunakan",
+              "detail": "Gunakan pseudo-class :link dengan properti color.",
+              "requiredSelectors": [
+                ".link-practice-target:link"
+              ],
+              "declaredProperties": [
+                "color"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "link-state-visited",
+          "number": 92,
+          "title": "Link State: :visited",
+          "category": "Links",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_link.asp",
+          "description": "Pseudo-class :visited menargetkan tautan yang sudah pernah dikunjungi. Browser membatasi informasi yang dapat dibaca dari gaya visited demi privasi.",
+          "goal": "Atur warna tautan visited menjadi ungu.",
+          "hints": [
+            "a:visited",
+            "color"
+          ],
+          "hint": "Gunakan .link-practice-target:visited { color: #7c3aed; }. Pemeriksaan tugas memastikan aturan CSS-nya ada.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">LINK STATE</span><h1>Link Sudah Dikunjungi</h1><p><a class=\"link-practice-target\" id=\"linkPracticeTarget\" href=\"#link-demo-92\">Tautan latihan :visited</a></p><p id=\"link-demo-92\">Target contoh.</p></main>",
+          "checks": [
+            {
+              "label": "Selector :visited digunakan",
+              "detail": "Gunakan pseudo-class :visited dengan properti color.",
+              "requiredSelectors": [
+                ".link-practice-target:visited"
+              ],
+              "declaredProperties": [
+                "color"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "link-state-hover",
+          "number": 93,
+          "title": "Link State: :hover",
+          "category": "Links",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_link.asp",
+          "description": "Pseudo-class :hover aktif saat pointer berada di atas tautan.",
+          "goal": "Ubah latar tautan menjadi biru muda saat pointer berada di atasnya.",
+          "hints": [
+            "a:hover",
+            "background-color"
+          ],
+          "hint": "Gunakan .link-practice-target:hover { background-color: #dbeafe; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">LINK STATE</span><h1>Hover pada Link</h1><p><a class=\"link-practice-target\" id=\"linkPracticeTarget\" href=\"#link-demo-93\">Arahkan pointer ke tautan ini</a></p><p id=\"link-demo-93\">Target contoh.</p></main>",
+          "checks": [
+            {
+              "label": "Selector :hover digunakan",
+              "detail": "Buat aturan hover yang mengubah background-color tautan.",
+              "requiredSelectors": [
+                ".link-practice-target:hover"
+              ],
+              "declaredProperties": [
+                "background-color"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "link-state-active",
+          "number": 94,
+          "title": "Link State: :active",
+          "category": "Links",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_link.asp",
+          "description": "Pseudo-class :active aktif ketika tautan sedang ditekan.",
+          "goal": "Ubah warna teks menjadi merah saat tautan sedang ditekan.",
+          "hints": [
+            "a:active",
+            "color"
+          ],
+          "hint": "Gunakan .link-practice-target:active { color: #dc2626; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">LINK STATE</span><h1>Active pada Link</h1><p><a class=\"link-practice-target\" id=\"linkPracticeTarget\" href=\"#link-demo-94\">Tekan tautan ini</a></p><p id=\"link-demo-94\">Target contoh.</p></main>",
+          "checks": [
+            {
+              "label": "Selector :active digunakan",
+              "detail": "Buat aturan active yang mengubah color tautan.",
+              "requiredSelectors": [
+                ".link-practice-target:active"
+              ],
+              "declaredProperties": [
+                "color"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "table-header-style-practice",
+          "number": 95,
+          "title": "Table Style: Header",
+          "category": "Tables",
+          "level": "LEVEL 1 · DASAR",
+          "resourceUrl": "https://www.w3schools.com/css/css_table_style.asp",
+          "description": "Header tabel mudah dikenali jika memiliki warna latar dan warna teks yang kontras.",
+          "goal": "Buat header tabel berwarna teal dengan teks putih.",
+          "hints": [
+            "th",
+            "background-color",
+            "color"
+          ],
+          "hint": "Gunakan .table-header-practice th { background-color: #0f766e; color: white; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TABLE HEADER</span><h1>Inventaris Lab</h1><div class=\"table-stage\"><table class=\"table-header-practice\"><thead><tr><th id=\"tableHeaderPracticeTarget\">Barang</th><th>Jumlah</th><th>Kondisi</th></tr></thead><tbody><tr><td>Keyboard</td><td>20</td><td>Baik</td></tr><tr><td>Mouse</td><td>18</td><td>Baik</td></tr></tbody></table></div></main>",
+          "checks": [
+            {
+              "label": "Header menggunakan latar teal dan teks putih",
+              "detail": "Deklarasikan background-color dan color pada th.",
+              "requiredSelectors": [
+                ".table-header-practice th"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "background-color"
+                ],
+                [
+                  "color"
+                ]
+              ]
+            },
+            {
+              "label": "Latar header teal",
+              "detail": "Computed background-color header harus rgb(15, 118, 110).",
+              "targetIds": [
+                "tableHeaderPracticeTarget"
+              ],
+              "computedProperty": "backgroundColor",
+              "expected": "rgb(15, 118, 110)"
+            },
+            {
+              "label": "Teks header putih",
+              "detail": "Computed color header harus putih.",
+              "targetIds": [
+                "tableHeaderPracticeTarget"
+              ],
+              "computedProperty": "color",
+              "expected": "rgb(255, 255, 255)"
+            }
+          ]
+        },
+        {
+          "id": "table-zebra-style-practice",
+          "number": 96,
+          "title": "Table Style: Zebra Stripes",
+          "category": "Tables",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_table_style.asp",
+          "description": "Zebra stripes memberi warna berbeda pada baris genap agar tabel lebih mudah dipindai.",
+          "goal": "Warnai baris genap dengan biru muda menggunakan tr:nth-child(even).",
+          "hints": [
+            "tbody tr:nth-child(even)",
+            "background-color"
+          ],
+          "hint": "Gunakan .table-zebra-practice tbody tr:nth-child(even) { background-color: #dbeafe; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">ZEBRA STRIPES</span><h1>Rekap Kehadiran</h1><div class=\"table-stage\"><table class=\"table-zebra-practice\"><thead><tr><th>Nama</th><th>Status</th></tr></thead><tbody><tr><td>Amira</td><td>Hadir</td></tr><tr id=\"tableZebraEvenTarget\"><td>Rafi</td><td>Hadir</td></tr><tr><td>Nadia</td><td>Izin</td></tr><tr><td>Faris</td><td>Hadir</td></tr></tbody></table></div></main>",
+          "checks": [
+            {
+              "label": "Selector baris genap digunakan",
+              "detail": "Buat selector tbody tr:nth-child(even) untuk tabel ini.",
+              "requiredSelectors": [
+                ".table-zebra-practice tbody tr:nth-child(even)"
+              ],
+              "declaredProperties": [
+                "background-color"
+              ]
+            },
+            {
+              "label": "Baris genap memiliki latar biru muda",
+              "detail": "Computed background-color baris genap harus rgb(219, 234, 254).",
+              "targetIds": [
+                "tableZebraEvenTarget"
+              ],
+              "computedProperty": "backgroundColor",
+              "expected": "rgb(219, 234, 254)"
+            }
+          ]
+        },
+        {
+          "id": "table-row-hover-practice",
+          "number": 97,
+          "title": "Table Style: Row Hover",
+          "category": "Tables",
+          "level": "LEVEL 2 · MENENGAH",
+          "resourceUrl": "https://www.w3schools.com/css/css_table_style.asp",
+          "description": "Efek hover menandai baris yang sedang ditunjuk pointer dan membantu pembaca mengikuti data.",
+          "goal": "Buat baris tabel berubah menjadi biru muda saat pointer berada di atasnya.",
+          "hints": [
+            "tbody tr:hover",
+            "background-color"
+          ],
+          "hint": "Gunakan .table-hover-practice tbody tr:hover { background-color: #bfdbfe; }.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TABLE ROW HOVER</span><h1>Hover pada Baris</h1><p>Arahkan pointer ke salah satu baris data.</p><div class=\"table-stage\"><table class=\"table-hover-practice\"><thead><tr><th>Proyek</th><th>Nilai</th></tr></thead><tbody><tr><td>Website</td><td>90</td></tr><tr><td>Game</td><td>88</td></tr><tr><td>Robot</td><td>94</td></tr></tbody></table></div></main>",
+          "checks": [
+            {
+              "label": "Selector hover baris digunakan",
+              "detail": "Gunakan tbody tr:hover untuk menargetkan baris saat pointer berada di atasnya.",
+              "requiredSelectors": [
+                ".table-hover-practice tbody tr:hover"
+              ],
+              "declaredProperties": [
+                "background-color"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "table-capstone",
+          "number": 98,
+          "title": "Tantangan: Tabel Proyek ICT",
+          "category": "Tables",
+          "level": "LEVEL 3 · TANTANGAN",
+          "resourceUrl": "https://www.w3schools.com/css/css_table_style.asp",
+          "description": "Gabungkan border tabel, padding sel, header kontras, zebra stripes, dan hover menjadi tabel laporan proyek.",
+          "goal": "Buat tabel dengan border-collapse: collapse, border dan padding pada sel, header navy dengan teks putih, baris genap biru muda, serta efek hover.",
+          "hints": [
+            "border-collapse",
+            "th, td",
+            "nth-child(even)",
+            "tr:hover"
+          ],
+          "hint": "Terapkan .table-capstone-target { border-collapse: collapse; }, lalu gaya border dan padding untuk th/td. Beri warna header pada th, latar baris genap dengan tbody tr:nth-child(even), dan warna berbeda dengan tbody tr:hover.",
+          "html": "<main class=\"mini-page\"><span class=\"eyebrow\">TABLE CAPSTONE</span><h1>Portofolio Proyek ICT</h1><p>Gabungkan keterampilan styling tabel dalam satu latihan akhir.</p><div class=\"table-stage\"><table class=\"table-capstone-target\" id=\"tableCapstoneTarget\"><thead><tr><th id=\"tableCapstoneHeader\">Nama</th><th>Proyek</th><th>Status</th></tr></thead><tbody><tr><td>Amira</td><td>Website</td><td>Selesai</td></tr><tr id=\"tableCapstoneEvenRow\"><td>Rafi</td><td>Game</td><td>Proses</td></tr><tr><td>Nadia</td><td>Robotika</td><td>Selesai</td></tr></tbody></table></div></main>",
+          "checks": [
+            {
+              "label": "Border tabel digabung",
+              "detail": "Gunakan border-collapse: collapse.",
+              "requiredSelectors": [
+                ".table-capstone-target"
+              ],
+              "declaredProperties": [
+                "border-collapse"
+              ],
+              "expectedDeclarationValues": {
+                "border-collapse": "collapse"
+              }
+            },
+            {
+              "label": "Sel memiliki border dan padding",
+              "detail": "Berikan border dan padding kepada th serta td.",
+              "requiredSelectors": [
+                ".table-capstone-target th",
+                ".table-capstone-target td"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "border"
+                ],
+                [
+                  "padding"
+                ]
+              ]
+            },
+            {
+              "label": "Header memiliki latar navy dan teks putih",
+              "detail": "Atur background-color dan color pada header tabel.",
+              "requiredSelectors": [
+                ".table-capstone-target th"
+              ],
+              "declaredPropertyGroups": [
+                [
+                  "background-color"
+                ],
+                [
+                  "color"
+                ]
+              ]
+            },
+            {
+              "label": "Baris genap menggunakan selector khusus",
+              "detail": "Gunakan tbody tr:nth-child(even) dengan background-color.",
+              "requiredSelectors": [
+                ".table-capstone-target tbody tr:nth-child(even)"
+              ],
+              "declaredProperties": [
+                "background-color"
+              ]
+            },
+            {
+              "label": "Baris hover memiliki gaya",
+              "detail": "Gunakan tbody tr:hover untuk memberi latar ketika pointer berada di atas baris.",
+              "requiredSelectors": [
+                ".table-capstone-target tbody tr:hover"
+              ],
+              "declaredProperties": [
+                "background-color"
+              ]
+            },
+            {
+              "label": "Computed border-collapse adalah collapse",
+              "detail": "Hasil computed style tabel harus collapse.",
+              "targetIds": [
+                "tableCapstoneTarget"
+              ],
+              "computedProperty": "borderCollapse",
+              "expected": "collapse"
+            },
+            {
+              "label": "Warna header navy",
+              "detail": "Computed background-color header harus rgb(30, 41, 59).",
+              "targetIds": [
+                "tableCapstoneHeader"
+              ],
+              "computedProperty": "backgroundColor",
+              "expected": "rgb(30, 41, 59)"
+            },
+            {
+              "label": "Teks header putih",
+              "detail": "Computed color header harus putih.",
+              "targetIds": [
+                "tableCapstoneHeader"
+              ],
+              "computedProperty": "color",
+              "expected": "rgb(255, 255, 255)"
+            },
+            {
+              "label": "Baris genap berwarna biru muda",
+              "detail": "Computed background-color baris genap harus rgb(219, 234, 254).",
+              "targetIds": [
+                "tableCapstoneEvenRow"
+              ],
+              "computedProperty": "backgroundColor",
+              "expected": "rgb(219, 234, 254)"
+            }
+          ]
         }
     ];
 
@@ -4759,6 +5528,8 @@
       .table-stage{max-width:100%;background:#f8fafc;border:1px dashed #b8c8d6;padding:10px;}
       .table-stage table,.table-responsive-wrapper table{width:100%;}
       .table-responsive-wrapper{max-width:100%;background:#f8fafc;border:1px dashed #b8c8d6;padding:10px;}
+      .font-size-em-stage{font-size:16px;}
+      .list-nav-stage{padding:10px;border:1px dashed #b8c8d6;background:#f8fafc;}
       .table-responsive-wrapper th,.table-responsive-wrapper td{white-space:nowrap;padding:8px;}
       .links-stage p,.list-stage p{margin:12px 0 0;}
 
@@ -5006,7 +5777,7 @@
                      prop==='letter-spacing' || prop==='word-spacing' || prop==='text-shadow' ||
                      prop==='border-collapse' || prop==='border-spacing' || prop==='table-layout' ||
                      prop==='vertical-align' || prop==='overflow-x' || prop==='overflow-y' ||
-                     prop==='font-style' || prop==='font-size' || prop==='font-weight' || prop==='display'){
+                     prop==='font-style' || prop==='font-size' || prop==='font-weight' || prop==='display' || prop.indexOf('list-style')===0){
                     var value=rule.style.getPropertyValue(prop);
                     if(value) declarations[prop]=value.trim();
                   }
@@ -5044,7 +5815,7 @@
                 textAlign:s.textAlign,textDecorationLine:s.textDecorationLine,textDecorationStyle:s.textDecorationStyle,textDecorationColor:s.textDecorationColor,
                 textTransform:s.textTransform,textIndent:s.textIndent,lineHeight:s.lineHeight,letterSpacing:s.letterSpacing,wordSpacing:s.wordSpacing,textShadow:s.textShadow,
                 fontStyle:s.fontStyle,fontSize:s.fontSize,fontWeight:s.fontWeight,display:s.display,
-                listStyleType:s.listStyleType,listStylePosition:s.listStylePosition,
+                listStyleType:s.listStyleType,listStylePosition:s.listStylePosition,listStyleImage:s.listStyleImage,
                 borderCollapse:s.borderCollapse,borderSpacing:s.borderSpacing,tableLayout:s.tableLayout,verticalAlign:s.verticalAlign,
                 overflowX:s.overflowX,overflowY:s.overflowY,
                 offsetWidth:el.offsetWidth,offsetHeight:el.offsetHeight,
@@ -5105,6 +5876,27 @@
     function normalizedSelector(selector) {
       return String(selector).trim().replace(/\s+/g,' ').replace(/\s*([>+~])\s*/g,'$1');
     }
+    function readColorAlpha(value) {
+      const text = String(value || '').trim().toLowerCase();
+      if (text === 'transparent') return 0;
+      const rgb = text.match(/^rgba?\((.*)\)$/);
+      let alpha = null;
+      if (rgb) {
+        const inner = rgb[1];
+        if (inner.includes('/')) alpha = inner.split('/').pop().trim();
+        else {
+          const parts = inner.split(',');
+          alpha = parts.length >= 4 ? parts[3].trim() : '1';
+        }
+      } else {
+        const slash = text.match(/\/\s*([+-]?(?:\d+\.?\d*|\.\d+)%?)\s*\)$/);
+        if (slash) alpha = slash[1];
+      }
+      if (alpha === null) return null;
+      const parsed = Number.parseFloat(alpha);
+      if (!Number.isFinite(parsed)) return null;
+      return alpha.endsWith('%') ? parsed / 100 : parsed;
+    }
     function criterionPasses(criterion, report) {
       const reasons = [];
       if (criterion.requiredSelectors && criterion.requiredSelectors.length) {
@@ -5125,6 +5917,7 @@
           if (criterion.expected !== undefined && !actualValues.every(value => value === criterion.expected)) reasons.push('Nilai tampilan belum sesuai dengan target.');
           if (criterion.expectedComputedValues && !targets.every(target => Object.entries(criterion.expectedComputedValues).every(([prop, value]) => target[prop] === value))) reasons.push('Satu atau beberapa nilai computed style belum sesuai dengan target.');
           if (criterion.expectedIncludes !== undefined && !actualValues.every(value => String(value || '').includes(criterion.expectedIncludes))) reasons.push('Efek CSS yang diharapkan belum muncul.');
+          if (criterion.expectedColorAlpha !== undefined && !actualValues.every(value => readColorAlpha(value) === criterion.expectedColorAlpha)) reasons.push('Nilai alpha/transparansi warna belum sesuai dengan target.');
           if (criterion.expectedNot !== undefined && !actualValues.every(value => value !== criterion.expectedNot)) reasons.push('Elemen yang seharusnya tidak berubah masih memiliki nilai tersebut.');
           if (criterion.computedPropertiesEqual && !targets.every(target => criterion.computedPropertiesEqual.every(prop => target[prop] === target[criterion.computedPropertiesEqual[0]]))) reasons.push('Nilai properti yang dibandingkan belum sama.');
         }
