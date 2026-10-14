@@ -2,7 +2,7 @@
 
 Playground interaktif untuk latihan CSS secara bertahap. Siswa menulis CSS sendiri, melihat live preview, membaca struktur HTML tugas, dan mengecek hasil melalui computed style browser.
 
-## Kurikulum: 76 tugas bertahap
+## Kurikulum: 81 tugas bertahap
 
 ### CSS Selector — tugas 1–12
 
@@ -185,12 +185,27 @@ Materi rujukan:
 Materi rujukan:
 - [CSS Lists](https://www.w3schools.com/css/css_list.asp)
 
+### Tables — tugas 77–81
+
+77. CSS Table
+78. Table Size
+79. Table Alignment
+80. Table Style
+81. Responsive Table
+
+Materi rujukan:
+- [CSS Tables](https://www.w3schools.com/css/css_table.asp)
+- [CSS Table Size](https://www.w3schools.com/css/css_table_size.asp)
+- [CSS Table Alignment](https://www.w3schools.com/css/css_table_align.asp)
+- [CSS Table Style](https://www.w3schools.com/css/css_table_style.asp)
+- [CSS Responsive Table](https://www.w3schools.com/css/css_table_responsive.asp)
+
 ## Fitur
 
 - Editor CSS dengan live preview yang memperbarui CSS saat siswa mengetik.
 - Panel struktur HTML bertingkat menampilkan tag, class, ID, dan hubungan induk-anak. Klik tag, class, atau ID untuk menambahkan selector ke editor.
 - Pemeriksaan otomatis atas selector dan computed styles di browser.
-- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, dan Lists.
+- Latihan Color, Background, Border, Margin, Padding, Width/Height, Box Model, Outline, Text, Font, Links, Lists, dan Tables.
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
