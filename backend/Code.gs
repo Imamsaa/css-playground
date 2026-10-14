@@ -36,8 +36,8 @@ function setupDatabase() {
   getEncryptionSecret_();
   ensureDataBranch_();
   const record = readDatabaseRecord_();
-  if (!record.database) {
-    const initial = { schemaVersion: 1, accounts: {} };
+  if (!record.database || record.needsEncryption) {
+    const initial = record.database || { schemaVersion: 1, accounts: {} };
     writeDatabase_(initial, record.sha);
   }
   return 'Ready: ' + GITHUB_OWNER + '/' + GITHUB_REPOSITORY + ' / ' + GITHUB_DATA_BRANCH + '/' + DATABASE_PATH;
@@ -223,7 +223,7 @@ function readDatabaseRecord_() {
   catch (error) { throw new Error('File data/accounts.json bukan JSON yang valid.'); }
 
   if (envelope && envelope.encrypted === true && envelope.envelope === null) {
-    return { database: { schemaVersion: 1, accounts: {} }, sha: file.sha };
+    return { database: { schemaVersion: 1, accounts: {} }, sha: file.sha, needsEncryption: true };
   }
   return { database: decryptDatabase_(envelope), sha: file.sha };
 }
