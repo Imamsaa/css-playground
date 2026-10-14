@@ -391,49 +391,60 @@
         ]
       },
       {
-        id: 'background-body', number: 6, title: 'Background Halaman', category: 'Background', level: 'LEVEL 1 · DASAR',
-        description: 'Atur warna latar halaman untuk membangun suasana visual yang sesuai dengan desain.',
-        goal: 'Ubah background halaman menjadi kuning pastel (#fef3c7). Gunakan selector body.',
-        hints: ['Selector body', 'background-color'], hint: 'Untuk mengubah latar seluruh halaman, gunakan selector body dan properti background-color. Properti background juga dapat digunakan.',
-        html: `<main class="mini-page"><span class="eyebrow">PAGE BACKGROUND</span><h1>Halaman Ceria</h1><p>Warna latar halaman ini perlu diubah menjadi kuning pastel.</p><div class="mini-row"><span class="mini-dot"></span><span>Warna latar yang nyaman membuat konten lebih menarik.</span></div></main>`,
+        id: 'background-body', number: 6, title: 'Background Color', category: 'Background', level: 'LEVEL 1 · DASAR',
+        description: 'Properti background-color memberi warna pada latar sebuah elemen. Mulai dari latar seluruh halaman.',
+        goal: 'Ubah latar halaman menjadi kuning pastel (#fef3c7) dengan selector body.',
+        hints: ['background-color', 'Selector body'], hint: 'Tulis body { background-color: #fef3c7; }. Kamu juga dapat menggunakan properti background untuk latar warna sederhana.',
+        html: `<main class="mini-page"><span class="eyebrow">BACKGROUND COLOR</span><h1>Halaman Ceria</h1><p>Warna latar halaman ini perlu diubah menjadi kuning pastel.</p><div class="mini-row"><span class="mini-dot"></span><span>Warna latar yang nyaman membuat konten lebih menarik.</span></div></main>`,
         checks: [
-          { label: 'Selector body digunakan', detail: 'Atur warna latar pada selector body.', requiredSelectors: ['body'], declaredProperties: ['background','background-color'] },
+          { label: 'Selector body mengatur background', detail: 'Atur warna latar pada selector body.', requiredSelectors: ['body'], declaredProperties: ['background','background-color'] },
           { label: 'Latar halaman menjadi kuning pastel', detail: 'Warna background halaman harus #fef3c7.', targetBody: true, computedProperty: 'backgroundColor', expected: 'rgb(254, 243, 199)' }
         ]
       },
       {
-        id: 'background-card', number: 7, title: 'Background pada Kartu', category: 'Background', level: 'LEVEL 2 · MENENGAH',
-        description: 'Properti background dapat menerima warna latar. Terapkan gaya hanya pada komponen kartu yang ditentukan.',
-        goal: 'Ubah latar kartu menjadi hijau pastel (#dcfce7) tanpa memberi latar yang sama pada kotak luar.',
-        hints: ['Selector class', 'background'], hint: 'Targetkan class .kartu. Gunakan background: #dcfce7; atau background-color: #dcfce7;.',
-        html: `<main class="mini-page"><span class="eyebrow">COMPONENT STYLING</span><h1>Kartu Profil</h1><div class="kartu" id="kartuProfil"><div class="avatar">AF</div><div><strong>Al Firdaus</strong><p>Belajar teknologi dengan kreatif.</p></div></div><div class="kotakLuar" id="kotakLuar">Kotak luar tidak perlu memiliki warna hijau yang sama.</div></main>`,
+        id: 'background-card', number: 7, title: 'Background pada Kartu', category: 'Background', level: 'LEVEL 1 · DASAR',
+        description: 'Properti background dapat mengatur warna latar elemen tertentu, tidak harus seluruh halaman.',
+        goal: 'Ubah latar kartu menjadi hijau pastel (#dcfce7), tetapi jangan mengubah warna latar kotak luar.',
+        hints: ['Selector class', 'background / background-color'], hint: 'Targetkan class .kartu. Gunakan background: #dcfce7; atau background-color: #dcfce7;.',
+        html: `<main class="mini-page"><span class="eyebrow">BACKGROUND COLOR</span><h1>Kartu Profil</h1><div class="kartu" id="kartuProfil"><div class="avatar">AF</div><div><strong>Al Firdaus</strong><p>Belajar teknologi dengan kreatif.</p></div></div><div class="kotakLuar" id="kotakLuar">Kotak luar tidak perlu memiliki warna hijau yang sama.</div></main>`,
         checks: [
-          { label: 'Selector .kartu digunakan', detail: 'Pilih kartu menggunakan selector class .kartu.', requiredSelectors: ['.kartu'], declaredProperties: ['background','background-color'] },
+          { label: 'Selector .kartu mengatur background', detail: 'Pilih kartu menggunakan selector class .kartu.', requiredSelectors: ['.kartu'], declaredProperties: ['background','background-color'] },
           { label: 'Latar kartu menjadi hijau pastel', detail: 'Warna latar kartu harus #dcfce7.', targetIds: ['kartuProfil'], computedProperty: 'backgroundColor', expected: 'rgb(220, 252, 231)' },
           { label: 'Kotak luar tidak ikut hijau', detail: 'Kotak luar tidak boleh memakai warna latar yang sama.', targetIds: ['kotakLuar'], computedProperty: 'backgroundColor', expectedNot: 'rgb(220, 252, 231)' }
         ]
       },
       {
-        id: 'background-gradient', number: 8, title: 'Background Gradient', category: 'Background', level: 'LEVEL 2 · MENENGAH',
-        description: 'Buat latar gradasi dengan CSS agar banner terlihat lebih hidup. Gunakan linear-gradient sebagai background.',
-        goal: 'Buat banner memiliki gradasi linear dari ungu ke merah muda. Arah atau sudut gradasi boleh kamu pilih.',
-        hints: ['linear-gradient()', 'background'], hint: 'Contoh pola: background: linear-gradient(135deg, #7c3aed, #ec4899);. Kamu boleh memakai sudut dan dua warna yang berbeda.',
-        html: `<main class="mini-page"><div id="banner" class="banner"><span class="banner-kicker">CSS CREATIVE</span><h1>Make It Colorful</h1><p>Gabungkan dua warna untuk membuat gradasi.</p></div><p style="margin-top:18px">Banner di atas adalah target tugasmu.</p></main>`,
+        id: 'background-image', number: 8, title: 'Background Image', category: 'Background', level: 'LEVEL 2 · MENENGAH',
+        description: 'Gunakan gambar sebagai latar elemen. Gambar dan ukuran kotak sudah disiapkan pada preview.',
+        goal: 'Tambahkan gambar pohon sebagai latar kotak poster menggunakan background-image dan url().',
+        hints: ['background-image', 'url()'], hint: 'Gunakan selector .image-poster. Contoh deklarasi: background-image: url("https://www.w3schools.com/css/img_tree.png");',
+        html: `<main class="mini-page"><span class="eyebrow">BACKGROUND IMAGE</span><h1>Poster Alam</h1><div class="image-poster" id="posterImage"><span class="poster-label">JELAJAHI ALAM</span></div><p>Tambahkan gambar pohon sebagai latar kotak poster di atas.</p></main>`,
         checks: [
-          { label: 'Selector .banner digunakan', detail: 'Targetkan elemen banner dengan selector .banner.', requiredSelectors: ['.banner'], declaredProperties: ['background','background-image'] },
-          { label: 'Banner memakai linear-gradient', detail: 'Latar banner harus menggunakan linear-gradient().', targetIds: ['banner'], computedProperty: 'backgroundImage', expectedIncludes: 'linear-gradient' }
+          { label: 'Selector .image-poster menggunakan background-image', detail: 'Gunakan background-image pada selector .image-poster.', requiredSelectors: ['.image-poster'], declaredProperties: ['background-image'] },
+          { label: 'Gambar latar berhasil ditentukan', detail: 'Gunakan url() dengan gambar img_tree.png.', targetIds: ['posterImage'], computedProperty: 'backgroundImage', expectedIncludes: 'img_tree.png' }
         ]
       },
       {
-        id: 'challenge-badge', number: 9, title: 'Tantangan: Badge', category: 'Challenge', level: 'LEVEL 3 · TANTANGAN',
-        description: 'Gabungkan selector class, warna teks, dan warna latar untuk menata badge status.',
-        goal: 'Buat badge .status berwarna teks putih (#ffffff) dengan latar teal (#0f766e).',
-        hints: ['Selector class', 'color + background'], hint: 'Kamu membutuhkan selector .status dan dua deklarasi: color untuk teks, serta background atau background-color untuk latar.',
-        html: `<main class="mini-page"><span class="eyebrow">FINAL CHALLENGE</span><h1>Status Proyek</h1><div class="status-row"><span id="badgeStatus" class="status">SELESAI</span><span>Proyek web siswa</span></div><p>Badge harus mudah dibaca dengan kontras warna yang baik.</p></main>`,
+        id: 'background-repeat', number: 9, title: 'Background Repeat', category: 'Background', level: 'LEVEL 2 · MENENGAH',
+        description: 'Gambar latar secara default diulang secara horizontal dan vertikal. Atur arah pengulangannya agar sesuai desain.',
+        goal: 'Buat pola gambar hanya berulang secara horizontal menggunakan background-repeat: repeat-x.',
+        hints: ['background-repeat', 'repeat-x'], hint: 'Targetkan .pattern-box lalu tulis background-repeat: repeat-x;. Nilai lain yang bisa dipelajari: repeat-y dan no-repeat.',
+        html: `<main class="mini-page"><span class="eyebrow">BACKGROUND REPEAT</span><h1>Pola Dekorasi</h1><p>Ubah pola berikut agar diulang dari kiri ke kanan saja.</p><div class="pattern-box" id="patternTarget" aria-label="Area pola latar"></div><p>Perhatikan apakah pola berulang ke bawah atau hanya ke samping.</p></main>`,
         checks: [
-          { label: 'Selector .status mengatur teks dan latar', detail: 'Di selector .status, deklarasikan color dan background atau background-color.', requiredSelectors: ['.status'], declaredPropertyGroups: [['color'],['background','background-color']] },
-          { label: 'Teks badge berwarna putih', detail: 'Warna teks badge harus #ffffff.', targetIds: ['badgeStatus'], computedProperty: 'color', expected: 'rgb(255, 255, 255)' },
-          { label: 'Latar badge berwarna teal', detail: 'Warna latar badge harus #0f766e.', targetIds: ['badgeStatus'], computedProperty: 'backgroundColor', expected: 'rgb(15, 118, 110)' }
+          { label: 'Selector .pattern-box mengatur background-repeat', detail: 'Gunakan properti background-repeat pada selector .pattern-box.', requiredSelectors: ['.pattern-box'], declaredProperties: ['background-repeat'] },
+          { label: 'Pola hanya berulang horizontal', detail: 'Nilai background-repeat harus repeat-x.', targetIds: ['patternTarget'], computedProperty: 'backgroundRepeat', expected: 'repeat-x' }
+        ]
+      },
+      {
+        id: 'background-attachment', number: 10, title: 'Background Attachment', category: 'Background', level: 'LEVEL 3 · TANTANGAN',
+        description: 'background-attachment menentukan apakah gambar latar ikut bergulir dengan isi halaman atau tetap pada posisi viewport.',
+        goal: 'Pasang gambar pohon pada latar halaman, lalu buat gambar tetap saat isi preview digulir dengan background-attachment: fixed.',
+        hints: ['background-image', 'background-attachment: fixed'], hint: 'Gunakan selector body dengan background-image: url("https://www.w3schools.com/css/img_tree.png");, background-repeat: no-repeat;, dan background-attachment: fixed;. Gulir bagian preview untuk melihat efeknya.',
+        html: `<main class="mini-page"><span class="eyebrow">BACKGROUND ATTACHMENT</span><h1>Latar Tetap</h1><p>Setelah menambahkan gambar dan properti attachment, gulir area preview untuk melihat apakah gambar latar tetap pada posisinya.</p><div class="scroll-section"><strong>Bagian 1</strong><p>Konten halaman terus berjalan ketika pengguna menggulir.</p></div><div class="scroll-section"><strong>Bagian 2</strong><p>Amati posisi gambar latar pada sisi kanan preview.</p></div><div class="scroll-section"><strong>Bagian 3</strong><p>background-attachment: fixed membuat gambar latar tetap terhadap viewport.</p></div><div class="scroll-section"><strong>Bagian 4</strong><p>Coba bandingkan dengan nilai scroll setelah tugas selesai.</p></div><div class="scroll-section"><strong>Bagian 5</strong><p>Terus gulir untuk mengamati perubahan.</p></div><div class="scroll-section"><strong>Bagian 6</strong><p>Kamu berhasil menyelesaikan latihan background.</p></div></main>`,
+        checks: [
+          { label: 'Selector body memakai gambar dan attachment', detail: 'Di selector body, deklarasikan background-image dan background-attachment.', requiredSelectors: ['body'], declaredPropertyGroups: [['background-image'],['background-attachment']] },
+          { label: 'Gambar latar pohon digunakan', detail: 'Gunakan url() yang mengarah ke img_tree.png.', targetBody: true, computedProperty: 'backgroundImage', expectedIncludes: 'img_tree.png' },
+          { label: 'Gambar latar tetap saat halaman digulir', detail: 'Nilai background-attachment harus fixed.', targetBody: true, computedProperty: 'backgroundAttachment', expected: 'fixed' }
         ]
       }
     ];
@@ -463,6 +474,12 @@
       .banner p{color:#fff;margin:0;font-size:12px;}
       .status-row{display:flex;align-items:center;gap:11px;padding:12px;background:#f8fafc;border-radius:12px;margin:14px 0;color:#64748b;font-size:12px;}
       .status{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:7px;background:#e5e7eb;color:#374151;font-size:10px;font-weight:900;letter-spacing:.03em;}
+      .image-poster{min-height:155px;display:flex;align-items:flex-end;padding:13px;border:1px solid #dbe4ef;border-radius:12px;background-color:#eaf0f7;background-repeat:no-repeat;background-position:center;background-size:contain;}
+      .poster-label{padding:6px 9px;border-radius:7px;background:rgba(15,23,42,.78);color:#fff;font-size:10px;font-weight:900;letter-spacing:.08em;}
+      .pattern-box{height:125px;border:1px solid #dbe4ef;border-radius:10px;background-color:#f8fafc;background-image:url("https://www.w3schools.com/css/paper.gif");background-repeat:no-repeat;background-position:left top;}
+      .scroll-section{padding:12px;margin:14px 0;border:1px solid #e3e8f0;border-radius:10px;background:rgba(255,255,255,.88);}
+      .scroll-section strong{font-size:12px;}
+      .scroll-section p{margin-bottom:0;}
     `;
 
     const $ = (selector) => document.querySelector(selector);
@@ -477,7 +494,7 @@
     let renderTimer = null;
     let checkTimer = null;
     let codes = readStore('css_quest_codes_v1', {});
-    let completed = new Set(readStore('css_quest_completed_v1', []));
+    let completed = new Set(readStore('css_quest_completed_v1', []).filter(id => TASKS.some(task => task.id === id)));
 
     const HTML_TAG_DESCRIPTIONS = {
       main: 'Konten utama halaman', span: 'Teks pendek di dalam baris', h1: 'Judul utama', h2: 'Judul bagian', h3: 'Subjudul',
@@ -648,7 +665,7 @@
               var rule=rules[i];
               if(rule.selectorText && rule.style){
                 var declarations={};
-                ['color','background','background-color','background-image'].forEach(function(prop){
+                ['color','background','background-color','background-image','background-repeat','background-attachment'].forEach(function(prop){
                   var value=rule.style.getPropertyValue(prop);
                   if(value) declarations[prop]=value.trim();
                 });
@@ -660,17 +677,17 @@
             var elements={};
             document.querySelectorAll('[id]').forEach(function(el){
               var s=getComputedStyle(el);
-              elements[el.id]={color:s.color,backgroundColor:s.backgroundColor,backgroundImage:s.backgroundImage};
+              elements[el.id]={color:s.color,backgroundColor:s.backgroundColor,backgroundImage:s.backgroundImage,backgroundRepeat:s.backgroundRepeat,backgroundAttachment:s.backgroundAttachment};
             });
             var bodyStyle=getComputedStyle(document.body);
             var rules=[];
             try{collectRules(document.getElementById('student-css').sheet.cssRules,rules);}catch(e){}
-            parent.postMessage({type:'css-quest-report',elements:elements,body:{color:bodyStyle.color,backgroundColor:bodyStyle.backgroundColor,backgroundImage:bodyStyle.backgroundImage},rules:rules},'*');
+            parent.postMessage({type:'css-quest-report',elements:elements,body:{color:bodyStyle.color,backgroundColor:bodyStyle.backgroundColor,backgroundImage:bodyStyle.backgroundImage,backgroundRepeat:bodyStyle.backgroundRepeat,backgroundAttachment:bodyStyle.backgroundAttachment},rules:rules},'*');
           }
           if(document.readyState==='complete') setTimeout(report,0); else window.addEventListener('load',function(){setTimeout(report,0)});
         })();
       `;
-      return `<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data: blob:; font-src data:;"><style id="base-css">${BASE_PREVIEW_CSS}</style><style id="student-css">${safeCss}</style></head><body>${currentTask.html}<script>${script}<\/script></body></html>`;
+      return `<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src https: data: blob:; font-src data:;"><style id="base-css">${BASE_PREVIEW_CSS}</style><style id="student-css">${safeCss}</style></head><body>${currentTask.html}<script>${script}<\/script></body></html>`;
     }
     function renderPreview() {
       previewFrame.srcdoc = buildPreviewDocument(editor.value);
