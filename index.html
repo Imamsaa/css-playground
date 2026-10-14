@@ -338,7 +338,7 @@
     'use strict';
 
     const TASKS = [
-      {
+{
         id: 'selector-element', number: 1, title: 'Selector Elemen', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
         description: 'Gunakan selector elemen untuk menargetkan beberapa elemen HTML sekaligus tanpa menambahkan class atau id baru.',
         goal: 'Buat semua paragraf pada preview berwarna biru dengan kode warna #2563eb.',
@@ -349,19 +349,18 @@
           { label: 'Kedua paragraf berwarna biru', detail: 'Pastikan semua paragraf menggunakan warna #2563eb.', targetIds: ['p1','p2'], computedProperty: 'color', expected: 'rgb(37, 99, 235)' }
         ]
       },
-      {
-        id: 'selector-class', number: 2, title: 'Selector Class', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
-        description: 'Class dipakai untuk memilih elemen tertentu yang memiliki nama class sama. Tidak semua teks harus ikut berubah.',
-        goal: 'Ubah hanya teks yang memiliki class highlight menjadi oranye (#b45309).',
-        hints: ['Selector class', 'color'], hint: 'Selector untuk class selalu diawali tanda titik. Contoh: .highlight { color: ... }',
-        html: `<main class="mini-page"><span class="eyebrow">SELECT THE RIGHT TEXT</span><h1>Warna Teks</h1><p>Ini teks biasa dan harus tetap seperti semula.</p><p id="teksHighlight" class="highlight">Teks ini perlu diwarnai oranye.</p><p id="teksBiasa">Teks biasa lainnya tidak ikut berubah.</p></main>`,
+{
+        id: 'selector-universal', number: 2, title: 'Universal Selector', category: 'CSS Selector', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_selectors.asp',
+        description: 'Universal selector (*) menargetkan semua elemen HTML pada halaman.',
+        goal: 'Gunakan selector * untuk membuat teks pada judul, paragraf, dan tombol menjadi biru (#1d4ed8).',
+        hints: ['Universal selector (*)', 'color'], hint: 'Selector universal ditulis dengan tanda bintang: * { color: #1d4ed8; }. Perhatikan bahwa tanda * berlaku untuk semua elemen.',
+        html: `<main class="mini-page"><span class="eyebrow">UNIVERSAL SELECTOR</span><h1 id="universalHeading">Semua Elemen</h1><p id="universalParagraph">Paragraf ini juga harus ikut biru.</p><button class="universal-button" id="universalButton">Tombol ikut biru</button></main>`,
         checks: [
-          { label: 'Selector .highlight digunakan', detail: 'Pilih class dengan tanda titik dan tambahkan properti color.', requiredSelectors: ['.highlight'], declaredProperties: ['color'] },
-          { label: 'Teks highlight berwarna oranye', detail: 'Warna teks highlight harus #b45309.', targetIds: ['teksHighlight'], computedProperty: 'color', expected: 'rgb(180, 83, 9)' },
-          { label: 'Teks biasa tidak ikut oranye', detail: 'Teks biasa harus tetap memiliki warna berbeda dari highlight.', targetIds: ['teksBiasa'], computedProperty: 'color', expectedNot: 'rgb(180, 83, 9)' }
+          { label: 'Selector * digunakan', detail: 'Gunakan selector universal * dengan properti color.', requiredSelectors: ['*'], declaredProperties: ['color'] },
+          { label: 'Judul, paragraf, dan tombol berwarna biru', detail: 'Ketiga elemen harus berwarna #1d4ed8.', targetIds: ['universalHeading','universalParagraph','universalButton'], computedProperty: 'color', expected: 'rgb(29, 78, 216)' }
         ]
       },
-      {
+{
         id: 'selector-id', number: 3, title: 'Selector ID', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
         description: 'Selector ID digunakan untuk memilih satu elemen unik melalui atribut id pada HTML.',
         goal: 'Ubah warna judul utama menjadi ungu (#7c3aed), tanpa mengubah subjudul.',
@@ -373,8 +372,32 @@
           { label: 'Subjudul tetap berbeda warna', detail: 'Jangan mengubah warna subjudul menjadi ungu yang sama.', targetIds: ['subjudulTetap'], computedProperty: 'color', expectedNot: 'rgb(124, 58, 237)' }
         ]
       },
-      {
-        id: 'selector-group', number: 4, title: 'Selector Gabungan', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH',
+{
+        id: 'selector-class', number: 4, title: 'Selector Class', category: 'CSS Selector', level: 'LEVEL 1 · DASAR',
+        description: 'Class dipakai untuk memilih elemen tertentu yang memiliki nama class sama. Tidak semua teks harus ikut berubah.',
+        goal: 'Ubah hanya teks yang memiliki class highlight menjadi oranye (#b45309).',
+        hints: ['Selector class', 'color'], hint: 'Selector untuk class selalu diawali tanda titik. Contoh: .highlight { color: ... }',
+        html: `<main class="mini-page"><span class="eyebrow">SELECT THE RIGHT TEXT</span><h1>Warna Teks</h1><p>Ini teks biasa dan harus tetap seperti semula.</p><p id="teksHighlight" class="highlight">Teks ini perlu diwarnai oranye.</p><p id="teksBiasa">Teks biasa lainnya tidak ikut berubah.</p></main>`,
+        checks: [
+          { label: 'Selector .highlight digunakan', detail: 'Pilih class dengan tanda titik dan tambahkan properti color.', requiredSelectors: ['.highlight'], declaredProperties: ['color'] },
+          { label: 'Teks highlight berwarna oranye', detail: 'Warna teks highlight harus #b45309.', targetIds: ['teksHighlight'], computedProperty: 'color', expected: 'rgb(180, 83, 9)' },
+          { label: 'Teks biasa tidak ikut oranye', detail: 'Teks biasa harus tetap memiliki warna berbeda dari highlight.', targetIds: ['teksBiasa'], computedProperty: 'color', expectedNot: 'rgb(180, 83, 9)' }
+        ]
+      },
+{
+        id: 'selector-element-class', number: 5, title: 'Selector Tag + Class', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_selectors.asp',
+        description: 'Selector gabungan seperti p.notice memilih hanya elemen p yang memiliki class notice.',
+        goal: 'Warnai hanya paragraf dengan class notice menjadi ungu (#7c3aed). Paragraf dengan class yang sama tetapi tag berbeda jangan ikut berubah.',
+        hints: ['p.notice', 'Gabungan tag dan class'], hint: 'Gunakan p.notice { color: #7c3aed; }. Selector ini lebih spesifik daripada .notice karena juga mensyaratkan tag p.',
+        html: `<main class="mini-page"><span class="eyebrow">ELEMENT + CLASS</span><h1>Target Lebih Spesifik</h1><p id="elementClassTarget" class="notice">Paragraf notice yang harus ungu.</p><div id="elementClassDiv" class="notice">Div notice tidak boleh ikut ungu.</div></main>`,
+        checks: [
+          { label: 'Selector p.notice digunakan', detail: 'Gunakan selector tag dan class dalam satu selector.', requiredSelectors: ['p.notice'], declaredProperties: ['color'] },
+          { label: 'Paragraf notice berwarna ungu', detail: 'Paragraf target harus rgb(124, 58, 237).', targetIds: ['elementClassTarget'], computedProperty: 'color', expected: 'rgb(124, 58, 237)' },
+          { label: 'Div notice tidak ikut ungu', detail: 'Div dengan class notice harus tetap berwarna lain.', targetIds: ['elementClassDiv'], computedProperty: 'color', expectedNot: 'rgb(124, 58, 237)' }
+        ]
+      },
+{
+        id: 'selector-group', number: 6, title: 'Selector Gabungan', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH',
         description: 'Gabungkan beberapa selector dalam satu aturan agar gaya yang sama dapat diterapkan secara ringkas.',
         goal: 'Buat judul bagian dan tagline sama-sama berwarna teal (#0f766e) dalam satu aturan selector gabungan.',
         hints: ['Selector gabungan', 'color'], hint: 'Pisahkan selector dengan koma. Pastikan h2 dan .tagline berada dalam aturan CSS yang sama.',
@@ -384,8 +407,8 @@
           { label: 'Judul dan tagline berwarna teal', detail: 'Kedua elemen harus memiliki warna #0f766e.', targetIds: ['subjudul','tagline'], computedProperty: 'color', expected: 'rgb(15, 118, 110)' }
         ]
       },
-      {
-        id: 'selector-descendant', number: 5, title: 'Descendant Selector', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH',
+{
+        id: 'selector-descendant', number: 7, title: 'Descendant Selector', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH',
         description: 'Selector turunan memilih elemen berdasarkan letaknya di dalam elemen lain, sehingga gaya bisa lebih spesifik.',
         goal: 'Warnai merah (#be123c) hanya paragraf yang berada di dalam kartu. Paragraf di luar kartu jangan ikut berubah.',
         hints: ['Descendant selector', 'color'], hint: 'Gunakan dua selector yang dipisahkan spasi, misalnya .kartu p. Spasi menunjukkan elemen p yang berada di dalam .kartu.',
@@ -396,8 +419,154 @@
           { label: 'Paragraf luar tidak ikut merah', detail: 'Paragraf di luar kartu tidak boleh memakai warna merah yang sama.', targetIds: ['paragrafLuar'], computedProperty: 'color', expectedNot: 'rgb(190, 18, 60)' }
         ]
       },
-      {
-        id: 'background-body', number: 6, title: 'Background Color', category: 'Background', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_background.asp',
+{
+        id: 'selector-child', number: 8, title: 'Child Combinator', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_combinators.asp',
+        description: 'Child selector (>) hanya memilih elemen yang menjadi anak langsung dari elemen induk.',
+        goal: 'Warnai merah hanya p yang menjadi anak langsung section, bukan p di dalam div bersarang.',
+        hints: ['section > p', 'Relasi induk-anak'], hint: 'Tanda > berarti anak langsung. Gunakan section > p { color: #dc2626; }.',
+        html: `<main class="mini-page"><span class="eyebrow">CHILD SELECTOR</span><h1>Anak Langsung</h1><section id="childSection"><p id="directChild">Paragraf anak langsung.</p><div><p id="nestedChild">Paragraf di dalam div, bukan anak langsung section.</p></div></section></main>`,
+        checks: [
+          { label: 'Selector section > p digunakan', detail: 'Gunakan combinator > untuk anak langsung.', requiredSelectors: ['section > p'], declaredProperties: ['color'] },
+          { label: 'Paragraf anak langsung berwarna merah', detail: 'Elemen p langsung harus rgb(220, 38, 38).', targetIds: ['directChild'], computedProperty: 'color', expected: 'rgb(220, 38, 38)' },
+          { label: 'Paragraf bersarang tidak ikut merah', detail: 'Paragraf di dalam div tidak boleh memakai warna target.', targetIds: ['nestedChild'], computedProperty: 'color', expectedNot: 'rgb(220, 38, 38)' }
+        ]
+      },
+{
+        id: 'selector-adjacent', number: 9, title: 'Adjacent Sibling', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_combinators.asp',
+        description: 'Adjacent sibling (+) memilih elemen yang tepat berada setelah elemen lain pada tingkat yang sama.',
+        goal: 'Warnai hijau hanya paragraf yang tepat mengikuti h2.',
+        hints: ['h2 + p', 'Saudara tepat setelahnya'], hint: 'Tanda + memilih saudara yang langsung mengikuti. Gunakan h2 + p { color: #16a34a; }.',
+        html: `<main class="mini-page"><span class="eyebrow">ADJACENT SIBLING</span><h1>Saudara Berdekatan</h1><h2 id="adjacentHeading">Judul bagian</h2><p id="adjacentTarget">Paragraf tepat setelah h2.</p><p id="adjacentOther">Paragraf berikutnya bukan saudara yang berdekatan dengan h2.</p></main>`,
+        checks: [
+          { label: 'Selector h2 + p digunakan', detail: 'Gunakan combinator + untuk saudara langsung berikutnya.', requiredSelectors: ['h2 + p'], declaredProperties: ['color'] },
+          { label: 'Paragraf tepat setelah h2 berwarna hijau', detail: 'Paragraf target harus rgb(22, 163, 74).', targetIds: ['adjacentTarget'], computedProperty: 'color', expected: 'rgb(22, 163, 74)' },
+          { label: 'Paragraf berikutnya tidak ikut hijau', detail: 'Paragraf kedua harus tetap berwarna lain.', targetIds: ['adjacentOther'], computedProperty: 'color', expectedNot: 'rgb(22, 163, 74)' }
+        ]
+      },
+{
+        id: 'selector-general-sibling', number: 10, title: 'General Sibling', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_combinators.asp',
+        description: 'General sibling (~) memilih semua saudara yang sesuai setelah elemen acuan pada tingkat yang sama.',
+        goal: 'Warnai biru semua paragraf setelah h2 pada induk yang sama, termasuk yang muncul setelah div.',
+        hints: ['h2 ~ p', 'Semua saudara setelahnya'], hint: 'Tanda ~ memilih semua elemen p saudara yang mengikuti h2, bukan hanya elemen tepat setelahnya.',
+        html: `<main class="mini-page"><span class="eyebrow">GENERAL SIBLING</span><h1>Semua Saudara Setelahnya</h1><p id="generalBefore">Paragraf sebelum h2 jangan berubah.</p><h2 id="generalHeading">Judul bagian</h2><p id="generalTargetOne">Paragraf setelah h2.</p><div>Elemen perantara</div><p id="generalTargetTwo">Paragraf setelah div, tetap saudara h2.</p></main>`,
+        checks: [
+          { label: 'Selector h2 ~ p digunakan', detail: 'Gunakan combinator ~ untuk semua saudara setelah elemen acuan.', requiredSelectors: ['h2 ~ p'], declaredProperties: ['color'] },
+          { label: 'Dua paragraf setelah h2 berwarna biru', detail: 'Kedua target harus rgb(37, 99, 235).', targetIds: ['generalTargetOne','generalTargetTwo'], computedProperty: 'color', expected: 'rgb(37, 99, 235)' },
+          { label: 'Paragraf sebelum h2 tidak ikut biru', detail: 'Paragraf sebelum h2 harus tetap memiliki warna lain.', targetIds: ['generalBefore'], computedProperty: 'color', expectedNot: 'rgb(37, 99, 235)' }
+        ]
+      },
+{
+        id: 'selector-attribute', number: 11, title: 'Attribute Selector', category: 'CSS Selector', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_attribute_selectors.asp',
+        description: 'Attribute selector memilih elemen berdasarkan keberadaan atribut atau nilai atributnya.',
+        goal: 'Buat hanya elemen dengan data-status="penting" menjadi oranye.',
+        hints: ['[data-status="penting"]', 'Atribut HTML'], hint: 'Gunakan selector [data-status="penting"] { color: #ea580c; }. Tulis nilai atribut sama persis seperti di HTML.',
+        html: `<main class="mini-page"><span class="eyebrow">ATTRIBUTE SELECTOR</span><h1>Data Status</h1><p id="attributeTarget" data-status="penting">Informasi penting.</p><p id="attributeOther" data-status="biasa">Informasi biasa tidak ikut berubah.</p></main>`,
+        checks: [
+          { label: 'Selector atribut digunakan', detail: 'Pilih atribut data-status dengan nilai penting.', requiredSelectors: ['[data-status="penting"]'], declaredProperties: ['color'] },
+          { label: 'Informasi penting berwarna oranye', detail: 'Target harus rgb(234, 88, 12).', targetIds: ['attributeTarget'], computedProperty: 'color', expected: 'rgb(234, 88, 12)' },
+          { label: 'Informasi biasa tidak ikut oranye', detail: 'Elemen dengan data-status biasa harus tetap berwarna lain.', targetIds: ['attributeOther'], computedProperty: 'color', expectedNot: 'rgb(234, 88, 12)' }
+        ]
+      },
+{
+        id: 'selector-hover', number: 12, title: 'Pseudo-class :hover', category: 'CSS Selector', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_pseudo_classes.asp',
+        description: 'Pseudo-class :hover memilih elemen ketika penunjuk mouse berada di atasnya.',
+        goal: 'Buat tombol berubah menjadi oranye saat disentuh pointer menggunakan .hover-demo:hover.',
+        hints: [':hover', 'background-color'], hint: 'Gunakan .hover-demo:hover { background-color: #f97316; color: white; }. Arahkan mouse ke tombol pada preview untuk melihat efeknya.',
+        html: `<main class="mini-page"><span class="eyebrow">PSEUDO-CLASS</span><h1>Hover Me</h1><p>Arahkan mouse ke tombol di bawah ini.</p><button class="hover-demo" id="hoverTarget">Arahkan mouse ke sini</button></main>`,
+        checks: [
+          { label: 'Selector .hover-demo:hover digunakan', detail: 'Gunakan pseudo-class :hover pada selector tombol.', requiredSelectors: ['.hover-demo:hover'], declaredProperties: ['background-color','color'] }
+        ]
+      },
+{
+        id: 'color-name', number: 13, title: 'Color Name', category: 'Color', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_colors.asp',
+        description: 'CSS menyediakan nama warna seperti tomato, dodgerblue, dan mediumseagreen.',
+        goal: 'Ubah warna teks judul menjadi tomato dengan properti color.',
+        hints: ['color', 'Nama warna CSS'], hint: 'Tulis .color-name-target { color: tomato; }. Nama warna adalah salah satu cara menuliskan nilai warna CSS.',
+        html: `<main class="mini-page"><span class="eyebrow">CSS COLOR NAMES</span><h1 class="color-name-target" id="colorNameTarget">Warna Tomato</h1><p>Gunakan nama warna CSS untuk judul di atas.</p></main>`,
+        checks: [
+          { label: 'Selector .color-name-target mengatur color', detail: 'Gunakan properti color pada selector target.', requiredSelectors: ['.color-name-target'], declaredProperties: ['color'] },
+          { label: 'Teks menggunakan warna tomato', detail: 'Warna computed harus rgb(255, 99, 71).', targetIds: ['colorNameTarget'], computedProperty: 'color', expected: 'rgb(255, 99, 71)' }
+        ]
+      },
+{
+        id: 'color-hex', number: 14, title: 'Color HEX', category: 'Color', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css3_colors.asp',
+        description: 'Nilai HEX ditulis menggunakan tanda # diikuti digit heksadesimal untuk merah, hijau, dan biru.',
+        goal: 'Ubah warna judul menjadi ungu dengan kode HEX #7c3aed.',
+        hints: ['color', 'HEX #RRGGBB'], hint: 'Gunakan color: #7c3aed;. Kode HEX harus diawali tanda pagar (#).',
+        html: `<main class="mini-page"><span class="eyebrow">HEX COLOR</span><h1 id="colorHexTarget">Warna dengan HEX</h1><p>Gunakan warna #7c3aed pada teks judul.</p></main>`,
+        checks: [
+          { label: 'Selector #colorHexTarget mengatur color', detail: 'Gunakan ID selector dan properti color.', requiredSelectors: ['#colorHexTarget'], declaredProperties: ['color'] },
+          { label: 'Teks berwarna ungu', detail: 'Computed color harus rgb(124, 58, 237).', targetIds: ['colorHexTarget'], computedProperty: 'color', expected: 'rgb(124, 58, 237)' }
+        ]
+      },
+{
+        id: 'color-rgb', number: 15, title: 'Color RGB', category: 'Color', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css3_colors.asp',
+        description: 'Fungsi rgb() menentukan intensitas merah, hijau, dan biru, masing-masing dengan nilai 0 sampai 255.',
+        goal: 'Buat teks target berwarna biru langit menggunakan rgb(14, 165, 233).',
+        hints: ['rgb()', 'Red, Green, Blue'], hint: 'Tulis color: rgb(14, 165, 233);. Setiap angka mewakili komponen merah, hijau, dan biru.',
+        html: `<main class="mini-page"><span class="eyebrow">RGB COLOR</span><h1>RGB</h1><p id="colorRgbTarget">Warna teks ini menggunakan fungsi rgb().</p></main>`,
+        checks: [
+          { label: 'Selector #colorRgbTarget mengatur color', detail: 'Gunakan properti color pada ID target.', requiredSelectors: ['#colorRgbTarget'], declaredProperties: ['color'] },
+          { label: 'Warna sesuai komponen RGB', detail: 'Computed color harus rgb(14, 165, 233).', targetIds: ['colorRgbTarget'], computedProperty: 'color', expected: 'rgb(14, 165, 233)' }
+        ]
+      },
+{
+        id: 'color-hsl', number: 16, title: 'Color HSL', category: 'Color', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css3_colors.asp',
+        description: 'HSL terdiri dari hue (sudut warna), saturation (kejenuhan), dan lightness (kecerahan).',
+        goal: 'Gunakan hsl(120, 100%, 50%) untuk membuat teks target berwarna hijau.',
+        hints: ['hsl()', 'Hue, Saturation, Lightness'], hint: 'Tulis color: hsl(120, 100%, 50%);. Hue 120 derajat dengan saturasi dan kecerahan 100% menghasilkan hijau.',
+        html: `<main class="mini-page"><span class="eyebrow">HSL COLOR</span><h1>HSL</h1><p id="colorHslTarget">Atur teks ini menggunakan hsl().</p></main>`,
+        checks: [
+          { label: 'Selector #colorHslTarget mengatur color', detail: 'Gunakan properti color pada ID target.', requiredSelectors: ['#colorHslTarget'], declaredProperties: ['color'] },
+          { label: 'Warna HSL menghasilkan hijau', detail: 'Computed color harus rgb(0, 255, 0).', targetIds: ['colorHslTarget'], computedProperty: 'color', expected: 'rgb(0, 255, 0)' }
+        ]
+      },
+{
+        id: 'color-rgba', number: 17, title: 'Color RGBA', category: 'Color', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css3_colors.asp',
+        description: 'RGBA menambahkan alpha untuk mengatur transparansi warna, dengan rentang 0.0 sampai 1.0.',
+        goal: 'Gunakan background-color: rgba(14, 165, 233, 0.4) pada kotak target.',
+        hints: ['rgba()', 'Alpha / transparansi'], hint: 'Gunakan .color-rgba-target { background-color: rgba(14, 165, 233, 0.4); }. Nilai alpha 0.4 berarti warna 40% opak.',
+        html: `<main class="mini-page"><span class="eyebrow">RGBA COLOR</span><h1>Transparansi RGBA</h1><p>Warna latar kotak perlu transparan agar latar di belakangnya masih terlihat.</p><div class="color-alpha-stage"><div class="color-rgba-target" id="colorRgbaTarget">RGBA 0.4</div></div></main>`,
+        checks: [
+          { label: 'Selector .color-rgba-target menggunakan background-color', detail: 'Gunakan background-color dengan fungsi rgba().', requiredSelectors: ['.color-rgba-target'], declaredProperties: ['background-color'] },
+          { label: 'Alpha RGBA bernilai 0.4', detail: 'Warna computed harus memiliki alpha 0.4.', targetIds: ['colorRgbaTarget'], computedProperty: 'backgroundColor', expectedIncludes: '0.4' }
+        ]
+      },
+{
+        id: 'color-hexa', number: 18, title: 'Color HEXA', category: 'Color', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css3_colors.asp',
+        description: 'HEXA menambahkan dua digit alpha pada kode HEX. Nilai 33 menghasilkan sekitar 20% opacity.',
+        goal: 'Gunakan background-color: #0ea5e933 untuk membuat latar biru transparan.',
+        hints: ['HEXA #RRGGBBAA', 'Alpha hexadecimal'], hint: 'Tulis .color-hexa-target { background-color: #0ea5e933; }. Dua digit terakhir adalah alpha; 33 dalam HEX setara dengan alpha 0.2.',
+        html: `<main class="mini-page"><span class="eyebrow">HEXA COLOR</span><h1>Transparansi HEXA</h1><p>Bandingkan latar transparan dengan latar di belakangnya.</p><div class="color-alpha-stage"><div class="color-hexa-target" id="colorHexaTarget">HEXA alpha 33</div></div></main>`,
+        checks: [
+          { label: 'Selector .color-hexa-target menggunakan background-color', detail: 'Gunakan properti background-color dengan kode HEXA.', requiredSelectors: ['.color-hexa-target'], declaredProperties: ['background-color'] },
+          { label: 'HEXA memiliki alpha sekitar 0.2', detail: 'Warna computed harus menunjukkan alpha 0.2.', targetIds: ['colorHexaTarget'], computedProperty: 'backgroundColor', expectedIncludes: '0.2' }
+        ]
+      },
+{
+        id: 'color-hsla', number: 19, title: 'Color HSLA', category: 'Color', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css3_colors.asp',
+        description: 'HSLA menggabungkan hue, saturation, lightness, dan alpha untuk menentukan warna transparan.',
+        goal: 'Gunakan background-color: hsla(120, 100%, 40%, 0.35) pada kotak target.',
+        hints: ['hsla()', 'Alpha / transparansi'], hint: 'Tulis .color-hsla-target { background-color: hsla(120, 100%, 40%, 0.35); }. Parameter terakhir mengatur transparansi.',
+        html: `<main class="mini-page"><span class="eyebrow">HSLA COLOR</span><h1>Transparansi HSLA</h1><p>Gunakan fungsi HSLA untuk memilih hue, saturation, lightness, dan alpha.</p><div class="color-alpha-stage"><div class="color-hsla-target" id="colorHslaTarget">HSLA alpha 0.35</div></div></main>`,
+        checks: [
+          { label: 'Selector .color-hsla-target menggunakan background-color', detail: 'Gunakan background-color dengan fungsi hsla().', requiredSelectors: ['.color-hsla-target'], declaredProperties: ['background-color'] },
+          { label: 'Alpha HSLA bernilai 0.35', detail: 'Computed background harus memiliki alpha 0.35.', targetIds: ['colorHslaTarget'], computedProperty: 'backgroundColor', expectedIncludes: '0.35' }
+        ]
+      },
+{
+        id: 'color-opacity', number: 20, title: 'Opacity', category: 'Color', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css3_colors.asp',
+        description: 'Properti opacity mengatur transparansi seluruh elemen, termasuk isi dan teksnya.',
+        goal: 'Atur opacity kotak target menjadi 0.5.',
+        hints: ['opacity', '0 = transparan, 1 = opak'], hint: 'Tulis .opacity-target { opacity: 0.5; }. Berbeda dari RGBA, opacity memengaruhi seluruh elemen beserta isinya.',
+        html: `<main class="mini-page"><span class="eyebrow">OPACITY PROPERTY</span><h1>Opacity</h1><p>Setel opacity pada kotak biru agar elemen dan isinya tampak transparan.</p><div class="opacity-target" id="opacityTarget"><strong>Opacity 50%</strong><p>Teks di dalamnya juga ikut transparan.</p></div></main>`,
+        checks: [
+          { label: 'Selector .opacity-target mengatur opacity', detail: 'Gunakan properti opacity pada selector target.', requiredSelectors: ['.opacity-target'], declaredProperties: ['opacity'] },
+          { label: 'Computed opacity menjadi 0.5', detail: 'Nilai opacity harus 0.5.', targetIds: ['opacityTarget'], computedProperty: 'opacity', expected: '0.5' }
+        ]
+      },
+{
+        id: 'background-body', number: 21, title: 'Background Color', category: 'Background', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_background.asp',
         description: 'Properti background-color memberi warna pada latar sebuah elemen. Mulai dari latar seluruh halaman.',
         goal: 'Ubah latar halaman menjadi kuning pastel (#fef3c7) dengan selector body.',
         hints: ['background-color', 'Selector body'], hint: 'Tulis body { background-color: #fef3c7; }. Kamu juga dapat menggunakan properti background untuk latar warna sederhana.',
@@ -407,8 +576,8 @@
           { label: 'Latar halaman menjadi kuning pastel', detail: 'Warna background halaman harus #fef3c7.', targetBody: true, computedProperty: 'backgroundColor', expected: 'rgb(254, 243, 199)' }
         ]
       },
-      {
-        id: 'background-card', number: 7, title: 'Background pada Kartu', category: 'Background', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_background.asp',
+{
+        id: 'background-card', number: 22, title: 'Background pada Kartu', category: 'Background', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_background.asp',
         description: 'Properti background dapat mengatur warna latar elemen tertentu, tidak harus seluruh halaman.',
         goal: 'Ubah latar kartu menjadi hijau pastel (#dcfce7), tetapi jangan mengubah warna latar kotak luar.',
         hints: ['Selector class', 'background / background-color'], hint: 'Targetkan class .kartu. Gunakan background: #dcfce7; atau background-color: #dcfce7;.',
@@ -419,8 +588,8 @@
           { label: 'Kotak luar tidak ikut hijau', detail: 'Kotak luar tidak boleh memakai warna latar yang sama.', targetIds: ['kotakLuar'], computedProperty: 'backgroundColor', expectedNot: 'rgb(220, 252, 231)' }
         ]
       },
-      {
-        id: 'background-image', number: 8, title: 'Background Image', category: 'Background', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_background_image.asp',
+{
+        id: 'background-image', number: 23, title: 'Background Image', category: 'Background', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_background_image.asp',
         description: 'Gunakan gambar sebagai latar elemen. Gambar dan ukuran kotak sudah disiapkan pada preview.',
         goal: 'Tambahkan gambar pohon sebagai latar kotak poster menggunakan background-image dan url().',
         hints: ['background-image', 'url()'], hint: 'Gunakan selector .image-poster. Contoh deklarasi: background-image: url("https://www.w3schools.com/css/img_tree.png");',
@@ -430,8 +599,8 @@
           { label: 'Gambar latar berhasil ditentukan', detail: 'Gunakan url() dengan gambar img_tree.png.', targetIds: ['posterImage'], computedProperty: 'backgroundImage', expectedIncludes: 'img_tree.png' }
         ]
       },
-      {
-        id: 'background-repeat', number: 9, title: 'Background Repeat', category: 'Background', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_background_repeat.asp',
+{
+        id: 'background-repeat', number: 24, title: 'Background Repeat', category: 'Background', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_background_repeat.asp',
         description: 'Gambar latar secara default diulang secara horizontal dan vertikal. Atur arah pengulangannya agar sesuai desain.',
         goal: 'Buat pola gambar hanya berulang secara horizontal menggunakan background-repeat: repeat-x.',
         hints: ['background-repeat', 'repeat-x'], hint: 'Targetkan .pattern-box lalu tulis background-repeat: repeat-x;. Nilai lain yang bisa dipelajari: repeat-y dan no-repeat.',
@@ -441,8 +610,54 @@
           { label: 'Pola hanya berulang horizontal', detail: 'Nilai background-repeat harus repeat-x.', targetIds: ['patternTarget'], computedProperty: 'backgroundRepeat', expected: 'repeat-x' }
         ]
       },
-      {
-        id: 'background-attachment', number: 10, title: 'Background Attachment', category: 'Background', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_background_attachment.asp',
+{
+        id: 'background-repeat-y', number: 25, title: 'Background Repeat Y', category: 'Background', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_background_repeat.asp',
+        description: 'Nilai repeat-y mengulang gambar latar hanya secara vertikal.',
+        goal: 'Buat gambar pola berulang ke bawah menggunakan background-repeat: repeat-y.',
+        hints: ['background-repeat', 'repeat-y'], hint: 'Targetkan .repeat-y-target dan tulis background-repeat: repeat-y;. Perhatikan pola di preview.',
+        html: `<main class="mini-page"><span class="eyebrow">BACKGROUND REPEAT Y</span><h1>Ulang ke Bawah</h1><p>Atur pengulangan gambar agar hanya vertikal.</p><div class="repeat-y-target" id="repeatYTarget"></div></main>`,
+        checks: [
+          { label: 'Selector .repeat-y-target mengatur background-repeat', detail: 'Gunakan properti background-repeat pada target.', requiredSelectors: ['.repeat-y-target'], declaredProperties: ['background-repeat'] },
+          { label: 'Pengulangan vertikal repeat-y', detail: 'Computed background-repeat harus repeat-y.', targetIds: ['repeatYTarget'], computedProperty: 'backgroundRepeat', expected: 'repeat-y' }
+        ]
+      },
+{
+        id: 'background-position', number: 26, title: 'Background Position', category: 'Background', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_background_image.asp',
+        description: 'background-position menentukan letak awal gambar latar di dalam elemen.',
+        goal: 'Pindahkan gambar pohon ke pojok kanan atas dengan background-position: right top.',
+        hints: ['background-position', 'right top'], hint: 'Gunakan .background-position-target { background-position: right top; }. Gambar dan ukuran kotaknya sudah disiapkan untuk latihan ini.',
+        html: `<main class="mini-page"><span class="eyebrow">BACKGROUND POSITION</span><h1>Posisi Gambar</h1><p>Pindahkan gambar kecil ke pojok kanan atas kotak.</p><div class="background-position-target" id="backgroundPositionTarget"></div></main>`,
+        checks: [
+          { label: 'Selector .background-position-target mengatur background-position', detail: 'Gunakan properti background-position.', requiredSelectors: ['.background-position-target'], declaredProperties: ['background-position'], expectedDeclarationValues: {'background-position':'right top'} },
+          { label: 'Posisi target kanan atas', detail: 'Deklarasi background-position harus right top.', requiredSelectors: ['.background-position-target'], expectedDeclarationValues: {'background-position':'right top'} }
+        ]
+      },
+{
+        id: 'background-size', number: 27, title: 'Background Size', category: 'Background', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_background_image.asp',
+        description: 'background-size mengatur ukuran gambar latar, misalnya ukuran eksplisit, contain, atau cover.',
+        goal: 'Atur lebar gambar menjadi 80px dengan background-size: 80px auto.',
+        hints: ['background-size', '80px auto'], hint: 'Gunakan .background-size-target { background-size: 80px auto; }. Nilai auto menjaga rasio gambar.',
+        html: `<main class="mini-page"><span class="eyebrow">BACKGROUND SIZE</span><h1>Ukuran Gambar</h1><p>Perbesar gambar latar menjadi 80px lebar.</p><div class="background-size-target" id="backgroundSizeTarget"></div></main>`,
+        checks: [
+          { label: 'Selector .background-size-target mengatur background-size', detail: 'Gunakan properti background-size.', requiredSelectors: ['.background-size-target'], declaredProperties: ['background-size'], expectedDeclarationValues: {'background-size':'80px auto'} },
+          { label: 'Ukuran gambar menjadi 80px auto', detail: 'Gunakan ukuran 80px dengan tinggi otomatis.', requiredSelectors: ['.background-size-target'], expectedDeclarationValues: {'background-size':'80px auto'} }
+        ]
+      },
+{
+        id: 'background-shorthand', number: 28, title: 'Background Shorthand', category: 'Background', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_background_shorthand.asp',
+        description: 'Shorthand background menggabungkan warna, gambar, posisi, ukuran, dan repeat dalam satu deklarasi.',
+        goal: 'Gunakan satu deklarasi background untuk membuat latar kuning dengan gambar pohon di kanan atas, tidak berulang, dan berukuran 64px.',
+        hints: ['background shorthand', 'warna + gambar + posisi + ukuran'], hint: 'Contoh: background: #fde68a url("https://www.w3schools.com/css/img_tree.png") no-repeat right top / 64px auto;. Ukuran dipisahkan dari posisi dengan garis miring.',
+        html: `<main class="mini-page"><span class="eyebrow">BACKGROUND SHORTHAND</span><h1>Semua dalam Satu</h1><p>Atur seluruh latar kotak dengan satu properti background.</p><div class="background-shorthand-target" id="backgroundShorthandTarget"></div></main>`,
+        checks: [
+          { label: 'Selector memakai shorthand background', detail: 'Gunakan satu deklarasi background pada target.', requiredSelectors: ['.background-shorthand-target'], declaredProperties: ['background'] },
+          { label: 'Latar berwarna kuning pastel', detail: 'Computed background-color harus rgb(253, 230, 138).', targetIds: ['backgroundShorthandTarget'], computedProperty: 'backgroundColor', expected: 'rgb(253, 230, 138)' },
+          { label: 'Gambar pohon ditempatkan sebagai latar', detail: 'Gambar harus berasal dari img_tree.png.', targetIds: ['backgroundShorthandTarget'], computedProperty: 'backgroundImage', expectedIncludes: 'img_tree.png' },
+          { label: 'Gambar tidak berulang', detail: 'background-repeat harus no-repeat.', targetIds: ['backgroundShorthandTarget'], computedProperty: 'backgroundRepeat', expected: 'no-repeat' }
+        ]
+      },
+{
+        id: 'background-attachment', number: 29, title: 'Background Attachment', category: 'Background', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_background_attachment.asp',
         description: 'background-attachment menentukan apakah gambar latar ikut bergulir dengan isi halaman atau tetap pada posisi viewport.',
         goal: 'Pasang gambar pohon pada latar halaman, lalu buat gambar tetap saat isi preview digulir dengan background-attachment: fixed.',
         hints: ['background-image', 'background-attachment: fixed'], hint: 'Gunakan selector body dengan background-image: url("https://www.w3schools.com/css/img_tree.png");, background-repeat: no-repeat;, dan background-attachment: fixed;. Gulir bagian preview untuk melihat efeknya.',
@@ -453,8 +668,8 @@
           { label: 'Gambar latar tetap saat halaman digulir', detail: 'Nilai background-attachment harus fixed.', targetBody: true, computedProperty: 'backgroundAttachment', expected: 'fixed' }
         ]
       },
-      {
-        id: 'border-style', number: 11, title: 'Border Style', category: 'Border', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_border.asp',
+{
+        id: 'border-style', number: 30, title: 'Border Style', category: 'Border', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_border.asp',
         description: 'Properti border-style menentukan jenis garis tepi, misalnya solid, dotted, dashed, atau double.',
         goal: 'Ubah garis tepi kotak menjadi garis putus-putus menggunakan border-style: dashed.',
         hints: ['border-style', 'dashed'], hint: 'Gunakan selector .border-demo-box dan deklarasi border-style: dashed;. Coba nilai dotted atau solid setelah tugas selesai.',
@@ -464,8 +679,22 @@
           { label: 'Garis tepi menjadi dashed', detail: 'Nilai border-style harus dashed.', targetIds: ['borderStyleTarget'], computedProperty: 'borderTopStyle', expected: 'dashed' }
         ]
       },
-      {
-        id: 'border-width', number: 12, title: 'Border Width', category: 'Border', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_border_width.asp',
+{
+        id: 'border-style-multi', number: 31, title: 'Border Style per Sisi', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_sides.asp',
+        description: 'Border-style dapat memakai empat nilai untuk mengatur gaya sisi atas, kanan, bawah, lalu kiri.',
+        goal: 'Terapkan empat gaya: dashed, dotted, solid, dan double pada sisi atas, kanan, bawah, dan kiri secara berurutan.',
+        hints: ['border-style', 'empat nilai'], hint: 'Gunakan border-style: dashed dotted solid double;. Urutannya dimulai dari atas, lalu kanan, bawah, dan kiri.',
+        html: `<main class="mini-page"><span class="eyebrow">BORDER STYLE SIDES</span><h1>Gaya Tiap Sisi</h1><p>Gunakan empat nilai border-style untuk membuat tiap sisi berbeda.</p><div class="border-style-multi" id="borderStyleMultiTarget">Border style per sisi</div></main>`,
+        checks: [
+          { label: 'Shorthand border-style empat nilai digunakan', detail: 'Gunakan border-style dengan empat nilai dalam satu selector.', requiredSelectors: ['.border-style-multi'], declaredProperties: ['border-style'] },
+          { label: 'Sisi atas dashed', detail: 'border-top-style harus dashed.', targetIds: ['borderStyleMultiTarget'], computedProperty: 'borderTopStyle', expected: 'dashed' },
+          { label: 'Sisi kanan dotted', detail: 'border-right-style harus dotted.', targetIds: ['borderStyleMultiTarget'], computedProperty: 'borderRightStyle', expected: 'dotted' },
+          { label: 'Sisi bawah solid', detail: 'border-bottom-style harus solid.', targetIds: ['borderStyleMultiTarget'], computedProperty: 'borderBottomStyle', expected: 'solid' },
+          { label: 'Sisi kiri double', detail: 'border-left-style harus double.', targetIds: ['borderStyleMultiTarget'], computedProperty: 'borderLeftStyle', expected: 'double' }
+        ]
+      },
+{
+        id: 'border-width', number: 32, title: 'Border Width', category: 'Border', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_border_width.asp',
         description: 'Properti border-width mengatur ketebalan garis tepi. Border harus memiliki border-style selain none agar terlihat.',
         goal: 'Buat garis tepi solid dengan ketebalan 6px.',
         hints: ['border-width', 'border-style'], hint: 'Gunakan .border-width-box { border-style: solid; border-width: 6px; }. Nilai lebar bisa ditulis dalam px.',
@@ -476,8 +705,22 @@
           { label: 'Garis tepi menggunakan solid', detail: 'Jenis garis tepi harus solid.', targetIds: ['borderWidthTarget'], computedProperty: 'borderTopStyle', expected: 'solid' }
         ]
       },
-      {
-        id: 'border-color', number: 13, title: 'Border Color', category: 'Border', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_border_color.asp',
+{
+        id: 'border-width-sides', number: 33, title: 'Border Width per Sisi', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_width.asp',
+        description: 'Shorthand border-width dengan empat nilai mengatur ketebalan setiap sisi dengan urutan atas, kanan, bawah, kiri.',
+        goal: 'Buat sisi atas 2px, kanan 4px, bawah 6px, dan kiri 8px dengan border-width.',
+        hints: ['border-width', 'empat nilai'], hint: 'Gunakan border-style: solid; dan border-width: 2px 4px 6px 8px;.',
+        html: `<main class="mini-page"><span class="eyebrow">BORDER WIDTH SIDES</span><h1>Ketebalan Berbeda</h1><p>Atur tiap sisi dengan ketebalan yang berbeda.</p><div class="border-width-sides" id="borderWidthSidesTarget">Border width per sisi</div></main>`,
+        checks: [
+          { label: 'border-width empat nilai digunakan', detail: 'Gunakan border-width dengan empat nilai.', requiredSelectors: ['.border-width-sides'], declaredProperties: ['border-width'] },
+          { label: 'Sisi atas 2px', detail: 'border-top-width harus 2px.', targetIds: ['borderWidthSidesTarget'], computedProperty: 'borderTopWidth', expected: '2px' },
+          { label: 'Sisi kanan 4px', detail: 'border-right-width harus 4px.', targetIds: ['borderWidthSidesTarget'], computedProperty: 'borderRightWidth', expected: '4px' },
+          { label: 'Sisi bawah 6px', detail: 'border-bottom-width harus 6px.', targetIds: ['borderWidthSidesTarget'], computedProperty: 'borderBottomWidth', expected: '6px' },
+          { label: 'Sisi kiri 8px', detail: 'border-left-width harus 8px.', targetIds: ['borderWidthSidesTarget'], computedProperty: 'borderLeftWidth', expected: '8px' }
+        ]
+      },
+{
+        id: 'border-color', number: 34, title: 'Border Color', category: 'Border', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_border_color.asp',
         description: 'Properti border-color menentukan warna garis tepi. Tetapkan border-style supaya warna garis dapat terlihat.',
         goal: 'Warnai garis tepi kotak menjadi merah muda tua (#e11d48), dengan gaya solid.',
         hints: ['border-color', 'border-style'], hint: 'Contoh: .border-color-box { border-style: solid; border-color: #e11d48; }. Warna dapat memakai nama warna, HEX, RGB, atau HSL.',
@@ -488,8 +731,22 @@
           { label: 'Border memiliki gaya solid', detail: 'Jenis garis tepi harus solid.', targetIds: ['borderColorTarget'], computedProperty: 'borderTopStyle', expected: 'solid' }
         ]
       },
-      {
-        id: 'border-sides', number: 14, title: 'Border Sides', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_sides.asp',
+{
+        id: 'border-color-sides', number: 35, title: 'Border Color per Sisi', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_color.asp',
+        description: 'Properti border-color dapat menerima empat nilai untuk mewarnai tiap sisi secara berbeda.',
+        goal: 'Warna sisi atas merah, kanan biru, bawah hijau, dan kiri ungu.',
+        hints: ['border-color', 'empat nilai'], hint: 'Gunakan border-style: solid; dan border-color: #ef4444 #3b82f6 #22c55e #a855f7;.',
+        html: `<main class="mini-page"><span class="eyebrow">BORDER COLOR SIDES</span><h1>Warna Tiap Sisi</h1><p>Berikan warna berbeda pada keempat sisi kotak.</p><div class="border-color-sides" id="borderColorSidesTarget">Border color per sisi</div></main>`,
+        checks: [
+          { label: 'border-color empat nilai digunakan', detail: 'Gunakan border-color dengan empat nilai.', requiredSelectors: ['.border-color-sides'], declaredProperties: ['border-color'] },
+          { label: 'Sisi atas merah', detail: 'Warna sisi atas harus rgb(239, 68, 68).', targetIds: ['borderColorSidesTarget'], computedProperty: 'borderTopColor', expected: 'rgb(239, 68, 68)' },
+          { label: 'Sisi kanan biru', detail: 'Warna sisi kanan harus rgb(59, 130, 246).', targetIds: ['borderColorSidesTarget'], computedProperty: 'borderRightColor', expected: 'rgb(59, 130, 246)' },
+          { label: 'Sisi bawah hijau', detail: 'Warna sisi bawah harus rgb(34, 197, 94).', targetIds: ['borderColorSidesTarget'], computedProperty: 'borderBottomColor', expected: 'rgb(34, 197, 94)' },
+          { label: 'Sisi kiri ungu', detail: 'Warna sisi kiri harus rgb(168, 85, 247).', targetIds: ['borderColorSidesTarget'], computedProperty: 'borderLeftColor', expected: 'rgb(168, 85, 247)' }
+        ]
+      },
+{
+        id: 'border-sides', number: 36, title: 'Border Sides', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_sides.asp',
         description: 'CSS bisa memberi gaya berbeda pada tiap sisi: atas, kanan, bawah, atau kiri.',
         goal: 'Buat hanya garis sisi kiri dengan ketebalan 6px, gaya solid, dan warna teal (#0f766e). Sisi lain tetap tanpa border.',
         hints: ['border-left', 'sisi tertentu'], hint: 'Kamu dapat memakai shorthand border-left: 6px solid #0f766e; atau properti border-left-width, border-left-style, dan border-left-color.',
@@ -503,8 +760,8 @@
           { label: 'Sisi bawah tetap tanpa border', detail: 'Sisi bawah seharusnya tidak memiliki border.', targetIds: ['borderSidesTarget'], computedProperty: 'borderBottomStyle', expected: 'none' }
         ]
       },
-      {
-        id: 'border-shorthand', number: 15, title: 'Border Shorthand', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_shorthand.asp',
+{
+        id: 'border-shorthand', number: 37, title: 'Border Shorthand', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_shorthand.asp',
         description: 'Shorthand border menggabungkan ketebalan, jenis garis, dan warna dalam satu deklarasi.',
         goal: 'Gunakan satu deklarasi border untuk membuat garis tepi ungu setebal 4px dan bergaya solid.',
         hints: ['border shorthand', 'width + style + color'], hint: 'Gunakan pola border: 4px solid #7c3aed;. Urutan width, style, dan color dapat ditulis dalam satu deklarasi.',
@@ -516,8 +773,8 @@
           { label: 'Warna border ungu', detail: 'Warna garis harus #7c3aed.', targetIds: ['borderShorthandTarget'], computedProperty: 'borderTopColor', expected: 'rgb(124, 58, 237)' }
         ]
       },
-      {
-        id: 'border-rounded', number: 16, title: 'Rounded Border', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_rounded.asp',
+{
+        id: 'border-rounded', number: 38, title: 'Rounded Border', category: 'Border', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_border_rounded.asp',
         description: 'Properti border-radius membuat sudut elemen membulat. Nilainya dapat diatur dalam px atau satuan lain.',
         goal: 'Buat border solid warna amber setebal 2px dan bulatkan sudut kotak dengan border-radius: 18px.',
         hints: ['border-radius', 'border shorthand'], hint: 'Gunakan .border-rounded-box { border: 2px solid #f59e0b; border-radius: 18px; }. Coba ubah radius menjadi 4px atau 28px.',
@@ -529,8 +786,22 @@
           { label: 'Border berwarna amber', detail: 'Warna garis harus #f59e0b.', targetIds: ['borderRoundedTarget'], computedProperty: 'borderTopColor', expected: 'rgb(245, 158, 11)' }
         ]
       },
-      {
-        id: 'margin-sides', number: 17, title: 'Margin Sides', category: 'Margin', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+{
+        id: 'border-radius-corners', number: 39, title: 'Border Radius per Sudut', category: 'Border', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_border_rounded.asp',
+        description: 'Border-radius dapat memakai empat nilai untuk mengatur sudut kiri atas, kanan atas, kanan bawah, dan kiri bawah.',
+        goal: 'Atur radius empat sudut menjadi 24px, 4px, 16px, dan 8px secara berurutan.',
+        hints: ['border-radius', 'empat nilai'], hint: 'Gunakan border: 2px solid #7c3aed; dan border-radius: 24px 4px 16px 8px;.',
+        html: `<main class="mini-page"><span class="eyebrow">BORDER RADIUS CORNERS</span><h1>Sudut Berbeda</h1><p>Atur radius tiap sudut menggunakan empat nilai.</p><div class="border-radius-corners" id="borderRadiusCornersTarget">Empat sudut berbeda</div></main>`,
+        checks: [
+          { label: 'border-radius empat nilai digunakan', detail: 'Gunakan border-radius dengan empat nilai.', requiredSelectors: ['.border-radius-corners'], declaredProperties: ['border-radius'] },
+          { label: 'Sudut kiri atas 24px', detail: 'Radius kiri atas harus 24px.', targetIds: ['borderRadiusCornersTarget'], computedProperty: 'borderTopLeftRadius', expected: '24px' },
+          { label: 'Sudut kanan atas 4px', detail: 'Radius kanan atas harus 4px.', targetIds: ['borderRadiusCornersTarget'], computedProperty: 'borderTopRightRadius', expected: '4px' },
+          { label: 'Sudut kanan bawah 16px', detail: 'Radius kanan bawah harus 16px.', targetIds: ['borderRadiusCornersTarget'], computedProperty: 'borderBottomRightRadius', expected: '16px' },
+          { label: 'Sudut kiri bawah 8px', detail: 'Radius kiri bawah harus 8px.', targetIds: ['borderRadiusCornersTarget'], computedProperty: 'borderBottomLeftRadius', expected: '8px' }
+        ]
+      },
+{
+        id: 'margin-sides', number: 40, title: 'Margin Sides', category: 'Margin', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
         description: 'Margin memberi jarak di luar border elemen. Kamu bisa mengatur jarak atas, kanan, bawah, dan kiri secara terpisah.',
         goal: 'Atur jarak atas 8px, kanan 16px, bawah 24px, dan kiri 32px pada kotak contoh.',
         hints: ['margin-top', 'margin-right', 'margin-bottom', 'margin-left'], hint: 'Gunakan empat properti sisi: margin-top: 8px; margin-right: 16px; margin-bottom: 24px; margin-left: 32px. Kamu juga boleh mencoba satuan %.',
@@ -543,8 +814,8 @@
           { label: 'Jarak kiri 32px', detail: 'margin-left harus 32px.', targetIds: ['marginSidesTarget'], computedProperty: 'marginLeft', expected: '32px' }
         ]
       },
-      {
-        id: 'margin-shorthand-four', number: 18, title: 'Margin Shorthand: 4 Nilai', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+{
+        id: 'margin-shorthand-four', number: 41, title: 'Margin Shorthand: 4 Nilai', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
         description: 'Shorthand margin dengan empat nilai dibaca berurutan: atas, kanan, bawah, lalu kiri.',
         goal: 'Gunakan satu deklarasi margin untuk mengatur 10px atas, 20px kanan, 30px bawah, dan 40px kiri.',
         hints: ['margin shorthand', '4 nilai'], hint: 'Tulis margin: 10px 20px 30px 40px;. Urutan nilainya mengikuti arah jarum jam mulai dari atas.',
@@ -557,8 +828,8 @@
           { label: 'Jarak kiri 40px', detail: 'margin-left harus 40px.', targetIds: ['marginFourTarget'], computedProperty: 'marginLeft', expected: '40px' }
         ]
       },
-      {
-        id: 'margin-shorthand-three', number: 19, title: 'Margin Shorthand: 3 Nilai', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+{
+        id: 'margin-shorthand-three', number: 42, title: 'Margin Shorthand: 3 Nilai', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
         description: 'Dengan tiga nilai, urutannya adalah atas, kanan-kiri, lalu bawah.',
         goal: 'Atur margin menjadi 12px atas, 20px kanan-kiri, dan 28px bawah dengan tiga nilai.',
         hints: ['margin', '3 nilai'], hint: 'Tulis margin: 12px 20px 28px;. Nilai kedua dipakai untuk sisi kanan dan kiri.',
@@ -571,8 +842,8 @@
           { label: 'Kiri juga 20px', detail: 'margin-left harus 20px.', targetIds: ['marginThreeTarget'], computedProperty: 'marginLeft', expected: '20px' }
         ]
       },
-      {
-        id: 'margin-shorthand-two', number: 20, title: 'Margin Shorthand: 2 Nilai', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+{
+        id: 'margin-shorthand-two', number: 43, title: 'Margin Shorthand: 2 Nilai', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
         description: 'Dengan dua nilai, nilai pertama mengatur atas-bawah dan nilai kedua mengatur kanan-kiri.',
         goal: 'Gunakan margin dengan dua nilai: 16px untuk atas-bawah dan 32px untuk kanan-kiri.',
         hints: ['margin', '2 nilai'], hint: 'Tulis margin: 16px 32px;. Browser menggunakan 16px di atas/bawah serta 32px di kanan/kiri.',
@@ -585,8 +856,8 @@
           { label: 'Jarak kiri 32px', detail: 'margin-left harus 32px.', targetIds: ['marginTwoTarget'], computedProperty: 'marginLeft', expected: '32px' }
         ]
       },
-      {
-        id: 'margin-shorthand-one', number: 21, title: 'Margin Shorthand: 1 Nilai', category: 'Margin', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+{
+        id: 'margin-shorthand-one', number: 44, title: 'Margin Shorthand: 1 Nilai', category: 'Margin', level: 'LEVEL 1 · DASAR', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
         description: 'Satu nilai shorthand margin menerapkan jarak yang sama pada keempat sisi.',
         goal: 'Terapkan jarak 24px pada sisi atas, kanan, bawah, dan kiri dengan satu nilai.',
         hints: ['margin', '1 nilai'], hint: 'Cukup tulis margin: 24px;. Nilai ini berlaku untuk keempat sisi elemen.',
@@ -599,8 +870,8 @@
           { label: 'Jarak bawah 24px', detail: 'margin-bottom juga harus 24px.', targetIds: ['marginOneTarget'], computedProperty: 'marginBottom', expected: '24px' }
         ]
       },
-      {
-        id: 'margin-auto', number: 22, title: 'Margin Auto: Center', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+{
+        id: 'margin-auto', number: 45, title: 'Margin Auto: Center', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
         description: 'Nilai auto dapat membagi ruang kosong secara seimbang untuk memusatkan elemen block yang memiliki lebar tertentu.',
         goal: 'Pusatkan kotak target secara horizontal menggunakan margin: auto;.',
         hints: ['margin: auto', 'horizontal center'], hint: 'Lebar kotak sudah disiapkan. Gunakan .margin-auto-target { margin: auto; }. Pastikan ruang kiri dan kanan seimbang.',
@@ -610,8 +881,8 @@
           { label: 'Margin kiri dan kanan seimbang', detail: 'Nilai computed margin kiri dan kanan harus sama agar kotak berada di tengah.', targetIds: ['marginAutoTarget'], computedPropertiesEqual: ['marginLeft','marginRight'] }
         ]
       },
-      {
-        id: 'margin-inherit', number: 23, title: 'Margin Inherit', category: 'Margin', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+{
+        id: 'margin-inherit', number: 46, title: 'Margin Inherit', category: 'Margin', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
         description: 'Nilai inherit mengambil nilai properti dari elemen induk. Properti margin biasanya tidak diwariskan otomatis, jadi gunakan inherit secara eksplisit.',
         goal: 'Beri elemen induk margin-left 40px, kemudian buat elemen anak mewarisi nilai itu dengan margin-left: inherit;.',
         hints: ['inherit', 'parent-child'], hint: 'Buat aturan .margin-inherit-parent { margin-left: 40px; } dan .margin-inherit-child { margin-left: inherit; }.',
@@ -622,8 +893,8 @@
           { label: 'Margin kiri anak ikut menjadi 40px', detail: 'Computed margin-left anak harus mewarisi 40px dari induk.', targetIds: ['marginInheritChild'], computedProperty: 'marginLeft', expected: '40px' }
         ]
       },
-      {
-        id: 'margin-percent', number: 24, title: 'Margin Persentase', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+{
+        id: 'margin-percent', number: 47, title: 'Margin Persentase', category: 'Margin', level: 'LEVEL 2 · MENENGAH', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
         description: 'Margin juga dapat memakai persentase. Nilai persentase margin dihitung dari lebar containing block.',
         goal: 'Beri kotak target margin-left sebesar 10% menggunakan satuan persentase.',
         hints: ['margin-left', '%'], hint: 'Gunakan .margin-percent-target { margin-left: 10%; }. Persentase membuat jarak mengikuti lebar wadahnya.',
@@ -633,8 +904,8 @@
           { label: 'Browser menerapkan margin kiri', detail: 'Computed margin kiri harus lebih besar dari nol.', targetIds: ['marginPercentTarget'], computedProperty: 'marginLeft', expectedNot: '0px' }
         ]
       },
-      {
-        id: 'margin-negative', number: 25, title: 'Negative Margin', category: 'Margin', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
+{
+        id: 'margin-negative', number: 48, title: 'Negative Margin', category: 'Margin', level: 'LEVEL 3 · TANTANGAN', resourceUrl: 'https://www.w3schools.com/css/css_margin.asp',
         description: 'Nilai margin negatif diperbolehkan dan dapat menarik elemen mendekati atau menimpa area elemen lain.',
         goal: 'Gunakan margin-top: -12px; agar kotak merah bergerak ke atas mendekati kotak hijau.',
         hints: ['margin-top', 'nilai negatif'], hint: 'Tulis .margin-negative-target { margin-top: -12px; }. Amati perubahan jarak antara kedua kotak pada preview.',
@@ -690,6 +961,22 @@
       .margin-inherit-child{padding:10px;border:1px solid #80b6a0;background:#e4f8ed;}
       .margin-negative-previous{padding:12px;border:1px solid #80b6a0;background:#e4f8ed;text-align:center;}
       .margin-negative-target{padding:12px;border:1px solid #f0a3ae;background:#fff0f1;text-align:center;}
+      /* Selector and color lesson scaffolding; target properties remain for student CSS. */
+      .universal-button,.hover-demo{padding:9px 13px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;}
+      .selector-child-stage,.selector-demo-stage{padding:12px;border:1px dashed #cbd5e1;}
+      .color-alpha-stage{padding:18px;border-radius:10px;background-color:#cbd5e1;background-image:linear-gradient(45deg,#e2e8f0 25%,transparent 25%,transparent 75%,#e2e8f0 75%),linear-gradient(45deg,#e2e8f0 25%,transparent 25%,transparent 75%,#e2e8f0 75%);background-size:20px 20px;background-position:0 0,10px 10px;}
+      .color-rgba-target,.color-hexa-target,.color-hsla-target{padding:20px;border:1px solid #94a3b8;text-align:center;}
+      .opacity-target{padding:18px;border-radius:10px;background:#0ea5e9;color:#fff;}
+      .opacity-target p{margin-bottom:0;}
+      /* Background-position/size targets include an image but leave the requested property to students. */
+      .repeat-y-target{height:130px;border:1px solid #cbd5e1;background-image:url("https://www.w3schools.com/css/paper.gif");background-repeat:no-repeat;background-position:left top;}
+      .background-position-target{height:135px;border:1px solid #cbd5e1;background-image:url("https://www.w3schools.com/css/img_tree.png");background-repeat:no-repeat;background-size:48px auto;background-position:left center;}
+      .background-size-target{height:150px;border:1px solid #cbd5e1;background-image:url("https://www.w3schools.com/css/img_tree.png");background-repeat:no-repeat;background-position:center;background-size:32px auto;}
+      .background-shorthand-target{height:150px;border:1px solid #cbd5e1;}
+      .border-style-multi,.border-width-sides,.border-color-sides,.border-radius-corners{min-height:82px;display:flex;align-items:center;justify-content:center;padding:18px;margin:14px 0;background:#f8fafc;text-align:center;}
+      /* Margin/image scaffolding helpers. */
+      .margin-side-stage,.margin-four-stage,.margin-three-stage,.margin-two-stage,.margin-one-stage,.margin-auto-stage,.margin-percent-stage,.margin-negative-stage{width:100%;}
+
 
 
     `;
@@ -888,7 +1175,8 @@
                 for(var j=0;j<rule.style.length;j++){
                   var prop=rule.style[j];
                   if(prop==='color' || prop==='background' || prop==='background-color' || prop==='background-image' ||
-                     prop==='background-repeat' || prop==='background-attachment' || prop.indexOf('border')===0 || prop.indexOf('margin')===0){
+                     prop==='background-repeat' || prop==='background-attachment' || prop==='background-position' ||
+                     prop==='background-size' || prop==='opacity' || prop.indexOf('border')===0 || prop.indexOf('margin')===0){
                     var value=rule.style.getPropertyValue(prop);
                     if(value) declarations[prop]=value.trim();
                   }
@@ -915,7 +1203,9 @@
                 borderBottomStyle:s.borderBottomStyle,borderBottomWidth:s.borderBottomWidth,borderBottomColor:s.borderBottomColor,
                 borderLeftStyle:s.borderLeftStyle,borderLeftWidth:s.borderLeftWidth,borderLeftColor:s.borderLeftColor,
                 borderTopLeftRadius:s.borderTopLeftRadius,
-                marginTop:s.marginTop,marginRight:s.marginRight,marginBottom:s.marginBottom,marginLeft:s.marginLeft
+                marginTop:s.marginTop,marginRight:s.marginRight,marginBottom:s.marginBottom,marginLeft:s.marginLeft,
+                backgroundPosition:s.backgroundPosition,backgroundSize:s.backgroundSize,opacity:s.opacity,
+                borderTopRightRadius:s.borderTopRightRadius,borderBottomRightRadius:s.borderBottomRightRadius,borderBottomLeftRadius:s.borderBottomLeftRadius
               };
             });
             var bodyStyle=getComputedStyle(document.body);
@@ -928,7 +1218,9 @@
               borderRightStyle:bodyStyle.borderRightStyle,borderRightWidth:bodyStyle.borderRightWidth,borderRightColor:bodyStyle.borderRightColor,
               borderBottomStyle:bodyStyle.borderBottomStyle,borderBottomWidth:bodyStyle.borderBottomWidth,borderBottomColor:bodyStyle.borderBottomColor,
               borderLeftStyle:bodyStyle.borderLeftStyle,borderLeftWidth:bodyStyle.borderLeftWidth,borderLeftColor:bodyStyle.borderLeftColor,borderTopLeftRadius:bodyStyle.borderTopLeftRadius,
-              marginTop:bodyStyle.marginTop,marginRight:bodyStyle.marginRight,marginBottom:bodyStyle.marginBottom,marginLeft:bodyStyle.marginLeft
+              marginTop:bodyStyle.marginTop,marginRight:bodyStyle.marginRight,marginBottom:bodyStyle.marginBottom,marginLeft:bodyStyle.marginLeft,
+              backgroundPosition:bodyStyle.backgroundPosition,backgroundSize:bodyStyle.backgroundSize,opacity:bodyStyle.opacity,
+              borderTopRightRadius:bodyStyle.borderTopRightRadius,borderBottomRightRadius:bodyStyle.borderBottomRightRadius,borderBottomLeftRadius:bodyStyle.borderBottomLeftRadius
             },rules:rules},'*');
           }
           if(document.readyState==='complete') setTimeout(report,0); else window.addEventListener('load',function(){setTimeout(report,0)});
