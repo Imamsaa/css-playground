@@ -447,10 +447,12 @@ Materi rujukan:
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
+- Tombol **Kirim Jawaban** dengan modal nama siswa dan popup sukses SweetAlert2.
+- Mode pengumpulan masih simulasi lokal: nama, jawaban CSS, tugas, dan ringkasan hasil cek disimpan di browser perangkat siswa, bukan dikirim ke guru.
 
 ## Penyimpanan progres
 
-Playground menggunakan `localStorage` untuk menyimpan kode CSS dan progres pada browser yang sedang digunakan. Data tidak dikirim ke server. Jika siswa berpindah browser atau perangkat, data lokal tidak ikut berpindah.
+Playground menggunakan `localStorage` untuk menyimpan kode CSS dan progres pada browser yang sedang digunakan. Data tidak dikirim ke server. Jika siswa berpindah browser atau perangkat, data lokal tidak ikut berpindah. Catatan pengumpulan jawaban juga hanya tersimpan lokal dengan batas 15 catatan terakhir dan tidak tersedia untuk guru dari perangkat lain.
 
 ## Menjalankan
 
