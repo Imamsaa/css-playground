@@ -1250,10 +1250,8 @@
       }
       closeSubmissionModal();
 
-      const successTitle = savedLocally ? 'Jawaban berhasil dicatat!' : 'Formulir selesai';
-      const successText = savedLocally
-        ? 'Jawabanmu sudah dicatat di perangkat ini sebagai bukti latihan. Kerjakan setiap tugas dengan sungguh-sungguh; pengumpulan dan penilaian resmi tetap mengikuti arahan guru.'
-        : 'Browser tidak mengizinkan penyimpanan lokal. Kerjakan setiap tugas dengan sungguh-sungguh dan ikuti arahan guru untuk pengumpulan serta penilaian resmi.';
+      const successTitle = savedLocally ? 'Jawaban telah disimpan' : 'Jawaban belum dapat disimpan';
+      const successText = '';
       if (window.Swal && typeof window.Swal.fire === 'function') {
         await window.Swal.fire({
           icon: savedLocally ? 'success' : 'info',
