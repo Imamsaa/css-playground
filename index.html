@@ -185,6 +185,28 @@
     .bottom-note a { color:#6c61d9; text-decoration:none; }
     .toast { position:fixed; z-index:20; bottom:22px; left:50%; transform:translate(-50%,12px); opacity:0; pointer-events:none; color:#fff; background:#172033; border-radius:12px; padding:11px 15px; box-shadow:0 12px 28px rgba(15,23,42,.25); font-size:12px; font-weight:700; transition:.2s ease; max-width:calc(100% - 30px); text-align:center; }
     .toast.show { opacity:1; transform:translate(-50%,0); }
+    .btn-submit { background:#0f9f6e; color:#fff; border-color:#0f9f6e; box-shadow:0 4px 10px rgba(15,159,110,.16); }
+    .btn-submit:hover { background:#0b865d; border-color:#0b865d; }
+    .submission-modal[hidden] { display:none !important; }
+    .submission-modal { position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:18px; }
+    .submission-backdrop { position:absolute; inset:0; background:rgba(15,23,42,.58); backdrop-filter:blur(3px); }
+    .submission-dialog { position:relative; width:min(100%,460px); padding:27px; background:#fff; border:1px solid #e4e8f1; border-radius:22px; box-shadow:0 24px 80px rgba(15,23,42,.28); color:#172033; animation:submission-pop .18s ease-out; }
+    .submission-close { position:absolute; top:13px; right:14px; width:34px; height:34px; border:0; border-radius:10px; color:#64748b; background:#f1f5f9; font-size:22px; line-height:1; }
+    .submission-close:hover { background:#e2e8f0; }
+    .submission-icon { display:grid; place-items:center; width:48px; height:48px; margin-bottom:15px; border-radius:15px; background:#dcfce7; color:#15803d; font-size:24px; font-weight:900; }
+    .submission-dialog h2 { margin:0 36px 8px 0; color:#172033; font-size:22px; letter-spacing:-.035em; }
+    .submission-dialog p { color:#64748b; font-size:13px; line-height:1.55; }
+    .submission-task-label { margin:0 0 19px; padding:10px 12px; border:1px solid #e2e8f0; border-radius:10px; background:#f8fafc; color:#334155 !important; font-weight:750; }
+    .submission-label { display:block; margin-bottom:7px; color:#344054; font-size:12px; font-weight:800; }
+    .submission-name-input { display:block; width:100%; min-height:45px; padding:11px 13px; border:1px solid #cbd5e1; border-radius:11px; outline:none; background:#fff; color:#172033; font:inherit; font-size:14px; }
+    .submission-name-input:focus { border-color:#6754e8; box-shadow:0 0 0 3px rgba(103,84,232,.13); }
+    .submission-note { margin:12px 0 0; padding:10px 11px; border:1px solid #fde68a; border-radius:10px; background:#fffbeb; color:#92400e !important; font-size:11px !important; }
+    .submission-actions { display:flex; justify-content:flex-end; align-items:center; gap:9px; margin-top:20px; }
+    .submission-actions .btn { min-height:39px; }
+    .swal2-popup { border-radius:20px !important; }
+    .swal2-confirm { border-radius:10px !important; }
+    @keyframes submission-pop { from { opacity:0; transform:translateY(7px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
+    body.submission-open { overflow:hidden; }
     .empty-state { color:#8a94a7; font-size:12px; }
     @media (max-width: 1100px) {
       .app-shell { padding:18px; }
@@ -227,6 +249,7 @@
     }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { transition:none !important; scroll-behavior:auto !important; } }
   </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.min.css" />
 </head>
 <body>
   <div class="app-shell">
@@ -314,6 +337,7 @@
               <div class="editor-actions">
                 <button class="btn btn-quiet" id="resetBtn" type="button" style="color:#bbc4d6;border-color:#384157;background:#202a3e;">Reset</button>
                 <button class="btn btn-primary" id="checkBtn" type="button">✓ Periksa Jawaban</button>
+                <button class="btn btn-submit" id="openSubmissionBtn" type="button">↑ Kirim Jawaban</button>
               </div>
             </div>
           </section>
@@ -345,8 +369,28 @@
       </section>
     </main>
   </div>
+  <div class="submission-modal" id="submissionModal" hidden aria-hidden="true">
+    <div class="submission-backdrop" data-close-submission></div>
+    <section class="submission-dialog" role="dialog" aria-modal="true" aria-labelledby="submissionTitle" aria-describedby="submissionDisclosure" tabindex="-1">
+      <button class="submission-close" id="closeSubmissionBtn" type="button" aria-label="Tutup modal">×</button>
+      <div class="submission-icon" aria-hidden="true">↑</div>
+      <h2 id="submissionTitle">Kirim Jawaban</h2>
+      <p>Masukkan nama agar jawaban latihan ini tercatat bersama identitasmu.</p>
+      <p class="submission-task-label" id="submissionTaskLabel">Tugas yang dipilih</p>
+      <form id="submissionForm">
+        <label class="submission-label" for="studentNameInput">Nama lengkap siswa</label>
+        <input class="submission-name-input" id="studentNameInput" name="studentName" type="text" maxlength="100" autocomplete="name" placeholder="Tulis nama lengkapmu" required />
+        <p class="submission-note" id="submissionDisclosure">Mode simulasi: nama dan jawaban disimpan di browser perangkat ini saja. Belum terkirim ke guru karena belum ada backend pengumpulan.</p>
+        <div class="submission-actions">
+          <button class="btn btn-quiet" id="cancelSubmissionBtn" type="button">Batal</button>
+          <button class="btn btn-submit" type="submit">✓ Kirim Jawaban</button>
+        </div>
+      </form>
+    </section>
+  </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.all.min.js"></script>
   <script>
     'use strict';
 
@@ -1135,6 +1179,92 @@
       const next = TASKS[(index + 1) % TASKS.length];
       selectTask(next.id);
       window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    const STUDENT_NAME_KEY = 'css_quest_student_name_v1';
+    const SUBMISSIONS_KEY = 'css_quest_submissions_v1';
+    const submissionModal = $('#submissionModal');
+    const studentNameInput = $('#studentNameInput');
+    let submissionReturnFocus = null;
+
+    function openSubmissionModal() {
+      submissionReturnFocus = document.activeElement;
+      studentNameInput.value = readStore(STUDENT_NAME_KEY, '');
+      $('#submissionTaskLabel').textContent = 'Tugas #' + currentTask.number + ' · ' + currentTask.title;
+      submissionModal.hidden = false;
+      submissionModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('submission-open');
+      requestAnimationFrame(() => studentNameInput.focus());
+    }
+    function closeSubmissionModal() {
+      submissionModal.hidden = true;
+      submissionModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('submission-open');
+      if (submissionReturnFocus && typeof submissionReturnFocus.focus === 'function') submissionReturnFocus.focus();
+    }
+
+    $('#openSubmissionBtn').addEventListener('click', openSubmissionModal);
+    $('#closeSubmissionBtn').addEventListener('click', closeSubmissionModal);
+    $('#cancelSubmissionBtn').addEventListener('click', closeSubmissionModal);
+    submissionModal.addEventListener('click', event => {
+      if (event.target.matches('[data-close-submission]')) closeSubmissionModal();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !submissionModal.hidden) closeSubmissionModal();
+    });
+    $('#submissionForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const studentName = studentNameInput.value.trim();
+      if (!studentName) {
+        studentNameInput.setCustomValidity('Masukkan nama lengkap terlebih dahulu.');
+        studentNameInput.reportValidity();
+        studentNameInput.setCustomValidity('');
+        return;
+      }
+
+      codes[currentTask.id] = editor.value;
+      saveCodesNow();
+      const submission = {
+        submissionId: 'local-' + Date.now(),
+        studentName,
+        taskId: currentTask.id,
+        taskNumber: currentTask.number,
+        taskTitle: currentTask.title,
+        cssAnswer: editor.value,
+        checkResult: lastResults && lastResults.task.id === currentTask.id
+          ? {passed:lastResults.passed,total:lastResults.total,percent:lastResults.percent}
+          : null,
+        submittedAt: new Date().toISOString(),
+        mode: 'local-demo'
+      };
+
+      let savedLocally = false;
+      try {
+        localStorage.setItem(STUDENT_NAME_KEY, JSON.stringify(studentName));
+        const previous = readStore(SUBMISSIONS_KEY, []);
+        const records = Array.isArray(previous) ? previous : [];
+        localStorage.setItem(SUBMISSIONS_KEY, JSON.stringify([submission, ...records].slice(0, 15)));
+        savedLocally = true;
+      } catch {
+        savedLocally = false;
+      }
+      closeSubmissionModal();
+
+      const successTitle = savedLocally ? 'Jawaban berhasil dicatat!' : 'Formulir selesai';
+      const successText = savedLocally
+        ? 'Catatan simulasi tersimpan di browser ini. Jawaban belum dikirim ke guru karena fitur backend belum tersedia.'
+        : 'Browser tidak mengizinkan penyimpanan lokal. Jawaban belum dikirim ke guru karena fitur backend belum tersedia.';
+      if (window.Swal && typeof window.Swal.fire === 'function') {
+        await window.Swal.fire({
+          icon: savedLocally ? 'success' : 'info',
+          title: successTitle,
+          text: successText,
+          confirmButtonText: 'Mengerti',
+          confirmButtonColor: '#0f9f6e'
+        });
+      } else {
+        window.alert(successTitle + '\n\n' + successText);
+      }
     });
 
     const requestedTask = new URLSearchParams(location.search).get('task');
