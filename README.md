@@ -447,12 +447,13 @@ Materi rujukan:
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
-- Tombol **Kirim Jawaban** dengan modal nama siswa dan popup sukses SweetAlert2.
-- Mode pengumpulan masih simulasi lokal: nama, jawaban CSS, tugas, dan ringkasan hasil cek disimpan di browser perangkat siswa, bukan dikirim ke guru.
+- Tombol **Kirim Jawaban** mengirim nama siswa dan judul tugas ke Google Sheets melalui Google Apps Script. Waktu pengumpulan dibuat oleh server.
+- Data yang dikirim hanya nama, tugas, dan waktu pengumpulan. Kode CSS, skor, serta jawaban siswa tidak dikirim.
+- Panduan instalasi integrasi Google Sheets tersedia di [apps-script/README.md](apps-script/README.md), dengan penerima di [apps-script/Code.gs](apps-script/Code.gs).
 
 ## Penyimpanan progres
 
-Playground menggunakan `localStorage` untuk menyimpan kode CSS dan progres pada browser yang sedang digunakan. Data tidak dikirim ke server. Jika siswa berpindah browser atau perangkat, data lokal tidak ikut berpindah. Catatan pengumpulan jawaban juga hanya tersimpan lokal dengan batas 15 catatan terakhir dan tidak tersedia untuk guru dari perangkat lain.
+Playground menggunakan `localStorage` untuk menyimpan kode CSS dan progres pada browser yang sedang digunakan. Data latihan tersebut tidak dikirim ke server. Jika siswa berpindah browser atau perangkat, progres lokal tidak ikut berpindah. Pengumpulan tugas dicatat terpisah di Google Sheets setelah Apps Script dikonfigurasi dan dipublikasikan sebagai Web App.
 
 ## Menjalankan
 
