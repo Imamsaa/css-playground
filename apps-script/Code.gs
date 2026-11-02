@@ -128,10 +128,14 @@ function doPost(e) {
       return jsonResponse_({ ok: false, error: 'The number of assessment criteria does not match the score.' });
     }
 
+    if (rawCriteria.some(item => !item || typeof item.passed !== 'boolean')) {
+      return jsonResponse_({ ok: false, error: 'Invalid criterion result.' });
+    }
+
     const criteria = rawCriteria.map((item, index) => ({
-      criterion: cleanText_(item && item.label, 180) || ('Kriteria ' + (index + 1)),
-      passed: Boolean(item && item.passed),
-      feedback: cleanText_(item && item.feedback, 500)
+      criterion: cleanText_(item.label, 180) || ('Kriteria ' + (index + 1)),
+      passed: item.passed,
+      feedback: cleanText_(item.feedback, 500)
     }));
 
     const actualPassed = criteria.filter(item => item.passed).length;
