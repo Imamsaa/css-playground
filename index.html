@@ -870,7 +870,17 @@
           ...((check.declaredPropertyGroups || []).reduce((all, group) => all.concat(group), [])),
           ...Object.keys(check.expectedDeclarationValues || {})
         ];
-        const uniqueProperties = Array.from(new Set(properties));
+        let uniqueProperties = Array.from(new Set(properties));
+        if (!uniqueProperties.length) {
+          const computedProperties = currentTask.checks.reduce((all, taskCheck) => {
+            const names = [taskCheck.computedProperty].concat(Object.keys(taskCheck.expectedComputedValues || {}));
+            return all.concat(names);
+          }, []);
+          uniqueProperties = Array.from(new Set(computedProperties
+            .filter(property => property && !['offsetWidth','offsetHeight','widthWithMargins','heightWithMargins'].includes(property))
+            .map(property => String(property).replace(/[A-Z]/g, letter => '-' + letter.toLowerCase()))
+          ));
+        }
         if (!uniqueProperties.length) return;
         const signature = selectors.join(',') + '|' + uniqueProperties.join(',');
         if (seenTemplates.has(signature)) return;
