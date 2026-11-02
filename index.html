@@ -111,6 +111,18 @@
     .goal-icon { flex:0 0 25px; width:25px; height:25px; display:grid; place-items:center; border-radius:8px; color:var(--primary); background:#eeecff; font-size:13px; font-weight:900; }
     .goal-copy { color:#555f74; font-size:12px; }
     .goal-copy strong { display:block; color:#2a3150; font-size:11px; margin-bottom:2px; }
+    .task-guide { margin-top:14px; padding:15px 16px; border:1px solid #dce5f3; border-radius:13px; background:#f8fbff; }
+    .task-guide-heading { display:flex; align-items:flex-start; gap:10px; }
+    .task-guide-icon { display:grid; place-items:center; flex:0 0 27px; width:27px; height:27px; border-radius:9px; color:#315ca8; background:#e7efff; font-size:14px; font-weight:900; }
+    .task-guide-title { margin:0; color:#263650; font-size:12px; font-weight:900; }
+    .task-guide-intro { margin:3px 0 0; color:#66748a; font-size:10px; line-height:1.5; }
+    .task-guide-steps { display:grid; gap:9px; margin:13px 0 0; padding-left:20px; color:#4e5d73; font-size:11px; line-height:1.55; }
+    .task-guide-steps li { padding-left:3px; }
+    .task-guide-steps strong { color:#263650; }
+    .task-guide-code-wrap { margin-top:13px; padding:11px 12px; border:1px solid #dfe6f1; border-radius:10px; background:#fff; }
+    .task-guide-code-title { color:#475569; font-size:10px; font-weight:850; }
+    .task-guide-code { margin:7px 0 0; padding:10px 11px; overflow:auto; border-radius:8px; background:#172033; color:#dbe5ff; font:11px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; white-space:pre; }
+    .task-guide-note { margin:10px 0 0; color:#64748b; font-size:10px; line-height:1.5; }
     .reference-panel { padding:16px 18px; }
     .reference-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:12px; }
     .reference-title { color:#202a40; font-size:13px; font-weight:850; }
@@ -301,6 +313,21 @@
             <div class="goal-icon">✦</div>
             <div class="goal-copy"><strong>Target tugas</strong><span id="taskGoal"></span></div>
           </div>
+          <section class="task-guide" aria-labelledby="taskGuideTitle">
+            <div class="task-guide-heading">
+              <span class="task-guide-icon" aria-hidden="true">?</span>
+              <div>
+                <h3 class="task-guide-title" id="taskGuideTitle">Petunjuk Pengerjaan</h3>
+                <p class="task-guide-intro">Ikuti langkah berikut. Petunjuk disesuaikan otomatis dengan tugas yang sedang kamu kerjakan.</p>
+              </div>
+            </div>
+            <ol class="task-guide-steps" id="taskGuideSteps"></ol>
+            <div class="task-guide-code-wrap" id="taskGuideCodeWrap" hidden>
+              <div class="task-guide-code-title">Kerangka CSS — lengkapi nilai yang masih kosong</div>
+              <pre class="task-guide-code"><code id="taskGuideCode"></code></pre>
+            </div>
+            <p class="task-guide-note">Kamu boleh menggunakan penulisan CSS atau selector alternatif selama elemen yang dituju dan hasil tampilannya tetap sesuai target.</p>
+          </section>
         </article>
 
         <section class="panel reference-panel" aria-labelledby="referenceTitle">
@@ -806,6 +833,59 @@
       $('#progressText').textContent = completed.size + ' / ' + TASKS.length + ' tugas';
       $('#progressFill').style.width = Math.min(100, completed.size / TASKS.length * 100) + '%';
     }
+    function renderTaskGuide() {
+      const checks = Array.isArray(currentTask.checks) ? currentTask.checks : [];
+      const selectorChecks = checks.filter(check => Array.isArray(check.requiredSelectors) && check.requiredSelectors.length);
+      const steps = [
+        'Baca target tugas terlebih dahulu. Perhatikan efek akhir yang harus terlihat pada live preview.',
+        'Amati panel Struktur HTML. Temukan tag, class, ID, atribut, serta hubungan antar-elemen yang dibutuhkan.'
+      ];
+
+      checks.forEach((check, index) => {
+        const selectors = Array.isArray(check.requiredSelectors) ? check.requiredSelectors : [];
+        const properties = [
+          ...(check.declaredProperties || []),
+          ...((check.declaredPropertyGroups || []).reduce((all, group) => all.concat(group), [])),
+          ...Object.keys(check.expectedDeclarationValues || {})
+        ];
+        const uniqueProperties = Array.from(new Set(properties));
+        let instruction = 'Kriteria ' + (index + 1) + ' — ' + (check.label || 'Periksa hasil tugas') + '. ';
+        if (check.detail) instruction += check.detail + ' ';
+        if (selectors.length) instruction += 'Selector latihan: ' + selectors.join(', ') + '. ';
+        if (uniqueProperties.length) instruction += 'Properti yang perlu diperhatikan: ' + uniqueProperties.join(', ') + '.';
+        steps.push(instruction.trim());
+      });
+
+      steps.push('Tulis atau lengkapi CSS pada editor. Kamu boleh mengubah nilai dan menambahkan aturan lain selama tidak merusak bagian yang sudah benar.');
+      steps.push('Amati perubahan pada live preview. Jika hasil belum sesuai, perbaiki kode lalu tekan Periksa Jawaban kembali.');
+
+      $('#taskGuideSteps').innerHTML = steps.map(step => '<li>' + escapeHtml(step) + '</li>').join('');
+
+      const seenTemplates = new Set();
+      const templates = [];
+      selectorChecks.forEach(check => {
+        const selectors = check.requiredSelectors;
+        const properties = [
+          ...(check.declaredProperties || []),
+          ...((check.declaredPropertyGroups || []).reduce((all, group) => all.concat(group), [])),
+          ...Object.keys(check.expectedDeclarationValues || {})
+        ];
+        const uniqueProperties = Array.from(new Set(properties));
+        if (!uniqueProperties.length) return;
+        const signature = selectors.join(',') + '|' + uniqueProperties.join(',');
+        if (seenTemplates.has(signature)) return;
+        seenTemplates.add(signature);
+        templates.push(selectors.join(', ') + ' {\n' +
+          uniqueProperties.map(property => '  ' + property + ': /* isi nilai sesuai target */;').join('\n') +
+          '\n}');
+      });
+
+      const codeWrap = $('#taskGuideCodeWrap');
+      const code = $('#taskGuideCode');
+      code.textContent = templates.join('\n\n');
+      codeWrap.hidden = templates.length === 0;
+    }
+
     function selectTask(taskId) {
       const task = taskById(taskId);
       if (!task) return;
@@ -830,6 +910,7 @@
         resourceLink.removeAttribute('href');
       }
       $('#taskGoal').textContent = currentTask.goal;
+      renderTaskGuide();
       renderHtmlReferences();
       feedbackPanel.classList.remove('visible','fail');
       lastResults = null;
@@ -866,6 +947,23 @@
               if(value) declarations[prop] = value.trim();
             });
           }
+          function elementPath(element){
+            var parts=[];
+            while(element && element!==document.documentElement){
+              var parent=element.parentElement;
+              if(!parent) break;
+              parts.unshift(Array.prototype.indexOf.call(parent.children,element));
+              element=parent;
+            }
+            return parts.join('.');
+          }
+          function matchSelector(selector){
+            try {
+              return Array.from(document.querySelectorAll(selector)).map(elementPath).sort();
+            } catch(error) {
+              return [];
+            }
+          }
           function collectRules(rules, output){
             for(var i=0;i<rules.length;i++){
               var rule=rules[i];
@@ -893,7 +991,7 @@
                 }
                 /* CSSOM may expose shorthand values as expanded longhands in the indexed list; also collect serialized shorthand names. */
                 collectSerializedDeclarations(rule.style, declarations);
-                output.push({selectors:rule.selectorText.split(',').map(function(s){return s.trim();}),declarations:declarations});
+                output.push({selectors:rule.selectorText.split(',').map(function(s){return s.trim();}),declarations:declarations,matchedNodes:matchSelector(rule.selectorText)});
               } else if(rule.cssRules) { try{collectRules(rule.cssRules,output);}catch(e){} }
             }
           }
@@ -904,9 +1002,9 @@
               if(style) style.textContent=String(event.data.css || '');
               return;
             }
-            if(event.data.type==='css-quest-check') setTimeout(report,0);
+            if(event.data.type==='css-quest-check') setTimeout(function(){report(event.data.requiredSelectors || [])},0);
           });
-          function report(){
+          function report(requiredSelectors){
             var elements={};
             document.querySelectorAll('[id]').forEach(function(el){
               var s=getComputedStyle(el);
@@ -939,6 +1037,10 @@
             });
             var bodyStyle=getComputedStyle(document.body);
             var rules=[];
+            var selectorMatches={};
+            (requiredSelectors || []).forEach(function(selector){
+              selectorMatches[selector]=matchSelector(selector);
+            });
             try{collectRules(document.getElementById('student-css').sheet.cssRules,rules);}catch(e){}
             parent.postMessage({type:'css-quest-report',elements:elements,body:{
               color:bodyStyle.color,backgroundColor:bodyStyle.backgroundColor,backgroundImage:bodyStyle.backgroundImage,backgroundRepeat:bodyStyle.backgroundRepeat,backgroundAttachment:bodyStyle.backgroundAttachment,
@@ -953,7 +1055,7 @@
               paddingTop:bodyStyle.paddingTop,paddingRight:bodyStyle.paddingRight,paddingBottom:bodyStyle.paddingBottom,paddingLeft:bodyStyle.paddingLeft,
               width:bodyStyle.width,height:bodyStyle.height,minWidth:bodyStyle.minWidth,maxWidth:bodyStyle.maxWidth,minHeight:bodyStyle.minHeight,maxHeight:bodyStyle.maxHeight,
               boxSizing:bodyStyle.boxSizing,offsetWidth:document.body.offsetWidth,offsetHeight:document.body.offsetHeight
-            },rules:rules},'*');
+            },rules:rules,selectorMatches:selectorMatches},'*');
           }
           if(document.readyState==='complete') setTimeout(report,0); else window.addEventListener('load',function(){setTimeout(report,0)});
         })();
@@ -985,11 +1087,56 @@
           type: 'css-quest-update',
           css: editor.value
         }, '*');
-        if (pendingCheck) previewFrame.contentWindow.postMessage({type: 'css-quest-check'}, '*');
+        if (pendingCheck) previewFrame.contentWindow.postMessage({type: 'css-quest-check', requiredSelectors: requiredSelectorsForTask()}, '*');
       }
     });
     function normalizedSelector(selector) {
       return String(selector).trim().replace(/\s+/g,' ').replace(/\s*([>+~])\s*/g,'$1');
+    }
+    function requiredSelectorsForTask() {
+      const selectors = currentTask.checks.reduce((all, check) => all.concat(check.requiredSelectors || []), []);
+      return Array.from(new Set(selectors));
+    }
+    function ruleHasRequiredDeclarations(rule, criterion) {
+      const declarations = rule.declarations || {};
+      const hasDeclaredProperties = !criterion.declaredProperties || criterion.declaredProperties.length === 0 ||
+        criterion.declaredProperties.some(property => Object.prototype.hasOwnProperty.call(declarations, property));
+      const hasDeclaredGroups = !criterion.declaredPropertyGroups ||
+        criterion.declaredPropertyGroups.every(group => group.some(property => Object.prototype.hasOwnProperty.call(declarations, property)));
+      const expectedDeclarationsMatch = !criterion.expectedDeclarationValues ||
+        Object.entries(criterion.expectedDeclarationValues).every(([property, value]) =>
+          String(declarations[property] || '').replace(/\s+/g,'').toLowerCase() === String(value).replace(/\s+/g,'').toLowerCase()
+        );
+      return hasDeclaredProperties && hasDeclaredGroups && expectedDeclarationsMatch;
+    }
+    function sameNodeSet(first, second) {
+      const firstSet = new Set(first || []);
+      const secondSet = new Set(second || []);
+      if (firstSet.size !== secondSet.size) return false;
+      for (const node of firstSet) if (!secondSet.has(node)) return false;
+      return true;
+    }
+    function requiredSelectorsPass(criterion, report) {
+      const selectors = criterion.requiredSelectors || [];
+      const selectorMatches = report.selectorMatches || {};
+      const expectedSets = selectors.map(selector => selectorMatches[selector]);
+      const comparable = expectedSets.length > 0 && expectedSets.every(nodes => Array.isArray(nodes) && nodes.length > 0);
+      const eligibleRules = (report.rules || []).filter(rule => ruleHasRequiredDeclarations(rule, criterion));
+
+      if (comparable) {
+        const expectedCombined = Array.from(new Set(expectedSets.reduce((all, nodes) => all.concat(nodes), [])));
+        const groupedMatch = eligibleRules.some(rule => sameNodeSet(rule.matchedNodes || [], expectedCombined));
+        const separatedMatch = expectedSets.every(expectedNodes =>
+          eligibleRules.some(rule => sameNodeSet(rule.matchedNodes || [], expectedNodes))
+        );
+        return groupedMatch || separatedMatch;
+      }
+
+      // State-based pseudo-classes such as :hover, :active, and :visited may have no
+      // matching element at check time, so keep their normalized selector fallback.
+      return selectors.every(selector => eligibleRules.some(rule =>
+        (rule.selectors || []).some(actual => normalizedSelector(actual) === normalizedSelector(selector))
+      ));
     }
     function readColorAlpha(value) {
       const text = String(value || '').trim().toLowerCase();
@@ -1014,15 +1161,8 @@
     }
     function criterionPasses(criterion, report) {
       const reasons = [];
-      if (criterion.requiredSelectors && criterion.requiredSelectors.length) {
-        const found = report.rules.some(rule => {
-          const ruleSelectors = rule.selectors.map(normalizedSelector);
-          return criterion.requiredSelectors.every(selector => ruleSelectors.includes(normalizedSelector(selector))) &&
-            (!criterion.declaredProperties || criterion.declaredProperties.length === 0 || criterion.declaredProperties.some(prop => Object.prototype.hasOwnProperty.call(rule.declarations, prop))) &&
-            (!criterion.declaredPropertyGroups || criterion.declaredPropertyGroups.every(group => group.some(prop => Object.prototype.hasOwnProperty.call(rule.declarations, prop)))) &&
-            (!criterion.expectedDeclarationValues || Object.entries(criterion.expectedDeclarationValues).every(([prop,value]) => String(rule.declarations[prop] || '').replace(/\s+/g,'').toLowerCase() === String(value).replace(/\s+/g,'').toLowerCase()));
-        });
-        if (!found) reasons.push('Selector atau properti CSS yang diminta belum ditemukan dalam aturan yang sama.');
+      if (criterion.requiredSelectors && criterion.requiredSelectors.length && !requiredSelectorsPass(criterion, report)) {
+        reasons.push('Selector belum mengarah ke elemen yang tepat, atau properti CSS yang diperlukan belum diterapkan.');
       }
       const targets = criterion.targetBody ? [report.body] : (criterion.targetIds || []).map(id => report.elements[id]).filter(Boolean);
       if (criterion.targetBody || (criterion.targetIds && criterion.targetIds.length)) {
@@ -1138,7 +1278,7 @@
       clearTimeout(checkTimer);
       renderPreview();
       if (previewReady && previewFrame.contentWindow && previewFrame.dataset.taskId === currentTask.id) {
-        previewFrame.contentWindow.postMessage({type: 'css-quest-check'}, '*');
+        previewFrame.contentWindow.postMessage({type: 'css-quest-check', requiredSelectors: requiredSelectorsForTask()}, '*');
       }
       checkTimer = setTimeout(() => {
         if (pendingCheck) {
