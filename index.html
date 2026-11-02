@@ -1452,19 +1452,33 @@
       });
     }
 
-    async function sendSubmissionToGoogleSheets(studentName, task) {
+    async function sendSubmissionToGoogleSheets(studentName, task, result, cssCode) {
       if (!isGoogleAppsScriptUrlConfigured()) {
         throw new Error('Koneksi Google Sheets belum dikonfigurasi. Guru perlu memasang URL Apps Script terlebih dahulu.');
+      }
+      if (!result || result.task.id !== task.id || !Array.isArray(result.results)) {
+        throw new Error('Periksa jawaban terlebih dahulu sebelum mengirim tugas.');
       }
 
       const submissionId = createSubmissionId();
       const payload = {
         submissionId,
         name: studentName,
-        task: 'Tugas #' + task.number + ' · ' + task.title
+        task: 'Tugas #' + task.number + ' · ' + task.title,
+        cssCode: String(cssCode || ''),
+        score: {
+          passed: result.passed,
+          total: result.total
+        },
+        criteria: result.results.map(item => ({
+          label: item.label,
+          passed: Boolean(item.passed),
+          feedback: item.passed ? 'Lolos' : (item.reasons && item.reasons[0]) || item.detail || 'Belum memenuhi kriteria'
+        }))
       };
 
-      // text/plain is CORS-simple; receipt confirmation is checked separately.
+      // Include the exact CSS currently shown in the editor and the matching
+      // checker result. The endpoint derives the final percentage on the server.
       await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -1522,6 +1536,11 @@
       if (submissionInProgress) return;
 
       const studentName = studentNameInput.value.replace(/\s+/g, ' ').trim();
+      const checkedResult = lastResults && lastResults.task.id === currentTask.id ? lastResults : null;
+      if (!checkedResult) {
+        showToast('Periksa jawaban terlebih dahulu agar kode CSS dan nilai ikut terkirim.');
+        return;
+      }
       if (!studentName) {
         studentNameInput.setCustomValidity('Masukkan nama lengkap terlebih dahulu.');
         studentNameInput.reportValidity();
@@ -1541,14 +1560,14 @@
       studentNameInput.disabled = true;
 
       try {
-        await sendSubmissionToGoogleSheets(studentName, currentTask);
+        await sendSubmissionToGoogleSheets(studentName, currentTask, checkedResult, editor.value);
         submissionInProgress = false;
         submissionSubmitButton.disabled = false;
         submissionSubmitButton.textContent = submissionSubmitButtonLabel;
         studentNameInput.disabled = false;
         closeSubmissionModal();
 
-        const successText = 'Nama, tugas, dan waktu pengumpulan sudah tercatat di Google Sheets.';
+        const successText = 'Nama, tugas, kode CSS, rincian jawaban, nilai, dan waktu pengumpulan sudah tercatat di Google Sheets.';
         if (window.Swal && typeof window.Swal.fire === 'function') {
           await window.Swal.fire({
             icon: 'success',
