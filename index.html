@@ -353,7 +353,7 @@
               <span class="file-chip">style.css</span>
             </div>
             <div class="editor-body">
-              <div class="editor-tip">Tulis CSS-mu di bawah ini. Gunakan Tab untuk indentasi.</div>
+              <div class="editor-tip">Ketik CSS secara manual. Paste, cut, dan copy dari editor dinonaktifkan. Gunakan Tab untuk indentasi.</div>
               <div class="code-wrap">
                 <pre class="line-numbers" id="lineNumbers" aria-hidden="true">1</pre>
                 <textarea id="cssEditor" aria-label="Tulis kode CSS" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off" placeholder="/* Tulis kode CSS di sini */"></textarea>
@@ -1264,6 +1264,17 @@
     });
     editor.addEventListener('scroll', () => { $('#lineNumbers').scrollTop = editor.scrollTop; });
     editor.addEventListener('keydown', event => {
+      const key = String(event.key || '').toLowerCase();
+      const hasCommandModifier = event.ctrlKey || event.metaKey;
+      const clipboardShortcut = (hasCommandModifier && ['c','v','x'].includes(key)) ||
+        (hasCommandModifier && event.key === 'Insert') ||
+        (event.shiftKey && (event.key === 'Insert' || event.key === 'Delete'));
+      if (clipboardShortcut) {
+        event.preventDefault();
+        event.stopPropagation();
+        showToast('Copy, cut, dan paste dinonaktifkan di editor. Silakan ketik kode secara manual.');
+        return;
+      }
       if (event.key === 'Tab') {
         event.preventDefault();
         const start = editor.selectionStart, end = editor.selectionEnd;
@@ -1274,6 +1285,45 @@
         event.preventDefault(); $('#checkBtn').click();
       }
     });
+    function blockEditorClipboard(event, message) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (message) showToast(message);
+    }
+
+    // Clipboard events are blocked at the editor itself, including browser menu actions.
+    editor.addEventListener('copy', event => blockEditorClipboard(
+      event, 'Menyalin kode dari editor dinonaktifkan.'
+    ));
+    editor.addEventListener('cut', event => blockEditorClipboard(
+      event, 'Memotong kode dari editor dinonaktifkan.'
+    ));
+    editor.addEventListener('paste', event => blockEditorClipboard(
+      event, 'Paste dinonaktifkan. Ketik kode CSS secara manual.'
+    ));
+    editor.addEventListener('beforeinput', event => {
+      if (['insertFromPaste','insertFromDrop','deleteByCut'].includes(event.inputType)) {
+        blockEditorClipboard(event, 'Paste, drop, dan cut dinonaktifkan di editor.');
+      }
+    });
+
+    // Prevent dragging selected code out of the editor or dropping code into it.
+    editor.addEventListener('dragstart', event => blockEditorClipboard(
+      event, 'Drag kode dinonaktifkan di editor.'
+    ));
+    editor.addEventListener('dragover', event => {
+      event.preventDefault();
+      if (event.dataTransfer) event.dataTransfer.dropEffect = 'none';
+    });
+    editor.addEventListener('drop', event => blockEditorClipboard(
+      event, 'Memasukkan kode dengan drag-and-drop dinonaktifkan.'
+    ));
+
+    // Hide the editor's native context menu so its Paste command cannot be used.
+    editor.addEventListener('contextmenu', event => blockEditorClipboard(
+      event, 'Menu clipboard dinonaktifkan di editor. Gunakan editor dengan mengetik langsung.'
+    ));
+
     window.addEventListener('message', event => {
       if (event.source !== previewFrame.contentWindow || !event.data || event.data.type !== 'css-quest-report') return;
       if (pendingCheck) {
