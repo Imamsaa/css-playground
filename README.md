@@ -447,8 +447,9 @@ Materi rujukan:
 - Tautan materi W3Schools pada setiap tugas yang relevan.
 - Kode CSS dan progres tugas disimpan secara lokal di browser siswa.
 - Tautan langsung ke tugas melalui parameter URL `?task=<id>`.
-- Tombol **Kirim Jawaban** mengirim nama siswa dan judul tugas ke Google Sheets melalui Google Apps Script. Waktu pengumpulan dibuat oleh server.
-- Data yang dikirim hanya nama, tugas, dan waktu pengumpulan. Kode CSS, skor, serta jawaban siswa tidak dikirim.
+- Tombol **Kirim Jawaban** mengirim nama, tugas, kode CSS/jawaban siswa, hasil setiap kriteria, dan nilai ke Google Sheets melalui Google Apps Script. Waktu pengumpulan dibuat oleh server.
+- Siswa wajib menekan **Periksa Jawaban** setelah edit terakhir sebelum mengirim, sehingga kode dan nilai yang dicatat berasal dari versi yang sama.
+- Panduan instalasi dan skema sembilan kolom tersedia di [apps-script/README.md](apps-script/README.md), dengan penerima di [apps-script/Code.gs](apps-script/Code.gs).
 - Panduan instalasi integrasi Google Sheets tersedia di [apps-script/README.md](apps-script/README.md), dengan penerima di [apps-script/Code.gs](apps-script/Code.gs).
 
 ## Penyimpanan progres
